@@ -1,0 +1,76 @@
+@import '../../assets/style/variable.scss';
+
+.calender {
+    $border-radius: 15px;
+
+    background-color: $bg-blue;
+    border-radius: $border-radius;
+    box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
+    margin: 2vh auto;
+
+    .month {
+        @include min-max-height(10%);
+        border-top-left-radius: $border-radius;
+        border-top-right-radius: $border-radius;
+        background-color: $primary-yellow;
+        display: inline-block;
+        width: 100%;
+
+        .arrow-Left {
+            transform: translateX(5%) translateY(300%);
+        }
+
+        .arrow-Right {
+            transform: translateX(95%) translateY(-300%);
+        }
+
+        .monthDesc {
+            @include font($flow-font-name, 5vh, white, bold);
+            transform: translateX(36%);
+        }
+    }
+
+    .day {
+        background-color: $primary-blue;
+        border-radius: 10px;
+        @include font($flow-font-name, 3vh, $primary-yellow, bold);
+        height: 5vh;
+    }
+
+    .prev-month {
+        opacity: .5;
+    }
+
+    .month-day {
+        border-radius: 20px;
+        height: 5vw;
+        width: 5vw;
+        @include font($flow-font-name, 3vh, $primary-yellow, bold);
+        background-color: $cal-day;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+        .current-day {
+        }
+
+        .date {
+            transform: translateY(-70%) translateX(5%);
+        }
+    }
+}
+
+.eventCal {
+    background-color: $primary-blue;
+    @include font($flow-font-name, 2vh, $primary-yellow);
+
+    .start {
+    }
+
+    .middle {
+    }
+
+    .end {
+    }
+
+    .oneDay {
+    }
+}

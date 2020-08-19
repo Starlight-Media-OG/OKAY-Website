@@ -7,8 +7,13 @@
         </div>
         <div class="column content">
             <div class="header">
-                <div class="title">
+                <div class="title column">
                     <h1>{{this.title}}</h1>
+                </div>
+            </div>
+            <div class="subheader column">
+                <div class="price">
+                    <h3>{{this.preis}} €</h3>
                 </div>
             </div>
             <div class="button">
@@ -27,7 +32,7 @@
             imgPath: String,
             id: Number
         }, methods: {
-            concat: function(...strings) {
+            concat: function (...strings) {
                 let conString = "";
                 strings.forEach((arg, index) => {
                     conString += arg;
@@ -42,55 +47,71 @@
     @import '../assets/style/variable.scss';
 
     .mainCard {
-        width: calc(#{$width}/3);
         background-color: $primary-blue;
         box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
         border-radius: 6px;
         margin-bottom: 20vh;
-        min-height: 50vh;
+        padding-bottom: 1vh;
+        .image
 
-        .image {
-            width: 80%;
-            display: block;
-            margin: 0 auto;
-            transform: translateY(-25%);
+    {
+        width: 80%;
+        display: block;
+        margin: 0 auto;
+        transform: translateY(-25%);
+        .image-col
 
-            .image-col {
-                width: 100%;
-                box-shadow: 5px 5px 10px rgba(0,0,0,.20);
-            }
-        }
+    {
+        width: 100%;
+        box-shadow: 5px 5px 10px rgba(0,0,0,.20);
+    }
 
-        .content {
-            $title-size: 3vh;
-            $date-size: 2vh;
-            $flow-size: 1rem;
+    }
 
-            width: 90%;
-            margin-top: -50%;
-            margin-left: auto;
-            margin-right: auto;
+    .content {
+        $title-size: 3vh;
+        $date-size: 2vh;
+        $flow-size: 1rem;
+        width: 90%;
+        margin-top: -25%;
+        margin-left: auto;
+        margin-right: auto;
+        .header
 
-            .header {
-                .title {
-                    @include font($header-font-name, $title-size, white, bold);
-                    line-height: 6vh;
-                    margin-bottom: .5rem;
-                }
-            }
+    {
+        .title
 
-            .button {
-                background-color: lighten($primary-blue, 10%);
-                width: 90%;
-                border-radius: 6px;
-                text-align: center;
-                margin: 2vh auto;
+    {
+        @include font($header-font-name, $title-size, white, bold);
+        line-height: 6vh;
+        margin-bottom: .5rem;
+    }
 
-                .button-text {
-                    @include font($flow-font-name, 1.5rem, white, 700);
-                    text-decoration: none;
-                }
-            }
-        }
+    }
+
+    .subheader {
+        .price
+
+    {
+        @include font($flow-font-name, $flow-size, white, 600);
+    }
+
+    }
+
+    .button {
+        background-color: lighten($primary-blue, 10%);
+        width: 90%;
+        border-radius: 6px;
+        text-align: center;
+        margin: 2vh auto;
+        .button-text
+
+    {
+        @include font($flow-font-name, 1.5rem, white, 700);
+        text-decoration: none;
+    }
+
+    }
+    }
     }
 </style>

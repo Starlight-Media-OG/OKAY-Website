@@ -42,13 +42,13 @@
             id: Number
         }, methods: {
             trimString: function (txt, length) {
-                if(txt.length > length) {
-                    return txt.substr(0,length) + "...";
+                if (txt.length > length) {
+                    return txt.substr(0, length) + "...";
                 } else {
                     return txt;
                 }
             },
-            concat: function(...strings) {
+            concat: function (...strings) {
                 let conString = "";
                 strings.forEach((arg, index) => {
                     conString += arg;
@@ -57,7 +57,7 @@
             }
         },
         computed: {
-            duration: function() {
+            duration: function () {
                 return this.endDate != null && this.date != null
             }
         }
@@ -66,8 +66,4 @@
 
 <style scoped lang="scss">
     @import '../assets/style/components/card.scss';
-
-    .mainCard {
-        overflow: hidden;
-    }
 </style>

@@ -3,13 +3,13 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _2d4e0a5a = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
-const _7705fcf2 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
-const _57382dac = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
-const _5c837806 = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
-const _4d1ad84c = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
-const _0b1721a5 = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
-const _01fd042c = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _113bb0e9 = () => interopDefault(import('..\\pages\\calender\\index.vue' /* webpackChunkName: "pages/calender/index" */))
+const _44ef346a = () => interopDefault(import('..\\pages\\events\\index.vue' /* webpackChunkName: "pages/events/index" */))
+const _7968ccb0 = () => interopDefault(import('..\\pages\\news\\index.vue' /* webpackChunkName: "pages/news/index" */))
+const _357f8cff = () => interopDefault(import('..\\pages\\products\\index.vue' /* webpackChunkName: "pages/products/index" */))
+const _74b34952 = () => interopDefault(import('..\\pages\\events\\_id.vue' /* webpackChunkName: "pages/events/_id" */))
+const _693ac327 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _0733f3a3 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -29,31 +29,31 @@ export const routerOptions = {
 
   routes: [{
     path: "/calender",
-    component: _2d4e0a5a,
+    component: _113bb0e9,
     name: "calender"
   }, {
     path: "/events",
-    component: _7705fcf2,
+    component: _44ef346a,
     name: "events"
   }, {
     path: "/news",
-    component: _57382dac,
+    component: _7968ccb0,
     name: "news"
   }, {
     path: "/products",
-    component: _5c837806,
+    component: _357f8cff,
     name: "products"
   }, {
     path: "/events/:id",
-    component: _4d1ad84c,
+    component: _74b34952,
     name: "events-id"
   }, {
     path: "/products/:id",
-    component: _0b1721a5,
+    component: _693ac327,
     name: "products-id"
   }, {
     path: "/",
-    component: _01fd042c,
+    component: _0733f3a3,
     name: "index"
   }],
 

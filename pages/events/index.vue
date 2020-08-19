@@ -1,6 +1,6 @@
 <template>
     <main class="root flex flex-center">
-        <section class="row-12 flex flex-center">
+        <section class="row-12 flex flex-center header">
             <div class="title">
                 <p>Events</p>
             </div>
@@ -12,7 +12,7 @@
             <div class="lastWeek">
                 <h2 class="weekHeader">Letzte Woche</h2>
                 <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="oaId">
-                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" />
                 </div>
                 <div class="noEvent" v-else>
                     <h5>In dieser Woche finden keine Event statt</h5>
@@ -21,7 +21,7 @@
             <div class="thisWeek">
                 <h2 class="weekHeader">Diese Woche</h2>
                 <div class="cards" v-for="event in objectsCurrent" :key="oaId" v-if="objectsCurrent.length !== 0">
-                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" />
                 </div>
                 <div class="noEvent" v-else>
                     <h5>In dieser Woche finden keine Event statt</h5>
@@ -30,7 +30,7 @@
             <div class="nextWeek">
                 <h2 class="weekHeader">Nächste Woche</h2>
                 <div class="cards" v-for="event in objectsNext" :key="oaId" v-if="objectsNext.length !== 0">
-                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" />
                 </div>
                 <div class="noEvent" v-else>
                     <h5>In dieser Woche finden keine Event statt</h5>
@@ -44,7 +44,41 @@
 </template>
 
 <style lang="scss" scoped>
+    @import '../../assets/style/variable.scss';
 
+    main {
+        $header-height: 40vh;
+        .row-12
+
+    {
+        height: 100vh;
+    }
+
+    .header {
+        height: $header-height;
+        margin-left: -20vw;
+        transform: rotate(-8deg);
+    }
+
+    .svgGraphic {
+        height: calc(100vh - #{$header-height});
+    }
+
+    .page {
+        @include font($flow-font-name, 3vh, $primary-yellow, bold);
+        min-width: 40vw;
+        display: flex;
+        align-content: space-between;
+        justify-content: space-between;
+        margin-bottom: 2vh;
+        p
+
+    {
+        display: inline;
+    }
+
+    }
+    }
 </style>
 
 <script>
@@ -59,17 +93,17 @@
                 objectsNext: []
             }
         },
-        components : {
+        components: {
             card
         },
         methods: {
             sortEvents: function (arr) {
                 arr.forEach((value) => {
-                    if(this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date())) {
+                    if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date())) {
                         this.objectsCurrent.push(value);
-                    } else if(this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() - 7*24*60*60*1000))) {
+                    } else if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))) {
                         this.objectsLast.push(value);
-                    } else if(this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() + 7*24*60*60*1000))) {
+                    } else if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000))) {
                         this.objectsNext.push(value);
                     }
                 });
@@ -78,7 +112,7 @@
                 const onejan = new Date(dt.getFullYear(), 0, 1);
                 const today = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
                 const dayOfYear = ((today - onejan + 86400000) / 86400000);
-                return Math.ceil(dayOfYear/7);
+                return Math.ceil(dayOfYear / 7);
             }
         },
         async fetch() {
@@ -99,14 +133,14 @@
                     "titel": "Heinz Knapp",
                     "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                     "bilder_path": "img/HeinzKnapp",
-                    "start_datum": new Date(Date.now() - (7*24*60*60*1000)).toLocaleDateString(),
+                    "start_datum": new Date(Date.now() - (7 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
                     "oaId": 1022
                 },
                 {
                     "titel": "Heinz Knapp",
                     "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                     "bilder_path": "img/HeinzKnapp",
-                    "start_datum": new Date(Date.now() + (7*24*60*60*1000)).toLocaleDateString(),
+                    "start_datum": new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
                     "oaId": 1023
                 }
             ];
