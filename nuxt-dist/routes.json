@@ -1,0 +1,44 @@
+[
+  {
+    "name": "calender",
+    "path": "/calender",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/calender/index.vue",
+    "chunkName": "pages/calender/index"
+  },
+  {
+    "name": "events",
+    "path": "/events",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/events/index.vue",
+    "chunkName": "pages/events/index"
+  },
+  {
+    "name": "news",
+    "path": "/news",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/news/index.vue",
+    "chunkName": "pages/news/index"
+  },
+  {
+    "name": "products",
+    "path": "/products",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/products/index.vue",
+    "chunkName": "pages/products/index"
+  },
+  {
+    "name": "events-id",
+    "path": "/events/:id",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/events/_id.vue",
+    "chunkName": "pages/events/_id"
+  },
+  {
+    "name": "products-id",
+    "path": "/products/:id",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/products/_id.vue",
+    "chunkName": "pages/products/_id"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/Website/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]

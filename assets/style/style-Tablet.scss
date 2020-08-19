@@ -1,0 +1,50 @@
+@import "variable";
+
+.title {
+  margin-top: 20vh;
+  margin-left: 5vw;
+  line-height: 16vh;
+  @include font($header-font-name, 17vh, white, bold);
+  z-index: -2;
+
+  .vertical {
+    writing-mode: vertical-lr;
+    transform: translateX(-100%) translateY(-50%) rotate(180deg);
+    font-size: 15vh;
+    background-color: transparent;
+  }
+  p:last-child {
+    transform: translateY(-28vh);
+  }
+}
+
+.image {
+  z-index: -5;
+}
+
+main {
+  h2 {
+    font-size: 9.25vh;
+    font-family: $header-font-name;
+    color: white;
+    text-align: center;
+  }
+}
+
+.singleEvents, .singleNews {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.link {
+  margin-bottom: 7vh;
+  .further-link {
+    text-decoration: none;
+    color: $primary-yellow;
+    @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+  }
+}
+
+.underline {
+  @include text-underline($primary-blue, .1vh, 5px);
+}

@@ -1,0 +1,239 @@
+@import '../variable';
+
+.mainCard {
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  max-width: 100vw;
+  display: none;
+}
+
+//Smartphone Style
+@media screen and (max-width: $breakpoint-small-max), handheld {
+  .mainCard {
+    width: $width;
+    background-color: $primary-blue;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
+    border-radius: 6px;
+    margin-bottom: 20vh;
+
+    .image {
+      width: 80%;
+      display: block;
+      margin: 0 auto;
+      transform: translateY(-25%);
+
+      .image-col {
+        width: 100%;
+        box-shadow: 5px 5px 10px rgba(0,0,0,.20);
+      }
+    }
+
+    .content {
+      $title-size: 3vh;
+      $date-size: 2vh;
+      $flow-size: 1rem;
+
+      width: 90%;
+      margin-top: -50%;
+      margin-left: auto;
+      margin-right: auto;
+
+      .header {
+        .title {
+          @include font($header-font-name, $title-size, white, bold);
+          line-height: 6vh;
+          margin-bottom: .5rem;
+        }
+
+        .date {
+          @include font($header-font-name, $date-size, white, 600);
+          padding-bottom: 3vh;
+        }
+      }
+
+      .teaser, .teaser-news {
+        @include font($flow-font-name, $flow-size, white);
+        text-align: justify;
+        hyphens: auto;
+      }
+
+      .button {
+        background-color: lighten($primary-blue, 10%);
+        width: 90%;
+        border-radius: 6px;
+        text-align: center;
+        margin: 2vh auto;
+
+        .button-text {
+          @include font($flow-font-name, 1.5rem, white, 700);
+          text-decoration: none;
+        }
+      }
+    }
+  }
+}
+
+//Tablet Style
+@media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large-max), handheld {
+  .mainCard {
+    display: flex;
+    width: $width;
+    background-color: $primary-blue;
+    border-radius: 6px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
+    justify-items: center;
+    align-items: center;
+    margin-bottom: 5vh;
+    padding: 2vh;
+
+    .image {
+      display: inline-block;
+      box-shadow: 3px 3px 8px rgba(0,0,0,.45);
+      margin-right: 2vw;
+
+      .image-col {
+        width: 15vw;
+      }
+    }
+
+    .content {
+      $title-size: 3.5vh;
+      $date-size: 2.5vh;
+      $flow-size: 1rem;
+      margin-right: 1vw;
+
+      .header {
+        margin-bottom: 5vh;
+        .title {
+          margin: -5vh 0;
+          @include font($header-font-name, $title-size, white, bold);
+          float: left;
+        }
+
+        .date {
+          @include font($header-font-name, $date-size, white);
+          text-align: right;
+        }
+      }
+
+      .teaser {
+        @include font($flow-font-name, $flow-size, white);
+        &-news {
+          @include font($flow-font-name, $flow-size, white);
+          margin-top: 8vh;
+        }
+      }
+
+    }
+    .button {
+      background-color: lighten($primary-blue, 10%);
+      border-radius: 6px;
+      @include min-max-width(350px);
+      @include min-max-height(45px);
+      text-align: center;
+      vertical-align: center;
+      margin-top: 1vh;
+
+      .button-text {
+        @include font($flow-font-name, 1.5rem, white, bold);
+        text-decoration: none;
+        line-height: 45px;
+      }
+    }
+  }
+
+  .column {
+    flex-direction: column;
+  }
+}
+
+//Desktop/Laptop Design
+@media screen and (min-width: $breakpoint-xlarge) {
+  .mainCard {
+    display: flex;
+    width: $width-card;
+    min-height: 350px;
+
+    @media screen and (min-width: 2000px) {
+      height: auto;
+      min-height: 30vh;
+    }
+
+    background-color: $primary-blue;
+    margin-bottom: 2rem;
+    border-radius: 6px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
+    justify-items: center;
+    align-items: center;
+
+    .image {
+      display: inline-block;
+      margin: 15px;
+      box-shadow: 3px 3px 8px rgba(0,0,0,.45);
+
+      .image-col {
+        width: 12vw;
+      }
+    }
+
+    .content {
+      $title-size: 4.15vh;
+      $date-size: 3.32vh;
+      $flow-size: 1.65vh;
+
+      color: white;
+      display: flex;
+      margin-top: 30px;
+      margin-left: 1vh;
+      margin-right: 1vh;
+
+      .header {
+        .title {
+          @include font($header-font-name, $title-size, white, bold);
+          float: left;
+        }
+        .date {
+          @include font($header-font-name, $date-size, white, lighter);
+          text-align: right;
+        }
+      }
+
+      .teaser, .teaser-news {
+        @include font($flow-font-name, $flow-size, white);
+        line-height: calc(#{$flow-size}+#{$flow-size}*0.1);
+        margin-top: -1vh;
+        text-align: justify;
+        hyphens: auto;
+      }
+    }
+
+    .button {
+      background-color: lighten($primary-blue, 10%);
+      border-radius: 6px;
+      @include min-max-width(350px);
+      @include min-max-height(45px);
+      text-align: center;
+      vertical-align: center;
+      margin-top: 1vh;
+
+      .button-text {
+        @include font($flow-font-name, 1.5rem, white, bold);
+        text-decoration: none;
+        line-height: 40px;
+      }
+
+      &:hover {
+        box-shadow: 5px 5px 15px rgba(0,0,0,.40);
+        transition: box-shadow .5s;
+      }
+
+      transition: box-shadow .5s;
+      cursor:pointer;
+    }
+  }
+
+  .column {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "name": "website-diok",
+  "scripts": {
+    "dev": "nuxt --port 33333"
+  },
+  "dependencies": {
+    "nuxt": "^2.13.3",
+    "vue": "^2.6.11"
+  },
+  "devDependencies": {
+    "node-sass": "^4.14.1",
+    "sass-loader": "^9.0.2"
+  }
+}

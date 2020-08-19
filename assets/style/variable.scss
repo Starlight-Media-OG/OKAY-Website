@@ -1,0 +1,69 @@
+//Font Imports
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+
+// The Main blue Color
+$primary-blue: #003865;
+
+// The Main Yellow Color
+$primary-yellow: #FFD324;
+
+// The blue tone for the background
+$bg-blue: #407EC9;
+
+// The yellowisch tone for the calender days
+$cal-day: rgba(163, 151, 110, .60);
+
+//Variable Block for Font Definition Can also include link to google fonts
+$header-font-name: 'Merriweather', serif;
+$flow-font-name: 'Nunito Sans', sans-serif;
+$max-fontsize: 3em;
+$min-fontsize: 1em;
+
+//Variables for Breakpoint
+$breakpoint-small: 480px;
+$breakpoint-medium: 768px;
+$breakpoint-large: 960px;
+$breakpoint-xlarge: 1490px;
+$breakpoint-mini-max: ($breakpoint-small - 1);
+$breakpoint-small-max: ($breakpoint-medium - 1);
+$breakpoint-medium-max: ($breakpoint-large - 1);
+$breakpoint-large-max: ($breakpoint-xlarge - 1);
+
+
+//Page Definitions Variables
+$width: 80vw;
+$width-card: 70vw;
+
+//Mixins
+//Font Mixin
+@mixin font($family, $size, $color, $weight: normal) {
+  font-family: $family;
+  font-size: $size;
+  color: $color;
+  font-weight: $weight;
+}
+
+//Min Height and Max Height
+@mixin min-max-height($min-height, $max-height: $min-height) {
+  min-height: $min-height;
+  max-height: $max-height;
+}
+
+//Min Width and Max Width
+@mixin min-max-width($min-width, $max-width: $min-width) {
+  min-width: $min-width;
+  max-width: $max-width;
+}
+
+//Min Max Width and Height
+@mixin min-max-height-width($min-height, $min-width, $max-height: $min-height, $max-width: $min-width) {
+  @include min-max-height($min-height, $max-height);
+  @include min-max-width($min-width, $max-width);
+}
+
+//Underline with border
+@mixin text-underline($color, $spacing, $width) {
+  border-bottom: $width solid $color;
+  padding-bottom: $spacing;
+}

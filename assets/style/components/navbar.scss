@@ -1,0 +1,77 @@
+@import '../variable';
+
+nav {
+  position: fixed;
+  z-index: 99;
+}
+
+.navigation {
+  background-color: $primary-yellow;
+  position: fixed;
+  width: 10vw;
+  height: 10vw;
+  border-bottom-right-radius: 10vw;
+  top: 0;
+  left: 0;
+  transition: width 1s, height 1s, border-bottom-right-radius 1s;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.50);
+  display: flex;
+  z-index: 99;
+}
+
+.burger {
+  display: block;
+  width: 5vw;
+  height: 5vw;
+  cursor: pointer;
+  .burger-icon {
+    width: 100%;
+    height: auto;
+    transform: translateX(25%) translateY(25%);
+  }
+}
+
+.navigationExt {
+  z-index:99;
+  position: fixed;
+  width: 70vw;
+  height: 100vh;
+  border-bottom-right-radius: 50vw;
+  transition: width 1s, height 1s, border-bottom-right-radius 1s;
+  box-shadow: 5px 5px 15px rgba(0,0,0,.50);
+  background-color: $primary-yellow;
+  @media screen and(min-width: $breakpoint-medium) and (max-width: $breakpoint-large-max), handheld {
+    width: 78vw;
+  }
+}
+
+.navigation-Text {
+  position: fixed;
+  top: 12vh;
+  left: -100vw;
+  transition: .5s;
+  display: block;
+  .navigation-link {
+    $font-size-nav: 10vh;
+    transition: color 1s;
+    text-decoration: none;
+    @include font($flow-font-name, $font-size-nav, white, bold);
+    margin-top: .2vh;
+  }
+  .navigation-link:hover {
+    color: $primary-blue;
+    transition: color 1s;
+  }
+  .nuxt-link-active {
+    color: $primary-blue;
+  }
+}
+
+.navigationTextExt {
+  left: 12vw;
+  transition: left 1.8s;
+}
+
+.navigation-Icon {
+  display: none;
+}
