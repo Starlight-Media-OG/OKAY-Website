@@ -2,7 +2,7 @@
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
             <div class="title col-3">
-                <p>News</p>
+                News
             </div>
             <div class="svgGraphic">
                 <!-- TODO: Include Grahpic for News-->
@@ -10,7 +10,7 @@
         </section>
         <section class="content flex flex-center">
             <div class="news" v-for="news1 in news" :key="nId">
-                <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId"/>
+                <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId" />
             </div>
             <div class="page">
                 <p>1</p>
@@ -30,33 +30,36 @@
 
     main {
         $header-height: 40vh;
+        .row-12
 
-        .row-12 {
-            height: 100vh;
-        }
+    {
+        height: 100vh;
+    }
 
-        .header {
-            height: $header-height;
-            margin-left: -20vw;
-            transform: rotate(-8deg);
-        }
+    .header {
+        height: $header-height;
+        margin-left: -20vw;
+        transform: rotate(-8deg);
+    }
 
-        .svgGraphic {
-            height: calc(100vh - #{$header-height});
-        }
+    .svgGraphic {
+        height: calc(100vh - #{$header-height});
+    }
 
-        .page {
-            @include font($flow-font-name, 3vh, $primary-yellow, bold);
-            min-width: 40vw;
-            display: flex;
-            align-content: space-between;
-            justify-content: space-between;
-            margin-bottom: 2vh;
+    .page {
+        @include font($flow-font-name, 3vh, $primary-yellow, bold);
+        min-width: 40vw;
+        display: flex;
+        align-content: space-between;
+        justify-content: space-between;
+        margin-bottom: 2vh;
+        p
 
-            p {
-                display: inline;
-            }
-        }
+    {
+        display: inline;
+    }
+
+    }
     }
 </style>
 
@@ -66,7 +69,7 @@
     export default {
         name: "indexNews",
         components: {
-          card
+            card
         },
         data() {
             return {

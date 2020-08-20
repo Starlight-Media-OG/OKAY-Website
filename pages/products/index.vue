@@ -1,8 +1,8 @@
 <template>
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
-            <div class="col-3">
-                <p>Produkte</p>
+            <div class="col-3 title">
+                Produkte
             </div>
             <div class="svgGraphic">
                 <!-- TODO: Include Grahpic for News-->

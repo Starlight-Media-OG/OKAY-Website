@@ -1,8 +1,8 @@
 <template>
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
-            <div class="title">
-                <p>Events</p>
+            <div class="title col-3">
+                Events
             </div>
             <div class="svgGraphic">
                 <!-- TODO: Include Grahpic for Events-->

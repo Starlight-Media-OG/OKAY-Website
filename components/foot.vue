@@ -1,7 +1,7 @@
 <template>
     <footer class="footer flex flex-center">
         <div class="scrollTop" @click="scrollTop">
-            <arrow />
+            <arrow class="arrow" direction="top" />
         </div>
         <div class="navigation flex flex-center v-space-between">
             <div class="facebook">
@@ -32,16 +32,16 @@
 
 <script>
     import arrow from '~/components/svg/arrow.vue';
-    import fb from  '~/components/svg/fb.vue';
-    import logo from  '~/components/svg/logo.vue';
+    import fb from '~/components/svg/fb.vue';
+    import logo from '~/components/svg/logo.vue';
 
     export default {
         name: "foot",
         components: {
             arrow, fb, logo
         }, methods: {
-            scrollTop: function() {
-                window.scrollTo({top: 0, behavior: 'smooth'});
+            scrollTop: function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         }
     }

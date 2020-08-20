@@ -1,8 +1,8 @@
 <template>
     <main class="root flex flex-center">
         <section class="row-12 header">
-            <div class="title col-12">
-                <p>Kalender</p>
+            <div class="title col-3">
+                Kalender
             </div>
         </section>
         <section class="content">
@@ -27,16 +27,20 @@
 
     main {
         $header-height: 40vh;
-        .row-12
+        .header
 
     {
-        height: 100vh;
-    }
-
-    .header {
         height: $header-height;
-        margin-left: -20vw;
+        margin-top: 15vh;
+        padding-left: 20vw;
         transform: rotate(-8deg);
     }
+
+    }
+
+    .content {
+        max-width: 80vw;
+        margin: 0;
+        padding: 0;
     }
 </style>

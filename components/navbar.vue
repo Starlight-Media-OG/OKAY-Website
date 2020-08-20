@@ -1,9 +1,9 @@
 <template>
-    <nav>
-        <div :class="{navigationExt: menuActive, navigation: !menuActive}">
+    <header>
+        <nav :class="{navigationExt: menuActive, navigation: !menuActive}">
             <div class="burger" @click="menuActive = !menuActive">
-                <div class="burger-icon" >
-                    <burger :menuActive="menuActive"/>
+                <div class="burger-icon">
+                    <burger :menuActive="menuActive" />
                 </div>
             </div>
             <div class="navigation-Text" :class="{navigationTextExt: menuActive}">
@@ -14,11 +14,11 @@
                 <nuxt-link to="/products" class="navigation-link"><p>Produkte</p></nuxt-link>
                 <nuxt-link to="/information" class="navigation-link"><p>Über OKAY</p></nuxt-link>
             </div>
-        </div>
+        </nav>
         <div class="logo">
             <nuxt-link to="/"><logo /></nuxt-link>
         </div>
-    </nav>
+    </header>
 </template>
 
 <script>

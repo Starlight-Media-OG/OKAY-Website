@@ -1,14 +1,14 @@
 <template>
     <div class="calender">
         <div class="month">
-            <div class="arrow-Left">
-                <button @click="prev()" class="prev" id="prevButton"><arrow direction="left" /></button>
+            <div class="arrow arrow-Left" @click="prev()">
+                <arrow direction="left" />
             </div>
             <div class="monthDesc">
                 <p>{{this.months[this.currentMonth]}} {{this.currentYear}}</p>
             </div>
-            <div class="arrow-Right">
-                <button @click="next()" class="next" id="nextButton"><arrow direction="right" /></button>
+            <div class="arrow arrow-Right" @click="next()">
+                <arrow direction="right" />
             </div>
         </div>
         <table id="calendar" class="table table-responsive table-non-bordered">
@@ -23,14 +23,18 @@
                     <th class="day">Son</th>
                 </tr>
             </thead>
-            <tbody ref="calendarBody" v-html="this.tb" class="body">
-            </tbody>
+            <VRuntimeTemplate :template="this.tb" />
         </table>
     </div>
 </template>
 
+<style lang="scss">
+    @import 'calender.scss';
+</style>
+
 <script>
     import arrow from '~/components/svg/arrow';
+    import VRuntimeTemplate from "v-runtime-template"
 
     export default {
         name: "calender",
@@ -40,11 +44,19 @@
                 currentMonth: new Date().getMonth(),
                 currentYear: new Date().getFullYear(),
                 tb: "",
-                events: []
+                events: [
+                    {
+                        "titel": "Heinz Knapp",
+                        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
+                        "bilder_path": "img/HeinzKnapp",
+                        "start_datum": new Date(Date.now()).toLocaleDateString(),
+                        "oaId": 1020
+                    }
+                ]
             }
         },
         components: {
-            arrow
+            arrow, VRuntimeTemplate
         },
         methods: {
             next: function () {
@@ -58,7 +70,7 @@
                 this.updateCalendar(this.currentMonth, this.currentYear);
             },
             updateCalendar: function (month, year) {
-                this.tb = "";
+                this.tb = "<tbody ref='calendarBody' class='body'>";
                 let firstDay = (new Date(year, month)).getDay() - 1;
 
                 //Create all Cells
@@ -99,7 +111,7 @@
 
                             //Check if it is Current Day
                             if (date === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
-                                let cell = "<td class='month-day current-day'><p class='date'>" + cellText + "</p></td>";
+                                cell = "<td class='month-day current-day'>" + cellText + "</td>";
                             }
                             row += cell;
                         }
@@ -107,8 +119,10 @@
                     row += "</tr>";
                     this.tb += row;
 
-                    if (exit)
+                    if (exit) {
+                        this.tb += "</tbody>";
                         break;
+                    }
                 }
             },
             daysInMonth: function (month, year) {
@@ -119,19 +133,22 @@
                 let tableString = "<p class='date'>" + date + "</p>";
                 this.events.forEach((value) => {
                     if (new Date(value.start_datum).getMonth() === month && new Date(value.start_datum).getFullYear() === year) {
-                        if (new Date(value.start_datum).getDate() === date && value.ende_Datum === null) {
-                            tableString += "<div class='eventCal oneDay'><p class='eventTitle'>" + value.titel + "</p></div>";
-                        } else if (new Date(value.start_datum).getDate() === date && new Date(value.ende_Datum).getDate() > date) {
-                            tableString += "<div class='eventCal start'></div>";
-                        } else if (new Date(value.start_datum).getDate() < date && new Date(value.ende_Datum).getDate() > date) {
-                            tableString += "<div class='eventCal middle'><p class='eventTitle'>" + value.titel + "</p></div>";
-                        } else if (new Date(value.start_datum).getDate() < date && new Date(value.ende_Datum).getDate() === date) {
-                            tableString += "<div class='eventCal end'></div>";
+                        if (value.ende_Datum === undefined) {
+                            if (new Date(value.start_datum).getDate() === date) {
+                                tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
+                            }
+                        } else {
+                            if (new Date(value.start_datum).getDate() <= date && new Date(value.start_datum).getDate >= date) {
+                                tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
+                            }
                         }
                     }
                 });
 
                 return tableString;
+            },
+            reroute: function (id) {
+                this.$router.push("/events/" + id);
             }
         },
         async fetch() {
@@ -142,7 +159,3 @@
         }
     }
 </script>
-
-<style lang="scss">
-    @import 'calender.scss';
-</style>

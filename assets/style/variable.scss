@@ -38,32 +38,32 @@ $width-card: 70vw;
 //Mixins
 //Font Mixin
 @mixin font($family, $size, $color, $weight: normal) {
-  font-family: $family;
-  font-size: $size;
-  color: $color;
-  font-weight: $weight;
+    font-family: $family;
+    font-size: $size;
+    color: $color;
+    font-weight: $weight;
 }
 
 //Min Height and Max Height
 @mixin min-max-height($min-height, $max-height: $min-height) {
-  min-height: $min-height;
-  max-height: $max-height;
+    min-height: $min-height;
+    max-height: $max-height;
 }
 
 //Min Width and Max Width
 @mixin min-max-width($min-width, $max-width: $min-width) {
-  min-width: $min-width;
-  max-width: $max-width;
+    min-width: $min-width;
+    max-width: $max-width;
 }
 
 //Min Max Width and Height
 @mixin min-max-height-width($min-height, $min-width, $max-height: $min-height, $max-width: $min-width) {
-  @include min-max-height($min-height, $max-height);
-  @include min-max-width($min-width, $max-width);
+    @include min-max-height($min-height, $max-height);
+    @include min-max-width($min-width, $max-width);
 }
 
 //Underline with border
 @mixin text-underline($color, $spacing, $width) {
-  border-bottom: $width solid $color;
-  padding-bottom: $spacing;
+    border-bottom: $width solid $color;
+    padding-bottom: $spacing;
 }

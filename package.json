@@ -5,6 +5,7 @@
   },
   "dependencies": {
     "nuxt": "^2.13.3",
+    "v-runtime-template": "^1.10.0",
     "vue": "^2.6.11"
   },
   "devDependencies": {

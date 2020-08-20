@@ -49,20 +49,23 @@ async function createApp(ssrContext, config = {}) {
   // making them available everywhere as `this.$router` and `this.$store`.
   const app = {
     head: function() {
-		return {
-			htmlAttrs: {
-				lang: 'de'
-			},
-			title: "OKAY Ybbs",
-			meta: [
-				{
-					hid: "viewport",
-					name: "viewport",
-					content: "width=device-width, initial-scale=1"
-				}
-			]
-		}
-	},
+        return {
+            htmlAttrs: {
+                lang: 'de'
+            },
+            title: "OKAY Ybbs",
+            meta: [
+                {
+                    hid: "viewport",
+                    name: "viewport",
+                    content: "width=device-width, initial-scale=1"
+                },
+                {
+                    charset: "utf-8"
+                }
+            ]
+        }
+    },
 
     router,
     nuxt: {

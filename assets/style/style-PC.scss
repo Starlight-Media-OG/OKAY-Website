@@ -1,49 +1,51 @@
 @import "variable";
 
 .title {
-  margin-top: -5rem;
-  line-height: 18vh;
-  @include font($header-font-name, 20vh, white, bold);
-  .vertical {
-    writing-mode: vertical-lr;
-    transform: translateX(-100%) translateY(-50%) rotate(180deg);
-    font-size: 18vh;
-    background-color: transparent;
-    z-index: -1;
-  }
-  p:last-child {
-    transform: translateY(-33vh);
-  }
+    margin-top: -5rem;
+    line-height: 18vh;
+    @include font($header-font-name, 20vh, white, bold);
 
+    .vertical {
+        writing-mode: vertical-lr;
+        transform: translateX(-100%) translateY(-50%) rotate(180deg);
+        font-size: 18vh;
+        background-color: transparent;
+        z-index: -1;
+    }
+
+    p:last-child {
+        transform: translateY(-33vh);
+    }
 }
 
 .image {
-  z-index: -2;
+    z-index: -2;
 }
 
 main {
-  h2 {
-    font-size: 9.25vh;
-    font-family: $header-font-name;
-    color: white;
-    text-align: center;
-  }
+    h2 {
+        font-size: 9.25vh;
+        font-family: $header-font-name;
+        color: white;
+        text-align: center;
+    }
 }
 
 .singleEvents, .singleNews {
-  display: flex;
-  flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .link {
-  margin-bottom: 7vh;
-  .further-link {
-    text-decoration: none;
-    color: $primary-yellow;
-    @include font($header-font-name, 3.32vh, $primary-yellow, bold);
-  }
+    margin-bottom: 7vh;
+
+    .further-link {
+        text-decoration: none;
+        color: $primary-yellow;
+        @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+    }
 }
 
 .underline {
-  @include text-underline($primary-blue, .1vh, 5px);
+    @include text-underline($primary-blue, .1vh, 5px);
 }

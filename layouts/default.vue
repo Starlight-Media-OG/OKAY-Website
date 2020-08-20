@@ -7,15 +7,15 @@
 </template>
 
 <script>
-import navbar from '~/components/navbar.vue';
-import foot from '~/components/foot.vue';
+    import navbar from '~/components/navbar.vue';
+    import foot from '~/components/foot.vue';
 
-export default {
-    layout: 'default',
-    components: {
-        navbar, foot
-    },
-}
+    export default {
+        layout: 'default',
+        components: {
+            navbar, foot
+        },
+    }
 </script>
 
 <style lang="scss">
