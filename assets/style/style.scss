@@ -91,13 +91,29 @@ em {
 
 .table {
     border-spacing: 1vh;
+
+    @media print {
+        border-spacing: 0;
+    }
 }
 
 .table-responsive {
+    overflow-x: scroll;
 }
 
 .table-non-bordered {
     border: none;
+
+    @media print {
+        border: 1px solid #2f2f2f;
+        border-collapse: collapse;
+    }
+
+    th, td {
+        @media print {
+            border: 1px solid #2f2f2f;
+        }
+    }
 }
 
 .x-hidden {

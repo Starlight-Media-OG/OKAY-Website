@@ -1,83 +1,200 @@
 @import '../../assets/style/variable.scss';
 
-.calender {
-    $border-radius: 15px;
+//Smartphone & Tablet Style
+@media screen and (max-width: $breakpoint-medium-max), handheld {
+    .calender {
+        $border-radius: 4px;
+        background-color: $bg-blue;
+        border-radius: $border-radius;
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
+        margin-top: -10vh;
 
-    background-color: $bg-blue;
-    border-radius: $border-radius;
-    box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
-    margin: 2vh 0;
+        .month {
+            height: 10%;
+            background-color: $primary-yellow;
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
 
-    .month {
-        @include min-max-height(15%);
-        border-top-left-radius: $border-radius;
-        border-top-right-radius: $border-radius;
-        background-color: $primary-yellow;
+            .arrow {
+                width: 5vh;
+                height: 5vh;
 
-        .arrow {
-            width: 2vw;
-            height: 2vw;
+                &-Left {
+                    transform: translateY(87%);
+                }
 
-            &-Left {
-                transform: translateX(50%) translateY(140%);
+                &-Right {
+                    transform: translateX(520%) translateY(-87%);
+                }
             }
 
-            &-Right {
-                transform: translateX(1800%) translateY(-140%);
-            }
-
-            &:hover {
-                cursor: pointer;
+            .monthDesc {
+                @include font($flow-font-name, 2.5vh, white, bold);
+                transform: translateX(30%);
             }
         }
 
-        .monthDesc {
-            @include font($flow-font-name, 5vh, white, bold);
-            transform: translateX(36%);
-        }
-    }
-
-    .day {
-        background-color: $primary-blue;
-        border-radius: 10px;
-        @include font($flow-font-name, 3vh, $primary-yellow, bold);
-        height: 5vh;
-    }
-
-    .prev-month {
-        opacity: .5;
-    }
-
-    .month-day {
-        border-radius: 20px;
-        height: 5vw;
-        width: 5vw;
-        @include font($flow-font-name, 3vh, $primary-yellow, bold);
-        background-color: $cal-day;
-        box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
-
-        &.current-day {
+        .day {
             background-color: $primary-blue;
-            color: $primary-yellow;
+            @include font($flow-font-name, 2vh, $primary-yellow);
+            border-radius: $border-radius;
         }
 
-        .date {
-            transform: translateY(-70%) translateX(5%);
+        .prev-month {
+            opacity: .5;
+        }
+
+        .month-day {
+            border-radius: $border-radius;
+            background-color: $cal-day;
+            @include font($flow-font-name, 2vh, $primary-yellow);
+            height: 10vh;
+
+            &.current-day {
+                background-color: $primary-blue;
+                color: $primary-yellow;
+            }
+
+            .eventCal {
+                background-color: lighten($primary-blue, 5%);
+                @include font($flow-font-name, 2vh, white);
+                width: 80%;
+                transform: translateX(10%);
+            }
         }
     }
 }
 
-.eventCal {
-    background-color: lighten($primary-blue,5%);
-    @include font($flow-font-name, 1vh, white);
-    border-radius: 6px;
-    position: absolute;
-    width: 4vw;
-    box-shadow: 3px 3px 5px rgba(0,0,0,0.2), -3px -3px 5px rgba(0,0,0,0.2);
-    text-align: center;
-    transform: translateX(10%) translateY(-200%);
+//Desktop Style
+@media screen and (min-width: $breakpoint-large) {
+    .calender {
+        $border-radius: 15px;
 
-    &:hover {
-        cursor: pointer;
+        background-color: $bg-blue;
+        border-radius: $border-radius;
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
+        margin: 2vh 0;
+
+        .month {
+            @include min-max-height(15%);
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            background-color: $primary-yellow;
+
+            .arrow {
+                width: 2vw;
+                height: 2vw;
+
+                &-Left {
+                    transform: translateX(50%) translateY(140%);
+                }
+
+                &-Right {
+                    transform: translateX(1800%) translateY(-140%);
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .monthDesc {
+                @include font($flow-font-name, 5vh, white, bold);
+                transform: translateX(36%);
+            }
+        }
+
+        .day {
+            background-color: $primary-blue;
+            border-radius: 10px;
+            @include font($flow-font-name, 3vh, $primary-yellow, bold);
+            height: 5vh;
+        }
+
+        .prev-month {
+            opacity: .5;
+        }
+
+        .month-day {
+            border-radius: 20px;
+            height: 5vw;
+            width: 5vw;
+            @include font($flow-font-name, 3vh, $primary-yellow, bold);
+            background-color: $cal-day;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+            &.current-day {
+                background-color: $primary-blue;
+                color: $primary-yellow;
+            }
+
+            .date {
+                transform: translateY(-70%) translateX(5%);
+            }
+        }
+    }
+
+    .eventCal {
+        background-color: lighten($primary-blue,5%);
+        @include font($flow-font-name, 1vh, white);
+        border-radius: 6px;
+        position: absolute;
+        width: 4vw;
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.2), -3px -3px 5px rgba(0,0,0,0.2);
+        text-align: center;
+        transform: translateX(10%) translateY(-200%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+//Print Stylesheet
+@media print {
+    $sqrLength: calc(100vw/7);
+
+    .calender {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        margin-left: -10vw;
+
+        .month {
+            .arrow {
+                display: none;
+            }
+
+            .monthDesc {
+                @include font($flow-font-name, 5vh, bold);
+                padding: 1vh 0;
+            }
+        }
+
+        .day {
+            width: $sqrLength;
+            height: $sqrLength;
+        }
+
+        .prev-month {
+            opacity: .5;
+        }
+
+        .month-day {
+            height: $sqrLength;
+            width: $sqrLength;
+            text-align: center;
+
+            .date {
+                transform: translateY(-100%);
+                padding: 5px 0;
+                border-bottom: 1px solid #2f2f2f;
+            }
+
+            .eventCal {
+                transform: translateY(100%);
+                margin-top: -1.8vh;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 @import "variable";
 
-.title p {
+.title {
     margin-top: 10vh;
     margin-left: 10vw;
     @include font($header-font-name, 10vh, white, bold);

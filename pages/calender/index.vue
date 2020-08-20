@@ -34,13 +34,33 @@
         margin-top: 15vh;
         padding-left: 20vw;
         transform: rotate(-8deg);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            padding-left: 0vw;
+            margin-left: -10vw;
+            margin-top: 0vh;
+        }
+
+        .title
+
+    {
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 8vh;
+        }
     }
 
+    }
     }
 
     .content {
         max-width: 80vw;
         margin: 0;
         padding: 0;
+    }
+
+    @media print {
+        .header {
+            display: none;
+        }
     }
 </style>

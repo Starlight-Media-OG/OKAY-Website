@@ -12,15 +12,6 @@
             <div class="news" v-for="news1 in news" :key="nId">
                 <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId" />
             </div>
-            <div class="page">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>...</p>
-                <p>10</p>
-            </div>
         </section>
     </main>
 </template>
@@ -40,25 +31,18 @@
         height: $header-height;
         margin-left: -20vw;
         transform: rotate(-8deg);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            margin-bottom: 20vh;
+        }
     }
 
     .svgGraphic {
         height: calc(100vh - #{$header-height});
-    }
 
-    .page {
-        @include font($flow-font-name, 3vh, $primary-yellow, bold);
-        min-width: 40vw;
-        display: flex;
-        align-content: space-between;
-        justify-content: space-between;
-        margin-bottom: 2vh;
-        p
-
-    {
-        display: inline;
-    }
-
+        @media screen and (max-width: $breakpoint-medium-max) {
+            display: none;
+        }
     }
     }
 </style>

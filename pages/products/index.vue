@@ -12,15 +12,6 @@
             <div class="cards flexWrap" v-for="product in products" :key="product.prodId">
                 <product-card :imgPath="product.bilder_path + '/plakat.jpg'" :id="product.prodId" :preis="product.preis" :title="product.bezeichnung" />
             </div>
-            <div class="page">
-                <p>1</p>
-                <p>2</p>
-                <p>3</p>
-                <p>4</p>
-                <p>5</p>
-                <p>...</p>
-                <p>10</p>
-            </div>
         </section>
     </main>
 </template>
@@ -40,39 +31,27 @@
         height: $header-height;
         margin-left: -20vw;
         transform: rotate(-8deg);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            margin-bottom: 20vh;
+        }
+
+        .title
+
+    {
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 7vh;
+        }
+    }
+
     }
 
     .svgGraphic {
         height: calc(100vh - #{$header-height});
-    }
 
-    .page {
-        @include font($flow-font-name, 3vh, $primary-yellow, bold);
-        min-width: 40vw;
-        display: flex;
-        align-content: space-between;
-        justify-content: space-between;
-        margin-bottom: 2vh;
-        p
-
-    {
-        display: inline;
-    }
-
-    }
-    }
-
-    .page {
-        @include font($flow-font-name, 3vh, $primary-yellow, bold);
-        min-width: 40vw;
-        display: flex;
-        align-content: space-between;
-        justify-content: space-between;
-        margin-bottom: 2vh;
-        p
-
-    {
-        display: inline;
+        @media screen and (max-width: $breakpoint-medium-max) {
+            display: none;
+        }
     }
 
     }

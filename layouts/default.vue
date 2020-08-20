@@ -1,8 +1,8 @@
 <template>
     <div>
-        <navbar />
+        <navbar class="nav" />
         <nuxt />
-        <foot />
+        <foot class="foot" />
     </div>
 </template>
 
@@ -31,5 +31,11 @@
 
     @media screen and (min-width: $breakpoint-xlarge) {
         @import '../assets/style/style-PC.scss';
+    }
+
+    @media print {
+        .nav, .foot {
+            display: none;
+        }
     }
 </style>
