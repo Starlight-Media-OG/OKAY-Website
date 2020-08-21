@@ -3,12 +3,14 @@
     "",
     "\\assets\\style",
     "\\components",
-    "\\components\\calender",
+    "\\components\\comment",
+    "\\layouts",
     "\\pages",
     "\\pages\\calender",
-    "\\static\\img",
-    "\\static\\img\\HeinzKnapp"
+    "\\pages\\events",
+    "\\pages\\news",
+    "\\static"
   ],
-  "SelectedNode": "\\pages\\index.vue",
+  "SelectedNode": "\\components\\comment\\comment.scss",
   "PreviewInSolutionExplorer": false
 }

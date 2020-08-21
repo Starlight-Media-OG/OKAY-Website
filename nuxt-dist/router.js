@@ -8,6 +8,8 @@ const _44ef346a = () => interopDefault(import('..\\pages\\events\\index.vue' /* 
 const _7968ccb0 = () => interopDefault(import('..\\pages\\news\\index.vue' /* webpackChunkName: "pages/news/index" */))
 const _357f8cff = () => interopDefault(import('..\\pages\\products\\index.vue' /* webpackChunkName: "pages/products/index" */))
 const _74b34952 = () => interopDefault(import('..\\pages\\events\\_id.vue' /* webpackChunkName: "pages/events/_id" */))
+const _4206c2d3 = () => interopDefault(import('..\\pages\\images\\_id.vue' /* webpackChunkName: "pages/images/_id" */))
+const _09223b18 = () => interopDefault(import('..\\pages\\news\\_id.vue' /* webpackChunkName: "pages/news/_id" */))
 const _693ac327 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
 const _0733f3a3 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
 
@@ -47,6 +49,14 @@ export const routerOptions = {
     path: "/events/:id",
     component: _74b34952,
     name: "events-id"
+  }, {
+    path: "/images/:id?",
+    component: _4206c2d3,
+    name: "images-id"
+  }, {
+    path: "/news/:id",
+    component: _09223b18,
+    name: "news-id"
   }, {
     path: "/products/:id",
     component: _693ac327,

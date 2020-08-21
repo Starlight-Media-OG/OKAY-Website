@@ -1,6 +1,6 @@
 <template>
-    <div class="root flex flex-center">
-        <header class="row-12 flex flex-center">
+    <main class="root flex flex-center">
+        <section class="row-12 flex flex-center">
             <div class="title col-3">
                 <p>Offene</p>
                 <p>Kultur</p>
@@ -8,30 +8,30 @@
                 <p>Ybbs</p>
             </div>
             <div class="image col-6">
-                <img src="../static/img/title.png" alt="Header Image" width="100%">
+                <img src="../static/img/title.png" alt="Mona Lisa im Bilderahmen" width="100%">
             </div>
-        </header>
-        <main>
-        <div class="events">
-            <h2>Events</h2>
-            <div class="singleEvents" v-for="event of events" :key="event.oaId">
-                <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+        </section>
+        <section>
+            <div class="events">
+                <h2>Events</h2>
+                <div class="singleEvents" v-for="event of events" :key="event.oaId">
+                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" />
+                </div>
+                <div class="link center">
+                    <nuxt-link to="/events" class="further-link"><em class="underline">Zu den Events</em></nuxt-link>
+                </div>
             </div>
-            <div class="link center">
-                <nuxt-link to="/events" class="further-link"><em class="underline">Zu den Events</em></nuxt-link>
+            <div class="news">
+                <h2>News</h2>
+                <div class="singleNews" v-for="news1 of news" :key="news1.nId">
+                    <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId" />
+                </div>
+                <div class="link center">
+                    <nuxt-link to="/events" class="further-link"><em class="underline">Zu den News</em></nuxt-link>
+                </div>
             </div>
-        </div>
-        <div class="news">
-            <h2>News</h2>
-            <div class="singleNews" v-for="news1 of news" :key="news1.nId">
-                <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId"/>
-            </div>
-            <div class="link center">
-                <nuxt-link to="/events" class="further-link"><em class="underline">Zu den News</em></nuxt-link>
-            </div>
-        </div>
-        </main>
-    </div>
+        </section>
+    </main>
 </template>
 
 <script>
@@ -42,11 +42,11 @@
         components: {
             card,
         },
-        data () {
-          return {
-              events: Array,
-              news: Array
-          }
+        data() {
+            return {
+                events: Array,
+                news: Array
+            }
         },
         created() {
             //Fetch Data from DB via Middleware... Save in events and news Variable

@@ -26,13 +26,8 @@
                     {{this.beschreibung}}
                 </p>
             </article>
-            <div class="link">
-                <em class="underline">
-                    <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
-                </em>
-            </div>
-            <section class="commentBox">
-                <commentBox :id="this.id" />
+            <section class="galleryBox">
+                <gallery :path="this.path" />
             </section>
         </section>
     </main>
@@ -76,23 +71,12 @@
         margin-top: -5vh;
         @include font($flow-font-name, 1.2vh, white);
     }
-
-    }
-
-    .link {
-        transform: translateY(250%);
-    }
-
-    .commentBox {
-        width: 100vw;
     }
 </style>
 
 <script>
-    import commentBox from "~/components/commentBox/commentBox.vue";
-
     export default {
-        name: "event-detailed",
+        name: "ProductDetailed",
         data() {
             return {
                 name: "",
@@ -102,15 +86,6 @@
                 id: ""
             }
         },
-        computed: {
-            title: function () {
-                return this.name.split(" ");
-            }
-        },
-        async fetch() {
-            let id = this.$route.params.id;
-            //Fetch detetailed informations in case of ID
-        },
         created() {
             this.name = "Heinz Knapp";
             this.beschreibung = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam"
@@ -118,19 +93,13 @@
             this.date = "28.Mai 2020"
             this.id = this.$route.params.id;
         },
-        components: {
-            commentBox
-        },
-        methods: {
-            concat: function (...strings) {
-                let conString = "";
-                strings.forEach((arg, index) => {
-                    conString += arg;
-                });
-                return conString;
+        computed: {
+            title: function () {
+                return this.name.split(" ");
+            },
+            path: function () {
+                return "img/News" + this.id + "/";
             }
         }
-
-
     }
 </script>

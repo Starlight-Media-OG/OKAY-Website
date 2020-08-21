@@ -35,6 +35,20 @@
     "_name": "_74b34952"
   },
   {
+    "name": "images-id",
+    "path": "/images/:id?",
+    "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\images\\\\_id.vue",
+    "chunkName": "pages/images/_id",
+    "_name": "_4206c2d3"
+  },
+  {
+    "name": "news-id",
+    "path": "/news/:id",
+    "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\news\\\\_id.vue",
+    "chunkName": "pages/news/_id",
+    "_name": "_09223b18"
+  },
+  {
     "name": "products-id",
     "path": "/products/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\products\\\\_id.vue",

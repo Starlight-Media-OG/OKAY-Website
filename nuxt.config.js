@@ -18,12 +18,12 @@ export default {
             title: "OKAY Ybbs",
             meta: [
                 {
+                    charset: 'utf-8'
+                },
+                {
                     hid: "viewport",
                     name: "viewport",
                     content: "width=device-width, initial-scale=1"
-                },
-                {
-                    charset: "utf-8"
                 }
             ]
         }
