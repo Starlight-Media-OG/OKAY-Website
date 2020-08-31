@@ -5,6 +5,7 @@ import scrollBehavior from './router.scrollBehavior.js'
 
 const _113bb0e9 = () => interopDefault(import('..\\pages\\calender\\index.vue' /* webpackChunkName: "pages/calender/index" */))
 const _44ef346a = () => interopDefault(import('..\\pages\\events\\index.vue' /* webpackChunkName: "pages/events/index" */))
+const _72bf91a5 = () => interopDefault(import('..\\pages\\information\\index.vue' /* webpackChunkName: "pages/information/index" */))
 const _7968ccb0 = () => interopDefault(import('..\\pages\\news\\index.vue' /* webpackChunkName: "pages/news/index" */))
 const _357f8cff = () => interopDefault(import('..\\pages\\products\\index.vue' /* webpackChunkName: "pages/products/index" */))
 const _74b34952 = () => interopDefault(import('..\\pages\\events\\_id.vue' /* webpackChunkName: "pages/events/_id" */))
@@ -37,6 +38,10 @@ export const routerOptions = {
     path: "/events",
     component: _44ef346a,
     name: "events"
+  }, {
+    path: "/information",
+    component: _72bf91a5,
+    name: "information"
   }, {
     path: "/news",
     component: _7968ccb0,

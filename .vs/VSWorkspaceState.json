@@ -1,16 +1,13 @@
 {
   "ExpandedNodes": [
     "",
+    "\\assets",
     "\\assets\\style",
+    "\\assets\\style\\components",
     "\\components",
-    "\\components\\comment",
-    "\\layouts",
-    "\\pages",
-    "\\pages\\calender",
-    "\\pages\\events",
-    "\\pages\\news",
-    "\\static"
+    "\\components\\calender",
+    "\\pages"
   ],
-  "SelectedNode": "\\components\\comment\\comment.scss",
+  "SelectedNode": "\\assets\\style\\components\\footer.scss",
   "PreviewInSolutionExplorer": false
 }

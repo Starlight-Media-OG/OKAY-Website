@@ -14,6 +14,13 @@
     "_name": "_44ef346a"
   },
   {
+    "name": "information",
+    "path": "/information",
+    "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\information\\\\index.vue",
+    "chunkName": "pages/information/index",
+    "_name": "_72bf91a5"
+  },
+  {
     "name": "news",
     "path": "/news",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\news\\\\index.vue",

@@ -1,1 +1,247 @@
 @import "../../assets/style/variable.scss";
+
+.commentBox {
+    background-color: $primary-blue;
+    margin: 10vh 0;
+    box-shadow: 5px -5px 10px rgba(0,0,0,.2), -5px 5px 10px rgba(0,0,0,.2);
+    overflow-x: visible;
+
+    h2 {
+        font-size: 7vh;
+    }
+
+    .comments {
+        height: 80vh;
+        width: 70vw;
+        margin-left: 15vw;
+        overflow: auto;
+
+        .comment {
+            width: 100%;
+
+            .singleCommentBox {
+                margin-top: 5vh;
+                background-color: $primary-yellow;
+                border-radius: 20px;
+                padding: 10px;
+                margin-bottom: 2vh;
+                box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+
+                .row {
+                    color: white;
+                    width: 100%;
+                    margin-bottom: 2vh;
+
+                    .shotName {
+                        background-color: #2f2f2f;
+                        width: 50px;
+                        height: 50px;
+                        border-radius: 50px;
+                        transform: translateX(0%) translateY(-70%);
+                        float: left;
+
+                        p {
+                            @include font($flow-font-name, 30px, grey, bold);
+                            transform: translateY(10%) translateX(10%);
+                        }
+                    }
+
+                    .name {
+                        @include font($flow-font-name, 2vh, #2f2f2f, bold);
+                    }
+
+                    .text {
+                        @include font($flow-font-name, 1vh, #2f2f2f);
+                    }
+                }
+
+                .images {
+                }
+            }
+        }
+    }
+
+    .addComment {
+        width: 100vw;
+        box-shadow: 5px -5px 10px rgba(0,0,0,.2);
+        background-color: $primary-blue;
+        z-index: 80;
+
+        .box {
+            width: 70vw;
+            margin: 2vh 0;
+
+            .textInput {
+                width: 80%;
+                height: 3vh;
+                float: left;
+
+                .input {
+                    width: 100%;
+                    height: 100%;
+                    border: none;
+                    border-radius: 1vw;
+                    padding-left: 1vw;
+                    @include font($flow-font-name, 2vh, #2f2f2f);
+                }
+            }
+
+            .addButton {
+                float: left;
+                background-color: white;
+                width: 3vh;
+                height: 3vh;
+                border-radius: 3vh;
+                margin: 0 1vw;
+                color: #2f2f2f;
+
+                .flowUp {
+                    display: none;
+                    position: relative;
+                    width: 12vw;
+                    height: 3vh;
+                    border-radius: 3vh;
+                    background-color: white;
+                    transform: translateY(250%);
+                    box-shadow: 4px 4px 10px rgba(0,0,0,.2);
+                    opacity: 0;
+                    transition: all 1s;
+                    color: #2f2f2f;
+                    padding-left: .5vw;
+                    padding-top: .7vh;
+
+                    &.activeAdd {
+                        transition: all 1s;
+                        display: block;
+                        transform: translateY(-250%);
+                        opacity: 1;
+                    }
+
+                    .row {
+                        width: 100%;
+
+                        .symbol {
+                            min-width: 20%;
+                            float: left;
+                        }
+
+                        .text {
+                            margin-left: 30%;
+                            float: left;
+                        }
+                    }
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .sendButton {
+                float: left;
+                background-color: white;
+                width: 3vh;
+                height: 3vh;
+                border-radius: 3vh;
+                color: #2f2f2f;
+
+                &:hover {
+                    cursor: pointer;
+                }
+
+                .check {
+                    input {
+                        background-color: transparent;
+                        border: none;
+                        @include font($flow-font-name, 2vh, #2f2f2f);
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    &:hover {
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .text {
+                @include font($flow-font-name, 2vh, #2f2f2f, bold);
+            }
+        }
+    }
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(20,20,20, 0.8);
+    z-index: 200;
+
+    .content {
+        width: 60%;
+        background-color: $primary-yellow;
+        border-radius: 20px;
+        padding: 2vh 2vw;
+
+        .header {
+            @include font($flow-font-name, 2vh, #2f2f2f, bold);
+        }
+
+        .form {
+            form {
+                label {
+                    @include font($flow-font-name, 2vh, #2f2f2f, bold);
+                }
+
+                .input {
+                    width: 80%;
+                    height: 100%;
+                    border: 0;
+                    border-radius: 1vw;
+                    padding-left: 1vw;
+                    @include font($flow-font-name, 2vh, #2f2f2f);
+                }
+
+                .checkInput {
+                    height: 2vh;
+                    width: 2vh;
+                }
+            }
+        }
+
+        .buttons {
+
+            .success {
+                cursor: pointer;
+                border: none;
+                height: 3vh;
+                width: 20vw;
+                margin-right: 5vw;
+                border-radius: 3vh;
+                background-color: green;
+                @include font($flow-font-name, 2vh, white);
+            }
+
+            .failure {
+                cursor: pointer;
+                border: none;
+                height: 3vh;
+                width: 20vw;
+                margin-right: 5vw;
+                border-radius: 3vh;
+                background-color: red;
+                @include font($flow-font-name, 2vh, white);
+            }
+        }
+
+        .row {
+            width: 100%;
+            margin-bottom: 2vh;
+        }
+    }
+}

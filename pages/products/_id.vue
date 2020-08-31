@@ -71,6 +71,11 @@
         margin-top: -5vh;
         @include font($flow-font-name, 1.2vh, white);
     }
+
+    }
+
+    .content {
+        margin-bottom: 5vh;
     }
 </style>
 
