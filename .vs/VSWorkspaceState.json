@@ -1,13 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\assets",
-    "\\assets\\style",
-    "\\assets\\style\\components",
-    "\\components",
-    "\\components\\calender",
-    "\\pages"
+    "\\pages",
+    "\\pages\\events"
   ],
-  "SelectedNode": "\\assets\\style\\components\\footer.scss",
+  "SelectedNode": "\\pages\\events\\index.vue",
   "PreviewInSolutionExplorer": false
 }

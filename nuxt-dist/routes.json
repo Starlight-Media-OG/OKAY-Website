@@ -3,70 +3,60 @@
     "name": "calender",
     "path": "/calender",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\calender\\\\index.vue",
-    "chunkName": "pages/calender/index",
-    "_name": "_113bb0e9"
+    "chunkName": "pages/calender/index"
   },
   {
     "name": "events",
     "path": "/events",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\events\\\\index.vue",
-    "chunkName": "pages/events/index",
-    "_name": "_44ef346a"
+    "chunkName": "pages/events/index"
   },
   {
     "name": "information",
     "path": "/information",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\information\\\\index.vue",
-    "chunkName": "pages/information/index",
-    "_name": "_72bf91a5"
+    "chunkName": "pages/information/index"
   },
   {
     "name": "news",
     "path": "/news",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\news\\\\index.vue",
-    "chunkName": "pages/news/index",
-    "_name": "_7968ccb0"
+    "chunkName": "pages/news/index"
   },
   {
     "name": "products",
     "path": "/products",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\products\\\\index.vue",
-    "chunkName": "pages/products/index",
-    "_name": "_357f8cff"
+    "chunkName": "pages/products/index"
   },
   {
     "name": "events-id",
     "path": "/events/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\events\\\\_id.vue",
-    "chunkName": "pages/events/_id",
-    "_name": "_74b34952"
+    "chunkName": "pages/events/_id"
   },
   {
     "name": "images-id",
     "path": "/images/:id?",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\images\\\\_id.vue",
-    "chunkName": "pages/images/_id",
-    "_name": "_4206c2d3"
+    "chunkName": "pages/images/_id"
   },
   {
     "name": "news-id",
     "path": "/news/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\news\\\\_id.vue",
-    "chunkName": "pages/news/_id",
-    "_name": "_09223b18"
+    "chunkName": "pages/news/_id"
   },
   {
     "name": "products-id",
     "path": "/products/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\products\\\\_id.vue",
-    "chunkName": "pages/products/_id",
-    "_name": "_693ac327"
+    "chunkName": "pages/products/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\Website\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_0733f3a3"
+    "chunkName": "pages/index"
   }
 ]

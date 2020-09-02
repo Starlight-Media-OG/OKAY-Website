@@ -5,6 +5,11 @@
       "taskLabel": "task-package",
       "appliesTo": "package.json",
       "type": "launch"
+    },
+    {
+      "taskLabel": "task-_id",
+      "appliesTo": "pages/events/_id.vue",
+      "type": "launch"
     }
   ]
 }

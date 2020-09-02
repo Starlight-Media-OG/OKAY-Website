@@ -18,10 +18,12 @@
                             {{kom.text}}
                         </div>
                     </div>
-                    <div class="images" v-if="kom.bilder_path != undefined">
-                        <div class="row">
-                            <div class="col">
-
+                    <div class="flex flex-center" v-if="kom.images !== []">
+                        <div class="images flex flex-center">
+                            <div class="row">
+                                <div v-for="image in kom.images" :key="image" class="col flex flex-center">
+                                    <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" />
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -37,14 +39,14 @@
                 <div class="addButton" @click="activeAdd =! activeAdd">
                     <p class="text center">+</p>
                     <div class="flowUp" :class="{activeAdd: this.activeAdd}">
-                        <div class="row">
+                        <div class="row flex flex-center">
                             <input type="file" accept="image/*" name="uploaded" multiple @change="previewFiles()" ref="myFiles" />
                         </div>
                     </div>
                 </div>
                 <div class="sendButton" @click="toggleModal()">
                     <p class="text center check">
-                        <input type="submit" value="&check;" />
+                        <button type="submit"> <check /> </button>
                     </p>
                 </div>
             </div>
@@ -98,11 +100,15 @@
 
 <script>
     import axios from 'axios';
+    import check from "~/components/svg/check.vue";
 
     export default {
         name: "comment",
         props: {
             eId: String,
+        },
+        components: {
+            check
         },
         data() {
             return {
@@ -110,30 +116,30 @@
                 txt: "Einen Kommentar hinzufügen...",
                 koms: [
                     {
-                        id: 120,
-                        email: "a.b@c.d",
+                        id: 10,
                         username: "Philipp Dvorak",
                         text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "img/" + this.eId + "/Kommentar" + 120 + "/"
+                        bilder_path: "http://192.168.178.48:4000/images?path=uploads/events/1020/comment10",
+                        images: []
                     }, {
                         id: 123,
-                        email: "a.b@c.d",
                         username: "Philipp Dvorak",
                         text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "img/" + this.eId + "/Kommentar" + 123 + "/"
+                        bilder_path: null,
+                        images: []
                     }, {
                         id: 122,
-                        email: "a.b@c.d",
                         username: "Philipp Dvorak",
                         text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "img/" + this.eId + "/Kommentar" + 130 + "/"
+                        bilder_path: null,
+                        images: []
                     }
                 ],
                 name: "",
                 mail: "",
                 newsletter: true,
                 files: [],
-                modalShow: true
+                modalShow: false
             }
         },
         methods: {
@@ -141,7 +147,7 @@
                 //Send text to DB
 
                 if (this.files != []) {
-                    let data = await axios.post("http://localhost:4000/images/upload", this.files);
+                    let data = await axios.post("http://localhost:4000/images/upload/events", this.files);
                     console.log(data.data);
                 }
 
@@ -164,6 +170,18 @@
         },
         async fetch() {
             //Fetch Comments
+
+            this.koms.forEach(async (item) => {
+                if (item.bilder_path != null) {
+                    let data = await axios.get(item.bilder_path);
+                    if (data.data.status === true) {
+                        data.data.data.forEach(value => {
+                            item.images.push("http://192.168.178.48:4000" + value.replace("uploads", ""));
+                        });
+                    }
+                    console.log(item.images);
+                }
+            });
         },
     }
 </script>

@@ -8,6 +8,7 @@
 
     h2 {
         font-size: 7vh;
+        padding-top: 2rem;
     }
 
     .comments {
@@ -21,7 +22,7 @@
 
             .singleCommentBox {
                 margin-top: 5vh;
-                background-color: $primary-yellow;
+                background-color: #dedede;
                 border-radius: 20px;
                 padding: 10px;
                 margin-bottom: 2vh;
@@ -33,7 +34,7 @@
                     margin-bottom: 2vh;
 
                     .shotName {
-                        background-color: #2f2f2f;
+                        background-color: $primary-yellow;
                         width: 50px;
                         height: 50px;
                         border-radius: 50px;
@@ -41,21 +42,44 @@
                         float: left;
 
                         p {
-                            @include font($flow-font-name, 30px, grey, bold);
+                            @include font($flow-font-name, 30px, #2f2f2f, bold);
                             transform: translateY(10%) translateX(10%);
                         }
                     }
 
                     .name {
-                        @include font($flow-font-name, 2vh, #2f2f2f, bold);
+                        @include font($flow-font-name, 2rem, #2f2f2f, bold);
                     }
 
                     .text {
-                        @include font($flow-font-name, 1vh, #2f2f2f);
+                        @include font($flow-font-name, 1rem, #2f2f2f);
                     }
                 }
 
                 .images {
+                    overflow: auto;
+                    width: 80%;
+
+                    .row {
+                        margin: 3vh 0;
+                        display: flex;
+                        width: 100%;
+
+                        .col {
+                            float: left;
+                            border: 2px solid $primary-yellow;
+                            padding: 2px;
+                            height: 20vh;
+                            background-color: $primary-blue;
+
+                            img {
+                                display: inline;
+                                max-height: 20vh;
+                                height: auto;
+                                max-width: 80vw;
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -99,7 +123,8 @@
                     display: none;
                     position: relative;
                     width: 12vw;
-                    height: 3vh;
+                    min-width: 300px;
+                    height: 4vh;
                     border-radius: 3vh;
                     background-color: white;
                     transform: translateY(250%);
@@ -150,10 +175,12 @@
                 }
 
                 .check {
-                    input {
+                    button {
+                        width: 80%;
+                        height: 800%;
                         background-color: transparent;
                         border: none;
-                        @include font($flow-font-name, 2vh, #2f2f2f);
+                        transform: translateY(15%);
 
                         &:hover {
                             cursor: pointer;
@@ -184,7 +211,7 @@
 
     .content {
         width: 60%;
-        background-color: $primary-yellow;
+        background-color: #dedede;
         border-radius: 20px;
         padding: 2vh 2vw;
 
@@ -223,8 +250,9 @@
                 width: 20vw;
                 margin-right: 5vw;
                 border-radius: 3vh;
-                background-color: green;
-                @include font($flow-font-name, 2vh, white);
+                background-color: $primary-yellow;
+                opacity: .7;
+                @include font($flow-font-name, 2vh, #2f2f2f);
             }
 
             .failure {
@@ -234,8 +262,8 @@
                 width: 20vw;
                 margin-right: 5vw;
                 border-radius: 3vh;
-                background-color: red;
-                @include font($flow-font-name, 2vh, white);
+                background-color: $primary-yellow;
+                @include font($flow-font-name, 2vh, #2f2f2f);
             }
         }
 

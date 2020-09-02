@@ -10,9 +10,14 @@
             <div class="image col-6">
                 <img src="../static/img/title.png" alt="Mona Lisa im Bilderahmen" width="100%">
             </div>
+            <div class="flex flex-center arrow-super">
+                <div class="arrow flex flex-center" @click="scrollTo('#scroll')">
+                    <arrow direction="bottom" class="arrow-bottom" />
+                </div>
+            </div>
         </section>
         <section>
-            <div class="events">
+            <div class="events" id="scroll">
                 <h2>Events</h2>
                 <div class="singleEvents" v-for="event of events" :key="event.oaId">
                     <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" />
@@ -27,25 +32,78 @@
                     <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId" />
                 </div>
                 <div class="link center">
-                    <nuxt-link to="/events" class="further-link"><em class="underline">Zu den News</em></nuxt-link>
+                    <nuxt-link to="/news" class="further-link"><em class="underline">Zu den News</em></nuxt-link>
                 </div>
             </div>
         </section>
     </main>
 </template>
 
+<style lang="scss" scoped>
+    @import "../assets/style/variable.scss";
+
+    .arrow {
+        z-index: 99;
+        background-color: $primary-blue;
+        width: 5vw;
+        height: 5vw;
+        border-radius: 20px;
+    }
+
+    .arrow-bottom {
+        width: 80%;
+        height: 80%;
+        cursor: pointer;
+    }
+
+    .arrow-super {
+        width: 100vw;
+        height: 10vh;
+        position: absolute;
+        right: 25vw;
+        bottom: 5vh;
+        animation: jump 1s infinite alternate;
+        z-index: 1;
+    }
+
+    @keyframes jump {
+        0% {
+            bottom: 5vh;
+        }
+
+        100% {
+            bottom: 15vh;
+        }
+    }
+</style>
+
 <script>
     import card from "~/components/card.vue";
+    import arrow from "~/components/svg/arrow.vue"
 
     export default {
         name: "index",
         components: {
-            card,
+            card, arrow
         },
         data() {
             return {
                 events: Array,
                 news: Array
+            }
+        },
+        methods: {
+            scrollTo: function (target) {
+                var options = {
+                    container: 'body',
+                    easing: 'ease-in-out',
+                    force: true,
+                    cancelable: false,
+                    x: false,
+                    y: true
+                }
+
+                this.$scrollTo(target, 500, options)
             }
         },
         created() {

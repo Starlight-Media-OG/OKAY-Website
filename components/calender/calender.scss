@@ -67,30 +67,39 @@
 
 //Desktop Style
 @media screen and (min-width: $breakpoint-large) {
-    .calender {
-        $border-radius: 15px;
+    $border-radius: 15px;
+    $width: 60vw;
+    $sqrLength: calc(#{$width} / 7);
 
+    .calender {
         background-color: $bg-blue;
         border-radius: $border-radius;
         box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
         margin: 2vh 0;
+        width: $width;
+        height: $width;
 
         .month {
             @include min-max-height(15%);
             border-top-left-radius: $border-radius;
             border-top-right-radius: $border-radius;
             background-color: $primary-yellow;
+            width: 100%;
+            text-align: center;
 
             .arrow {
                 width: 2vw;
                 height: 2vw;
+                position: absolute;
 
                 &-Left {
-                    transform: translateX(50%) translateY(140%);
+                    float: left;
+                    left: 10px;
                 }
 
                 &-Right {
-                    transform: translateX(1800%) translateY(-140%);
+                    float: left;
+                    right: 10px;
                 }
 
                 &:hover {
@@ -99,8 +108,8 @@
             }
 
             .monthDesc {
-                @include font($flow-font-name, 5vh, white, bold);
-                transform: translateX(36%);
+                @include font($flow-font-name, 5rem, white, bold);
+                float: left;
             }
         }
 
@@ -117,10 +126,10 @@
 
         .month-day {
             border-radius: 20px;
-            height: 5vw;
-            width: 5vw;
             @include font($flow-font-name, 3vh, $primary-yellow, bold);
             background-color: $cal-day;
+            height: $sqrLength;
+            width: $sqrLength;
             box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 
             &.current-day {
@@ -136,13 +145,13 @@
 
     .eventCal {
         background-color: lighten($primary-blue,5%);
-        @include font($flow-font-name, 1vh, white);
+        @include font($flow-font-name, 1rem, white);
         border-radius: 6px;
         position: absolute;
-        width: 4vw;
+        width: calc(#{$sqrLength} - 40px);
         box-shadow: 3px 3px 5px rgba(0,0,0,0.2), -3px -3px 5px rgba(0,0,0,0.2);
         text-align: center;
-        transform: translateX(10%) translateY(-200%);
+        transform: translateY(-200%);
 
         &:hover {
             cursor: pointer;

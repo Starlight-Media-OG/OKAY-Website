@@ -1,7 +1,7 @@
 {
   "name": "website-diok",
   "scripts": {
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --hostname 192.168.178.48",
     "build": "nuxt build",
     "start": "nuxt start"
   },
@@ -9,7 +9,8 @@
     "@nuxtjs/axios": "^5.12.1",
     "nuxt": "^2.14.3",
     "v-runtime-template": "^1.10.0",
-    "vue": "^2.6.12"
+    "vue": "^2.6.12",
+    "vue-scrollto": "^2.18.2"
   },
   "devDependencies": {
     "node-sass": "^4.14.1",

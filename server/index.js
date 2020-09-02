@@ -19,7 +19,8 @@ app.use(morgan('dev'));
 
 const PORT = process.env.PORT || 4000;
 
-app.post('/images/upload/', async (req, res) => {
+//Upload Event Images sorted by Comment
+app.post('/images/upload/events/', async (req, res) => {
     try {
         if (!req.files) {
             res.send({
@@ -35,7 +36,7 @@ app.post('/images/upload/', async (req, res) => {
                 _.keysIn(req.files.uploaded), key => {
                     let img = req.files.uploaded[key];
 
-                    img.mv("./uploads/" + eID + "/comment" + komID + "/" + img.name);
+                    img.mv("./uploads/events/" + eID + "/comment" + komID + "/" + img.name);
 
                     data.push({
                         name: img.name,
@@ -51,11 +52,77 @@ app.post('/images/upload/', async (req, res) => {
     }
 });
 
+//Upload News Images
+app.post('/images/upload/news/', async (req, res) => {
+    try {
+        if (!req.files) {
+            res.send({
+                status: false,
+                message: "No File to Upload"
+            });
+        } else {
+            let data = [];
+            let ID = req.query.id; //Get id from News
+
+            _.forEach(
+                _.keysIn(req.files.uploaded), key => {
+                    let img = req.files.uploaded[key];
+
+                    img.mv("./uploads/news/" + ID + "/" + img.name);
+
+                    data.push({
+                        name: img.name,
+                        mimetype: img.mimetype,
+                        size: img.size
+                    });
+                }
+            );
+            res.redirect(301, "http://localhost:3000/news/" + ID);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+//Upload Product Images
+app.post('/images/upload/products/', async (req, res) => {
+    try {
+        if (!req.files) {
+            res.send({
+                status: false,
+                message: "No File to Upload"
+            });
+        } else {
+            let data = [];
+            let ID = req.query.id; //Get id from GET Parameter
+
+            _.forEach(
+                _.keysIn(req.files.uploaded), key => {
+                    let img = req.files.uploaded[key];
+
+                    img.mv("./uploads/products/" + ID + "/" + img.name);
+
+                    data.push({
+                        name: img.name,
+                        mimetype: img.mimetype,
+                        size: img.size
+                    });
+                }
+            );
+            res.redirect(301, "http://localhost:3000/products/" + ID);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
+
+// Get Images in Folder and Subfolders
 app.get("/images", async (req, res) => {
 
     filewalker(req.query.path, (err, success) => {
+
         if (err) {
-            res.status(500).send(err);
+            res.status(404);
         }
 
         res.send({

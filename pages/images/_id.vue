@@ -1,7 +1,7 @@
 <template>
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
-            <div class="title col-3">
+            <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">
                         < Zurück zur Übersicht
@@ -15,12 +15,12 @@
                 </p>
                 <p></p>
             </div>
-            <div class="image col-4">
-                <img :src="concat(this.path, 'plakat.jpg')" alt="Plakat" width="100%" />
+            <div class="image col-5">
+                <img :src="concat(this.imgPath, 'plakat.jpg')" alt="Plakat" width="100%" />
             </div>
         </section>
         <section class="content">
-            <gallery :path="this.path" :id="this.$route.params.id" />
+            <gallery :id="this.$route.params.id" />
         </section>
     </main>
 </template>
@@ -90,11 +90,11 @@
             gallery
         },
         computed: {
-            path: function () {
-                return "http://localhost:4000/uploads/" + this.$route.params.id + "/";
-            },
             title: function () {
                 return this.name.split(" ");
+            },
+            imgPath: function () {
+                return "http://192.168.178.48:4000/" + this.$route.params.id + "/";
             }
         },
         async fetch() {

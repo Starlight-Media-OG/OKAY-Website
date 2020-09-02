@@ -28,9 +28,9 @@
         name: "productCard",
         props: {
             title: String,
-            preis: Number,
+            preis: String,
             imgPath: String,
-            id: Number
+            id: String
         }, methods: {
             concat: function (...strings) {
                 let conString = "";

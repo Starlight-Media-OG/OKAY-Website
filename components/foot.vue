@@ -1,6 +1,6 @@
 <template>
     <footer class="footer flex flex-center">
-        <div class="scrollTop" @click="scrollTop">
+        <div class="scrollTop flex flex-center" @click="scrollTop">
             <arrow class="arrow" direction="top" />
         </div>
         <div class="navigation flex flex-center v-space-between">

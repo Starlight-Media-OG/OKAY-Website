@@ -62,6 +62,7 @@
         align-items: center;
         justify-items: center;
         width: $width;
+        margin-top: 15vh;
     }
 
     .flexWrap {
@@ -87,37 +88,37 @@
                 {
                     "prodId": "5f2aa8b9956c78a572cfd86c",
                     "preis": "141",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 },
                 {
                     "prodId": "5f2aa8b9a999d2ce01550687",
                     "preis": "168",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 },
                 {
                     "prodId": "5f2aa8b9879d2636b7c1bdbb",
                     "preis": "112",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 },
                 {
                     "prodId": "5f2aa8b9dedc94c0dfe692a3",
                     "preis": "28",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 },
                 {
                     "prodId": "5f2aa8b982732601e4b20cb3",
                     "preis": "69",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 },
                 {
                     "prodId": "5f2aa8b9dcb3be72afc2b4ea",
                     "preis": "151",
-                    "bilder_path": "img/HeinzKnapp",
+                    "bilder_path": "/img/HeinzKnapp",
                     "bezeichnung": "Buch Ybbs"
                 }
             ]
