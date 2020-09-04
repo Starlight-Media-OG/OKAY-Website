@@ -1,14 +1,16 @@
 <template>
     <div class="calender">
         <div class="month">
-            <div class="arrow arrow-Left" @click="prev()">
-                <arrow direction="left" />
-            </div>
-            <div class="monthDesc">
-                <p>{{this.months[this.currentMonth]}} {{this.currentYear}}</p>
-            </div>
-            <div class="arrow arrow-Right" @click="next()">
-                <arrow direction="right" />
+            <div class="flex flex-center" style="height: 100%;">
+                <div class="arrow arrow-Left" @click="prev()">
+                    <arrow direction="left" />
+                </div>
+                <div class="arrow arrow-Right" @click="next()">
+                    <arrow direction="right" />
+                </div>
+                <div class="monthDesc">
+                    <p>{{this.months[this.currentMonth]}} {{this.currentYear}}</p>
+                </div>
             </div>
         </div>
         <table id="calendar" class="table table-responsive table-non-bordered">
@@ -49,7 +51,8 @@
                         "titel": "Heinz Knapp",
                         "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                         "bilder_path": "img/HeinzKnapp",
-                        "start_datum": new Date(Date.now()).toLocaleDateString(),
+                        "start_datum": new Date("5.9.2020").toLocaleDateString(),
+                        "end_datum": new Date("10.9.2020").toLocaleDateString(),
                         "oaId": 1020
                     }
                 ]
@@ -57,6 +60,16 @@
         },
         components: {
             arrow, VRuntimeTemplate
+        },
+        head() {
+            return {
+                title: "Kalender - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         },
         methods: {
             next: function () {
@@ -138,8 +151,8 @@
                                 tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
                             }
                         } else {
-                            if (new Date(value.start_datum).getDate() <= date && new Date(value.start_datum).getDate >= date) {
-                                tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
+                            if (new Date(value.start_datum).getDate() <= date && new Date(value.end_datum).getDate >= date) {
+                                tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
                             }
                         }
                     }
@@ -152,7 +165,7 @@
             }
         },
         async fetch() {
-            //Fetch Data from DB / API
+            //Fetch Data from DB / API and save in Events
         },
         mounted() {
             this.updateCalendar(this.currentMonth, this.currentYear);

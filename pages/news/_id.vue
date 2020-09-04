@@ -133,6 +133,16 @@
             path: function () {
                 return "img/News" + this.id + "/";
             }
+        },
+        head() {
+            return {
+                title: "News - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>

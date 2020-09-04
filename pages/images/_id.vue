@@ -111,6 +111,16 @@
         },
         mounted() {
             this.name = "Heinz Knapp"
+        },
+        head() {
+            return {
+                title: "Bildergallerie - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>

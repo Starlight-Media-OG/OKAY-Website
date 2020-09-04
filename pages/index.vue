@@ -86,6 +86,16 @@
         components: {
             card, arrow
         },
+        head() {
+            return {
+                title: "Startseite - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
+        },
         data() {
             return {
                 events: Array,

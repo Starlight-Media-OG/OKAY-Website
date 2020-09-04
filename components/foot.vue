@@ -18,7 +18,7 @@
             <div class="second-row space-between">
                 <nuxt-link to="/dsgvo" class="footer-nav-2">Datenschtuz</nuxt-link>
                 <a class="footer-nav-2" @click="modalToggle()">Wo sind wir</a>
-                <nuxt-link to="/impressum" class="footer-nav-2">Impressunm</nuxt-link>
+                <nuxt-link to="/impressum" class="footer-nav-2">Impressum</nuxt-link>
             </div>
             <div class="copyright flex flex-center">
                 <p class="row text-center logo"><logo /></p>

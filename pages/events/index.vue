@@ -144,6 +144,16 @@
             ];
 
             this.sortEvents(events);
+        },
+        head() {
+            return {
+                title: "Events - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>

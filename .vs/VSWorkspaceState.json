@@ -1,9 +1,12 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages",
-    "\\pages\\events"
+    "\\assets\\style",
+    "\\assets\\style\\components",
+    "\\components",
+    "\\components\\calender",
+    "\\pages\\information"
   ],
-  "SelectedNode": "\\pages\\events\\index.vue",
+  "SelectedNode": "\\components\\calender\\calender.scss",
   "PreviewInSolutionExplorer": false
 }

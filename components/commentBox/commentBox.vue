@@ -1,28 +1,29 @@
 <template>
     <div class="commentBox">
         <h2>Kommentare</h2>
-
-        <div class="comments">
-            <div v-for="kom in koms" :key="kom.id" class="comment">
-                <div class="singleCommentBox">
-                    <div class="row">
-                        <div class="shotName">
-                            <p>{{initials(kom)}}</p>
+        <div class=" flex flex-center">
+            <div class="comments">
+                <div v-for="kom in koms" :key="kom.id" class="comment">
+                    <div class="singleCommentBox">
+                        <div class="row">
+                            <div class="shotName">
+                                <p>{{initials(kom)}}</p>
+                            </div>
+                            <div class="name">
+                                {{kom.username}}
+                            </div>
                         </div>
-                        <div class="name">
-                            {{kom.username}}
+                        <div class="row">
+                            <div class="text">
+                                {{kom.text}}
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="text">
-                            {{kom.text}}
-                        </div>
-                    </div>
-                    <div class="flex flex-center" v-if="kom.images !== []">
-                        <div class="images flex flex-center">
-                            <div class="row">
-                                <div v-for="image in kom.images" :key="image" class="col flex flex-center">
-                                    <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" />
+                        <div class="flex flex-center" v-if="kom.images !== []">
+                            <div class="images flex flex-center">
+                                <div class="row">
+                                    <div v-for="image in kom.images" :key="image" class="col flex flex-center">
+                                        <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +180,6 @@
                             item.images.push("http://192.168.178.48:4000" + value.replace("uploads", ""));
                         });
                     }
-                    console.log(item.images);
                 }
             });
         },

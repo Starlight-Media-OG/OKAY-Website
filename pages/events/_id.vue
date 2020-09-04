@@ -197,8 +197,16 @@
 
                 this.$scrollTo(target, 500, options)
             }
+        },
+        head() {
+            return {
+                title: "Event - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
-
-
     }
 </script>

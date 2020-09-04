@@ -61,6 +61,16 @@
 <script>
     export default {
         name: "infrormation",
+        head() {
+            return {
+                title: "Über Uns - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
+        }
     }
 </script>
 
@@ -127,9 +137,14 @@
 
     .area {
         background-color: $primary-blue;
-        &:nth-child(odd)
+        padding: 5vh 0;
+        h4
 
     {
+        padding-bottom: 2vh;
+    }
+
+    &:nth-child(odd) {
         background-color: transparent;
     }
 

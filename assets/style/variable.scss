@@ -1,12 +1,12 @@
 //Font Imports
-@import url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap');
 
 // The Main blue Color
 $primary-blue: #003865;
 
 // The Main Yellow Color
-$primary-yellow: #FFD724;
+$primary-yellow: #FFDB24;
 
 // The blue tone for the background
 $bg-blue: #407EC9;
@@ -15,7 +15,7 @@ $bg-blue: #407EC9;
 $cal-day: rgba(163, 151, 110, .60);
 
 //Variable Block for Font Definition Can also include link to google fonts
-$header-font-name: 'Merriweather', serif;
+$header-font-name: 'Source Serif Pro', serif;
 $flow-font-name: 'Nunito Sans', sans-serif;
 $max-fontsize: 3em;
 $min-fontsize: 1em;

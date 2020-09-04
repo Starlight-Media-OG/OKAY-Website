@@ -138,10 +138,19 @@
         },
         async fetch() {
             //Fetch Comment Data from API
-            console.log(this.bilder_path);
         },
         components: {
             gallery
+        },
+        head() {
+            return {
+                title: "Produkt - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>

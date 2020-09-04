@@ -81,6 +81,16 @@
                     "nId": 1020
                 }
             ]
+        },
+        head() {
+            return {
+                title: "News- OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>

@@ -1,7 +1,7 @@
 <template>
     <header>
         <nav :class="{navigationExt: menuActive, navigation: !menuActive}">
-            <div class="burger" @click="menuActive = !menuActive">
+            <div class="burger" @click="toggleMenu">
                 <div class="burger-icon">
                     <burger :menuActive="menuActive" />
                 </div>
@@ -25,15 +25,20 @@
     import burger from '~/components/svg/burger.vue';
     import logo from '~/components/svg/logo.vue';
 
+    import { mapGetters, mapMutations } from 'vuex';
+
     export default {
         name: "navbar",
         components: {
             burger, logo
         },
-        data() {
-            return {
-                menuActive: false
-            }
+        computed: mapGetters({
+            menuActive: 'menu/get'
+        }),
+        methods: {
+            ...mapMutations({
+                toggleMenu: 'menu/toggle'
+            })
         }
     }
 </script>

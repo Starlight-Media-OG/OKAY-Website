@@ -9,13 +9,12 @@
 @media screen and (min-width: $breakpoint-large) {
     .footer {
         background-color: $primary-yellow;
-        width: 100vw;
         height: 33vh;
         font-family: $flow-font-name;
     }
 
     .navigation {
-        width: 80vw;
+        width: 80%;
         height: 80%;
     }
 
@@ -40,63 +39,38 @@
     }
 
     .first-row {
-        width: 80vw;
+        width: 100%;
         display: flex;
     }
 
     .footer-nav {
         font-size: 5vh;
-
-        @media screen and (max-width: $breakpoint-large-max) {
-            font-size: 4vh;
-        }
-
         color: white;
         text-decoration: none;
         transition: .5s;
+        font-weight: bold;
 
         &:hover {
-            font-size: 6vh;
             color: $primary-blue;
             transition: .5s;
         }
     }
 
     .second-row {
-        width: 40vw;
+        width: 50%;
         display: flex;
     }
 
     .footer-nav-2 {
-        font-size: 3.32vh;
-
-        @media screen and (max-width: $breakpoint-large-max) {
-            font-size: 2.33vh;
-        }
-
+        font-size: 3.5vh;
         color: white;
         transition: .5s;
         text-decoration: none;
 
         &:hover {
-            font-size: 4rem;
             color: $primary-blue;
+            font-weight: bold;
             transition: .5s;
-        }
-    }
-
-    .copyright {
-        .row:first-child {
-            margin-bottom: .55rem;
-            margin-top: 2rem;
-        }
-
-        .logo {
-            display: none;
-
-            .name {
-                display: none;
-            }
         }
     }
 

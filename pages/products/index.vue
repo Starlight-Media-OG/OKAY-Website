@@ -122,6 +122,16 @@
                     "bezeichnung": "Buch Ybbs"
                 }
             ]
+        },
+        head() {
+            return {
+                title: "Produkte - OKAY Ybbs",
+                meta: [
+                    {
+                        charset: 'utf-8'
+                    }
+                ]
+            }
         }
     }
 </script>
