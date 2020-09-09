@@ -114,7 +114,7 @@
         data() {
             return {
                 activeAdd: false,
-                txt: "Einen Kommentar hinzuf�gen...",
+                txt: "Einen Kommentar hinzufügen...",
                 koms: [
                     {
                         id: 10,

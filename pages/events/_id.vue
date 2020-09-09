@@ -13,10 +13,8 @@
                 <p class="date">
                     Ab {{this.date}}
                 </p>
-                <p class="address" @click="scrollTo('#content')">
-                    <em class="underline">
-                        Weitere Informationen
-                    </em>
+                <p class="address">
+                      {{ this.adresse }}
                 </p>
                 <p></p>
             </div>
@@ -172,7 +170,7 @@
                     end_zeit: "12:00"
                 }
             ];
-            this.adresse = "Herrengasse 15 3652 Leiben";
+            this.adresse = "Herrengasse 15 3370 Ybbs";
         },
         components: {
             commentBox

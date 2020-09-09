@@ -26,6 +26,7 @@
                 padding: 10px;
                 margin-bottom: 2vh;
                 box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+                opacity: .8;
 
                 .row {
                     color: white;
@@ -52,12 +53,14 @@
 
                     .text {
                         @include font($flow-font-name, 1rem, #2f2f2f);
+                        padding-left: 3rem;
                     }
                 }
 
                 .images {
                     overflow: auto;
                     width: 80%;
+                    opacity:1;
 
                     .row {
                         margin: 3vh 0;
