@@ -4,7 +4,7 @@
             <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">
-                        < Zurück zur Übersicht
+                        < ZurÃ¼ck zur Ãœbersicht
                     </em>
                 </p>
                 <p v-for="titlePart in title">
@@ -33,7 +33,7 @@
             </article>
             <aside class="infos">
                 <div class="dateOpen">
-                    <h3>Öffnungszeiten</h3>
+                    <h3>Ã–ffnungszeiten</h3>
                     <p class="opening" v-for="day in days" :key="wochentag">
                         Am {{day.wochentag}} von {{day.start_zeit}} bis {{day.end_zeit}}
                     </p>
@@ -62,6 +62,7 @@
     .address {
         margin-top: -5vh;
         @include font($flow-font-name, 2rem, white);
+        cursor: pointer;
     }
 
     .back {
@@ -203,7 +204,7 @@
                 title: "Event - OKAY Ybbs",
                 meta: [
                     {
-                        charset: 'utf-8'
+                        charset: 'utf-16'
                     }
                 ]
             }

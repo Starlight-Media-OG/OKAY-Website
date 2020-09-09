@@ -23,7 +23,7 @@ export default {
                     content: "width=device-width, initial-scale=1"
                 },
                 {
-                    charset: 'utf-8',
+                    charset: 'utf-16',
                     hid: 'charset'
                 }
             ]

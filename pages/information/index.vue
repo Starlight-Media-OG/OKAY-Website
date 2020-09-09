@@ -2,7 +2,7 @@
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
             <div class="title">
-                Über Uns
+                Ãœber Uns
             </div>
         </section>
         <section class="content flex flex-center">
@@ -63,7 +63,7 @@
         name: "infrormation",
         head() {
             return {
-                title: "Über Uns - OKAY Ybbs",
+                title: "ï¿½ber Uns - OKAY Ybbs",
                 meta: [
                     {
                         charset: 'utf-8'

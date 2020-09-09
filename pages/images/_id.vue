@@ -4,7 +4,7 @@
             <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">
-                        < Zurück zur Übersicht
+                        < ZurÃ¼ck zur Ãœbersicht
                     </em>
                 </p>
                 <p v-for="titlePart in title">
@@ -94,7 +94,7 @@
                 return this.name.split(" ");
             },
             imgPath: function () {
-                return "http://192.168.178.48:4000/" + this.$route.params.id + "/";
+                return "http://localhost:4000/" + this.$route.params.id + "/";
             }
         },
         async fetch() {

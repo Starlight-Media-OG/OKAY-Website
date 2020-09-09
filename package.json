@@ -1,9 +1,10 @@
 {
   "name": "website-diok",
   "scripts": {
-    "dev": "nuxt dev --hostname 192.168.178.48",
+    "dev": "nuxt dev",
     "build": "nuxt build",
-    "start": "nuxt start"
+    "start": "nuxt start",
+    "server": "node /server/index.js"
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",

@@ -3,16 +3,16 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _113bb0e9 = () => interopDefault(import('..\\pages\\calender\\index.vue' /* webpackChunkName: "pages/calender/index" */))
-const _44ef346a = () => interopDefault(import('..\\pages\\events\\index.vue' /* webpackChunkName: "pages/events/index" */))
-const _72bf91a5 = () => interopDefault(import('..\\pages\\information\\index.vue' /* webpackChunkName: "pages/information/index" */))
-const _7968ccb0 = () => interopDefault(import('..\\pages\\news\\index.vue' /* webpackChunkName: "pages/news/index" */))
-const _357f8cff = () => interopDefault(import('..\\pages\\products\\index.vue' /* webpackChunkName: "pages/products/index" */))
-const _74b34952 = () => interopDefault(import('..\\pages\\events\\_id.vue' /* webpackChunkName: "pages/events/_id" */))
-const _4206c2d3 = () => interopDefault(import('..\\pages\\images\\_id.vue' /* webpackChunkName: "pages/images/_id" */))
-const _09223b18 = () => interopDefault(import('..\\pages\\news\\_id.vue' /* webpackChunkName: "pages/news/_id" */))
-const _693ac327 = () => interopDefault(import('..\\pages\\products\\_id.vue' /* webpackChunkName: "pages/products/_id" */))
-const _0733f3a3 = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _3a33a6e1 = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
+const _f9cf5700 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
+const _6aed553b = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
+const _777710ba = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
+const _2298f00b = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
+const _0c9d1230 = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
+const _c58f6d72 = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
+const _0db40cbc = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
+const _17297933 = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _5283f05e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -32,43 +32,43 @@ export const routerOptions = {
 
   routes: [{
     path: "/calender",
-    component: _113bb0e9,
+    component: _3a33a6e1,
     name: "calender"
   }, {
     path: "/events",
-    component: _44ef346a,
+    component: _f9cf5700,
     name: "events"
   }, {
     path: "/information",
-    component: _72bf91a5,
+    component: _6aed553b,
     name: "information"
   }, {
     path: "/news",
-    component: _7968ccb0,
+    component: _777710ba,
     name: "news"
   }, {
     path: "/products",
-    component: _357f8cff,
+    component: _2298f00b,
     name: "products"
   }, {
     path: "/events/:id",
-    component: _74b34952,
+    component: _0c9d1230,
     name: "events-id"
   }, {
     path: "/images/:id?",
-    component: _4206c2d3,
+    component: _c58f6d72,
     name: "images-id"
   }, {
     path: "/news/:id",
-    component: _09223b18,
+    component: _0db40cbc,
     name: "news-id"
   }, {
     path: "/products/:id",
-    component: _693ac327,
+    component: _17297933,
     name: "products-id"
   }, {
     path: "/",
-    component: _0733f3a3,
+    component: _5283f05e,
     name: "index"
   }],
 

@@ -35,7 +35,7 @@
         <div class="addComment flex flex-center">
             <div class="box">
                 <div class="textInput">
-                    <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" />
+                    <input type="text" placeholder="Einen Kommentar hinzufÃ¼gen..." class="input" v-model="txt" />
                 </div>
                 <div class="addButton" @click="activeAdd =! activeAdd">
                     <p class="text center">+</p>
@@ -56,7 +56,7 @@
         <div class="modal flex flex-center" v-if="modalShow">
             <div class="content">
                 <div class="header row">
-                    <h3>Wollen Sie den Kommentar hinzufügen</h3>
+                    <h3>Wollen Sie den Kommentar hinzufÃ¼gen</h3>
                 </div>
                 <div class="form">
                     <form>
@@ -114,24 +114,24 @@
         data() {
             return {
                 activeAdd: false,
-                txt: "Einen Kommentar hinzufügen...",
+                txt: "Einen Kommentar hinzufï¿½gen...",
                 koms: [
                     {
                         id: 10,
                         username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "http://192.168.178.48:4000/images?path=uploads/events/1020/comment10",
+                        text: "Das war eine wunderschÃ¶ne Ausstellung, ich habe keine Ideen mehr was hier noch stehen kÃ¶nnte",
+                        bilder_path: "http://localhost:4000/images?path=uploads/events/1020/comment10",
                         images: []
                     }, {
                         id: 123,
                         username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
+                        text: "Das war eine wunderschÃ¶ne Ausstellung, ich habe keine Ideen mehr was hier noch stehen kÃ¶nnte",
                         bilder_path: null,
                         images: []
                     }, {
                         id: 122,
                         username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
+                        text: "Das war eine wunderschÃ¶ne Ausstellung, ich habe keine Ideen mehr was hier noch stehen kÃ¶nnte",
                         bilder_path: null,
                         images: []
                     }
@@ -147,7 +147,7 @@
             send: async function () {
                 //Send text to DB
 
-                if (this.files != []) {
+                if (this.files !== []) {
                     let data = await axios.post("http://localhost:4000/images/upload/events", this.files);
                     console.log(data.data);
                 }
@@ -172,16 +172,16 @@
         async fetch() {
             //Fetch Comments
 
-            this.koms.forEach(async (item) => {
+            for (const item of this.koms) {
                 if (item.bilder_path != null) {
                     let data = await axios.get(item.bilder_path);
                     if (data.data.status === true) {
-                        data.data.data.forEach(value => {
-                            item.images.push("http://192.168.178.48:4000" + value.replace("uploads", ""));
-                        });
+                        for (const value of data.data.data) {
+                            item.images.push("http://localhost:4000" + value.replace("uploads", ""));
+                        }
                     }
                 }
-            });
+            }
         },
     }
 </script>

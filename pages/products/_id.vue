@@ -4,14 +4,14 @@
             <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">
-                        < Zurück zur Übersicht
+                        < ZurÃ¼ck zur Ãœbersicht
                     </em>
                 </p>
                 <p v-for="titlePart in title">
                     {{titlePart}}
                 </p>
                 <p class="date">
-                    Für {{this.price}} €
+                    Fï¿½r {{this.price}} ï¿½
                 </p>
                 <p></p>
             </div>
@@ -30,7 +30,7 @@
                 <gallery :imgPath="this.bilder_path" />
             </section>
             <div v-else class="galleryBox">
-                Für diese Produkt sind keine Bilder verfügbar
+                F+r dieses Produkt sind keine Bilder verfÃ¼gbar
             </div>
         </section>
     </main>

@@ -4,7 +4,7 @@
             <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">
-                        < Zurück zur Übersicht
+                        < ZurÃ¼ck zur Ãœbersicht
                     </em>
                 </p>
                 <p v-for="titlePart in title">
@@ -30,7 +30,7 @@
                 <gallery :imgPath="this.bilder_path" />
             </section>
             <div v-else class="galleryBox">
-                Für diesen Bericht sind keine Bilder verfügbar
+                FÃ¼r diesen Bericht sind keine Bilder verfÃ¼gbar
             </div>
         </section>
     </main>
