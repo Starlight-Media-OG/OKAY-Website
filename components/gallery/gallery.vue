@@ -1,5 +1,5 @@
 <template>
-    <div class="gallery flex flex-center">
+    <div class="gallery flex flex-center" v-if="this.images !== null">
         <div class="slider flex flex-center row">
             <div class="row">
                 <div v-for="image in images" :key="image" class="col flex flex-center">
@@ -10,6 +10,11 @@
         <div class="preview flex flex-center">
             <img :src="selectedImage" alt="Preview Image of Slider" class="image" />
         </div>
+    </div>
+    <div class="gallery flex flex-center" v-else>
+      <div class="slider flex flex-center row error">
+        Für das Event sind noch keine Bilder hinzugefügt worden
+      </div>
     </div>
 </template>
 
@@ -25,27 +30,34 @@
         data() {
             return {
                 selectedImage: "",
-                images: []
+                images: null
             }
         },
         async fetch() {
-            var once = true;
+            let once = true;
             let data;
 
-            if (this.id !== undefined) {
+            try {
+              if (this.id !== undefined) {
                 data = await axios.get("http://localhost:4000/images?path=uploads/events/" + this.id);
-            } else {
+              } else {
                 data = await axios.get(this.imgPath);
-            }
+              }
 
-            if (data.data.status === true) {
+              if (data.data.status === true) {
                 data.data.data.forEach(value => {
-                    this.images.push("http://localhost:4000" + value.replace("uploads", ""));
-                    if (once) {
-                        this.selectedImage = "http://locahost:4000" + value.replace("uploads", "");
-                        once = false;
-                    }
+                  this.images = [];
+                  this.images.push("http://localhost:4000" + value.replace("uploads", ""));
+                  if (once) {
+                    this.selectedImage = "http://locahost:4000" + value.replace("uploads", "");
+                    once = false;
+                  }
                 });
+              }
+            } catch(err) {
+              this.images = null;
+
+              console.log(this.images);
             }
         }
     }

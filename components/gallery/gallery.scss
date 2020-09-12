@@ -48,5 +48,10 @@
                 }
             }
         }
+
+        &.error {
+            padding: 10vh 0;
+            @include font($flow-font-name, 5vh, white, 600);
+        }
     }
 }
