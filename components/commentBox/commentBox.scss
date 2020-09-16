@@ -142,6 +142,10 @@
                         display: block;
                         transform: translateY(-250%);
                         opacity: 1;
+
+                        @media screen and (max-width: $breakpoint-medium-max) {
+                            transform: translateX(-70%) translateY(-200%);
+                        }
                     }
 
                     .row {

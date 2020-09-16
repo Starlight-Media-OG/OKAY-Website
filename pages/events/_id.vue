@@ -24,19 +24,17 @@
         </section>
         <section class="content flex flex-center" id="content">
             <article class="beschreibung">
+              <div class="bes">
                 <h2 class="title">Beschreibung</h2>
-                <p>
-                    {{this.beschreibung}}
+                {{this.beschreibung}}
+              </div>
+              <div class="dateOpen">
+                <h2>Öffnungszeiten</h2>
+                <p class="opening flex flex-center" v-for="day in days" :key="wochentag">
+                  Am {{day.wochentag}} von {{day.start_zeit}} bis {{day.end_zeit}}
                 </p>
+              </div>
             </article>
-            <aside class="infos">
-                <div class="dateOpen">
-                    <h3>Öffnungszeiten</h3>
-                    <p class="opening" v-for="day in days" :key="wochentag">
-                        Am {{day.wochentag}} von {{day.start_zeit}} bis {{day.end_zeit}}
-                    </p>
-                </div>
-            </aside>
             <div class="link">
                 <em class="underline">
                     <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
@@ -53,26 +51,27 @@
     @import '../../assets/style/variable.scss';
 
     .date {
-        @include font($header-font-name, 4rem, $primary-yellow, bold);
-        transform: translateY(-20%);
+      @include font($header-font-name, 4rem, $primary-yellow, bold);
+      line-height: 4rem;
+      @media screen and (min-width: $breakpoint-large) {
+        margin-top: 2vh;
+      }
     }
 
     .address {
+      @include font($flow-font-name, 2rem, white);
+      @media  screen and (min-width: $breakpoint-large) {
         margin-top: -5vh;
-        @include font($flow-font-name, 2rem, white);
-        cursor: pointer;
+      }
     }
 
     .back {
         font-size: 3vh;
         color: $primary-yellow;
         transform: translateY(30%);
-        &:hover
-
-    {
-        cursor: pointer;
-    }
-
+        &:hover{
+          cursor: pointer;
+        }
     }
 
     .header {
@@ -83,41 +82,44 @@
         width: 100vw;
     }
 
-    .dateOpen {
-        @include font($flow-font-name, 1rem, white);
-        h3
-
-    {
-        @include font($header-font-name, 4rem, white, bold);
-        margin-bottom: 1rem;
-    }
-
-    }
-
     .content {
-        margin-top: 2vh;
+        margin-top: 5vh;
         float: left;
-        .beschreibung
 
-    {
-        width: 50%;
-        padding: 5vh;
-        .title
-
-    {
-        @include font($flow-font-name, 4rem, white, bold);
-    }
-
-    p {
-        margin-top: -5vh;
+      .beschreibung {
         @include font($flow-font-name, 1rem, white);
-    }
+        margin: 0 7.5vw;
 
-    }
+        h2 {
+          @include font($header-font-name, 3rem, white, bold);
+        }
 
-    .infos {
-        width: 50%;
-    }
+        .dateOpen {
+          margin-top: 5vh;
+        }
+
+        @media screen and (min-width: $breakpoint-large) {
+          column-count: 2;
+          column-width: 40vw;
+          column-gap: 3vw;
+
+          .bes {
+            page-break-inside: avoid;
+            column-break-inside: avoid;
+          }
+
+          .dateOpen {
+            page-break-inside: avoid;
+            column-break-inside: avoid;
+          }
+        }
+      }
+
+      .link {
+        @media screen and (max-width: $breakpoint-medium-max) {
+          transform: translateY(500%);
+        }
+      }
     }
 </style>
 

@@ -123,6 +123,7 @@ app.get("/images", async (req, res) => {
 
         if (err) {
             res.status(404);
+            console.log(err);
         }
 
         res.send({
@@ -170,4 +171,4 @@ function filewalker(dir, done) {
             });
         });
     });
-};
+}

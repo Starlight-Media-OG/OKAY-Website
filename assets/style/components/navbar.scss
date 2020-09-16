@@ -49,13 +49,13 @@ nav {
 
 .navigation-Text {
     position: fixed;
-    top: 15vh;
+    top: 17vh;
     left: -100vw;
     transition: .3s;
     display: block;
 
     .navigation-link {
-        $font-size-nav: 9.5vh;
+        $font-size-nav: 8vh;
         transition: color 1s;
         text-decoration: none;
         @include font($flow-font-name, $font-size-nav, white, bold);

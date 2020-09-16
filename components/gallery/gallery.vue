@@ -39,7 +39,7 @@
 
             try {
               if (this.id !== undefined) {
-                data = await axios.get("http://localhost:4000/images?path=uploads/events/" + this.id);
+                data = await axios.get("http://localhost:4000/images?path=uploads/events/" + this.id + "/");
               } else {
                 data = await axios.get(this.imgPath);
               }
