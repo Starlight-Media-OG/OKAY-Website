@@ -47,9 +47,9 @@
               if (data.data.status === true) {
                 data.data.data.forEach(value => {
                   this.images = [];
-                  this.images.push("http://localhost:4000" + value.replace("uploads", ""));
+                  this.images.push("http://localhost:4000" + value.replace("server/uploads", ""));
                   if (once) {
-                    this.selectedImage = "http://locahost:4000" + value.replace("uploads", "");
+                    this.selectedImage = "http://locahost:4000" + value.replace("server/uploads", "");
                     once = false;
                   }
                 });
