@@ -34,7 +34,7 @@
             }
         },
         async fetch() {
-            let once = true;
+            let selectOneImage = true;
             let data;
 
             try {
@@ -45,12 +45,12 @@
               }
 
               if (data.data.status === true) {
+                this.images = [];
                 data.data.data.forEach(value => {
-                  this.images = [];
-                  this.images.push("http://localhost:4000" + value.replace("server/uploads", ""));
-                  if (once) {
+                  this.images.push('http://localhost:4000' + value.replace('server/uploads', ''));
+                  if (selectOneImage) {
                     this.selectedImage = "http://locahost:4000" + value.replace("server/uploads", "");
-                    once = false;
+                    selectOneImage = false;
                   }
                 });
               }
