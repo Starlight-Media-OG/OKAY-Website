@@ -11,7 +11,7 @@ app.use(fileUpload({
     createParentPath: true
 }));
 
-app.use(express.static('uploads'))
+app.use(express.static(__dirname + '/uploads'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

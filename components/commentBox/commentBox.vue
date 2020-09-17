@@ -148,7 +148,7 @@
                 //Send text to DB
 
                 if (this.files !== []) {
-                    let data = await axios.post("http://localhost:4000/images/upload/events", this.files);
+                    let data = await axios.post("http://localhost:4000/images/upload/events/", this.files);
                     console.log(data.data);
                 }
 
