@@ -177,7 +177,7 @@
                     let data = await axios.get(item.bilder_path);
                     if (data.data.status === true) {
                         for (const value of data.data.data) {
-                            item.images.push("http://localhost:4000" + value.replace("uploads", ""));
+                            item.images.push("http://localhost:4000" + value.replace("server/uploads", ""));
                         }
                     }
                 }
