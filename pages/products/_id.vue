@@ -11,7 +11,7 @@
                     {{titlePart}}
                 </p>
                 <p class="date">
-                    F�r {{this.price}} �
+                    Für {{this.price}} €
                 </p>
                 <p></p>
             </div>
@@ -30,7 +30,7 @@
                 <gallery :imgPath="this.bilder_path" />
             </section>
             <div v-else class="galleryBox">
-                F+r dieses Produkt sind keine Bilder verfügbar
+                Für dieses Produkt sind keine Bilder verfügbar
             </div>
         </section>
     </main>

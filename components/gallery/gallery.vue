@@ -49,7 +49,7 @@
                 data.data.data.forEach(value => {
                   this.images.push('http://localhost:4000' + value.replace('server/uploads', ''));
                   if (selectOneImage) {
-                    this.selectedImage = "http://locahost:4000" + value.replace("server/uploads", "");
+                    this.selectedImage = "http://localhost:4000" + value.replace("server/uploads", "");
                     selectOneImage = false;
                   }
                 });

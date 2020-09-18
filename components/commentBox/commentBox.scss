@@ -6,6 +6,10 @@
     box-shadow: 5px -5px 10px rgba(0,0,0,.2), -5px 5px 10px rgba(0,0,0,.2);
     overflow-x: visible;
 
+    @media screen and (max-width: $breakpoint-medium-max) {
+        margin-bottom: 20vh;
+    }
+
     h2 {
         font-size: 7vh;
         padding-top: 2rem;

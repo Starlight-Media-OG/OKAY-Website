@@ -26,6 +26,7 @@
         position: absolute;
         box-shadow: 3px -3px 20px rgba(0, 0, 0, .16), -3px 3px 20px rgba(0, 0, 0, .16);
         transform: translateX(-25%) translateY(-140%);
+        cursor: pointer;
 
         @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max), handheld {
             width: 10vw;
