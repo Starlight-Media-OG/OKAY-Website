@@ -133,6 +133,25 @@ app.get("/images", async (req, res) => {
     });
 });
 
+app.get("/newsletter/unsubscribe", async (req, res) => {
+    if(req.query.mail) {
+        //Update Newsletter DB and remove given mail address
+        //Remove this mail from any Mailverteiler
+
+        res.status(200);
+        res.send({
+           success: true,
+           message: "Sie wurden erfolgreich vom Newsletter abgemeldet."
+        });
+    } else {
+        res.status(404);
+        res.send({
+            success: false,
+            message: "Es konnte keine Mail Adresse gefunden werden."
+        });
+    }
+})
+
 app.listen(PORT, () => {
     console.log("App is Running on " + PORT);
 });
