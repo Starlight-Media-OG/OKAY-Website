@@ -146,7 +146,7 @@
                 let tableString = "<p class='date'>" + date + "</p>";
                 this.events.forEach((value) => {
                     if (new Date(value.start_datum).getMonth() === month && new Date(value.start_datum).getFullYear() === year) {
-                        if (value.ende_Datum === undefined) {
+                        if (value.end_datum === undefined) {
                             if (new Date(value.start_datum).getDate() === date) {
                                 tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
                             }

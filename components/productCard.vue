@@ -13,7 +13,7 @@
             </div>
             <div class="subheader column">
                 <div class="price">
-                    <h3>{{this.preis}} €</h3>
+                    <h3>{{this.preis}} â‚¬</h3>
                 </div>
             </div>
             <div class="button">

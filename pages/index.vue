@@ -64,6 +64,11 @@
         bottom: 5vh;
         animation: jump 1s infinite alternate;
         z-index: 1;
+
+      @media screen and (max-width: $breakpoint-medium-max) {
+        display: none;
+      }
+
     }
 
     @keyframes jump {

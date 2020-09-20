@@ -6,6 +6,10 @@
     box-shadow: 5px -5px 10px rgba(0,0,0,.2), -5px 5px 10px rgba(0,0,0,.2);
     overflow-x: visible;
 
+    @media screen and (max-width: $breakpoint-medium-max) {
+        margin-bottom: 20vh;
+    }
+
     h2 {
         font-size: 7vh;
         padding-top: 2rem;
@@ -21,13 +25,11 @@
 
             .singleCommentBox {
                 margin-top: 5vh;
-                background-color: #dedede;
+                background-color: #ededed;
                 border-radius: 20px;
                 padding: 10px;
                 margin-bottom: 2vh;
                 box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
-                opacity: .8;
-
                 .row {
                     color: white;
                     width: 100%;
@@ -142,6 +144,10 @@
                         display: block;
                         transform: translateY(-250%);
                         opacity: 1;
+
+                        @media screen and (max-width: $breakpoint-medium-max) {
+                            transform: translateX(-70%) translateY(-200%);
+                        }
                     }
 
                     .row {

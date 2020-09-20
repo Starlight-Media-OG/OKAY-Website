@@ -94,7 +94,7 @@
                 return this.name.split(" ");
             },
             imgPath: function () {
-                return "http://localhost:4000/" + this.$route.params.id + "/";
+                return "http://localhost:4000/events/" + this.$route.params.id + "/";
             }
         },
         async fetch() {

@@ -4,6 +4,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
+const path = require('path');
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(fileUpload({
     createParentPath: true
 }));
 
-app.use(express.static('uploads'))
+app.use(express.static(__dirname + '/uploads'));
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -119,10 +120,11 @@ app.post('/images/upload/products/', async (req, res) => {
 // Get Images in Folder and Subfolders
 app.get("/images", async (req, res) => {
 
-    filewalker(req.query.path, (err, success) => {
+    filewalker(__dirname + "/" + req.query.path, (err, success) => {
 
         if (err) {
             res.status(404);
+            console.log(err);
         }
 
         res.send({
@@ -182,11 +184,11 @@ function filewalker(dir, done) {
                         if (!--pending) done(null, results);
                     });
                 } else {
-                    results.push(file);
+                    results.push(path.relative(process.cwd(), file));
 
                     if (!--pending) done(null, results);
                 }
             });
         });
     });
-};
+}
