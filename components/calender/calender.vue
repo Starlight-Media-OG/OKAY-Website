@@ -51,8 +51,8 @@
                         "titel": "Heinz Knapp",
                         "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                         "bilder_path": "img/HeinzKnapp",
-                        "start_datum": new Date("5.9.2020").toLocaleDateString(),
-                        "end_datum": new Date("10.9.2020").toLocaleDateString(),
+                        "start_datum": new Date("5.10.2020").toLocaleDateString(),
+                        "end_datum": new Date("10.10.2020").toLocaleDateString(),
                         "oaId": 1020
                     }
                 ]
