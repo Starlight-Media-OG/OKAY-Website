@@ -13,7 +13,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_vuescrollto_52bac308 from 'nuxt_plugin_vuescrollto_52bac308' // Source: ./vue-scrollto.js (mode: 'client')
+import nuxt_plugin_vuescrollto_4325d3f9 from 'nuxt_plugin_vuescrollto_4325d3f9' // Source: .\\vue-scrollto.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -81,6 +81,16 @@ async function createApp(ssrContext, config = {}) {
                 {
                     charset: 'utf-16',
                     hid: 'charset'
+                }
+            ],
+            link: [
+                {
+                    rel: "stylesheet",
+                    href:"https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap"
+                },
+                {
+                    rel: "stylesheet",
+                    href:"https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
                 }
             ]
         }
@@ -213,8 +223,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_vuescrollto_52bac308 === 'function') {
-    await nuxt_plugin_vuescrollto_52bac308(app.context, inject)
+  if (process.client && typeof nuxt_plugin_vuescrollto_4325d3f9 === 'function') {
+    await nuxt_plugin_vuescrollto_4325d3f9(app.context, inject)
   }
 
   // Lock enablePreview in context

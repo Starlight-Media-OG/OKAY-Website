@@ -151,7 +151,7 @@
                                 tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
                             }
                         } else {
-                            if (new Date(value.start_datum).getDate() <= date && new Date(value.end_datum).getDate >= date) {
+                            if (new Date(value.start_datum).getDate() <= date && new Date(value.end_datum).getDate() >= date) {
                                 tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
                             }
                         }
