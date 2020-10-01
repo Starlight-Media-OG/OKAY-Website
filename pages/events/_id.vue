@@ -25,12 +25,12 @@
         <section class="content flex flex-center" id="content">
             <article class="beschreibung">
               <div class="bes">
-                <h2 class="title">Beschreibung</h2>
+                <h2>Beschreibung</h2>
                 {{this.beschreibung}}
               </div>
               <div class="dateOpen">
                 <h2>Öffnungszeiten</h2>
-                <p class="opening flex flex-center" v-for="day in days" :key="wochentag">
+                <p class="opening flex flex-center" v-for="day in days" :key="day.wochentag">
                   Am {{day.wochentag}} von {{day.start_zeit}} bis {{day.end_zeit}}
                 </p>
               </div>
@@ -88,7 +88,7 @@
 
       .beschreibung {
         @include font($flow-font-name, 1rem, white);
-        margin: 0 7.5vw;
+        margin: 5vw 7.5vw 2vw;
 
         h2 {
           @include font($header-font-name, 3rem, white, bold);
@@ -162,12 +162,12 @@
                     end_zeit: "12:00"
                 },
                 {
-                    wochentag: "Dienstag",
+                    wochentag: "Mittwoch",
                     start_zeit: "10:00",
                     end_zeit: "12:00"
                 },
                 {
-                    wochentag: "Dienstag",
+                    wochentag: "Donnerstag",
                     start_zeit: "10:00",
                     end_zeit: "12:00"
                 }

@@ -20,12 +20,20 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <article class="beschreibung col-3">
-                <h2 class="title">Beschreibung</h2>
-                <p>
-                    {{this.beschreibung}}
-                </p>
-            </article>
+          <article class="beschreibung">
+            <div class="bes">
+              <h2>Beschreibung</h2>
+              {{this.beschreibung}}
+            </div>
+            <div class="dateOpen">
+              <h2>Abholungsorte</h2>
+              <ul>
+              <li class="opening flex flex-center" v-for="ort in orts" :key="orts.ortID">
+                {{ort.name}} @ {{ort.adresse}}
+              </li>
+              </ul>
+            </div>
+          </article>
             <section class="galleryBox" v-if="this.bilder_path != null">
                 <gallery :imgPath="this.bilder_path" />
             </section>
@@ -77,21 +85,33 @@
 
     .content {
         margin-top: 2vh;
-        .beschreibung
-
-    {
-        width: 50%;
-        padding: 5vh;
-        .title
-
-    {
-        @include font($flow-font-name, 4rem, white, bold);
-    }
-
-    p {
-        margin-top: -5vh;
+      .beschreibung {
         @include font($flow-font-name, 1rem, white);
-    }
+        margin: 5vw 7.5vw 2vw;
+
+        h2 {
+          @include font($header-font-name, 3rem, white, bold);
+        }
+
+        .dateOpen {
+          margin-top: 5vh;
+        }
+
+        @media screen and (min-width: $breakpoint-large) {
+          column-count: 2;
+          column-width: 40vw;
+          column-gap: 3vw;
+
+          .bes {
+            page-break-inside: avoid;
+            column-break-inside: avoid;
+          }
+
+          .dateOpen {
+            page-break-inside: avoid;
+            column-break-inside: avoid;
+          }
+        }
 
     }
 
@@ -127,6 +147,22 @@
             this.price = "160"
             this.id = this.$route.params.id;
             this.bilder_path = null;
+            this.orts = [
+              {
+                ortId: 1,
+                name: 'Vereinslokal',
+                adresse: 'xyz 15, 3370 Ybbs'
+              },
+              {
+                ortID: 2,
+                name: 'Gemeinde Ybbs',
+                adresse: 'xyz 15, 3370 Ybbs'
+              },{
+                ortId: 3,
+                name: 'Vereinslokal',
+                adresse: 'xyz 15, 3370 Ybbs'
+              },
+            ]
         },
         computed: {
             title: function () {

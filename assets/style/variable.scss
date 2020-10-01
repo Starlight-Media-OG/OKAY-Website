@@ -8,7 +8,7 @@ $primary-yellow: #FFDB24;
 $bg-blue: #407EC9;
 
 // The yellowisch tone for the calender days
-$cal-day: rgba(163, 151, 110, .60);
+$cal-day: rgba(169, 161, 138, 0.6);
 
 //Variable Block for Font Definition Can also include link to google fonts
 $header-font-name: 'Source Serif Pro', serif;
@@ -31,7 +31,7 @@ $breakpoint-large-max: ($breakpoint-xlarge - 1);
 $width: 80vw;
 $width-card: 70vw;
 
-//Mixins
+//-------Mixins---------
 //Font Mixin
 @mixin font($family, $size, $color, $weight: normal) {
     font-family: $family;

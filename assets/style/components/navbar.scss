@@ -49,7 +49,7 @@ nav {
 
 .navigation-Text {
     position: fixed;
-    top: 17vh;
+    top: 16vh;
     left: -100vw;
     transition: .3s;
     display: block;
@@ -79,4 +79,12 @@ nav {
 
 .navigation-Icon {
     display: none;
+}
+
+.bg {
+    position: fixed;
+    width: 100vw;
+    height: 100vw;
+    z-index: 98;
+    background-color: transparent;
 }

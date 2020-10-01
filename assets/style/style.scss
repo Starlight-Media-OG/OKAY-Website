@@ -10,6 +10,10 @@ body {
     background-color: $bg-blue;
 }
 
+html {
+    font-size: 16px;
+}
+
 $values: 0,10,20,30,40,50,60,70,80,90,100;
 $category: 'opacity';
 
@@ -122,4 +126,8 @@ em {
 
 .y-hidden {
     overflow-y: hidden;
+}
+
+.text-align-left {
+    text-align: left;
 }

@@ -39,7 +39,7 @@
                 </div>
                 <div class="addButton" @click="activeAdd =! activeAdd">
                     <p class="text center">+</p>
-                    <div class="flowUp" :class="{activeAdd: this.activeAdd}">
+                    <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
                             <input type="file" accept="image/*" name="uploaded" multiple @change="previewFiles()" ref="myFiles" />
                         </div>
@@ -62,14 +62,14 @@
                     <form>
                         <div class="row">
                             <label>
-                                Name:
+                                <div class="label">Name:</div>
                                 <input type="text" class="input" v-model="name" />
                             </label>
                         </div>
 
                         <div class="row">
                             <label>
-                                Mail Adressse:
+                                <div class="label">Mail Adressse:</div>
                                 <input type="email" class="input" v-model="mail" />
                             </label>
                         </div>

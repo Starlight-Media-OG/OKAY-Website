@@ -44,20 +44,19 @@
                 data = await axios.get(this.imgPath);
               }
 
-              if (data.data.status === true) {
+              if (data.status === 200) {
                 this.images = [];
-                data.data.data.forEach(value => {
-                  this.images.push('http://localhost:4000' + value.replace('server/uploads', ''));
+                let tmp = "server/uploads";
+                data.data.data.forEach(item => {
+                  this.images.push('http://localhost:4000' + item.replace(tmp, ''));
                   if (selectOneImage) {
-                    this.selectedImage = "http://localhost:4000" + value.replace("server/uploads", "");
+                    this.selectedImage = "http://localhost:4000" + item.replace(tmp, "");
                     selectOneImage = false;
                   }
                 });
               }
             } catch(err) {
               this.images = null;
-
-              console.log(this.images);
             }
         }
     }

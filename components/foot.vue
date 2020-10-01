@@ -16,7 +16,7 @@
                 <nuxt-link to="/information" class="footer-nav">Über OKAY</nuxt-link>
             </div>
             <div class="second-row space-between">
-                <nuxt-link to="/dsgvo" class="footer-nav-2">Datenschtuz</nuxt-link>
+                <nuxt-link to="/dsgvo" class="footer-nav-2">Datenschutz</nuxt-link>
                 <a class="footer-nav-2" @click="modalToggle()">Wo sind wir</a>
                 <nuxt-link to="/impressum" class="footer-nav-2">Impressum</nuxt-link>
             </div>

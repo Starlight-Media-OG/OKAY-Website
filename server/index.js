@@ -184,7 +184,7 @@ function filewalker(dir, done) {
                         if (!--pending) done(null, results);
                     });
                 } else {
-                    results.push(path.relative(process.cwd(), file));
+                    results.push(path.relative(process.cwd(), file).replace("\\", "/"));
 
                     if (!--pending) done(null, results);
                 }

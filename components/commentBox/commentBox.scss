@@ -4,7 +4,6 @@
     background-color: $primary-blue;
     margin: 10vh 0;
     box-shadow: 5px -5px 10px rgba(0,0,0,.2), -5px 5px 10px rgba(0,0,0,.2);
-    overflow-x: visible;
 
     @media screen and (max-width: $breakpoint-medium-max) {
         margin-bottom: 20vh;
@@ -17,7 +16,7 @@
 
     .comments {
         height: 80vh;
-        width: 70vw;
+        width: 70%;
         overflow: auto;
 
         .comment {
@@ -30,6 +29,7 @@
                 padding: 10px;
                 margin-bottom: 2vh;
                 box-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+
                 .row {
                     color: white;
                     width: 100%;
@@ -79,8 +79,6 @@
                             img {
                                 display: inline;
                                 max-height: 20vh;
-                                height: auto;
-                                max-width: 80vw;
                             }
                         }
                     }
@@ -90,13 +88,12 @@
     }
 
     .addComment {
-        width: 100vw;
         box-shadow: 5px -5px 10px rgba(0,0,0,.2);
         background-color: $primary-blue;
         z-index: 80;
 
         .box {
-            width: 70vw;
+            width: 70%;
             margin: 2vh 0;
 
             .textInput {
@@ -136,12 +133,12 @@
                     opacity: 0;
                     transition: all 1s;
                     color: #2f2f2f;
-                    padding-left: .5vw;
-                    padding-top: .7vh;
 
-                    &.activeAdd {
+                    &-active {
                         transition: all 1s;
-                        display: block;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
                         transform: translateY(-250%);
                         opacity: 1;
 
@@ -231,6 +228,11 @@
             form {
                 label {
                     @include font($flow-font-name, 2vh, #2f2f2f, bold);
+                }
+
+                .label {
+                    float:left;
+                    min-width: 15%;
                 }
 
                 .input {

@@ -23,11 +23,19 @@
             <div class="teaser-news" v-if="date == null">
                 <p>{{trimString(this.teaser, 700)}}</p>
             </div>
-            <div class="button" v-if="date != null">
-                <nuxt-link :to="concat('/events/', this.id)" class="button-text">Weitere Informationen</nuxt-link>
+            <div v-if="date != null">
+                <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">
+                  <div class="button">
+                    <p  class="button-text">Weitere Informationen</p>
+                  </div>
+                </nuxt-link>
             </div>
-            <div class="button" v-if="date == null">
-                <nuxt-link :to="concat('/news/', this.id)" class="button-text">Weitere Informationen</nuxt-link>
+            <div v-if="date == null">
+                <nuxt-link :to="concat('/news/', this.id)" class="ignoreTag">
+                  <div class="button">
+                    <p class="button-text">Weitere Informationen</p>
+                  </div>
+                </nuxt-link>
             </div>
         </div>
     </div>

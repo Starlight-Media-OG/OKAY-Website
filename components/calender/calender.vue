@@ -16,13 +16,13 @@
         <table id="calendar" class="table table-responsive table-non-bordered">
             <thead>
                 <tr>
-                    <th class="day">Mon</th>
-                    <th class="day">Die</th>
-                    <th class="day">Mit</th>
-                    <th class="day">Don</th>
-                    <th class="day">Fre</th>
-                    <th class="day">Sam</th>
-                    <th class="day">Son</th>
+                    <th class="day">Mo</th>
+                    <th class="day">Di</th>
+                    <th class="day">Mi</th>
+                    <th class="day">Do</th>
+                    <th class="day">Fr</th>
+                    <th class="day">Sa</th>
+                    <th class="day">So</th>
                 </tr>
             </thead>
             <VRuntimeTemplate :template="this.tb" />

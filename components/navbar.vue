@@ -18,6 +18,8 @@
         <div class="logo">
             <nuxt-link to="/"><logo /></nuxt-link>
         </div>
+      <div class="bg" @click="hideMenu" v-if="menuActive">
+        </div>
     </header>
 </template>
 
@@ -37,7 +39,8 @@
         }),
         methods: {
             ...mapMutations({
-                toggleMenu: 'menu/toggle'
+                toggleMenu: 'menu/toggle',
+                hideMenu: 'menu/hide'
             })
         }
     }

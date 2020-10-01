@@ -44,6 +44,12 @@ main {
         text-decoration: none;
         color: $primary-yellow;
         @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        transition: font-size .3s;
+
+        &:hover{
+            font-size: 4vh;
+            transition: font-size .3s;
+        }
     }
 }
 
