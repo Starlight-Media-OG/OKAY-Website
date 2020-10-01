@@ -7,11 +7,25 @@
     "_name": "_3a33a6e1"
   },
   {
+    "name": "dsgvo",
+    "path": "/dsgvo",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/dsgvo/index.vue",
+    "chunkName": "pages/dsgvo/index",
+    "_name": "_367cdb40"
+  },
+  {
     "name": "events",
     "path": "/events",
     "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/events/index.vue",
     "chunkName": "pages/events/index",
     "_name": "_f9cf5700"
+  },
+  {
+    "name": "impressum",
+    "path": "/impressum",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/impressum/index.vue",
+    "chunkName": "pages/impressum/index",
+    "_name": "_defb8874"
   },
   {
     "name": "information",

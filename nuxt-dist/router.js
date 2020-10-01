@@ -4,7 +4,9 @@ import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
 const _3a33a6e1 = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
+const _367cdb40 = () => interopDefault(import('../pages/dsgvo/index.vue' /* webpackChunkName: "pages/dsgvo/index" */))
 const _f9cf5700 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
+const _defb8874 = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
 const _6aed553b = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
 const _777710ba = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
 const _2298f00b = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
@@ -35,9 +37,17 @@ export const routerOptions = {
     component: _3a33a6e1,
     name: "calender"
   }, {
+    path: "/dsgvo",
+    component: _367cdb40,
+    name: "dsgvo"
+  }, {
     path: "/events",
     component: _f9cf5700,
     name: "events"
+  }, {
+    path: "/impressum",
+    component: _defb8874,
+    name: "impressum"
   }, {
     path: "/information",
     component: _6aed553b,
