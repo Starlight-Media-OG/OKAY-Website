@@ -46,6 +46,11 @@ $category: 'opacity';
     align-self: center;
 }
 
+.flex-right {
+    justify-content: flex-end;
+    align-items: center;
+}
+
 $col-values: 1,2,3,4,5,6,7,8,9,10,11,12;
 $opts: 'col','row';
 
