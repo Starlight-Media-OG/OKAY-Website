@@ -9,18 +9,21 @@
       <div class="area flex flex-center">
         <div class="smallSize">
           <h2>Der Vorstand</h2>
-          <!-- Insert Team Cards here -->
+          <div class="cards">
+            <teamCard v-for="team1 in teamLead" :key="team1.mId" :id="team1.mId" />
+          </div>
         </div>
       </div>
       <div class="area flex flex-center">
         <div class="smallSize">
           <h2>Mitglieder</h2>
-          <!-- Insert Team Cards here -->
+          <teamCard v-for="team1 in team" :key="team1.mId" :id="team1.mId" />
         </div>
       </div>
       <div class="area flex flex-center">
         <div class="smallSize">
           <h2>Projekte</h2>
+          <!-- Insert Projects here -->
         </div>
       </div>
       <div class="area flex flex-center">
@@ -35,12 +38,12 @@
 
 <script>
 import accordion from "@/components/accordion/accordion";
-import VueFaqAccordion from 'vue-faq-accordion'
+import teamCard from "@/components/teamCard/teamCard";
 
 export default {
   name: "infrormation",
   components: {
-    accordion, VueFaqAccordion
+    accordion, teamCard
   },
   data: function() {
     return {
@@ -61,7 +64,31 @@ export default {
           text: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.",
           active: false
         },
+      ],
+      team: [
+        {
+          mId: 1,
+          lead: true,
+        },
+        {
+          mId: 2,
+          lead: false
+        }
+      ],
+      projects: [
+          1, 2, 3
       ]
+    }
+  },
+  computed: {
+    teamLead: function () {
+      let tmp = [];
+      for (let team1 in this.team) {
+        if(team1.lead) {
+          tmp.push(team1);
+        }
+      }
+      return tmp;
     }
   },
   head() {
@@ -149,10 +176,6 @@ export default {
       width: 80%;
     }
 
-  }
-
-  .accordion {
-    background-color: #2f2f2f;
   }
 }
 </style>

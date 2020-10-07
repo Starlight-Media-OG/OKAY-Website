@@ -11,7 +11,7 @@
             </a>
           </div>
         </div>
-        <div class="accordion-body" v-bind:ref="'accordion-body-' + index" v-if="content.active">
+        <div class="accordion-body">
           <div class="accordion-content">{{ content.text }}</div>
         </div>
       </div>
@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { TweenLite,gsap } from "gsap";
+import { TweenLite,Elastic,Bounce } from "gsap";
 
 export default {
   name: "accordion",
@@ -28,7 +28,8 @@ export default {
   },
   methods: {
     expand: function(i) {
-      let el = this.$refs['accordion-body-' + i][0];
+      //let el = this.$refs['accordion-body-' + i][0];
+      let el = document.getElementsByClassName("accordion-body")[i];
 
       if (this.contents[i].active === false) {
         this.contents[i].active = true;

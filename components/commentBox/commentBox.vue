@@ -152,7 +152,7 @@
                     console.log(data.data);
                 }
 
-                toggleModal();
+                this.toggleModal();
             },
             initials: function (kom) {
                 let tmp = kom.username.split(" ");
@@ -161,8 +161,8 @@
 
                 return tmp;
             },
-            previewfiles() {
-                if (this.$refs.myFiles.files !== undefinded)
+            previewFiles() {
+                if (this.$refs.myFiles.files !== undefined)
                     this.files = this.$refs.myFiles.files;
             },
             toggleModal: function () {

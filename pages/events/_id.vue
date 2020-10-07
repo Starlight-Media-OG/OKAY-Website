@@ -186,7 +186,7 @@
                 return conString;
             },
             scrollTo: function (target) {
-                var options = {
+                let options = {
                     container: 'body',
                     easing: 'ease-in-out',
                     force: true,

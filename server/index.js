@@ -117,6 +117,42 @@ app.post('/images/upload/products/', async (req, res) => {
     }
 });
 
+//Upload Product Images
+app.post('/images/upload/mitglied/', async (req, res) => {
+    try {
+        if (!req.files) {
+            res.send({
+                status: false,
+                message: "No File to Upload"
+            });
+        } else {
+            let data = [];
+            let ID = req.query.id; //Get id from GET Parameter
+
+            _.forEach(
+                _.keysIn(req.files.uploaded), key => {
+                    let img = req.files.uploaded[key];
+
+                    if(img.name.contains("portrait")) {
+                        img.mv("./uploads/mitglied/" + ID + "/" + img.name);
+                    } else {
+                        //TODO: Rename image to portrati.fileEnding ...
+                    }
+
+                    data.push({
+                        name: img.name,
+                        mimetype: img.mimetype,
+                        size: img.size
+                    });
+                }
+            );
+            res.redirect(301, "http://localhost:3000/products/" + ID);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 // Get Images in Folder and Subfolders
 app.get("/images", async (req, res) => {
 

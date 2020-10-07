@@ -3,11 +3,11 @@
 
 //Copied From https://codepen.io/takaneichinose/pen/rXMrgv
 //Author: Takane Ichinose
-$base-color: #2f2f2f;
+$base-color: #dedede;
 $base-width: 320px;
 $base-time: 200ms;
 
-$accordion-background-color: #2f2f2f;
+$accordion-background-color: #dedede;
 $accordion-max-width: $base-width;
 $accordion-padding: 2rem 1rem;
 $accordion-border-radius: 0.5rem;
@@ -19,9 +19,9 @@ $accordion-header-padding: 1rem 1rem 1rem 1rem;
 $accordion-header-border-radius: 0.6rem;
 $accordion-header-transition: background-color $base-time ease-in-out;
 
-$accordion-header-hover-background-color: #4f4f4f;
+$accordion-header-hover-background-color: #efefef;
 
-$accordion-caret-color: #dedede;
+$accordion-caret-color: #2f2f2f;
 $accordion-caret-background-image: linear-gradient(
                 to top right,
                 transparent 50%,
@@ -44,6 +44,7 @@ $accordion-body-content-padding: 1rem;
   box-sizing: border-box;
   overflow: auto;
   box-shadow: $accordion-box-shadow;
+  color: $accordion-caret-color;
 }
 
 .accordion-item {
