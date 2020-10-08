@@ -7,7 +7,7 @@
         </div>
         <div class="column content">
             <div class="header">
-                <div class="title column">
+                <div class="card-title column">
                     <h1>{{this.title}}</h1>
                 </div>
                 <div class="date column" v-if="duration">

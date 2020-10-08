@@ -1,76 +1,80 @@
 @import '../variable';
 
 nav {
-  position: fixed;
-  z-index: 99;
+    position: fixed;
+    z-index: 99;
 }
 
 .navigation {
-  background-color: $primary-yellow;
-  position: fixed;
-  width: 30vw;
-  height: 30vw;
-  border-top-left-radius: 30vw;
-  bottom: 0;
-  right: 0;
-  transition: width 1s, height 1s, border-bottom-right-radius 1s;
-  box-shadow: -5px -5px 15px rgba(0,0,0,.50);
-  display: flex;
+    background-color: $primary-yellow;
+    position: fixed;
+    width: 30vw;
+    height: 30vw;
+    border-top-left-radius: 30vw;
+    bottom: 0;
+    right: 0;
+    transition: width 1s, height 1s, border-bottom-right-radius 1s;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, .50);
+    display: flex;
 }
 
 .burger {
-  display: block;
-  position: fixed;
-  width: 15vw;
-  height: 15vw;
-  cursor: pointer;
-  bottom: 2vh;
-  right: 2vh;
-  .burger-icon {
-    width: 100%;
-    height: auto;
-  }
+    display: block;
+    position: fixed;
+    width: 15vw;
+    height: 15vw;
+    cursor: pointer;
+    bottom: 2vh;
+    right: 2vh;
+
+    .burger-icon {
+        width: 100%;
+        height: auto;
+    }
 }
 
 .navigationExt {
-  z-index:99;
-  position: fixed;
-  width: 70vw;
-  height: 100vh;
-  bottom: 0;
-  right: 0;
-  border-top-left-radius: 200vw;
-  transition: width 1s, height 1s, border-top-left-radius 1s;
-  box-shadow: -5px -5px 15px rgba(0,0,0,.50);
-  background-color: $primary-yellow;
+    z-index: 99;
+    position: fixed;
+    width: 70vw;
+    height: 100vh;
+    bottom: 0;
+    right: 0;
+    border-top-left-radius: 200vw;
+    transition: width 1s, height 1s, border-top-left-radius 1s;
+    box-shadow: -5px -5px 15px rgba(0, 0, 0, .50);
+    background-color: $primary-yellow;
 }
 
 .navigation-Text {
-  position: fixed;
-  top: 20vh;
-  right: -100vw;
-  transition: .5s;
-  display: block;
-  .navigation-link {
-    transition: color 1s;
-    text-decoration: none;
-    @include font($flow-font-name, 5vh, white, bold);
-    margin-top: .2vh;
-    &:hover &:touch{
-      color: $primary-blue;
-      transition: color 1s;
+    position: fixed;
+    top: 30vh;
+    right: -100vw;
+    transition: .5s;
+    display: block;
+
+    .navigation-link {
+        transition: color 1s;
+        text-decoration: none;
+        @include font($flow-font-name, 5vh, white, bold);
+        margin-top: .2vh;
+
+        &:hover &:touch {
+            color: $primary-blue;
+            transition: color 1s;
+        }
     }
-  }
-  .nuxt-link-active {
-    color: $primary-blue;
-  }
+
+    .nuxt-link-active {
+        color: $primary-blue;
+    }
 }
 
 .navigationTextExt {
-  right: 12vw;
-  transition: right 1.8s;
+    right: 5vw;
+    transition: right 1.8s;
 }
 
 .navigation-Icon {
-  display: none;
+    display: none;
 }

@@ -1,6 +1,6 @@
 <template>
     <main class="root flex flex-center">
-        <section class="row-12 flex flex-center header">
+        <section class="row flex flex-center header">
             <div class="title col-4">
                 <p class="back" @click="$router.back()">
                     <em class="underline">

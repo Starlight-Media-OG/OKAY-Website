@@ -155,21 +155,6 @@ export default {
     margin-top: 10vh;
 }
 
-.beschreibung {
-    margin-top: -20vh;
-    margin-left: -35vw;
-
-    .title {
-        @include font($flow-font-name, 5vh, white, bold);
-    }
-
-    p {
-        margin-top: -5vh;
-        @include font($flow-font-name, 1.2vh, white);
-    }
-
-}
-
 .link {
     transform: translateY(250%);
 }

@@ -14,7 +14,7 @@
         background-color: $primary-blue;
         box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
         border-radius: 6px;
-        margin-bottom: 20vh;
+        margin-bottom: 10vh;
 
         .image {
             width: 80%;
@@ -29,17 +29,17 @@
         }
 
         .content {
-            $title-size: 3vh;
-            $date-size: 2vh;
+            $title-size: 2rem;
+            $date-size: 1.5rem;
             $flow-size: 1rem;
 
             width: 90%;
-            margin-top: -50%;
+            margin-top: -20%;
             margin-left: auto;
             margin-right: auto;
 
             .header {
-                .title {
+                .card-title {
                     @include font($header-font-name, $title-size, white, bold);
                     line-height: 6vh;
                     margin-bottom: .5rem;
@@ -105,7 +105,7 @@
             .header {
                 margin-bottom: 5vh;
 
-                .title {
+                .card-title {
                     margin: -5vh 0;
                     @include font($header-font-name, $title-size, white, bold);
                     float: left;
@@ -189,9 +189,10 @@
             margin-right: 3vw;
 
             .header {
-                .title {
+                .card-title {
                     @include font($header-font-name, $title-size, white, bold);
                     float: left;
+                    margin-bottom: 1.5rem;
                 }
 
                 .date {
@@ -203,8 +204,8 @@
             .teaser, .teaser-news {
                 @include font($flow-font-name, $flow-size, white);
                 line-height: calc(#{$flow-size}+#{$flow-size}*0.1);
-                margin-top: -1vh;
                 text-align: justify;
+                margin-bottom: 1vh;
                 hyphens: auto;
             }
         }

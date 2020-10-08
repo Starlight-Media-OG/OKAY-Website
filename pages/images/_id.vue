@@ -8,7 +8,7 @@
                     </em>
                 </p>
                 <p v-for="titlePart in title">
-                    {{titlePart}}
+                    {{ titlePart }}
                 </p>
                 <p class="date">
                     Bildergallerie
@@ -16,46 +16,44 @@
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="concat(this.imgPath, 'plakat.jpg')" alt="Plakat" width="100%" />
+                <img :src="concat(this.imgPath, 'plakat.jpg')" alt="Plakat" width="100%"/>
             </div>
         </section>
         <section class="content">
-            <gallery :id="this.$route.params.id" />
+            <gallery :id="this.$route.params.id"/>
         </section>
     </main>
 </template>
 
 <style scoped lang="scss">
-    @import '../../assets/style/variable.scss';
+@import '../../assets/style/variable.scss';
 
-    .date {
-        color: $primary-yellow;
-        font-size: 5vh;
-        transform: translateY(-30%);
-    }
+.date {
+    color: $primary-yellow;
+    font-size: 5vh;
+    transform: translateY(-30%);
+}
 
-    .back {
-        font-size: 3vh;
-        color: $primary-yellow;
-        transform: translateY(30%);
-        &:hover
+.back {
+    font-size: 3vh;
+    color: $primary-yellow;
+    transform: translateY(30%);
 
-    {
+    &:hover {
         cursor: pointer;
     }
 
-    }
+}
 
-    .header {
-        margin-top: 10vh;
-    }
+.header {
+    margin-top: 10vh;
+}
 
-    .beschreibung {
-        margin-top: -20vh;
-        margin-left: -35vw;
-        .title
+.beschreibung {
+    margin-top: -20vh;
+    margin-left: -35vw;
 
-    {
+    .title {
         @include font($flow-font-name, 5vh, white, bold);
     }
 
@@ -64,63 +62,63 @@
         @include font($flow-font-name, 1.2vh, white);
     }
 
-    }
+}
 
-    .link {
-        transform: translateY(250%);
-    }
+.link {
+    transform: translateY(250%);
+}
 
-    .content {
-        width: 100vw;
-        margin: 10vh 0;
-    }
+.content {
+    width: 100vw;
+    margin: 10vh 0;
+}
 </style>
 
 <script>
-    import gallery from "~/components/gallery/gallery.vue";
+import gallery from "~/components/gallery/gallery.vue";
 
-    export default {
-        name: "imageGallery",
-        data() {
-            return {
-                name: "",
-            }
+export default {
+    name: "imageGallery",
+    data() {
+        return {
+            name: "",
+        }
+    },
+    components: {
+        gallery
+    },
+    computed: {
+        title: function () {
+            return this.name.split(" ");
         },
-        components: {
-            gallery
-        },
-        computed: {
-            title: function () {
-                return this.name.split(" ");
-            },
-            imgPath: function () {
-                return "http://localhost:4000/events/" + this.$route.params.id + "/";
-            }
-        },
-        async fetch() {
-            //Fetch Name of Event from api
-        },
-        methods: {
-            concat: function (...strings) {
-                let conString = "";
-                strings.forEach((arg, index) => {
-                    conString += arg;
-                });
-                return conString;
-            }
-        },
-        mounted() {
-            this.name = "Heinz Knapp"
-        },
-        head() {
-            return {
-                title: "Bildergallerie - OKAY Ybbs",
-                meta: [
-                    {
-                        charset: 'utf-8'
-                    }
-                ]
-            }
+        imgPath: function () {
+            return "http://localhost:4000/events/" + this.$route.params.id + "/";
+        }
+    },
+    async fetch() {
+        //Fetch Name of Event from api
+    },
+    methods: {
+        concat: function (...strings) {
+            let conString = "";
+            strings.forEach((arg, index) => {
+                conString += arg;
+            });
+            return conString;
+        }
+    },
+    mounted() {
+        this.name = "Heinz Knapp"
+    },
+    head() {
+        return {
+            title: "Bildergallerie - OKAY Ybbs",
+            meta: [
+                {
+                    charset: 'utf-8'
+                }
+            ]
         }
     }
+}
 </script>

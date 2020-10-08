@@ -15,22 +15,26 @@
             border-top-left-radius: $border-radius;
             border-top-right-radius: $border-radius;
 
+            &-banner{
+                height: 8vh;
+            }
+
             .arrow {
                 width: 5vh;
                 height: 5vh;
 
                 &-Left {
-                    transform: translateY(87%);
+                    transform: translateX(-100%);
                 }
 
                 &-Right {
-                    transform: translateX(520%) translateY(-87%);
+                    transform: translateX(450%);
                 }
             }
 
             .monthDesc {
-                @include font($flow-font-name, 2.5vh, white, bold);
-                transform: translateX(30%);
+                @include font($flow-font-name, 2rem, white, bold);
+                transform: translateX(-30%);
             }
         }
 
@@ -49,6 +53,7 @@
             background-color: $cal-day;
             @include font($flow-font-name, 2vh, $primary-yellow);
             height: 10vh;
+            width: 10vw;
 
             &.current-day {
                 background-color: $primary-blue;
@@ -57,7 +62,7 @@
 
             .eventCal {
                 background-color: lighten($primary-blue, 5%);
-                @include font($flow-font-name, 2vh, white);
+                @include font($flow-font-name, .6rem, white);
                 width: 80%;
                 transform: translateX(10%);
             }

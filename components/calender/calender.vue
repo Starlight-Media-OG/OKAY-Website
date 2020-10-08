@@ -1,7 +1,7 @@
 <template>
     <div class="calender">
         <div class="month">
-            <div class="flex flex-center" style="height: 100%;">
+            <div class="flex flex-center month-banner">
                 <div class="arrow arrow-Left" @click="prev()">
                     <arrow direction="left" />
                 </div>
@@ -166,8 +166,6 @@
         },
         async fetch() {
             //Fetch Data from DB / API and save in Events
-        },
-        mounted() {
             this.updateCalendar(this.currentMonth, this.currentYear);
         }
     }

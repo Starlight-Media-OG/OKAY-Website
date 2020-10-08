@@ -4,12 +4,21 @@
   background-color: #dedede;
   border-radius: 6px;
   padding-bottom: 1vh;
-  margin-right: 5vh;
   margin-bottom: 5vh;
+  margin-right: 5vh;
   box-shadow: 5px 5px 15px rgba(0, 0, 0, .20), -5px -5px 15px rgba(255, 255, 255, .20);
 
-  @media screen and (min-width: $breakpoint-large-max) {
+  @media screen and (min-width: $breakpoint-xlarge) {
     @include min-max-width(20vw);
+  }
+
+  @media screen and (max-width: $breakpoint-small-max) {
+    @include min-max-width(80vw);
+    margin-right: 0;
+  }
+
+  @media screen and (max-width: $breakpoint-medium-max) and (min-width: $breakpoint-medium) {
+    @include min-max-width(40vw);
   }
 
   .image {
@@ -54,6 +63,7 @@
 
     .body {
       margin-top: 2vh;
+      padding-bottom: 1.5vh;
       p {
         @include font($flow-font-name, $flow-size, #2f2f2f);
       }

@@ -101,6 +101,11 @@
                 height: 3vh;
                 float: left;
 
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    width: 100%;
+                    margin-bottom: 2vh;
+                }
+
                 .input {
                     width: 100%;
                     height: 100%;
@@ -119,6 +124,19 @@
                 border-radius: 3vh;
                 margin: 0 1vw;
                 color: #2f2f2f;
+
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    width: 5vh;
+                    height: 5vh;
+                    border-radius: 5vh;
+                }
+
+                .text {
+                    @media screen and (max-width: $breakpoint-medium-max) {
+                        font-size: 5vh;
+                        transform: translateY(-18%);
+                    }
+                }
 
                 .flowUp {
                     display: none;
@@ -175,6 +193,13 @@
                 border-radius: 3vh;
                 color: #2f2f2f;
 
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    margin-left: 5vw;
+                    width: 5vh;
+                    height: 5vh;
+                    border-radius: 5vh;
+                }
+
                 &:hover {
                     cursor: pointer;
                 }
@@ -186,6 +211,10 @@
                         background-color: transparent;
                         border: none;
                         transform: translateY(15%);
+
+                        @media screen and (max-width: $breakpoint-medium-max) {
+                            transform: translateY(30%);
+                        }
 
                         &:hover {
                             cursor: pointer;

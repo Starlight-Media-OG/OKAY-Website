@@ -1,6 +1,6 @@
 <template>
     <main class="root flex flex-center">
-        <section class="row-12 header">
+        <section class="row header">
             <div class="title col-3">
                 Kalender
             </div>
