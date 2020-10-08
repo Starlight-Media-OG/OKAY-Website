@@ -53,6 +53,38 @@ app.post('/images/upload/events/', async (req, res) => {
     }
 });
 
+app.post('/images/upload/projects/', async (req, res) => {
+    try {
+        if (!req.files) {
+            res.send({
+                status: false,
+                message: "No File to Upload"
+            });
+        } else {
+            let data = [];
+            let komId = 10; //Get ID from last inserted Comment
+            let pId = 1;    //Get ID from project, where comment belongs
+
+            _.forEach(
+                _.keysIn(req.files.uploaded), key => {
+                    let img = req.files.uploaded[key];
+
+                    img.mv("./uploads/projects/" + pId + "/comment" + komID + "/" + img.name);
+
+                    data.push({
+                        name: img.name,
+                        mimetype: img.mimetype,
+                        size: img.size
+                    });
+                }
+            );
+            res.redirect(301, "http://localhost:3000/events/" + pID);
+        }
+    } catch (err) {
+        console.log(err);
+    }
+});
+
 //Upload News Images
 app.post('/images/upload/news/', async (req, res) => {
     try {

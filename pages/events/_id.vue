@@ -13,8 +13,11 @@
                 <p class="date">
                     Ab {{this.date}}
                 </p>
-                <p class="address">
+                <p class="address" v-if="this.adresse != null">
                       {{ this.adresse }}
+                </p>
+                <p class="address" v-else>
+                    {{this.projektpartner}}
                 </p>
                 <p></p>
             </div>
@@ -136,7 +139,7 @@
                 date: "",
                 id: "",
                 days: {},
-                adresse: ""
+                adresse: null
             }
         },
         computed: {

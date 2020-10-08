@@ -3,84 +3,72 @@
     "name": "calender",
     "path": "/calender",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\calender\\\\index.vue",
-    "chunkName": "pages/calender/index",
-    "_name": "_5e67ae0e"
+    "chunkName": "pages/calender/index"
   },
   {
     "name": "dsgvo",
     "path": "/dsgvo",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\dsgvo\\\\index.vue",
-    "chunkName": "pages/dsgvo/index",
-    "_name": "_54356320"
+    "chunkName": "pages/dsgvo/index"
   },
   {
     "name": "events",
     "path": "/events",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\events\\\\index.vue",
-    "chunkName": "pages/events/index",
-    "_name": "_39431f0c"
+    "chunkName": "pages/events/index"
   },
   {
     "name": "impressum",
     "path": "/impressum",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\impressum\\\\index.vue",
-    "chunkName": "pages/impressum/index",
-    "_name": "_1818fdac"
+    "chunkName": "pages/impressum/index"
   },
   {
     "name": "information",
     "path": "/information",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\information\\\\index.vue",
-    "chunkName": "pages/information/index",
-    "_name": "_007940d6"
+    "chunkName": "pages/information/index"
   },
   {
     "name": "news",
     "path": "/news",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\news\\\\index.vue",
-    "chunkName": "pages/news/index",
-    "_name": "_30d06680"
+    "chunkName": "pages/news/index"
   },
   {
     "name": "products",
     "path": "/products",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\products\\\\index.vue",
-    "chunkName": "pages/products/index",
-    "_name": "_15dff5e2"
+    "chunkName": "pages/products/index"
   },
   {
     "name": "events-id",
     "path": "/events/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\events\\\\_id.vue",
-    "chunkName": "pages/events/_id",
-    "_name": "_3a3b6d3c"
+    "chunkName": "pages/events/_id"
   },
   {
     "name": "images-id",
     "path": "/images/:id?",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\images\\\\_id.vue",
-    "chunkName": "pages/images/_id",
-    "_name": "_9f947a3a"
+    "chunkName": "pages/images/_id"
   },
   {
     "name": "news-id",
     "path": "/news/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\news\\\\_id.vue",
-    "chunkName": "pages/news/_id",
-    "_name": "_079c01b0"
+    "chunkName": "pages/news/_id"
   },
   {
     "name": "products-id",
     "path": "/products/:id",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\products\\\\_id.vue",
-    "chunkName": "pages/products/_id",
-    "_name": "_07a9ff37"
+    "chunkName": "pages/products/_id"
   },
   {
     "name": "index",
     "path": "/",
     "component": "F:\\\\Schule\\\\Diplomarbeit\\\\DIOK-Website\\\\pages\\\\index.vue",
-    "chunkName": "pages/index",
-    "_name": "_f72f809a"
+    "chunkName": "pages/index"
   }
 ]

@@ -1,12 +1,12 @@
 @import '../variable';
 
-@media screen and (max-width: $breakpoint-medium-max), handheld {
+@media screen and (max-width: $breakpoint-large-max), handheld {
     .footer {
         display: none;
     }
 }
 
-@media screen and (min-width: $breakpoint-large) {
+@media screen and (min-width: $breakpoint-xlarge) {
     .footer {
         background-color: $primary-yellow;
         height: 33vh;
