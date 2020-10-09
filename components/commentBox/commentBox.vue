@@ -1,6 +1,8 @@
 <template>
     <div class="commentBox">
-        <h2>Kommentare</h2>
+        <div class="heading">
+            <h2>Kommentare</h2>
+        </div>
         <div class=" flex flex-center">
             <div class="comments">
                 <div v-for="kom in koms" :key="kom.id" class="comment">
@@ -102,6 +104,7 @@
 <script>
     import axios from 'axios';
     import check from "~/components/svg/check.vue";
+    import arrow from "@/components/svg/arrow";
 
     export default {
         name: "comment",

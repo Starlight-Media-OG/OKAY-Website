@@ -127,6 +127,9 @@ export default {
             title: "Über Uns - OKAY Ybbs",
             meta: []
         }
+    },
+    created() {
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Über Uns"} });
     }
 }
 </script>

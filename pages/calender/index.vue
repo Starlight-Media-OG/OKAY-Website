@@ -18,6 +18,9 @@
         name: "indexCalender",
         components: {
             calender
+        },
+        created() {
+            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Kalender"} });
         }
     }
 </script>

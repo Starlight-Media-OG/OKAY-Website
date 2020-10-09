@@ -4,6 +4,7 @@
     margin-top: -5rem;
     line-height: 18vh;
     @include font($header-font-name, 20vh, white, bold);
+    user-select: none;
 
     .vertical {
         writing-mode: vertical-lr;

@@ -3,7 +3,7 @@
         <nav :class="{navigationExt: menuActive, navigation: !menuActive}">
             <div class="burger" @click="toggleMenu">
                 <div class="burger-icon">
-                    <burger :menuActive="menuActive" />
+                    <burger :menuActive="menuActive"/>
                 </div>
             </div>
             <div class="navigation-Text" :class="{navigationTextExt: menuActive}">
@@ -16,44 +16,55 @@
             </div>
         </nav>
         <div class="logo">
-            <nuxt-link to="/"><logo /></nuxt-link>
+            <nuxt-link to="/">
+                <logo/>
+            </nuxt-link>
         </div>
-      <div class="bg" @click="hideMenu" v-if="menuActive">
+        <div class="bg" @click="hideMenu" v-if="menuActive">
+        </div>
+
+        <div class="breadcrumbs" v-if="breadcrumbs !== 0">
+            <ul class="breadcrumbs-list">
+                <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item">
+                    <p class="text-item">{{item}}</p>
+                </li>
+            </ul>
         </div>
     </header>
 </template>
 
 <script>
-    import burger from '~/components/svg/burger.vue';
-    import logo from '~/components/svg/logo.vue';
+import burger from '~/components/svg/burger.vue';
+import logo from '~/components/svg/logo.vue';
+import {mapGetters, mapMutations} from 'vuex';
 
-    import { mapGetters, mapMutations } from 'vuex';
-
-    export default {
-        name: "navbar",
-        components: {
-            burger, logo
-        },
-        computed: mapGetters({
-            menuActive: 'menu/get'
-        }),
-        methods: {
-            ...mapMutations({
-                toggleMenu: 'menu/toggle',
-                hideMenu: 'menu/hide'
-            })
-        }
+export default {
+    name: "navbar",
+    components: {
+        burger, logo
+    },
+    computed: mapGetters({
+        menuActive: 'menu/get',
+        breadcrumbs: 'breadcrumbs/getSteps',
+        breadcrumbsText: 'breadcrumbs/getTexts'
+    }),
+    methods: {
+        ...mapMutations({
+            toggleMenu: 'menu/toggle',
+            hideMenu: 'menu/hide'
+        })
     }
+}
 </script>
 
 <style scoped lang="scss">
-    @import '../assets/style/variable';
+@import '../assets/style/variable';
 
-    @media screen and (max-width: $breakpoint-medium-max), handheld {
-        @import '../assets/style/components/navbar-Mobile.scss';
-    }
+@media screen and (max-width: $breakpoint-medium-max), handheld {
+    @import '../assets/style/components/navbar-Mobile.scss';
+}
 
-    @media screen and (min-width: $breakpoint-large) {
-        @import '../assets/style/components/navbar.scss';
-    }
+@media screen and (min-width: $breakpoint-large) {
+    @import '../assets/style/components/navbar.scss';
+}
 </style>

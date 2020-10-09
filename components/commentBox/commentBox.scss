@@ -9,15 +9,24 @@
         margin-bottom: 20vh;
     }
 
-    h2 {
-        font-size: 7vh;
-        padding-top: 2rem;
+    .heading {
+        box-shadow: -5px 5px 10px rgba(0,0,0,.5);
+        h2 {
+            font-size: 7vh;
+            padding-top: 2rem;
+        }
     }
 
     .comments {
         height: 80vh;
         width: 70%;
         overflow: auto;
+        overflow: -moz-scrollbars-none;
+        -ms-overflow-style: none;
+
+        &::-webkit-scrollbar {
+            width: 0 !important;
+        }
 
         .comment {
             width: 100%;
@@ -63,6 +72,12 @@
                     overflow: auto;
                     width: 80%;
                     opacity:1;
+                    overflow: -moz-scrollbars-none;
+                    -ms-overflow-style: none;
+
+                    &::-webkit-scrollbar {
+                        width: 0 !important;
+                    }
 
                     .row {
                         margin: 3vh 0;

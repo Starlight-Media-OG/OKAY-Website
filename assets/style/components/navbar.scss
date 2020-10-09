@@ -88,3 +88,42 @@ nav {
     z-index: 98;
     background-color: transparent;
 }
+
+.breadcrumbs {
+    $tmp: 50vh;
+    position: fixed;
+    left: 0;
+    top: 50%;
+    height: $tmp;
+    width: $tmp;
+    border-radius: $tmp;
+    background-color: $primary-blue;
+    transform: translateX(-90%) translateY(-50%);
+
+    .breadcrumbs-list {
+        transform: translateX(97%);
+        margin-top: 15vh;
+        color: white;
+        font-size: 3rem;
+
+        .breadcrumbs-list-item {
+            opacity: .1;
+
+            .text-item {
+                color: transparent;
+            }
+
+            &:last-child {
+                opacity: 1;
+            }
+
+            &:hover {
+                z-index: 1000;
+            }
+        }
+
+        .breadcrumbs-list-item:hover > .text-item {
+            color: white;
+        }
+    }
+}

@@ -17,20 +17,28 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('../store/menu/actions.js'), 'menu/actions.js')
-  resolveStoreModules(require('../store/menu/getters.js'), 'menu/getters.js')
-  resolveStoreModules(require('../store/menu/mutations.js'), 'menu/mutations.js')
-  resolveStoreModules(require('../store/menu/state.js'), 'menu/state.js')
+  resolveStoreModules(require('..\\store\\breadcrumbs\\actions.js'), 'breadcrumbs/actions.js')
+  resolveStoreModules(require('..\\store\\breadcrumbs\\getters.js'), 'breadcrumbs/getters.js')
+  resolveStoreModules(require('..\\store\\breadcrumbs\\mutations.js'), 'breadcrumbs/mutations.js')
+  resolveStoreModules(require('..\\store\\breadcrumbs\\state.js'), 'breadcrumbs/state.js')
+  resolveStoreModules(require('..\\store\\menu\\actions.js'), 'menu/actions.js')
+  resolveStoreModules(require('..\\store\\menu\\getters.js'), 'menu/getters.js')
+  resolveStoreModules(require('..\\store\\menu\\mutations.js'), 'menu/mutations.js')
+  resolveStoreModules(require('..\\store\\menu\\state.js'), 'menu/state.js')
 
   // If the environment supports hot reloading...
 
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '../store/menu/actions.js',
-      '../store/menu/getters.js',
-      '../store/menu/mutations.js',
-      '../store/menu/state.js',
+      '..\\store\\breadcrumbs\\actions.js',
+      '..\\store\\breadcrumbs\\getters.js',
+      '..\\store\\breadcrumbs\\mutations.js',
+      '..\\store\\breadcrumbs\\state.js',
+      '..\\store\\menu\\actions.js',
+      '..\\store\\menu\\getters.js',
+      '..\\store\\menu\\mutations.js',
+      '..\\store\\menu\\state.js',
     ], () => {
       // Update `root.modules` with the latest definitions.
       updateModules()

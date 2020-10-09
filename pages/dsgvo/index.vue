@@ -18,7 +18,10 @@
 
 <script>
 export default {
-name: "index-dsgvo"
+    name: "index-dsgvo",
+    created() {
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "DSGVO"} });
+    }
 }
 </script>
 

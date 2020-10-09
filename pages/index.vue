@@ -122,6 +122,9 @@
             }
         },
         created() {
+            this.$store.commit("breadcrumbs/clearBreadcrumb");
+            this.$store.commit("breadcrumbs/addBreadcrumb", "Startseite");
+
             //Fetch Data from DB via Middleware... Save in events and news Variable
             this.events = [
                 {
