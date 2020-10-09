@@ -122,8 +122,8 @@
             }
         },
         created() {
-            this.$store.commit("breadcrumbs/clearBreadcrumb");
-            this.$store.commit("breadcrumbs/addBreadcrumb", "Startseite");
+            this.$store.commit('breadcrumbs/clear');
+            this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, newText: "Startseite", link: "/"}})
 
             //Fetch Data from DB via Middleware... Save in events and news Variable
             this.events = [

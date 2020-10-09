@@ -78,6 +78,8 @@ export default {
             products: []
         }
     }, created() {
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {step:2, newText:"Produkte", link:"/products"})
+
         this.products = [
             {
                 "prodId": "5f2aa8b9956c78a572cfd86c",

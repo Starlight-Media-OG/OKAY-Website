@@ -150,7 +150,7 @@ export default {
         this.sortEvents(events);
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Events"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Events", link:"/events"} });
     },
     head() {
         return {

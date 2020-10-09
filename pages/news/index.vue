@@ -65,7 +65,7 @@ export default {
         }
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "News"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "News", link:"/news"} });
 
         this.news = [
             {

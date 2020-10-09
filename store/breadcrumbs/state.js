@@ -1,4 +1,9 @@
 export default () => ({
     steps: 0,
-    text: []
+    items: [
+        {
+            link: "",
+            text: ""
+        }
+    ]
 })

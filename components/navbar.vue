@@ -23,10 +23,10 @@
         <div class="bg" @click="hideMenu" v-if="menuActive">
         </div>
 
-        <div class="breadcrumbs" v-if="breadcrumbs !== 0">
+        <div class="breadcrumbs" v-if="breadcrumbs !== 1">
             <ul class="breadcrumbs-list">
                 <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item">
-                    <p class="text-item">{{item}}</p>
+                    <p class="text-item"><nuxt-link class="ignoreTag" :to="item.link">{{item.text}}</nuxt-link></p>
                 </li>
             </ul>
         </div>
@@ -46,7 +46,7 @@ export default {
     computed: mapGetters({
         menuActive: 'menu/get',
         breadcrumbs: 'breadcrumbs/getSteps',
-        breadcrumbsText: 'breadcrumbs/getTexts'
+        breadcrumbsText: 'breadcrumbs/get'
     }),
     methods: {
         ...mapMutations({

@@ -109,10 +109,6 @@ nav {
         .breadcrumbs-list-item {
             opacity: .1;
 
-            .text-item {
-                color: transparent;
-            }
-
             &:last-child {
                 opacity: 1;
             }
@@ -122,8 +118,13 @@ nav {
             }
         }
 
-        .breadcrumbs-list-item:hover > .text-item {
+        .breadcrumbs-list-item:hover > .text-item > .ignoreTag {
             color: white;
+        }
+
+        .ignoreTag {
+            text-decoration: none;
+            color: transparent;
         }
     }
 }

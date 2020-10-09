@@ -20,7 +20,7 @@
             calender
         },
         created() {
-            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Kalender"} });
+            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Kalender", link: "/calender"} });
         }
     }
 </script>

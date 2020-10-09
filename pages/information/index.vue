@@ -129,7 +129,7 @@ export default {
         }
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Über Uns"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Über Uns", link:"/information"} });
     }
 }
 </script>
