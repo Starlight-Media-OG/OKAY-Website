@@ -18,10 +18,10 @@
                 </div>
             </div>
             <div class="teaser" v-if="date != null">
-                <p>{{trimString(this.teaser, 700)}}</p>
+                <p>{{trimString(this.teaser, 300)}}</p>
             </div>
             <div class="teaser-news" v-if="date == null">
-                <p>{{trimString(this.teaser, 700)}}</p>
+                <p>{{trimString(this.teaser, 300)}}</p>
             </div>
             <div v-if="date != null">
                 <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">

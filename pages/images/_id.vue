@@ -25,7 +25,7 @@
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/variable.scss';
 
 .date {
@@ -35,14 +35,17 @@
 }
 
 .back {
-    font-size: 3vh;
-    color: $primary-yellow;
-    transform: translateY(30%);
+    @include font($header-font-name, 3rem, $primary-yellow, 700);
+    transform: translateY(25%);
 
     &:hover {
         cursor: pointer;
     }
 
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1.3rem, $primary-yellow, 700);
+        padding-bottom: 2vh;
+    }
 }
 
 .header {

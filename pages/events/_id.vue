@@ -13,10 +13,10 @@
                 <p class="date">
                     Ab {{ this.date }}
                 </p>
-                <p class="address" v-if="this.adresse != null">
+                <p v-if="this.adresse != null" class="address">
                     {{ this.adresse }}
                 </p>
-                <p class="address" v-else>
+                <p v-else class="address">
                     {{ this.projektpartner }}
                 </p>
                 <p></p>
@@ -25,7 +25,7 @@
                 <img :src="this.bild" alt="this.name" width="100%"/>
             </div>
         </section>
-        <section class="content flex flex-center" id="content">
+        <section id="content" class="content flex flex-center">
             <article class="beschreibung">
                 <div class="bes">
                     <h2>Beschreibung</h2>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="dateOpen">
                     <h2>Öffnungszeiten</h2>
-                    <p class="opening flex flex-center" v-for="day in days" :key="day.wochentag">
+                    <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
                         Am {{ day.wochentag }} von {{ day.start_zeit }} bis {{ day.end_zeit }}
                     </p>
                 </div>
@@ -50,7 +50,7 @@
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/variable.scss';
 
 .date {
@@ -76,7 +76,7 @@
 
 .back {
     @include font($header-font-name, 3rem, $primary-yellow, 700);
-    transform: translateY(30%);
+    transform: translateY(25%);
 
     &:hover {
         cursor: pointer;
