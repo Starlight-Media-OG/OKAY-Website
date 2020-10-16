@@ -17,7 +17,6 @@ let store = {};
   // Enforce store modules
   store.modules = store.modules || {}
 
-  resolveStoreModules(require('..\\store\\breadcrumbs\\actions.js'), 'breadcrumbs/actions.js')
   resolveStoreModules(require('..\\store\\breadcrumbs\\getters.js'), 'breadcrumbs/getters.js')
   resolveStoreModules(require('..\\store\\breadcrumbs\\mutations.js'), 'breadcrumbs/mutations.js')
   resolveStoreModules(require('..\\store\\breadcrumbs\\state.js'), 'breadcrumbs/state.js')
@@ -31,7 +30,6 @@ let store = {};
   if (process.client && module.hot) {
     // Whenever any Vuex module is updated...
     module.hot.accept([
-      '..\\store\\breadcrumbs\\actions.js',
       '..\\store\\breadcrumbs\\getters.js',
       '..\\store\\breadcrumbs\\mutations.js',
       '..\\store\\breadcrumbs\\state.js',

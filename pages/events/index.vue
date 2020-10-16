@@ -15,7 +15,7 @@
                     <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="oaId">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
                         <h5>In dieser Woche finden keine Event statt</h5>
@@ -28,7 +28,7 @@
                     <div class="cards" v-for="event in objectsCurrent" :key="oaId" v-if="objectsCurrent.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
                         <h5>In dieser Woche finden keine Event statt</h5>
@@ -41,7 +41,7 @@
                     <div class="cards" v-for="event in objectsNext" :key="oaId" v-if="objectsNext.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                              :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
                         <h5>In dieser Woche finden keine Event statt</h5>
@@ -150,7 +150,7 @@ export default {
         this.sortEvents(events);
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Events", link:"/events"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
     },
     head() {
         return {

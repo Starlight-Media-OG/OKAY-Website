@@ -1,5 +1,5 @@
 <template>
-    <div class="mainCard">
+    <div class="mainCard"  :style="{'background-color': cardColor, 'color': fontColor}">
         <div class="column">
             <div class="image">
                 <img :src="this.image" :alt="this.title" class="image-col">
@@ -23,17 +23,17 @@
             <div class="teaser-news" v-if="date == null">
                 <p>{{trimString(this.teaser, 300)}}</p>
             </div>
-            <div v-if="date != null">
+            <div v-if="!news">
                 <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">
-                  <div class="button">
-                    <p  class="button-text">Weitere Informationen</p>
+                  <div class="button" :style="{'background-color': buttonColor}">
+                    <p  class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
                   </div>
                 </nuxt-link>
             </div>
-            <div v-if="date == null">
+            <div v-if="news">
                 <nuxt-link :to="concat('/news/', this.id)" class="ignoreTag">
-                  <div class="button">
-                    <p class="button-text">Weitere Informationen</p>
+                  <div class="button" :style="{'background-color': buttonColor}">
+                    <p class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
                   </div>
                 </nuxt-link>
             </div>
@@ -50,7 +50,10 @@
             image: String,
             date: String,
             endDate: String,
-            id: Number
+            id: Number,
+            news: Boolean,
+            events: Boolean,
+            projects: Boolean
         }, methods: {
             trimString: function (txt, length) {
                 if (txt.length > length) {
@@ -70,6 +73,33 @@
         computed: {
             duration: function () {
                 return this.endDate != null && this.date != null
+            },
+            cardColor: function () {
+                if(this.events) {
+                    return "#003865"
+                } else if (this.news) {
+                    return "#FFDB24"
+                } else if (this.projects) {
+                    return "#dedede"
+                }
+            },
+            buttonColor: function () {
+                if(this.events) {
+                    return "#004e96"
+                } else if (this.news) {
+                    return "#fae057"
+                } else if (this.projects) {
+                    return "#efefef"
+                }
+            },
+            fontColor: function() {
+                if(this.events) {
+                    return "#dedede"
+                } else if (this.news) {
+                    return "#2f2f2f"
+                } else if (this.projects) {
+                    return "#2f2f2f"
+                }
             }
         }
     }

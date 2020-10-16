@@ -25,8 +25,8 @@
 
         <div class="breadcrumbs" v-if="breadcrumbs !== 1">
             <ul class="breadcrumbs-list">
-                <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item">
-                    <p class="text-item"><nuxt-link class="ignoreTag" :to="item.link">{{item.text}}</nuxt-link></p>
+                <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item" @click="pushToLink(item.link)">
+                    <p class="text-item">{{item.text}}</p>
                 </li>
             </ul>
         </div>
@@ -52,7 +52,10 @@ export default {
         ...mapMutations({
             toggleMenu: 'menu/toggle',
             hideMenu: 'menu/hide'
-        })
+        }),
+        pushToLink: function(link) {
+            this.$router.push(link);
+        }
     }
 }
 </script>

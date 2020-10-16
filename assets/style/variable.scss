@@ -33,7 +33,7 @@ $width-card: 70vw;
 
 //-------Mixins---------
 //Font Mixin
-@mixin font($family, $size, $color, $weight: normal) {
+@mixin font($family, $size, $color:inherit, $weight: normal) {
     font-family: $family;
     font-size: $size;
     color: $color;

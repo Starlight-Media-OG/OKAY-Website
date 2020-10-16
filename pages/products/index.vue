@@ -78,7 +78,7 @@ export default {
             products: []
         }
     }, created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {step:2, newText:"Produkte", link:"/products"})
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {step:2, text:"Produkte", link:"/products"})
 
         this.products = [
             {

@@ -99,15 +99,17 @@ nav {
     border-radius: $tmp;
     background-color: $primary-blue;
     transform: translateX(-90%) translateY(-50%);
+    user-select: none;
+    font-family: $flow-font-name;
 
     .breadcrumbs-list {
         transform: translateX(97%);
         margin-top: 15vh;
         color: white;
-        font-size: 3rem;
+        font-size: 2rem;
 
         .breadcrumbs-list-item {
-            opacity: .1;
+            opacity: .2;
 
             &:last-child {
                 opacity: 1;
@@ -116,15 +118,14 @@ nav {
             &:hover {
                 z-index: 1000;
             }
+
+            .text-item {
+                color: transparent;
+            }
         }
 
-        .breadcrumbs-list-item:hover > .text-item > .ignoreTag {
+        .breadcrumbs-list-item:hover > .text-item {
             color: white;
-        }
-
-        .ignoreTag {
-            text-decoration: none;
-            color: transparent;
         }
     }
 }

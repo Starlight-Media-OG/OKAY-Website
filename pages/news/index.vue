@@ -11,7 +11,7 @@
         <section class="content flex flex-center">
             <div class="news" v-for="news1 in news" :key="nId">
                 <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'"
-                      :id="news1.nId"/>
+                      :id="news1.nId" news/>
             </div>
         </section>
     </main>
@@ -65,7 +65,7 @@ export default {
         }
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "News", link:"/news"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });
 
         this.news = [
             {

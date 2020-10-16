@@ -27,7 +27,7 @@
                     <h2>Projekte</h2>
                     <div class="cards row flex flex-center">
                         <card v-for="project in projects" :key="project.id" :id="projects.id" :title="project.titel" :teaser="project.beschreibung"
-                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + 'plakat.png'"/>
+                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + 'plakat.png'" projects/>
                     </div>
                 </div>
             </div>
@@ -129,7 +129,7 @@ export default {
         }
     },
     created() {
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, newText: "Über Uns", link:"/information"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Über Uns", link:"/information"} });
     }
 }
 </script>

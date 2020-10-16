@@ -183,26 +183,25 @@
             $date-size: 1.5rem;
             $flow-size: 1rem;
 
-            color: white;
             display: flex;
             margin-left: 1vw;
             margin-right: 3vw;
 
             .header {
                 .card-title {
-                    @include font($header-font-name, $title-size, white, bold);
+                    @include font($header-font-name, $title-size);
                     float: left;
                     margin-bottom: 1.5rem;
                 }
 
                 .date {
-                    @include font($header-font-name, $date-size, white, lighter);
+                    @include font($header-font-name, $date-size);
                     text-align: right;
                 }
             }
 
             .teaser, .teaser-news {
-                @include font($flow-font-name, $flow-size, white);
+                @include font($flow-font-name, $flow-size);
                 line-height: calc(#{$flow-size}+#{$flow-size}*0.1);
                 text-align: justify;
                 margin-bottom: 1vh;
@@ -211,7 +210,6 @@
         }
 
         .button {
-            background-color: lighten($primary-blue, 10%);
             border-radius: 6px;
             @include min-max-width(350px);
             @include min-max-height(45px);
@@ -223,7 +221,9 @@
             align-items: center;
 
             .button-text {
-                @include font($flow-font-name, 1.5rem, white, bold);
+                font-weight: bold;
+                font-family: $flow-font-name;
+                font-size: 1.5rem;
                 text-decoration: none;
             }
 

@@ -20,7 +20,7 @@
             <div class="events" id="scroll">
                 <h2>Events</h2>
                 <div class="singleEvents" v-for="event of events" :key="event.oaId">
-                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId"/>
+                    <card :title="event.titel" :teaser="event.beschreibung" :image="event.bilder_path + '/plakat.jpg'" :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                 </div>
                 <div class="link center">
                     <nuxt-link to="/events" class="further-link"><em class="underline">Zu den Events</em></nuxt-link>
@@ -29,7 +29,7 @@
             <div class="news">
                 <h2>News</h2>
                 <div class="singleNews" v-for="news1 of news" :key="news1.nId">
-                    <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId"/>
+                    <card :title="news1.titel" :teaser="news1.anreiser" :image="news1.bilder_path + '/plakat.jpg'" :id="news1.nId" news/>
                 </div>
                 <div class="link center">
                     <nuxt-link to="/news" class="further-link"><em class="underline">Zu den News</em></nuxt-link>
@@ -62,7 +62,7 @@
         position: absolute;
         right: 25vw;
         bottom: 5vh;
-        animation: jump 1s infinite alternate;
+        animation: jump 2s infinite alternate;
         z-index: 1;
 
       @media screen and (max-width: $breakpoint-medium-max) {
@@ -123,7 +123,7 @@
         },
         created() {
             this.$store.commit('breadcrumbs/clear');
-            this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, newText: "Startseite", link: "/"}})
+            this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, text: "Startseite", link: "/"}});
 
             //Fetch Data from DB via Middleware... Save in events and news Variable
             this.events = [
