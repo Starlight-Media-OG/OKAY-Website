@@ -163,6 +163,11 @@
                 adresse: 'xyz 15, 3370 Ybbs'
               },
             ]
+
+            this.$store.commit('breadcrumbs/clear');
+            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
+            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Produkte", link:"/products"} });
+            this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/products/${this.id}`} });
         },
         computed: {
             title: function () {

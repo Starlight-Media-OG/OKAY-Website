@@ -122,6 +122,13 @@ export default {
                 }
             ]
         }
+    },
+    created() {
+        this.$store.commit('breadcrumbs/clear');
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 1, text:"Startseite", link:"/"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.$route.params.id}`, link:`/events/${this.$route.params.id}`} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 4, text: `Bilder ${this.$route.params.id}`, link:`/images/${this.$route.params.id}`} });
     }
 }
 </script>

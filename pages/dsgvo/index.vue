@@ -20,6 +20,8 @@
 export default {
     name: "index-dsgvo",
     created() {
+        this.$store.commit('breadcrumbs/clear');
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "DSGVO", links:"/dsgvo"} });
     }
 }

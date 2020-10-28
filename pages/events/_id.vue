@@ -188,6 +188,11 @@ export default {
             }
         ];
         this.adresse = "Herrengasse 15 3370 Ybbs";
+
+        this.$store.commit('breadcrumbs/clear');
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/events/${this.id}`} });
     },
     components: {
         commentBox

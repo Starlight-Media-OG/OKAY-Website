@@ -140,7 +140,12 @@ export default {
         this.bild = "../img/HeinzKnapp/plakat.jpg"
         this.date = "28.Mai 2020"
         this.id = this.$route.params.id;
-        this.bilder_path = null
+        this.bilder_path = null;
+
+        this.$store.commit('breadcrumbs/clear');
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/news/${this.id}`} });
     },
     computed: {
         title: function () {

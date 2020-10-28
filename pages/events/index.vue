@@ -150,6 +150,8 @@ export default {
         this.sortEvents(events);
     },
     created() {
+        this.$store.commit('breadcrumbs/clear');
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
     },
     head() {
