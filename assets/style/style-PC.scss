@@ -1,7 +1,8 @@
 @import "variable";
 
 .title {
-    margin-top: -5rem;
+    z-index: 1;
+    margin-top:-5vh;
     line-height: 18vh;
     @include font($header-font-name, 20vh, white, bold);
     user-select: none;
@@ -20,8 +21,13 @@
 }
 
 .image {
-    z-index: -2;
+    z-index: 0;
     filter: drop-shadow(5px 5px 15px rgba(0,0,0,.2)) drop-shadow(-5px -5px 15px rgba(0,0,0,.2));
+    overflow: hidden;
+
+    #canvas3d {
+        height: 100vh;
+    }
 }
 
 main {

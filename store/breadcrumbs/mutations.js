@@ -1,7 +1,6 @@
 export default {
     addPositionedBreadcrumb(state, {todo}) {
         if(state.steps < todo.step) {
-            console.log("Insert new Item");
             state.steps = todo.step;
             state.items.push({text: todo.text, link: todo.link});
         } else {

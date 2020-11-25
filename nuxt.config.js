@@ -3,7 +3,14 @@ export default {
         analyze: true,
         extend(config) {
             config.resolve.alias['vue'] = 'vue/dist/vue.common'
-        }
+        },
+        transpile: [
+            "gsap"
+        ]
+    },
+    server :{
+      port: 80,
+      host: "0.0.0.0"
     },
     buildDir: 'nuxt-dist',
     css: [
@@ -41,5 +48,6 @@ export default {
     },
     modules: [
         'vue-scrollto/nuxt'
-    ]
+    ],
+    loading: "~/components/loading/loading.vue"
 }

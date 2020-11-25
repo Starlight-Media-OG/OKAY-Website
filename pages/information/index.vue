@@ -16,18 +16,10 @@
             </div>
             <div class="area flex flex-center">
                 <div class="smallSize">
-                    <h2>Mitglieder</h2>
-                    <div class="cards flexWrap flex flex-center">
-                        <teamCard v-for="team1 in team" :key="team1.mId" :id="team1.mId"/>
-                    </div>
-                </div>
-            </div>
-            <div class="area flex flex-center">
-                <div class="smallSize">
                     <h2>Projekte</h2>
                     <div class="cards row flex flex-center">
                         <card v-for="project in projects" :key="project.id" :id="projects.id" :title="project.titel" :teaser="project.beschreibung"
-                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + 'plakat.png'" projects/>
+                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + 'plakat.png'" projects />
                     </div>
                 </div>
             </div>
@@ -103,7 +95,7 @@ export default {
                     titel: "Projekt Diplomarbeit",
                     start_datum: new Date(Date.now()).toLocaleDateString(),
                     end_datum: new Date(Date.now()).toLocaleDateString(),
-                    bilder_pfad: "http:localhost:4000/projects/1/",
+                    bilder_pfad: "http://localhost:4000/projects/1/",
                     beschreibung: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et"
                 }
             ]
@@ -138,6 +130,10 @@ export default {
 
 <style scoped lang="scss">
 @import '../../assets/style/variable.scss';
+
+.root {
+    overflow: hidden;
+}
 
 .date {
     color: $primary-yellow;
@@ -180,16 +176,11 @@ export default {
     }
 
     .area {
-        background-color: $primary-blue;
         padding: 5vh 0;
         width: 100%;
 
         h4 {
             padding-bottom: 2vh;
-        }
-
-        &:nth-child(even) {
-            background-color: transparent;
         }
 
         .smallSize {

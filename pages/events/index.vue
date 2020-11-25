@@ -5,12 +5,12 @@
                 Events
             </div>
             <div class="svgGraphic">
-                <!-- TODO: Include Grahpic for Events-->
+                <img src="/animations/events.gif" alt="Events Animation">
             </div>
         </section>
         <section class="main flex flex-center">
             <div class="lastWeek flex flex-center">
-                <h2 class="weekHeader">Letzte Woche</h2>
+                <h2 class="weekHeader">Letzter Monat</h2>
                 <div class="row flex flex-center">
                     <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="oaId">
                         <card :title="event.titel" :teaser="event.beschreibung"
@@ -23,7 +23,7 @@
                 </div>
             </div>
             <div class="thisWeek flex flex-center">
-                <h2 class="weekHeader">Diese Woche</h2>
+                <h2 class="weekHeader">Dieser Monat</h2>
                 <div class="row flex flex-center">
                     <div class="cards" v-for="event in objectsCurrent" :key="oaId" v-if="objectsCurrent.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="nextWeek flex flex-center">
-                <h2 class="weekHeader">Nächste Woche</h2>
+                <h2 class="weekHeader">Nächster Monat</h2>
                 <div class="row flex flex-center">
                     <div class="cards" v-for="event in objectsNext" :key="oaId" v-if="objectsNext.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
@@ -59,23 +59,24 @@
 @import '../../assets/style/variable.scss';
 
 main {
-    $header-height: 40vh;
-
-    .row-12 {
-        height: 100vh;
-    }
+    overflow: hidden;
 
     .header {
-        height: $header-height;
         margin-left: -20vw;
         transform: rotate(-8deg);
     }
 
     .svgGraphic {
-        height: calc(100vh - #{$header-height});
+        transform: rotate(8deg);
+        margin-top: 5vh;
+        z-index: -99;
 
         @media screen and (max-width: $breakpoint-medium-max) {
-            display: none;
+            margin-left: 10vw;
+            img {
+                margin: 0 auto;
+                width: 80vw;
+            }
         }
     }
 }
@@ -83,6 +84,15 @@ main {
 .weekHeader {
     margin-top: 5vh;
     margin-bottom: 2vh;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        margin-bottom: 10vh;
+        margin-top: -10vh;
+
+        &:first-child {
+            margin-top: 5vh;
+        }
+    }
 }
 </style>
 
@@ -104,20 +114,14 @@ export default {
     methods: {
         sortEvents: function (arr) {
             arr.forEach((value) => {
-                if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date())) {
+                if (new Date(value.start_datum).getMonth() === new Date().getMonth()) {
                     this.objectsCurrent.push(value);
-                } else if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000))) {
+                } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() - 31 * 24 * 60 * 60 * 1000).getMonth()) {
                     this.objectsLast.push(value);
-                } else if (this.getWeek(new Date(value.start_datum)) === this.getWeek(new Date(Date.now() + 7 * 24 * 60 * 60 * 1000))) {
+                } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).getMonth()) {
                     this.objectsNext.push(value);
                 }
             });
-        },
-        getWeek: function (dt) {
-            const onejan = new Date(dt.getFullYear(), 0, 1);
-            const today = new Date(dt.getFullYear(), dt.getMonth(), dt.getDate());
-            const dayOfYear = ((today - onejan + 86400000) / 86400000);
-            return Math.ceil(dayOfYear / 7);
         }
     },
     async fetch() {
@@ -135,14 +139,14 @@ export default {
                 "titel": "Heinz Knapp",
                 "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                 "bilder_path": "img/HeinzKnapp",
-                "start_datum": new Date(Date.now() - (7 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
+                "start_datum": new Date(Date.now() - (31 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
                 "oaId": 1022
             },
             {
                 "titel": "Heinz Knapp",
                 "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                 "bilder_path": "img/HeinzKnapp",
-                "start_datum": new Date(Date.now() + (7 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
+                "start_datum": new Date(Date.now() + (31 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
                 "oaId": 1023
             }
         ];

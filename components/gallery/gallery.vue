@@ -39,7 +39,7 @@
 
             try {
               if (this.id !== undefined) {
-                data = await axios.get("http://localhost:4000/images?path=uploads/events/" + this.id + "/");
+                data = await axios.get("http://server.okay-ybbs.at:4000/images?path=uploads/events/" + this.id + "/");
               } else {
                 data = await axios.get(this.imgPath);
               }
@@ -48,9 +48,9 @@
                 this.images = [];
                 let tmp = "server/uploads";
                 data.data.data.forEach(item => {
-                  this.images.push('http://localhost:4000' + item.replace(tmp, ''));
+                  this.images.push('http://server.okay-ybbs.at:4000' + item.replace(tmp, ''));
                   if (selectOneImage) {
-                    this.selectedImage = "http://localhost:4000" + item.replace(tmp, "");
+                    this.selectedImage = "http://server.okay-ybbs.at:4000" + item.replace(tmp, "");
                     selectOneImage = false;
                   }
                 });

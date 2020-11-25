@@ -90,7 +90,7 @@ nav {
 }
 
 .breadcrumbs {
-    $tmp: 50vh;
+    $tmp: 540px;
     position: fixed;
     left: 0;
     top: 50%;
@@ -98,13 +98,14 @@ nav {
     width: $tmp;
     border-radius: $tmp;
     background-color: $primary-blue;
-    transform: translateX(-90%) translateY(-50%);
+    transform: translateX(-88%) translateY(-50%);
     user-select: none;
     font-family: $flow-font-name;
+    filter: drop-shadow(5px 5px 15px rgba(0,0,0,.2));
 
     .breadcrumbs-list {
-        transform: translateX(97%);
-        margin-top: 15vh;
+        transform: translateX(525px);
+        margin-top: 165px;
         color: white;
         font-size: 2rem;
 

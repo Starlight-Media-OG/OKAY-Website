@@ -20,7 +20,7 @@
                                 {{kom.text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="kom.images !== []">
+                        <div class="flex flex-center" v-if="kom.images.length !== 0">
                             <div class="images flex flex-center">
                                 <div class="row">
                                     <div v-for="image in kom.images" :key="image" class="col flex flex-center">
@@ -123,7 +123,7 @@
                         id: 10,
                         username: "Philipp Dvorak",
                         text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "http://localhost:4000/images?path=uploads/events/1020/comment10",
+                        bilder_path: "http://server.okay-ybbs.at:4000/images?path=uploads/events/1020/comment10",
                         images: []
                     }, {
                         id: 123,
@@ -151,7 +151,7 @@
                 //Send text to DB
 
                 if (this.files !== []) {
-                    let data = await axios.post("http://localhost:4000/images/upload/events/", this.files);
+                    let data = await axios.post("http://server.okay-ybbs.at:4000/images/upload/events/", this.files);
                     console.log(data.data);
                 }
 
@@ -180,7 +180,7 @@
                     let data = await axios.get(item.bilder_path);
                     if (data.data.status === true) {
                         for (const value of data.data.data) {
-                            item.images.push("http://localhost:4000" + value.replace("server/uploads", ""));
+                            item.images.push("http://server.okay-ybbs.at:4000" + value.replace("server/uploads", ""));
                         }
                     }
                 }

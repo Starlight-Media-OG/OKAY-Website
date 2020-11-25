@@ -70,6 +70,10 @@ $opts: 'col','row';
     width: $width;
 }
 
+.row-max {
+    width: 100%;
+}
+
 .space-between {
     flex-direction: row;
     flex-wrap: wrap;
@@ -135,4 +139,18 @@ em {
 
 .text-align-left {
     text-align: left;
+}
+
+.area {
+    background-color: $primary-blue;
+
+    &:nth-child(even) {
+        background-color: $bg-blue;
+    }
+}
+
+.noStyle {
+    list-style: none;
+    color: white;
+    padding-left: 1rem;
 }

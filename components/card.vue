@@ -76,16 +76,16 @@
             },
             cardColor: function () {
                 if(this.events) {
-                    return "#003865"
+                    return "#00629B"
                 } else if (this.news) {
-                    return "#FFDB24"
+                    return "#FFC72C"
                 } else if (this.projects) {
                     return "#dedede"
                 }
             },
             buttonColor: function () {
                 if(this.events) {
-                    return "#004e96"
+                    return "#134364"
                 } else if (this.news) {
                     return "#fae057"
                 } else if (this.projects) {
@@ -94,11 +94,11 @@
             },
             fontColor: function() {
                 if(this.events) {
-                    return "#dedede"
+                    return "#fff"
                 } else if (this.news) {
-                    return "#2f2f2f"
+                    return "#000"
                 } else if (this.projects) {
-                    return "#2f2f2f"
+                    return "#000"
                 }
             }
         }

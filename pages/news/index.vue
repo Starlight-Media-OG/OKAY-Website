@@ -5,7 +5,7 @@
                 News
             </div>
             <div class="svgGraphic">
-                <!-- TODO: Include Grahpic for News-->
+                <img src="/animations/news.gif" alt="Nachrichtenstapel Animation">
             </div>
         </section>
         <section class="content flex flex-center">
@@ -21,32 +21,33 @@
 @import '../../assets/style/variable.scss';
 
 main {
-    $header-height: 40vh;
-
-    .row-12 {
-        height: 100vh;
-    }
+    overflow: hidden;
 
     .header {
-        height: $header-height;
         margin-left: -20vw;
         transform: rotate(-8deg);
 
         @media screen and (max-width: $breakpoint-medium-max) {
-            margin-bottom: 20vh;
+            margin-bottom: 10vh;
+        }
+    }
+
+    .svgGraphic {
+        transform: rotate(8deg);
+        margin-top: 5vh;
+        z-index: -99;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            margin-left: 10vw;
+            img {
+                margin: 0 auto;
+                width: 80vw;
+            }
         }
     }
 
     .content {
-        margin-bottom: 10vh;
-    }
-
-    .svgGraphic {
-        height: calc(100vh - #{$header-height});
-
-        @media screen and (max-width: $breakpoint-medium-max) {
-            display: none;
-        }
+        margin-top: 5vh;
     }
 }
 </style>

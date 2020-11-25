@@ -5,7 +5,7 @@
                 Produkte
             </div>
             <div class="svgGraphic">
-                <!-- TODO: Include Grahpic for News-->
+                <img src="/animations/products.gif" alt="Buch Animation">
             </div>
         </section>
         <section class="content">
@@ -21,33 +21,27 @@
 @import '../../assets/style/variable.scss';
 
 main {
-    $header-height: 40vh;
-
-    .row-12 {
-        height: 100vh;
-    }
+    overflow: hidden;
 
     .header {
-        height: $header-height;
         margin-left: -20vw;
         transform: rotate(-8deg);
-
-        .title {
-            @media screen and (max-width: $breakpoint-medium-max) {
-                font-size: 7vh;
-            }
-        }
-
     }
 
     .svgGraphic {
-        height: calc(100vh - #{$header-height});
+        margin-top: 5vh;
+        transform: rotate(8deg);
+        margin-left: 20vw;
+        z-index: -99;
 
         @media screen and (max-width: $breakpoint-medium-max) {
-            display: none;
+            margin-left: 10vw;
+            img {
+                margin: 0 auto;
+                width: 80vw;
+            }
         }
     }
-
 }
 
 .content {

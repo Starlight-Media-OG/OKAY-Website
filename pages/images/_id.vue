@@ -43,8 +43,12 @@
     }
 
     @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.3rem, $primary-yellow, 700);
+        @include font($header-font-name, 1.225rem, $primary-yellow, 700);
         padding-bottom: 2vh;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        @include font($header-font-name, 2rem, $primary-yellow, bold);
     }
 }
 
@@ -72,7 +76,7 @@
 }
 
 .content {
-    width: 100vw;
+    width: 100%;
     margin: 10vh 0;
 }
 </style>

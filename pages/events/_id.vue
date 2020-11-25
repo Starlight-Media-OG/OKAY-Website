@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -26,7 +26,7 @@
             </div>
         </section>
         <section id="content" class="content flex flex-center">
-            <article class="beschreibung">
+            <article class="beschreibung" style="padding: 1rem;width: 90%;">
                 <div class="bes">
                     <h2>Beschreibung</h2>
                     {{ this.beschreibung }}
@@ -53,6 +53,10 @@
 <style lang="scss" scoped>
 @import '../../assets/style/variable.scss';
 
+main {
+    overflow: hidden;
+}
+
 .date {
     @include font($header-font-name, 4rem, $primary-yellow, bold);
     line-height: 4rem;
@@ -62,15 +66,23 @@
     }
 
     @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1.5rem, $primary-yellow, bold);
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
         @include font($header-font-name, 2rem, $primary-yellow, bold);
     }
 }
+
 
 .address {
     @include font($flow-font-name, 2rem, white);
     line-height: 2rem;
     @media screen and (max-width: $breakpoint-medium-max) {
         padding-bottom: 5vh;
+    }
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 1.8rem;
     }
 }
 
@@ -86,6 +98,10 @@
         @include font($header-font-name, 1.3rem, $primary-yellow, 700);
         padding-bottom: 2vh;
     }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        @include font($header-font-name, 2rem, $primary-yellow, 700);
+    }
 }
 
 .header {
@@ -95,7 +111,7 @@
 .content {
     margin-top: 5vh;
     float: left;
-    width: 100vw;
+    width: 100%;
 
     .commentBox {
         width: 100%;
@@ -107,6 +123,14 @@
 
         h2 {
             @include font($header-font-name, 3rem, white, bold);
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                font-size: 2rem;
+            }
+        }
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 1rem;
         }
 
         .dateOpen {
@@ -157,6 +181,15 @@ export default {
     computed: {
         title: function () {
             return this.name.split(" ");
+        },
+        sizeDetection: function () {
+            if(this.name.length - this.name.split(" ").length <= 10 ) {
+                return "12vh";
+            } else if(this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                return "10vh";
+            } else if(this.name.length - this.name.split(" ").length > 20) {
+                return "8vh";
+            }
         }
     },
     async fetch() {

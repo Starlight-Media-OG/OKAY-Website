@@ -5,7 +5,7 @@
   margin-left: 5vw;
   line-height: 16vh;
   @include font($header-font-name, 17vh, white, bold);
-  z-index: -2;
+  z-index: 1;
 
   .vertical {
     writing-mode: vertical-lr;
@@ -13,13 +13,20 @@
     font-size: 15vh;
     background-color: transparent;
   }
+
   p:last-child {
     transform: translateY(-28vh);
   }
 }
 
 .image {
-  z-index: -5;
+  z-index: 0;
+  filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, .2)) drop-shadow(-5px -5px 15px rgba(0, 0, 0, .2));
+  overflow: hidden;
+
+  #canvas3d {
+    height: 100vh;
+  }
 }
 
 main {
@@ -38,9 +45,9 @@ main {
 
 .link {
   margin-bottom: 7vh;
+
   .further-link {
     text-decoration: none;
-    color: $primary-yellow;
     @include font($header-font-name, 3.32vh, $primary-yellow, bold);
   }
 }
