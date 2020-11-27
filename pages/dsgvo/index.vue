@@ -44,6 +44,21 @@ export default {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "DSGVO", links:"/dsgvo"} });
+    },
+    head() {
+        return {
+            title: "DSGVO - OKAY Ybbs",
+            meta: [
+                {
+                    name: "description",
+                    content: "Die Datenschutzgrundverordnung von OKAY"
+                },
+                {
+                    name: "keywords",
+                    content: "DSGVO, Verein, Speicherdauer, Recht, Person"
+                }
+            ]
+        }
     }
 }
 </script>

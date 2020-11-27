@@ -17,7 +17,7 @@
         </nav>
         <div class="logo">
             <nuxt-link to="/">
-                <logo/>
+                <logo big="true"/>
             </nuxt-link>
         </div>
         <div class="bg" @click="hideMenu" v-if="menuActive">

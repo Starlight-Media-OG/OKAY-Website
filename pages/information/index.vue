@@ -10,7 +10,7 @@
                 <div class="smallSize">
                     <h2>Der Vorstand</h2>
                     <div class="cards flexWrap flex flex-center">
-                        <teamCard v-for="team1 in teamLead" :key="team1.mId" :id="team1.mId"/>
+                        <teamCard v-for="team1 in team" :key="team1.mId" :id="team1.mId"/>
                     </div>
                 </div>
             </div>
@@ -95,29 +95,20 @@ export default {
                     titel: "Projekt Diplomarbeit",
                     start_datum: new Date(Date.now()).toLocaleDateString(),
                     end_datum: new Date(Date.now()).toLocaleDateString(),
-                    bilder_pfad: "http://localhost:4000/projects/1/",
+                    bilder_pfad: "http://server.okay-ybbs.at:4000/projects/1/",
                     beschreibung: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et"
                 }
             ]
         }
     },
-    computed: {
-        teamLead: function () {
-            let tmp = [];
-            console.log(this.team);
-            this.team.forEach(value => {
-                if (value.lead) {
-                    tmp.push(value);
-                }
-            });
-            console.log(tmp);
-            return tmp;
-        }
-    },
     head() {
         return {
             title: "Über Uns - OKAY Ybbs",
-            meta: []
+            meta: [
+                {
+
+                }
+            ]
         }
     },
     created() {

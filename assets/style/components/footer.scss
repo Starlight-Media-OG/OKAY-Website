@@ -9,7 +9,7 @@
 @media screen and (min-width: $breakpoint-xlarge) {
     .footer {
         background-color: $primary-yellow;
-        height: 33vh;
+        height: 35vh;
         font-family: $flow-font-name;
     }
 
@@ -73,6 +73,10 @@
             font-weight: bold;
             transition: .5s;
         }
+    }
+
+    .copyright {
+        margin-top: 20px;
     }
 
     .row {

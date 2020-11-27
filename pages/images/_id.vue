@@ -123,6 +123,14 @@ export default {
             meta: [
                 {
                     charset: 'utf-8'
+                },
+                {
+                    name: "description",
+                    content: "Bildergallerie der News/Events/Produkte von OKAY"
+                },
+                {
+                    name: "robots",
+                    content: "noindex"
                 }
             ]
         }

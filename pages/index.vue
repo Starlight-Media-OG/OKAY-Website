@@ -21,7 +21,8 @@
                 <h2>Events</h2>
                 <div v-for="event of events" :key="event.oaId" class="singleEvents">
                     <card :id="event.oaId" :date="event.start_datum" :endDate="event.ende_Datum"
-                          :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel" events/>
+                          :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
+                          events/>
                 </div>
                 <div class="link center">
                     <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
@@ -30,8 +31,8 @@
             <div class="news">
                 <h2>News</h2>
                 <div v-for="news1 of news" :key="news1.nId" class="singleNews">
-                    <card :id="news1.nId" :image="news1.bilder_path + '/plakat.jpg'" :teaser="news1.anreiser"
-                          :title="news1.titel" news/>
+                    <card :id="news1.nId" :date="news1.datum" :image="news1.bilder_path + '/plakat.jpg'"
+                          :teaser="news1.anreiser" :title="news1.titel" news/>
                 </div>
                 <div class="link center">
                     <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
@@ -100,6 +101,10 @@ export default {
                 {
                     charset: 'utf-8'
                 },
+                {
+                    name: "description",
+                    content: "Herzlich Willkommen beim OKAY! Wir sind ein Kulturverein mit Sitz in Ybbs an der Donau. Du bist für Kultur interessiert dann schau bei uns vorbei."
+                }
             ]
         }
     },
@@ -111,7 +116,7 @@ export default {
     },
     methods: {
         scrollTo: function (target) {
-            var options = {
+            let options = {
                 container: 'body',
                 easing: 'ease-in-out',
                 force: true,
@@ -242,7 +247,8 @@ export default {
             scene.render();
         });
         //endregion
-
+    },
+    async fetch() {
         //Fetch Data from DB via Middleware... Save in events and news Variable
         this.events = [
             {
@@ -273,21 +279,24 @@ export default {
                 "titel": "Heinz Knapp",
                 "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                 "bilder_path": "img/HeinzKnapp",
+                "datum": "21.Mai 2020",
                 "nId": 1020
             },
             {
                 "titel": "Heinz Knapp",
                 "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                 "bilder_path": "img/HeinzKnapp",
+                "datum": "21.Mai 2020",
                 "nId": 1020
             },
             {
                 "titel": "Heinz Knapp",
                 "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
                 "bilder_path": "img/HeinzKnapp",
+                "datum": "21.Mai 2020",
                 "nId": 1020
             }
         ]
-    },
+    }
 }
 </script>

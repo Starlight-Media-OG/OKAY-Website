@@ -4,8 +4,8 @@
             <arrow class="arrow" direction="top" />
         </div>
         <div class="navigation flex flex-center v-space-between">
-            <div class="facebook">
-                <fb />
+            <div class="row facebook" style="height: 50px;">
+                <a href="https://www.facebook.com/okay.ybbs/" target="_blank"><fb /></a>
             </div>
             <div class="first-row space-between">
                 <nuxt-link to="/" class="footer-nav">Home</nuxt-link>
@@ -20,8 +20,7 @@
                 <a class="footer-nav-2" @click="modalToggle()">Wo sind wir</a>
                 <nuxt-link to="/impressum" class="footer-nav-2">Impressum</nuxt-link>
             </div>
-            <div class="copyright flex flex-center">
-                <p class="row text-center logo"><logo /></p>
+            <div class="row copyright flex flex-center">
                 <p class="row text-center logo name">Offene Kultur aus Ybbs</p>
                 <p class="row text-center copyright-text">&copy; Copyright 2010 - 2017 okay-ybbs.at</p>
                 <p class="row text-center copyright-text">Alle Rechte vorbehalten</p>
@@ -34,7 +33,7 @@
                     x
                 </div>
                 <div class="location row">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2237.182600328895!2d15.082669391312585!3d48.1782284178683!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477243125aa481b3%3A0xc8f999996dfaa3b9!2sHerrengasse%2023%2C%203370%20Ybbs%20an%20der%20Donau!5e0!3m2!1sde!2sat!4v1598121958973!5m2!1sde!2sat" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0" class="frame"></iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2660.4865047943445!2d15.081797615838893!3d48.17797715632491!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x477243125e8fe727%3A0xfb655a4c282044b3!2sHerrengasse%2015%2C%203370%20Ybbs%20an%20der%20Donau!5e0!3m2!1sde!2sat!4v1606489095766!5m2!1sde!2sat" frameborder="0" style="border:0; height: 100%; width:100%;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
                 </div>
             </div>
         </div>
@@ -44,12 +43,11 @@
 <script>
     import arrow from '~/components/svg/arrow.vue';
     import fb from '~/components/svg/fb.vue';
-    import logo from '~/components/svg/logo.vue';
 
     export default {
         name: "foot",
         components: {
-            arrow, fb, logo
+            arrow, fb
         }, methods: {
             scrollTop: function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -3,18 +3,18 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _3ff1a176 = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
-const _112c1e6a = () => interopDefault(import('../pages/dsgvo/index.vue' /* webpackChunkName: "pages/dsgvo/index" */))
-const _40641f56 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
-const _428393d1 = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
-const _bc0e52f4 = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
-const _2b1b9dcf = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
-const _2856eaa0 = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
-const _a553f806 = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
-const _50dcd65c = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
-const _3944c7f7 = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
-const _73df1508 = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
-const _8bb26bae = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _82a151be = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
+const _3dd91300 = () => interopDefault(import('../pages/dsgvo/index.vue' /* webpackChunkName: "pages/dsgvo/index" */))
+const _674314c0 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
+const _c906d8f4 = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
+const _be9e860a = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
+const _08563e0c = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
+const _b1d6bf6a = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
+const _7e0f4728 = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
+const _21961987 = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
+const _a18a4c3c = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
+const _09578d1a = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _4254f81e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -34,51 +34,51 @@ export const routerOptions = {
 
   routes: [{
     path: "/calender",
-    component: _3ff1a176,
+    component: _82a151be,
     name: "calender"
   }, {
     path: "/dsgvo",
-    component: _112c1e6a,
+    component: _3dd91300,
     name: "dsgvo"
   }, {
     path: "/events",
-    component: _40641f56,
+    component: _674314c0,
     name: "events"
   }, {
     path: "/impressum",
-    component: _428393d1,
+    component: _c906d8f4,
     name: "impressum"
   }, {
     path: "/information",
-    component: _bc0e52f4,
+    component: _be9e860a,
     name: "information"
   }, {
     path: "/news",
-    component: _2b1b9dcf,
+    component: _08563e0c,
     name: "news"
   }, {
     path: "/products",
-    component: _2856eaa0,
+    component: _b1d6bf6a,
     name: "products"
   }, {
     path: "/events/:id",
-    component: _a553f806,
+    component: _7e0f4728,
     name: "events-id"
   }, {
     path: "/images/:id?",
-    component: _50dcd65c,
+    component: _21961987,
     name: "images-id"
   }, {
     path: "/news/:id",
-    component: _3944c7f7,
+    component: _a18a4c3c,
     name: "news-id"
   }, {
     path: "/products/:id",
-    component: _73df1508,
+    component: _09578d1a,
     name: "products-id"
   }, {
     path: "/",
-    component: _8bb26bae,
+    component: _4254f81e,
     name: "index"
   }],
 

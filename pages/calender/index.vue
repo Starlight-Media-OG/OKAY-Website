@@ -29,6 +29,20 @@ export default {
                 link: "/calender"
             }
         });
+    },
+    head () {
+        return {
+            title: "Kalender - OKAY Ybbs",
+            meta: [
+                {
+                    charset: 'utf-8'
+                },
+                {
+                    name: "description",
+                    content: "Alle Events in einem Kalender sortiert und monatlich dargestellt"
+                }
+            ]
+        }
     }
 }
 </script>

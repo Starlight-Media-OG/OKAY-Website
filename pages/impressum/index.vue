@@ -26,6 +26,21 @@ export default {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:2, text:"Impressum", link:"/impressum"} });
+    },
+    head() {
+      return {
+          title: "Impressum - OKAY Ybbs",
+          meta: [
+              {
+                  name: "description",
+                  content: "Das Impressum von OKAY Ybbs - Offene Kultur aus Ybbs"
+              },
+              {
+                  name: "keywords",
+                  content: "ZVR-ZL, E-Mail, Vereinssitz Ybbs"
+              }
+          ]
+      }
     }
 }
 </script>

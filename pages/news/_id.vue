@@ -164,10 +164,18 @@ export default {
     },
     head() {
         return {
-            title: "News - OKAY Ybbs",
+            title: this.name + " - OKAY Ybbs",
             meta: [
                 {
                     charset: 'utf-8'
+                },
+                {
+                    name: "robots",
+                    content: "noindex",
+                },
+                {
+                    name: "description",
+                    content: this.beschreibung
                 }
             ]
         }

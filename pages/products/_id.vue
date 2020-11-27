@@ -230,10 +230,18 @@ export default {
     },
     head() {
         return {
-            title: "Produkt - OKAY Ybbs",
+            title: this.name + " - OKAY Ybbs",
             meta: [
                 {
                     charset: 'utf-8'
+                },
+                {
+                    name: "description",
+                    content: this.beschreibung
+                },
+                {
+                    name: "robots",
+                    content: "noindex"
                 }
             ]
         }

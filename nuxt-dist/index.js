@@ -13,7 +13,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_vuescrollto_04bc1b13 from 'nuxt_plugin_vuescrollto_04bc1b13' // Source: ./vue-scrollto.js (mode: 'client')
+import nuxt_plugin_vuescrollto_5db51ac8 from 'nuxt_plugin_vuescrollto_5db51ac8' // Source: ./vue-scrollto.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -79,8 +79,13 @@ async function createApp(ssrContext, config = {}) {
                     content: "width=device-width, initial-scale=1"
                 },
                 {
-                    charset: 'utf-16',
+                    charset: 'utf-8',
                     hid: 'charset'
+                },
+                {
+                    hid: "keywords",
+                    name: "keywords",
+                    content: "OKAY, Offene Kultur aus Ybbs, Ybbs an der Donau, Kultur, Kulturveranstaltung, Ybbs, Niebelungengau, Donau, Kultur"
                 }
             ],
             link: [
@@ -91,6 +96,11 @@ async function createApp(ssrContext, config = {}) {
                 {
                     rel: "stylesheet",
                     href:"https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+                },
+                {
+                    rel: "icon",
+                    type: "image/svg+xml",
+                    ref:"/favicon.svg"
                 }
             ]
         }
@@ -223,8 +233,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_vuescrollto_04bc1b13 === 'function') {
-    await nuxt_plugin_vuescrollto_04bc1b13(app.context, inject)
+  if (process.client && typeof nuxt_plugin_vuescrollto_5db51ac8 === 'function') {
+    await nuxt_plugin_vuescrollto_5db51ac8(app.context, inject)
   }
 
   // Lock enablePreview in context

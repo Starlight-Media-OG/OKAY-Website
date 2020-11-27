@@ -121,6 +121,14 @@ export default {
             meta: [
                 {
                     charset: 'utf-8'
+                },
+                {
+                    name: "description",
+                    content: "Alle Produkte werden hier angezeigt, zu diesen zählen hauptsächlich Bücher"
+                },
+                {
+                    name: "keywords",
+                    content: "Bücher"
                 }
             ]
         }

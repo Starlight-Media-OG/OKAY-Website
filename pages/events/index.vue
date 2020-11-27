@@ -164,7 +164,15 @@ export default {
             meta: [
                 {
                     charset: 'utf-8'
-                }
+                },
+                {
+                    name: "description",
+                    content: "Hier werden alle aktuellen Events angezeigt, welche vom OKAY Verein organisisert werden."
+                },
+                {
+                    name: "keywords",
+                    content: "OKAY, Verein, Events, KIZ, Ausstellung, Gallerie, Konzert"
+                },
             ]
         }
     },

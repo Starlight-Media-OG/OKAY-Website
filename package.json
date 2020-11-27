@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.12.2",
-    "babylonjs": "^4.1.0",
+    "babylonjs": "^4.2.0",
     "createjs": "^1.0.1",
     "gsap": "^3.5.1",
     "nuxt": "^2.14.4",

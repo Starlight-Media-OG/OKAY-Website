@@ -254,10 +254,22 @@ export default {
     },
     head() {
         return {
-            title: "Event - OKAY Ybbs",
+            title: this.name + " - OKAY Ybbs",
             meta: [
                 {
                     charset: 'utf-16'
+                },
+                {
+                    name: "description",
+                    content: this.beschreibung
+                },
+                {
+                    name: "keywords",
+                    content: "KIZ, Vereinshaus, OKAY, Konzert, Ausstellung, Bildergallerie, Vorlesung"
+                },
+                {
+                    name: "robots",
+                    content: "noindex, nofollow"
                 }
             ]
         }

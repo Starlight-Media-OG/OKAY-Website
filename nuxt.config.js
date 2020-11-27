@@ -30,8 +30,13 @@ export default {
                     content: "width=device-width, initial-scale=1"
                 },
                 {
-                    charset: 'utf-16',
+                    charset: 'utf-8',
                     hid: 'charset'
+                },
+                {
+                    hid: "keywords",
+                    name: "keywords",
+                    content: "OKAY, Offene Kultur aus Ybbs, Ybbs an der Donau, Kultur, Kulturveranstaltung, Ybbs, Niebelungengau, Donau, Kultur"
                 }
             ],
             link: [
@@ -42,6 +47,11 @@ export default {
                 {
                     rel: "stylesheet",
                     href:"https://fonts.googleapis.com/css2?family=Source+Serif+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap"
+                },
+                {
+                    rel: "icon",
+                    type: "image/svg+xml",
+                    ref:"/favicon.svg"
                 }
             ]
         }

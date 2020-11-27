@@ -97,6 +97,10 @@ export default {
             meta: [
                 {
                     charset: 'utf-8'
+                },
+                {
+                    name: "description",
+                    content: "Alle Nachrichten betreffend Kultur aus dem wunderschönen Ybbs an der Donau"
                 }
             ]
         }

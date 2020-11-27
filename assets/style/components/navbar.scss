@@ -89,6 +89,16 @@ nav {
     background-color: transparent;
 }
 
+.logo {
+    width: 12vw;
+    height: auto;
+    position: fixed;
+    right: 2vw;
+    top: 2vw;
+    z-index: 97;
+    filter: drop-shadow(5px 5px 15px rgba(0,0,0,.4));
+}
+
 .breadcrumbs {
     $tmp: 540px;
     position: fixed;
