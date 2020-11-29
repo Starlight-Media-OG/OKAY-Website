@@ -185,13 +185,13 @@ export default {
         //In diesem Array werden die einzelnen Animationsstadien gespeichert, zwischen welchen Interpoliert wird
         let keys = [];
 
-        //Bei Frame: 0 wird das Objekt um auf den Wert 0.25 gedreht
+        //Bei Frame: 0 wird das Objekt um auf den Wert 0.4 gedreht
         keys.push({
             frame: 0,
             value: 0.4
         });
 
-        //Bei Frame: 30 wird das Objekt um auf den Wert 0.6 gedreht
+        //Bei Frame: 30 wird das Objekt um auf den Wert 0.8 gedreht
         keys.push({
             frame: 30,
             value: 0.8
@@ -207,19 +207,17 @@ export default {
             rahmen = scene.getMeshByID("Rahmen");
             bild = scene.getMeshByID("Bild");
 
-            // Das Bild wird als Mittelpunkt der Kamera gesetzt
-            camera.target = bild;
-
             //Hintergrund der Scene auf Transparent setzen
             scene.clearColor = new BABYLON.Color4(0, 0, 0, 0);
 
             //Die Anfangswerte für die Rotation der Objekte setzen
-            bild.rotation.y = 0.25;
-            rahmen.rotation.y = 0.25;
+            bild.rotation.y = 0.4;
+            rahmen.rotation.y = 0.4;
 
             //Dem Bild wird der Animatiosablauf zugewiesen
             bild.animations = [];
             bild.animations.push(animation);
+
             //Dem rahmen wird der Animatiosablauf zugewiesen
             rahmen.animations = [];
             rahmen.animations.push(animation);

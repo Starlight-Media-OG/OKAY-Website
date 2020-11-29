@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-center height-100">
-        <div class="row">
-            <div class="row header flex flex-center">
+        <div class="row" style="width: 75vw;">
+            <div class="row header flex flex-center" style="margin-top: 10vh;">
                 <h1 class="title">Datenschtuz</h1>
             </div>
             <h2>Speicherung persönlicher Daten</h2>
