@@ -94,7 +94,11 @@
                 </div>
             </div>
         </div>
+
+        <NewsletterPopUp :show="newsletterPopUp"/>
     </div>
+
+
 </template>
 
 <style scoped lang="scss">
@@ -104,7 +108,7 @@
 <script>
     import axios from 'axios';
     import check from "~/components/svg/check.vue";
-    import arrow from "@/components/svg/arrow";
+    import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
 
     export default {
         name: "comment",
@@ -112,7 +116,7 @@
             eId: String,
         },
         components: {
-            check
+            check, NewsletterPopUp
         },
         data() {
             return {
@@ -143,19 +147,22 @@
                 mail: "",
                 newsletter: true,
                 files: [],
-                modalShow: false
+                modalShow: false,
+                newsletterPopUp: false
             }
         },
         methods: {
             send: async function () {
                 //Send text to DB
 
-                if (this.files !== []) {
+                /* if (this.files !== []) {
                     let data = await axios.post("http://server.okay-ybbs.at:4000/images/upload/events/", this.files);
                     console.log(data.data);
-                }
+                } */
 
                 this.toggleModal();
+
+                this.newsletterPopUp =! this.newsletterPopUp;
             },
             initials: function (kom) {
                 let tmp = kom.username.split(" ");

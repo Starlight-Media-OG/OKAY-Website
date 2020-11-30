@@ -12,7 +12,7 @@
             <div class="lastWeek flex flex-center">
                 <h2 class="weekHeader">Letzter Monat</h2>
                 <div class="row flex flex-center">
-                    <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="oaId">
+                    <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
@@ -25,7 +25,7 @@
             <div class="thisWeek flex flex-center">
                 <h2 class="weekHeader">Dieser Monat</h2>
                 <div class="row flex flex-center">
-                    <div class="cards" v-for="event in objectsCurrent" :key="oaId" v-if="objectsCurrent.length !== 0">
+                    <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
@@ -38,7 +38,7 @@
             <div class="nextWeek flex flex-center">
                 <h2 class="weekHeader">Nächster Monat</h2>
                 <div class="row flex flex-center">
-                    <div class="cards" v-for="event in objectsNext" :key="oaId" v-if="objectsNext.length !== 0">
+                    <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
@@ -125,7 +125,7 @@ export default {
         }
     },
     async fetch() {
-        //TODO: Insert DB Function to fetch Objects with currentDate week Before and After
+        //TODO: Insert DB Function to fetch Objects with currentMonth week Before and After
 
         let events = [
             {

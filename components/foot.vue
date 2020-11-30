@@ -18,6 +18,7 @@
             <div class="second-row space-between">
                 <nuxt-link to="/dsgvo" class="footer-nav-2">Datenschutz</nuxt-link>
                 <a class="footer-nav-2" @click="modalToggle()">Wo sind wir</a>
+                <a class="footer-nav-2" @click="showNewsletter()">Newsletter</a>
                 <nuxt-link to="/impressum" class="footer-nav-2">Impressum</nuxt-link>
             </div>
             <div class="row copyright flex flex-center">
@@ -37,27 +38,34 @@
                 </div>
             </div>
         </div>
+
+        <NewsletterPopUp :show="news"/>
     </footer>
 </template>
 
 <script>
     import arrow from '~/components/svg/arrow.vue';
     import fb from '~/components/svg/fb.vue';
+    import NewsletterPopUp from "@/components/NewsletterPopup/NewsletterPopUp";
 
     export default {
         name: "foot",
         components: {
-            arrow, fb
+            arrow, fb, NewsletterPopUp
         }, methods: {
             scrollTop: function () {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             },
             modalToggle: function () {
                 this.modal = !this.modal;
+            },
+            showNewsletter: function() {
+                this.news =! this.news
             }
         }, data() {
             return {
-                modal: false
+                modal: false,
+                news: false
             }
         }
     }

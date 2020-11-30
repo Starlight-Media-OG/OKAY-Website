@@ -1,19 +1,19 @@
 <template>
     <div class="modal flex flex-center" v-if="show">
         <div class="content flex flex-center">
-            <div class="close row" @click="modalToggle">
-                x
-            </div>
             <div class="header row">
-                <h3></h3>
+                <h3>Bitte melden Sie sich beim Newsletter an!</h3>
             </div>
-            <div class="form">
+            <div class="form row">
                 <form>
                     <div class="row">
                         <label>
                             <div class="label">Vorname:</div>
                             <input type="text" class="input" v-model="vorname" />
                         </label>
+                    </div>
+
+                    <div class="row">
                         <label>
                             <div class="label">Nachname:</div>
                             <input type="text" class="input" v-model="nachname" />
@@ -30,10 +30,11 @@
                     <div class="row">
                         <label>
                             <div class="label">Geschlecht:</div>
-                            <input type="radio" class="input" v-model="gender" value="m" />
-                            <div class="label">Männlich</div>
-                            <input type="radio" class="input" v-model="gender" value="w" />
-                            <div class="label">Weiblich</div>
+                            <select class="input" v-model="gender">
+                                <option value="m">Männlich</option>
+                                <option value="f">Weiblich</option>
+                                <option value="x">Divers</option>
+                            </select>
                         </label>
                     </div>
                 </form>
@@ -61,17 +62,17 @@ export default {
             this.show =! this.show;
         },
         send: function() {
-            console.log(this.gender);
+            //SEND DATA TO API
 
-            //Implement API Call to add Newsletter Method to
+            this.modalToggle();
         }
     },
     data() {
         return {
-            vorname: String,
-            nachname: String,
-            mail: String,
-            gender: String
+            vorname: "",
+            nachname: "",
+            mail: "",
+            gender: ""
         }
     }
 }

@@ -71,8 +71,7 @@ main {
 }
 
 .back {
-    font-size: 3vh;
-    color: $primary-yellow;
+    @include font($header-font-name, 2.5rem, $primary-yellow, 700);
     transform: translateY(30%);
 
     &:hover {

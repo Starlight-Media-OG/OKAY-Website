@@ -1,1 +1,80 @@
 @import "../../assets/style/variable";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(20,20,20, 0.8);
+  z-index: 200;
+
+  .content {
+    width: 60%;
+    background-color: #dedede;
+    border-radius: 20px;
+    padding: 2vh 2vw;
+
+    .header {
+      @include font($flow-font-name, 2vh, #2f2f2f, bold);
+    }
+
+    .form {
+      form {
+        label {
+          @include font($flow-font-name, 2vh, #2f2f2f, bold);
+        }
+
+        .label {
+          float:left;
+          min-width: 15%;
+        }
+
+        .input {
+          width: 80%;
+          height: 100%;
+          border: 0;
+          border-radius: 1vw;
+          padding-left: 1vw;
+          @include font($flow-font-name, 2vh, #2f2f2f);
+        }
+
+        .checkInput {
+          height: 2vh;
+          width: 2vh;
+        }
+      }
+    }
+
+    .buttons {
+
+      .success {
+        cursor: pointer;
+        border: none;
+        height: 3vh;
+        width: 20vw;
+        margin-right: 5vw;
+        border-radius: 3vh;
+        background-color: $primary-yellow;
+        opacity: .7;
+        @include font($flow-font-name, 2vh, #2f2f2f);
+      }
+
+      .failure {
+        cursor: pointer;
+        border: none;
+        height: 3vh;
+        width: 20vw;
+        margin-right: 5vw;
+        border-radius: 3vh;
+        background-color: $primary-yellow;
+        @include font($flow-font-name, 2vh, #2f2f2f);
+      }
+    }
+
+    .row {
+      width: 100%;
+      margin-bottom: 2vh;
+    }
+  }
+}

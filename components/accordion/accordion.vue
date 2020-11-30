@@ -12,7 +12,9 @@
           </div>
         </div>
         <div class="accordion-body">
-          <div class="accordion-content">{{ content.text }}</div>
+          <div class="accordion-content">
+              <p v-html="content.text"></p>
+          </div>
         </div>
       </div>
     </div>
