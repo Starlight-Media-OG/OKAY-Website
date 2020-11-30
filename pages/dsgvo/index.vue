@@ -59,6 +59,14 @@ export default {
                 }
             ]
         }
+    },mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
     }
 }
 </script>

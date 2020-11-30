@@ -129,22 +129,13 @@ export default {
         }
     },
     mounted() {
-        /*if(document.readyState === "loading") {
-            this.$nextTick(() => {
-                this.$nuxt.$loading.start();
-            })
-        }
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
 
-        if(process.client) {
-            document.addEventListener("onload", () => {
-                console.log("Finished Loading")
-                this.$nuxt.$loading.finish();
-            });
-        } else {
-            setTimeout(this.$nextTick(() => {
-                this.$nuxt.$loading.finish();
-            }), 3000);
-        }*/
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
 
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, text: "Startseite", link: "/"}});

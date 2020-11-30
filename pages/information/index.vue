@@ -278,6 +278,15 @@ export default {
             ]
         }
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
+    },
     created() {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });

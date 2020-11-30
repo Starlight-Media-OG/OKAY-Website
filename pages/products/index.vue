@@ -115,6 +115,15 @@ export default {
             }
         ]
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
+    },
     head() {
         return {
             title: "Produkte - OKAY Ybbs",

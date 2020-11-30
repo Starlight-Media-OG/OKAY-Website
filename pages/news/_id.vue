@@ -162,6 +162,15 @@ export default {
             return "img/News" + this.id + "/";
         }
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
+    },
     head() {
         return {
             title: this.name + " - OKAY Ybbs",

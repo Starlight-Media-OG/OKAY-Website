@@ -227,6 +227,15 @@ export default {
     components: {
         gallery
     },
+    mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
+    },
     head() {
         return {
             title: this.name + " - OKAY Ybbs",

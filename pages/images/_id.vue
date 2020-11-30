@@ -116,6 +116,14 @@ export default {
     },
     mounted() {
         this.name = "Heinz Knapp"
+
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
     },
     head() {
         return {

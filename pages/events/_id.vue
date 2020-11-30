@@ -251,6 +251,14 @@ export default {
 
             this.$scrollTo(target, 500, options)
         }
+    },mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
+        window.addEventListener("load", () => {
+            this.$nuxt.$loading.finish();
+        });
     },
     head() {
         return {

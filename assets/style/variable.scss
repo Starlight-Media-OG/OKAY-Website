@@ -69,54 +69,54 @@ $width-card: 70vw;
     font-family: 'Nunito Sans';
     font-style: normal;
     font-weight: 400;
-    src: url("/static/fonts/Nunito_Sans/NunitoSans-Regular.ttf");
+    src: url("/fonts/Nunito_Sans/NunitoSans-Regular.ttf");
 }
 
 @font-face {
     font-family: "Nunito Sans";
     font-style: italic;
     font-weight: 400;
-    src: url("/static/fonts/Nunito_Sans/NunitoSans-Italic.ttf");
+    src: url("/fonts/Nunito_Sans/NunitoSans-Italic.ttf");
 }
 
 @font-face {
     font-family: "Nunito Sans";
     font-style: normal;
     font-weight: bold;
-    src: url("/static/fonts/Nunito_Sans/NunitoSans-Bold.ttf");
+    src: url("/fonts/Nunito_Sans/NunitoSans-Bold.ttf");
 }
 
 @font-face {
     font-family: "Nunito Sans";
     font-style: normal;
     font-weight: 200;
-    src: url("/static/fonts/Nunito_Sans/NunitoSans-Light.ttf");
+    src: url("/fonts/Nunito_Sans/NunitoSans-Light.ttf");
 }
 
 @font-face {
     font-family: "Source Serif Pro";
     font-style: normal;
     font-weight: normal;
-    src: url("/static/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf");
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Regular.ttf");
 }
 
 @font-face {
     font-family: "Source Serif Pro";
     font-style: italic;
     font-weight: normal;
-    src: url("/static/fonts/Source_Serif_Pro/SourceSerifPro-Italic.ttf");
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Italic.ttf");
 }
 
 @font-face {
     font-family: "Source Serif Pro";
     font-style: normal;
+    font-weight: bold;
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Source Serif Pro";
+    font-style: italic;
     font-weight: 200;
-    src: url("/static/fonts/Source_Serif_Pro/SourceSerifPro-Bold.ttf");
-}
-
-@font-face {
-    font-family: "Source Serif Pro";
-    font-style: italic;
-    font-weight: light;
-    src: url("/static/fonts/Source_Serif_Pro/SourceSerifPro-Light.ttf");
+    src: url("/fonts/Source_Serif_Pro/SourceSerifPro-Light.ttf");
 }

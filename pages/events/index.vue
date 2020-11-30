@@ -152,6 +152,10 @@ export default {
         ];
 
         this.sortEvents(events);
+    },mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
     },
     created() {
         this.$store.commit('breadcrumbs/clear');
