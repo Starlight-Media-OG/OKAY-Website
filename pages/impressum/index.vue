@@ -11,7 +11,7 @@
                 <li><strong>Obmann</strong> Dr. Karl Dorfmeister</li>
                 <li><strong>Obmannstellvertreter:</strong> Mag. Gerlinde Stöger, DI Gerald Böhm</li>
                 <li><strong>E-Mail: </strong>kulturverein@okay-ybbs.at</li>
-                <li class="break"><strong>Erstellung der Website:</strong> Philipp Dvorak</li>
+                <li class="break"><strong>Erstellung der Website: </strong>Philipp Dvorak</li>
                 <li>Dieser Webauftritt ist im Zusammenhang mit einer Diplomarbeit der IT-HTL Ybbs/Donau errichtet worden</li>
                 <li class="break">Informationspflicht laut §5 E-Commerce Gesetz, §14 Unternehmensgesetzbuch, §63 Gewerbeordnung und Offenlegungspflicht laut §25 Mediengesetz.</li>
             </ul>
@@ -46,7 +46,7 @@ export default {
               },
               {
                   name: "keywords",
-                  content: "ZVR-ZL, E-Mail, Vereinssitz Ybbs"
+                  content: "Impressum, Vereinssitz Ybbs,"
               }
           ]
       }

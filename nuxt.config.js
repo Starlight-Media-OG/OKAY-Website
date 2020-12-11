@@ -36,7 +36,7 @@ export default {
                 {
                     hid: "keywords",
                     name: "keywords",
-                    content: "OKAY, Offene Kultur aus Ybbs, Ybbs an der Donau, Kultur, Kulturveranstaltung, Ybbs, Niebelungengau, Donau, Kultur"
+                    content: "OKAY, Offene Kultur aus Ybbs, Ybbs an der Donau, Kultur, Kulturveranstaltung, Ybbs, Kultur, Kultuverein"
                 }
             ],
             link: [
