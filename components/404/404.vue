@@ -1,7 +1,11 @@
 <template>
-    <div class="super">
-        <canvas id="canvas"></canvas>
-    </div>
+    <main class="root flex flex-center">
+        <canvas id="canvas" class="row"></canvas>
+        <h2 class="row weekHeader flex flex-center">Ups, ein Fehler ist aufgetreten.</h2>
+        <div class="row link center">
+          <nuxt-link to="/" class="further-link"><em class="underline">Zurück zur Startseite</em></nuxt-link>
+        </div>
+    </main>
 </template>
 
 <script>
@@ -28,7 +32,7 @@ export default {
 
         //Erstellen der Beleuchtung (indirekte Beleuchtung, kein Spot)
         var light = new BABYLON.HemisphericLight("HemiLight", new BABYLON.Vector3(0, 1.5, 1.2), scene);
-        light.intensity = 12.0;
+        light.intensity = 9.0;
         //Definition welche Farben bei z.B. bei bestimmten Lichteindrücken hinzu gerechnet werden sollen
         light.diffuse = new BABYLON.Color3(0.9, 0.9, 0.9);
         light.specular = new BABYLON.Color3(0, 0, 0);
@@ -96,13 +100,5 @@ export default {
         width: 100vw;
         height: 65vh;
         position: relative;
-
-        #canvas {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translateY(-50%) translateX(-52%);
-            z-index: 0;
-        }
     }
 </style>

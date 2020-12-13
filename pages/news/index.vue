@@ -92,13 +92,19 @@ export default {
         ]
     },
     mounted() {
-        this.$nextTick(() => {
+        /*this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
 
         window.addEventListener("load", () => {
             this.$nuxt.$loading.finish();
-        });
+            window.removeEventListener("load", this);
+        });*/
+
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start()
+        setTimeout(() => this.$nuxt.$loading.finish(), 500)
+      })
     },
     head() {
         return {

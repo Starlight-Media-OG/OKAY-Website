@@ -9,7 +9,7 @@ export default {
         ]
     },
     server :{
-      port: 80,
+      port: 3000, //Build change to 80
       host: "0.0.0.0"
     },
     buildDir: 'nuxt-dist',
