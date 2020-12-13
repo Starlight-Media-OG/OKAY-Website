@@ -285,7 +285,7 @@ export default {
                 "datum": "21.Mai 2020",
                 "nId": 1020
             }
-        ]
+        ];
     }
 }
 </script>
