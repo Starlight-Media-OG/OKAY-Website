@@ -22,6 +22,7 @@
 
 <script>
 import { TweenLite,Elastic,Bounce, gsap } from "gsap";
+import { CSSPlugin } from "gsap/CSSPlugin";
 
 export default {
   name: "accordion",
