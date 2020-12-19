@@ -2,10 +2,10 @@
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center">
             <div class="title col-3" style="margin-top: 17vh;">
-                <p>Offene</p>
-                <p>Kultur</p>
+                <p style="line-height: 15vh;">Offene</p>
+                <p style="line-height: 16vh;">Kultur</p>
                 <p class="vertical opacity-50">Aus</p>
-                <p>Ybbs</p>
+                <p style="line-height: 20vh;">Ybbs</p>
             </div>
             <div id="canvasSuper" class="image col-6">
                 <canvas id="canvas3d" class="image" style="transform: translateX(-30%);"></canvas>
