@@ -106,15 +106,17 @@
         box-shadow: 5px -5px 10px rgba(0,0,0,.2);
         background-color: $primary-blue;
         z-index: 80;
+        height: 10vh;
 
         .box {
             width: 70%;
             margin: 2vh 0;
+            height: 80%;
 
             .textInput {
                 width: 80%;
-                height: 3vh;
                 float: left;
+                height: 100%;
 
                 @media screen and (max-width: $breakpoint-medium-max) {
                     width: 100%;
@@ -202,9 +204,8 @@
 
             .sendButton {
                 float: left;
-                background-color: white;
+                background-color: $primary-yellow;
                 width: 3vh;
-                height: 3vh;
                 border-radius: 3vh;
                 color: #2f2f2f;
 

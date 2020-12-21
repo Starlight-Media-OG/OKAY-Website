@@ -35,11 +35,11 @@
         </div>
 
         <div class="addComment flex flex-center">
-            <div class="box">
+            <div class="box flex flex-center">
                 <div class="textInput">
                     <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" />
                 </div>
-                <div class="addButton" @click="activeAdd =! activeAdd">
+                <div class="addButton flex flex-center" @click="activeAdd =! activeAdd">
                     <p class="text center">+</p>
                     <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
@@ -121,7 +121,7 @@
         data() {
             return {
                 activeAdd: false,
-                txt: "Einen Kommentar hinzufügen...",
+                txt: "",
                 koms: [
                     {
                         id: 10,
@@ -155,10 +155,10 @@
             send: async function () {
                 //Send text to DB
 
-                /* if (this.files !== []) {
+                if (this.files !== []) {
                     let data = await axios.post("http://server.okay-ybbs.at:4000/images/upload/events/", this.files);
                     console.log(data.data);
-                } */
+                }
 
                 this.toggleModal();
 
