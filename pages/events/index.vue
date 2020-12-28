@@ -67,11 +67,12 @@ main {
     }
 
     .svgGraphic {
-        transform: rotate(8deg);
+        transform: rotate(8deg) translateX(20%);
         margin-top: 5vh;
         z-index: -99;
 
         @media screen and (max-width: $breakpoint-medium-max) {
+            transform: translateX(0) rotate(0);
             margin-left: 10vw;
             img {
                 margin: 0 auto;
@@ -155,6 +156,7 @@ export default {
     },mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
+            setTimeout(() => this.$nuxt.$loading.finish(), 500)
         })
     },
     created() {

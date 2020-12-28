@@ -113,7 +113,7 @@ export default {
                 "bilder_path": "/img/HeinzKnapp",
                 "bezeichnung": "Buch Ybbs"
             }
-        ]
+        ];
     },
     mounted() {
         this.$nextTick(() => {

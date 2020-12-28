@@ -2,10 +2,10 @@
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center">
             <div class="title col-3" style="margin-top: 17vh;">
-                <p>Offene</p>
-                <p>Kultur</p>
+                <p class="line-height1">Offene</p>
+                <p class="line-height2">Kultur</p>
                 <p class="vertical opacity-50">Aus</p>
-                <p>Ybbs</p>
+                <p class="line-height3">Ybbs</p>
             </div>
             <div id="canvasSuper" class="image col-6">
                 <canvas id="canvas3d" class="image" style="transform: translateX(-30%);"></canvas>
@@ -80,6 +80,30 @@
 
     100% {
         bottom: 15vh;
+    }
+}
+
+.line-height1 {
+    line-height: 15vh;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        line-height: 8vh;
+    }
+}
+
+.line-height2 {
+    line-height: 16vh;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        line-height: 9vh;
+    }
+}
+
+.line-height3 {
+    line-height: 20vh;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        line-height: 11vh;
     }
 }
 </style>
@@ -285,7 +309,7 @@ export default {
                 "datum": "21.Mai 2020",
                 "nId": 1020
             }
-        ]
+        ];
     }
 }
 </script>

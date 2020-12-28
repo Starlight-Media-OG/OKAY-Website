@@ -21,7 +21,8 @@
 </template>
 
 <script>
-import { TweenLite,Elastic,Bounce } from "gsap";
+import { TweenLite,Elastic,Bounce, gsap } from "gsap";
+import { CSSPlugin } from "gsap/CSSPlugin";
 
 export default {
   name: "accordion",
@@ -30,6 +31,8 @@ export default {
   },
   methods: {
     expand: function(i) {
+      gsap.registerPlugin(CSSPlugin);
+
       //let el = this.$refs['accordion-body-' + i][0];
       let el = document.getElementsByClassName("accordion-body")[i];
 

@@ -140,8 +140,8 @@
 
         .button {
             border-radius: 6px;
-            @include min-max-width(350px);
-            @include min-max-height(45px);
+            min-width: 350px;
+            min-height: 45px;
             text-align: center;
             vertical-align: center;
             margin-top: 1vh;

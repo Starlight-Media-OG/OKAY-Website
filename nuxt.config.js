@@ -51,5 +51,5 @@ export default {
     modules: [
         'vue-scrollto/nuxt'
     ],
-    loading: "~/components/loading/loading.vue"
+    //loading: "~/components/loading/loading.vue"
 }
