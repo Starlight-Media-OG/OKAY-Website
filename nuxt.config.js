@@ -45,6 +45,11 @@ export default {
                     type: "image/svg+xml",
                     ref:"/favicon.svg"
                 }
+            ],
+            script: [
+                {
+                    src: "https://players.yumpu.com/modules/embed/yp_r_iframe.js"
+                }
             ]
         }
     },

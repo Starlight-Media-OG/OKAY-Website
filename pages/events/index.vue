@@ -18,7 +18,7 @@
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Event statt</h5>
+                        <h5>In dieser Woche finden keine Events statt</h5>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Event statt</h5>
+                        <h5>In dieser Woche finden keine Events statt</h5>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@
                               :date="event.start_datum" :endDate="event.ende_Datum" :id="event.oaId" events/>
                     </div>
                     <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Event statt</h5>
+                        <h5>In dieser Woche finden keine Events statt</h5>
                     </div>
                 </div>
             </div>
@@ -64,6 +64,10 @@ main {
     .header {
         margin-left: -20vw;
         transform: rotate(-8deg);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+          margin-bottom: 10vh;
+        }
     }
 
     .svgGraphic {

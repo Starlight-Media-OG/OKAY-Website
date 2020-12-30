@@ -38,6 +38,7 @@ main {
         z-index: -99;
 
         @media screen and (max-width: $breakpoint-medium-max) {
+          transform: translateX(0) rotate(0);
             margin-left: 10vw;
             img {
                 margin: 0 auto;
@@ -115,7 +116,7 @@ export default {
                 },
                 {
                     name: "description",
-                    content: "Alle Nachrichten betreffend Kultur aus dem wunderschönen Ybbs an der Donau"
+                    content: "Alle Nachrichten betreffend Kultur aus dem wunderschönen Ybbs an der Donau und der Umgebung"
                 }
             ]
         }
