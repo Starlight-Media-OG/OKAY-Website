@@ -23,7 +23,7 @@
             </div>
             <div class="row copyright flex flex-center">
                 <p class="row text-center logo name">Offene Kultur aus Ybbs</p>
-                <p class="row text-center copyright-text">&copy; Copyright 2010 - 2017 okay-ybbs.at</p>
+                <p class="row text-center copyright-text">&copy; Copyright 2021 - {{new Date().getFullYear()}} okay-ybbs.at</p>
                 <p class="row text-center copyright-text">Alle Rechte vorbehalten</p>
             </div>
         </div>

@@ -13,7 +13,7 @@ import { createStore } from './store.js'
 
 /* Plugins */
 
-import nuxt_plugin_vuescrollto_79b50248 from 'nuxt_plugin_vuescrollto_79b50248' // Source: ./vue-scrollto.js (mode: 'client')
+import nuxt_plugin_vuescrollto_5db51ac8 from 'nuxt_plugin_vuescrollto_5db51ac8' // Source: ./vue-scrollto.js (mode: 'client')
 
 // Component: <ClientOnly>
 Vue.component(ClientOnly.name, ClientOnly)
@@ -230,8 +230,8 @@ async function createApp(ssrContext, config = {}) {
   }
   // Plugin execution
 
-  if (process.client && typeof nuxt_plugin_vuescrollto_79b50248 === 'function') {
-    await nuxt_plugin_vuescrollto_79b50248(app.context, inject)
+  if (process.client && typeof nuxt_plugin_vuescrollto_5db51ac8 === 'function') {
+    await nuxt_plugin_vuescrollto_5db51ac8(app.context, inject)
   }
 
   // Lock enablePreview in context
