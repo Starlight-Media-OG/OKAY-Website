@@ -8,7 +8,7 @@
                 <p class="line-height3">Ybbs</p>
             </div>
             <div id="canvasSuper" class="image col-6">
-                <canvas id="canvas3d" class="image" style="transform: translateX(-30%);"></canvas>
+                <canvas id="canvas3d" class="image" style="transform: translateX(-35%) translateY(-5%);"></canvas>
             </div>
             <div class="flex flex-center arrow-super">
                 <div class="arrow flex flex-center" @click="scrollTo('#scroll')">

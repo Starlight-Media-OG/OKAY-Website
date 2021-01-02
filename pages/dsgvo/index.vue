@@ -23,7 +23,7 @@
             <h2>Rechtsgrundlagen</h2>
             <p>Vereinsgesetz; Erfüllung rechtlicher Verpflichtungen; Einwilligung der betroffenen Person</p>
             <h2>Speicherdauer</h2>
-            <p>Ihre Daten werden solange gespeichert, solange diese benötigt werden (z.B. Solange Sie einen Newsletter abonniert haben wird Ihr Name und Ihre Mail Adresse gespeichert</p>
+            <p>Ihre Daten werden solange gespeichert, solange diese benötigt werden (z.B. Solange Sie einen Newsletter abonniert haben wird Ihr Name, Geschlecht und Ihre Mail Adresse gespeichert</p>
             <h2>Betroffenenrechte</h2>
             <p>Die Mitglieder haben folgende Rechte betreffend ihre personenbezogenen Daten:</p>
             <ul class="noStyle">

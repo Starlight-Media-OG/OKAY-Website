@@ -15,6 +15,13 @@
     border-radius: 20px;
     padding: 2vh 2vw;
 
+    .close {
+      text-align: right;
+      @include font($flow-font-name, 4vh, black, bold);
+      cursor: pointer;
+      position: relative;
+    }
+
     .header {
       @include font($flow-font-name, 2vh, #2f2f2f, bold);
     }

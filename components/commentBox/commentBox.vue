@@ -40,7 +40,7 @@
                     <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" />
                 </div>
                 <div class="addButton flex flex-center" @click="activeAdd =! activeAdd">
-                    <p class="text center">+</p>
+                    <p class="text center" style="font-size: 5vh;">+</p>
                     <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
                             <input type="file" accept="image/*" name="uploaded" multiple @change="previewFiles()" ref="myFiles" />
@@ -57,6 +57,9 @@
 
         <div class="modal flex flex-center" v-if="modalShow">
             <div class="content">
+                <div class="close row" @click="toggleModal">
+                    x
+                </div>
                 <div class="header row">
                     <h3>Wollen Sie den Kommentar hinzufügen</h3>
                 </div>

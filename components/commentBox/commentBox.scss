@@ -2,7 +2,7 @@
 
 .commentBox {
     background-color: $primary-blue;
-    margin: 10vh 0;
+    margin: 10vh 0 0;
     box-shadow: 5px -5px 10px rgba(0,0,0,.2), -5px 5px 10px rgba(0,0,0,.2);
 
     @media screen and (max-width: $breakpoint-medium-max) {
@@ -136,8 +136,8 @@
             .addButton {
                 float: left;
                 background-color: white;
-                width: 3vh;
-                height: 3vh;
+                width: 5vh;
+                height: 5vh;
                 border-radius: 3vh;
                 margin: 0 1vw;
                 color: #2f2f2f;
@@ -150,7 +150,7 @@
 
                 .text {
                     @media screen and (max-width: $breakpoint-medium-max) {
-                        font-size: 5vh;
+                        font-size: 10vh;
                         transform: translateY(-18%);
                     }
                 }
@@ -205,7 +205,8 @@
             .sendButton {
                 float: left;
                 background-color: $primary-yellow;
-                width: 3vh;
+                width: 5vh;
+                height: 5vh;
                 border-radius: 3vh;
                 color: #2f2f2f;
 
@@ -226,7 +227,7 @@
                         height: 800%;
                         background-color: transparent;
                         border: none;
-                        transform: translateY(15%);
+                        transform: translateY(30%);
 
                         @media screen and (max-width: $breakpoint-medium-max) {
                             transform: translateY(30%);
@@ -264,6 +265,13 @@
         background-color: #dedede;
         border-radius: 20px;
         padding: 2vh 2vw;
+
+        .close {
+            text-align: right;
+            @include font($flow-font-name, 4vh, black, bold);
+            cursor: pointer;
+            position: relative;
+        }
 
         .header {
             @include font($flow-font-name, 2vh, #2f2f2f, bold);

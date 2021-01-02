@@ -5,7 +5,7 @@
                 Über Uns
             </div>
         </section>
-        <section class="content flex flex-center">
+        <section class="content flex flex-center" style="margin-bottom: 0;">
             <div class="area flex flex-center">
                 <div class="smallSize">
                     <h2>Der Vorstand</h2>
@@ -23,7 +23,7 @@
                     </div>
                 </div>
             </div>
-            <div class="area flex flex-center">
+            <div class="area flex flex-center" style="margin-bottom: 0;">
                 <div class="smallSize">
                     <h2>Statuten</h2>
                     <accordion :contents="content"/>

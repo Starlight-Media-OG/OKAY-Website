@@ -72,21 +72,20 @@ main {
 
 .back {
     @include font($header-font-name, 2.5rem, $primary-yellow, 700);
-    transform: translateY(30%);
+    transform: translateY(25%);
 
     &:hover {
         cursor: pointer;
     }
 
     @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.225rem, $primary-yellow, 700);
+        @include font($header-font-name, 1.3rem, $primary-yellow, 700);
         padding-bottom: 2vh;
     }
 
     @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        font-size: 1.8rem;
+        @include font($header-font-name, 2rem, $primary-yellow, 700);
     }
-
 }
 
 .header {
@@ -137,12 +136,14 @@ main {
 
             .bes {
                 page-break-inside: avoid;
-                column-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .dateOpen {
                 page-break-inside: avoid;
-                column-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
             }
         }
     }

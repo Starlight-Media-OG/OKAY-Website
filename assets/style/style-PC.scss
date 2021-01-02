@@ -6,6 +6,7 @@
     line-height: 18vh;
     @include font($header-font-name, 20vh, white, bold);
     user-select: none;
+    transform: translateY(-20%);
 
     .vertical {
         writing-mode: vertical-lr;
@@ -26,7 +27,7 @@
     overflow: hidden;
 
     #canvas3d {
-        height: 120vh;
+        height: 140vh;
     }
 }
 
