@@ -11,10 +11,10 @@
                     <h1>{{this.title}}</h1>
                 </div>
                 <div class="date column" v-if="duration">
-                    <p>{{this.date}} - {{this.endDate}}</p>
+                    <p>{{this.datum}} - {{this.endDate}}</p>
                 </div>
                 <div class="date column" v-if="!duration">
-                    <p>{{this.date}}</p>
+                    <p>{{this.datum}}</p>
                 </div>
             </div>
             <div class="teaser" v-if="date != null">
@@ -100,6 +100,9 @@
                 } else if (this.projects) {
                     return "#000"
                 }
+            },
+            datum: function() {
+              return new Date(this.date).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
             }
         }
     }

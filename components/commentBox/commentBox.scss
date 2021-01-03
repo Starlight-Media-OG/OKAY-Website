@@ -53,8 +53,8 @@
                         float: left;
 
                         p {
-                            @include font($flow-font-name, 30px, #2f2f2f, bold);
-                            transform: translateY(10%) translateX(10%);
+                            @include font($flow-font-name, 20px, #2f2f2f, bold);
+                            transform: translateY(40%) translateX(23%);
                         }
                     }
 

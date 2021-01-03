@@ -7,16 +7,16 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
                     {{ titlePart }}
                 </p>
                 <p class="date">
-                    Von {{ this.date }}
+                    Vom {{ this.date }}
                 </p>
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" alt="this.name" width="100%"/>
+                <img :src="this.bild" :alt="this.name" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center">
@@ -130,6 +130,9 @@
 </style>
 
 <script>
+import axios from "axios";
+import gallery from "@/components/gallery/gallery";
+
 export default {
     name: "ProductDetailed",
     data() {
@@ -138,17 +141,14 @@ export default {
             beschreibung: "",
             bild: "",
             date: "",
-            id: ""
+            id: "",
+          bilder_path: ""
         }
     },
+  components: {
+    gallery
+  },
     created() {
-        this.name = "Heinz Knapp";
-        this.beschreibung = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam"
-        this.bild = "../img/HeinzKnapp/plakat.jpg"
-        this.date = "28.Mai 2020"
-        this.id = this.$route.params.id;
-        this.bilder_path = null;
-
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });
@@ -156,11 +156,32 @@ export default {
     },
     computed: {
         title: function () {
-            return this.name.split(" ");
+            let names = this.name.split(" ");
+
+            for(let e in names) {
+              e = parseInt(e, 10);
+              if(names[e].length <= 15) {
+                if(e+1 < names.length) {
+                  names[e+1] = names[e] + " " + names[e + 1];
+                  names[e] = "";
+                }
+              }
+            }
+
+            return names;
         },
         path: function () {
             return "img/News" + this.id + "/";
+        },
+      sizeDetection: function () {
+        if(this.name.length - this.name.split(" ").length <= 10 ) {
+          return "12vh";
+        } else if(this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+          return "10vh";
+        } else if(this.name.length - this.name.split(" ").length > 20) {
+          return "8vh";
         }
+      }
     },
     mounted() {
         this.$nextTick(() => {
@@ -188,6 +209,20 @@ export default {
                 }
             ]
         }
-    }
+    },
+  async fetch() {
+      let id = this.$route.params.id;
+
+      let req = await axios.get("http://server.okay-ybbs.at:3000/news/" + id);
+      let news = req.data;
+
+      this.name = news.titel;
+      this.beschreibung = news.bericht;
+      this.bild = news.bilder_path + "/plakat.jpg";
+      this.date = new Date(news.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
+      this.id = id
+      this.bilder_path = news.bilder_path
+  },
+  fetchOnServer: true
 }
 </script>

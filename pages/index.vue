@@ -38,15 +38,7 @@
                     <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
                 </div>
             </div>
-            <div id='ypembedcontainer' class='embed-container' data-page-height='640' data-page-width='304'>
-                <iframe allowfullscreen="true" allowtransparency="true"
-                        frameborder="0" src="https://www.yumpu.com/de/embed/view/OY98EDRV7pPng1rx">
-                </iframe>
-                <br>
-                <a href="https://www.yumpu.com/de/document/view/65158466/vostellungsfolder-okay-offene-kultur-aus-ybbs"
-                target="_blank" title="Vostellungsfolder OKAY - Offene Kultur aus Ybbs">Vostellungsfolder OKAY - Offene
-                Kultur aus Ybbs</a>
-            </div>
+          <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=x9yh2645s4" width="100%" height="480" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen class="folder"></iframe>
         </section>
     </main>
 </template>
@@ -118,21 +110,8 @@
     }
 }
 
-.embed-container {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    margin-bottom:5vh;
-}
-
-.embed-container iframe, .embed-container object, .embed-container embed {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+.folder {
+  height: 70vh;
 }
 </style>
 
