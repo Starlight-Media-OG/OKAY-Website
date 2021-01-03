@@ -118,9 +118,11 @@ nav {
         margin-top: 165px;
         color: white;
         font-size: 2rem;
+        width: auto;
 
         .breadcrumbs-list-item {
             opacity: .2;
+            width: auto;
 
             &:last-child {
                 opacity: 1;

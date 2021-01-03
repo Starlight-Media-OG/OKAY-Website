@@ -144,12 +144,14 @@ main {
 
             .bes {
                 page-break-inside: avoid;
-                column-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
             }
 
             .dateOpen {
                 page-break-inside: avoid;
-                column-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+                break-inside: avoid;
             }
         }
     }
