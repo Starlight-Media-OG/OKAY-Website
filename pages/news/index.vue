@@ -11,7 +11,7 @@
         <section class="content flex flex-center">
             <div class="news" v-for="news1 in news" :key="nId">
                 <card :title="news1.titel" :teaser="news1.anreisser" :image="news1.bilder_path + '/plakat.jpg'"
-                      :id="news1.nId" :date="news1.datum" news/>
+                      :id="news1.nId" :date="news1.datum" news />
             </div>
         </section>
     </main>
@@ -67,24 +67,18 @@ export default {
             news: []
         }
     },
-    mounted() {
+    created() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start()
+        })
+    },
+    async mounted() {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });
 
-        /*this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        });
-
-        window.addEventListener("load", () => {
-            this.$nuxt.$loading.finish();
-            window.removeEventListener("load", this);
-        });*/
-
-      this.$nextTick(() => {
-        this.$nuxt.$loading.start()
-        setTimeout(() => this.$nuxt.$loading.finish(), 500)
-      })
+        await this.$fetch();
+        this.$nuxt.$loading.finish();
     },
   async fetch() {
       let req = await axios.get("http://server.okay-ybbs.at:3000/news");

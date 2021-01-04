@@ -22,9 +22,7 @@
         <section class="content flex flex-center">
             <article class="beschreibung col-3">
                 <h2 class="title">Bericht</h2>
-                <p>
-                    {{ this.beschreibung }}
-                </p>
+                <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox" v-if="this.bilder_path != null">
                 <gallery :imgPath="this.bilder_path"/>
@@ -153,6 +151,10 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/news/${this.id}`} });
+
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start()
+        })
     },
     computed: {
         title: function () {
@@ -183,7 +185,7 @@ export default {
         }
       }
     },
-    mounted() {
+    async mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
@@ -191,6 +193,9 @@ export default {
         window.addEventListener("load", () => {
             this.$nuxt.$loading.finish();
         });
+
+        await this.$fetch();
+        this.$nuxt.$loading.finish();
     },
     head() {
         return {

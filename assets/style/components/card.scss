@@ -3,7 +3,7 @@
 .mainCard {
     margin: 0;
     box-sizing: border-box;
-    padding: 10px;
+    padding: 2.5vh;
     max-width: 100vw;
 }
 
@@ -28,11 +28,10 @@
         }
 
         .content {
-            $title-size: 2rem;
-            $date-size: 1.5rem;
+            $title-size: 1.5rem;
+            $date-size: 1.25rem;
             $flow-size: 1rem;
 
-            width: 90%;
             margin-top: -20%;
             margin-left: auto;
             margin-right: auto;
@@ -40,10 +39,9 @@
             .header {
                 .card-title {
                     @include font($header-font-name, $title-size);
-                    line-height: 6vh;
+                    line-height: 2.7rem;
                     margin-bottom: .5rem;
                     hyphens: auto;
-                    width: 90%;
                 }
 
                 .date {
@@ -81,17 +79,16 @@
         display: flex;
         width: $width-card;
         min-height: 350px;
-
-        @media screen and (min-width: 2000px) {
-            height: auto;
-            min-height: 30vh;
-        }
-
         margin-bottom: 2rem;
         border-radius: 6px;
         box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
         justify-items: center;
         align-items: center;
+
+        @media screen and (min-width: 2000px) {
+            height: auto;
+            min-height: 30vh;
+        }
 
         .image {
             margin: 15px;
@@ -115,6 +112,7 @@
             display: flex;
             margin-left: 1vw;
             margin-right: 3vw;
+            width: 80%;
 
             .header {
                 .card-title {

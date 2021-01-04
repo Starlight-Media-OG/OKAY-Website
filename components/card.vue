@@ -7,21 +7,18 @@
         </div>
         <div class="column content">
             <div class="header">
-                <div class="card-title column">
-                    <h1>{{this.title}}</h1>
-                </div>
                 <div class="date column" v-if="duration">
                     <p>{{this.datum}} - {{this.endDate}}</p>
                 </div>
                 <div class="date column" v-if="!duration">
                     <p>{{this.datum}}</p>
                 </div>
+                <div class="card-title column">
+                  <h1>{{this.title}}</h1>
+                </div>
             </div>
-            <div class="teaser" v-if="date != null">
-                <p>{{trimString(this.teaser, 300)}}</p>
-            </div>
-            <div class="teaser-news" v-if="date == null">
-                <p>{{trimString(this.teaser, 300)}}</p>
+            <div class="teaser-news">
+                <p v-html="trimString(this.teaser, 300)"></p>
             </div>
             <div v-if="!news">
                 <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">
@@ -59,7 +56,7 @@
                 if (txt.length > length) {
                     return txt.substr(0, length) + "...";
                 } else {
-                    return txt;
+                    return txt + "...";
                 }
             },
             concat: function (...strings) {

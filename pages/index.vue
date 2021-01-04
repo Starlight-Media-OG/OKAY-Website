@@ -22,7 +22,7 @@
                 <div v-for="event of events" :key="event.oaId" class="singleEvents">
                     <card :id="event.oaId" :date="event.start_datum" :endDate="event.ende_Datum"
                           :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
-                          events/>
+                          events />
                 </div>
                 <div class="link center">
                     <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
@@ -32,7 +32,7 @@
                 <h2>News</h2>
                 <div v-for="news1 of news" :key="news1.nId" class="singleNews">
                     <card :id="news1.nId" :date="news1.datum" :image="news1.bilder_path + '/plakat.jpg'"
-                          :teaser="news1.anreiser" :title="news1.titel" news/>
+                          :teaser="news1.anreisser" :title="news1.titel" news />
                 </div>
                 <div class="link center">
                     <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
@@ -119,6 +119,7 @@
 import card from "~/components/card.vue";
 import arrow from "~/components/svg/arrow.vue"
 import * as BABYLON from 'babylonjs';
+import axios from "axios";
 
 export default {
     name: "index",
@@ -159,15 +160,12 @@ export default {
             this.$scrollTo(target, 500, options)
         }
     },
-    mounted() {
+    created() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
-
-        window.addEventListener("load", () => {
-            this.$nuxt.$loading.finish();
-        });
-
+    },
+    async mounted() {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, text: "Startseite", link: "/"}});
 
@@ -267,6 +265,11 @@ export default {
             scene.render();
         });
         //endregion
+
+        await this.$fetch();
+        this.$nextTick(() => {
+            this.$nuxt.$loading.finish();
+        });
     },
     async fetch() {
         //Fetch Data from DB via Middleware... Save in events and news Variable
@@ -294,29 +297,24 @@ export default {
                 "oaId": 1020
             }
         ];
-        this.news = [
-            {
-                "titel": "Heinz Knapp",
-                "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "datum": "21.Mai 2020",
-                "nId": 1020
-            },
-            {
-                "titel": "Heinz Knapp",
-                "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "datum": "21.Mai 2020",
-                "nId": 1020
-            },
-            {
-                "titel": "Heinz Knapp",
-                "anreiser": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "datum": "21.Mai 2020",
-                "nId": 1020
+
+        //region news
+
+        let req = await axios.get("http://server.okay-ybbs.at:3000/news/recent/3");
+        let news = req.data;
+
+        for(let n in news) {
+
+            if (news[n].anreisser === "") {
+                console.log(news[n].nId + " has empty anreisser")
+                news[n].anreisser = news[n].bericht;
             }
-        ];
+
+        }
+
+        this.news = news;
+
+        //endregion
     }
 }
 </script>

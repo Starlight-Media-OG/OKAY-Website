@@ -27,12 +27,8 @@
     user-select: none;
     user-focus: none;
 
-    & #canvasSuper {
-        position: absolute;
-
-        #canvas3d {
-            width: 100vw;
-        }
+    #canvas3d {
+        width: 300vw;
     }
 }
 

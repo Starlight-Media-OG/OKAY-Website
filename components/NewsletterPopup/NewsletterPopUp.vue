@@ -34,14 +34,14 @@
                         <label>
                             <div class="label">Geschlecht: *</div>
                             <div class="row">
-                                <input type="radio" value="m" name="gender" id="m" v-model="gender" />
+                                <input type="radio" value="m" name="gender" id="m" v-model="gender" required class="radio" />
                                 <label for="m">Männlich</label>
 
-                                <input type="radio" value="f" name="gender" id="f" v-model="gender" />
-                                <label for="m">Weiblich</label>
+                                <input type="radio" value="f" name="gender" id="f" v-model="gender" required class="radio" />
+                                <label for="f">Weiblich</label>
 
-                                <input type="radio" value="x" name="gender" id="x" v-model="gender" />
-                                <label for="m">Divers</label>
+                                <input type="radio" value="x" name="gender" id="x" v-model="gender" required class="radio" />
+                                <label for="x">Divers</label>
                             </div>
                         </label>
                     </div>
