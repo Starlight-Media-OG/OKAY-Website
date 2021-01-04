@@ -20,7 +20,7 @@
             <div id="scroll" class="events">
                 <h2>Events</h2>
                 <div v-for="event of events" :key="event.oaId" class="singleEvents">
-                    <card :id="event.oaId" :date="event.start_datum" :endDate="event.ende_Datum"
+                    <card :id="event.oaId" :date="event.start_datum" :endDate="event.end_datum"
                           :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
                           events />
                 </div>
@@ -272,35 +272,22 @@ export default {
         });
     },
     async fetch() {
-        //Fetch Data from DB via Middleware... Save in events and news Variable
-        this.events = [
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": "21.Mai 2020",
-                "ende_Datum": "28.Mai 2020",
-                "oaId": 1020
-            },
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": "21.Mai 2020",
-                "oaId": 1020
-            },
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": "21.Mai 2020",
-                "oaId": 1020
-            }
-        ];
+
+        //region Events
+
+        let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
+        let events = reqE.data;
+
+        console.log(events);
+
+        this.events = events;
+
+
+        //endregion
 
         //region news
 
-        let req = await axios.get("http://server.okay-ybbs.at:3000/news/recent/3");
+        let req = await axios.get(process.env.baseURL + "/news/recent/3");
         let news = req.data;
 
         for(let n in news) {

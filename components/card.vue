@@ -8,7 +8,7 @@
         <div class="column content">
             <div class="header">
                 <div class="date column" v-if="duration">
-                    <p>{{this.datum}} - {{this.endDate}}</p>
+                    <p>{{this.datum}} - {{this.endDatum}}</p>
                 </div>
                 <div class="date column" v-if="!duration">
                     <p>{{this.datum}}</p>
@@ -100,6 +100,9 @@
             },
             datum: function() {
               return new Date(this.date).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
+            },
+            endDatum: function() {
+                return new Date(this.endDate).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
             }
         }
     }

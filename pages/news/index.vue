@@ -81,7 +81,7 @@ export default {
         this.$nuxt.$loading.finish();
     },
   async fetch() {
-      let req = await axios.get("http://server.okay-ybbs.at:3000/news");
+      let req = await axios.get(process.env.baseURL + "/news");
       let newsID = req.data;
 
       this.news = [];
@@ -89,7 +89,7 @@ export default {
       for (let e of newsID) {
         let id = e.nId;
 
-        let news1 = await axios.get("http://server.okay-ybbs.at:3000/news/" + id);
+        let news1 = await axios.get(process.env.baseURL + "/news/" + id);
         news1 = news1.data;
 
         if(news1.anreisser === "") {

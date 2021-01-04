@@ -61,6 +61,7 @@ main {
 
 <script>
 import productCard from "~/components/productCard";
+import axios from "axios";
 
 export default {
     name: "indexProducts",
@@ -76,53 +77,24 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:2, text:"Produkte", link:"/products"} });
 
-        this.products = [
-            {
-                "prodId": "5f2aa8b9956c78a572cfd86c",
-                "preis": "141",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            },
-            {
-                "prodId": "5f2aa8b9a999d2ce01550687",
-                "preis": "168",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            },
-            {
-                "prodId": "5f2aa8b9879d2636b7c1bdbb",
-                "preis": "112",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            },
-            {
-                "prodId": "5f2aa8b9dedc94c0dfe692a3",
-                "preis": "28",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            },
-            {
-                "prodId": "5f2aa8b982732601e4b20cb3",
-                "preis": "69",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            },
-            {
-                "prodId": "5f2aa8b9dcb3be72afc2b4ea",
-                "preis": "151",
-                "bilder_path": "/img/HeinzKnapp",
-                "bezeichnung": "Buch Ybbs"
-            }
-        ];
-    },
-    mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
+    },
+    async mounted() {
+        await this.$fetch();
 
-        window.addEventListener("load", () => {
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         });
+    },
+    async fetch() {
+        let req = await axios.get(process.env.baseURL + "/produkte");
+        let products = req.data;
+
+        console.log(products)
+
+        this.products = products;
     },
     head() {
         return {

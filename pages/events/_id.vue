@@ -166,6 +166,7 @@ main {
 
 <script>
 import commentBox from "~/components/commentBox/commentBox.vue";
+import axios from "axios";
 
 export default {
     name: "event-detailed",
@@ -196,15 +197,24 @@ export default {
     },
     async fetch() {
         let id = this.$route.params.id;
-        //Fetch detetailed informations of Event ID
+
+        let req = await axios.get(process.env.baseURL + "/events/" + id);
+        let event = req.data;
+
+        this.name = event.titel;
+        this.beschreibung = event.beschreibung;
+        this.bild = event.bilder_path + "/plakat.jpg";
+        this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
+        this.id = id;
+
+        if(event.zeiten != null) {
+            this.days = event.zeiten;
+        }
+
+        this.adresse = event.adresse
     },
     created() {
-        //Json Manipulation
-        this.name = "Heinz Knapp";
-        this.beschreibung = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam"
-        this.bild = "../img/HeinzKnapp/plakat.jpg"
-        this.date = "28.Mai 2020"
-        this.id = this.$route.params.id;
+
         this.days = [
             {
                 wochentag: "Dienstag",
@@ -222,12 +232,17 @@ export default {
                 end_zeit: "12:00"
             }
         ];
+
         this.adresse = "Herrengasse 15 3370 Ybbs";
 
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/events/${this.id}`} });
+
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
     },
     components: {
         commentBox
@@ -253,14 +268,12 @@ export default {
 
             this.$scrollTo(target, 500, options)
         }
-    },mounted() {
+    },
+    async mounted() {
+        await this.$fetch();
         this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        })
-
-        window.addEventListener("load", () => {
             this.$nuxt.$loading.finish();
-        });
+        })
     },
     head() {
         return {

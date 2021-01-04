@@ -103,6 +103,7 @@ main {
 
 <script>
 import card from "~/components/card.vue";
+import axios from "axios";
 
 export default {
     name: "eventsIndex",
@@ -130,37 +131,17 @@ export default {
         }
     },
     async fetch() {
-        //TODO: Insert DB Function to fetch Objects with currentMonth week Before and After
+        let req = await axios.get(process.env.baseURL + "/events");
+        let events = req.data;
 
-        let events = [
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": new Date(Date.now()).toLocaleDateString(),
-                "oaId": 1020
-            },
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": new Date(Date.now() - (31 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
-                "oaId": 1022
-            },
-            {
-                "titel": "Heinz Knapp",
-                "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                "bilder_path": "img/HeinzKnapp",
-                "start_datum": new Date(Date.now() + (31 * 24 * 60 * 60 * 1000)).toLocaleDateString(),
-                "oaId": 1023
-            }
-        ];
+        this.events = events;
 
         this.sortEvents(events);
-    },mounted() {
+    },
+    async mounted() {
+        await this.$fetch();
         this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-            setTimeout(() => this.$nuxt.$loading.finish(), 500)
+            this.$nuxt.$loading.finish();
         })
     },
     created() {

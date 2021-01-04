@@ -8,6 +8,10 @@ export default {
             "gsap"
         ]
     },
+    env: {
+        baseURL: process.env.BASE_URL || "http://server.okay-ybbs.at:3000",
+        baseImage: process.env.BASE_IMAGE || "http://server.okay-ybbs.at:4000"
+    },
     server :{
       port: 3000, //Build change to 80
       host: "0.0.0.0"
@@ -51,5 +55,5 @@ export default {
     modules: [
         'vue-scrollto/nuxt'
     ],
-    //loading: "~/components/loading/loading.vue"
+    loading: "~/components/loading/loading.vue"
 }

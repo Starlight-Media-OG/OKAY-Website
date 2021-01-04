@@ -37,6 +37,7 @@
 import accordion from "@/components/accordion/accordion";
 import teamCard from "@/components/teamCard/teamCard";
 import card from "@/components/card";
+import axios from "axios";
 
 export default {
     name: "infrormation",
@@ -45,7 +46,6 @@ export default {
     },
     data: function () {
         return {
-            teamList: [10, 20, 30],
             content: [
                 {
                     title: "§1",
@@ -230,32 +230,7 @@ export default {
                     active: false
                 }
             ],
-            team: [
-                {
-                    mId: 1,
-                    lead: true
-                },
-                {
-                    mId: 2,
-                    lead: true
-                },
-                {
-                    mId: 3,
-                    lead: false
-                },
-                {
-                    mId: 4,
-                    lead: false
-                },
-                {
-                    mId: 5,
-                    lead: false
-                },
-                {
-                    mId: 6,
-                    lead: true
-                },
-            ],
+            team: [],
             projects: [
                 {
                     id: 1,
@@ -278,14 +253,29 @@ export default {
             ]
         }
     },
-    mounted() {
+    async mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
 
-        window.addEventListener("load", () => {
+        await this.$fetch();
+
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         });
+    },
+    async fetch() {
+        let req = await axios.get(process.env.baseURL + "/mitglieder");
+        let mitglieder = req.data;
+
+        this.team = mitglieder;
+
+        let req2 = await axios.get(process.env.baseURL + "/projekte");
+        let projekte = req.data;
+
+        console.log(projekte);
+
+        //this.projects = projekte;
     },
     created() {
         this.$store.commit('breadcrumbs/clear');

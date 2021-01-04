@@ -35,138 +35,134 @@
 </style>
 
 <script>
-    import arrow from '~/components/svg/arrow';
-    import VRuntimeTemplate from "v-runtime-template"
+import arrow from '~/components/svg/arrow';
+import VRuntimeTemplate from "v-runtime-template"
+import axios from "axios";
 
-    export default {
-        name: "calender",
-        data() {
-            return {
-                months: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
-                currentMonth: new Date().getMonth(),
-                currentYear: new Date().getFullYear(),
-                tb: "",
-                events: [
-                    {
-                        "titel": "Heinz Knapp",
-                        "beschreibung": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam",
-                        "bilder_path": "img/HeinzKnapp",
-                        "start_datum": new Date("5.10.2020").toLocaleDateString(),
-                        "end_datum": new Date("10.10.2020").toLocaleDateString(),
-                        "oaId": 1020
-                    }
-                ]
-            }
+export default {
+    name: "calender",
+    data() {
+        return {
+            months: ["Jan", "Feb", "Mär", "Apr", "Mai", "Jun", "Jul", "Aug", "Sep", "Okt", "Nov", "Dez"],
+            currentMonth: new Date().getMonth(),
+            currentYear: new Date().getFullYear(),
+            tb: "",
+            events: []
+        }
+    },
+    components: {
+        arrow, VRuntimeTemplate
+    },
+    head() {
+        return {
+            title: "Kalender - OKAY Ybbs",
+            meta: [
+                {
+                    charset: 'utf-8'
+                }
+            ]
+        }
+    },
+    methods: {
+        next: function () {
+            this.currentYear = (this.currentMonth === 11) ? this.currentYear + 1 : this.currentYear;
+            this.currentMonth = (this.currentMonth + 1) % 12;
+            this.updateCalendar(this.currentMonth, this.currentYear);
         },
-        components: {
-            arrow, VRuntimeTemplate
+        prev: function () {
+            this.currentYear = (this.currentMonth === 0) ? this.currentYear - 1 : this.currentYear;
+            this.currentMonth = (this.currentMonth === 0) ? 11 : this.currentMonth - 1;
+            this.updateCalendar(this.currentMonth, this.currentYear);
         },
-        head() {
-            return {
-                title: "Kalender - OKAY Ybbs",
-                meta: [
-                    {
-                        charset: 'utf-8'
-                    }
-                ]
-            }
-        },
-        methods: {
-            next: function () {
-                this.currentYear = (this.currentMonth === 11) ? this.currentYear + 1 : this.currentYear;
-                this.currentMonth = (this.currentMonth + 1) % 12;
-                this.updateCalendar(this.currentMonth, this.currentYear);
-            },
-            prev: function () {
-                this.currentYear = (this.currentMonth === 0) ? this.currentYear - 1 : this.currentYear;
-                this.currentMonth = (this.currentMonth === 0) ? 11 : this.currentMonth - 1;
-                this.updateCalendar(this.currentMonth, this.currentYear);
-            },
-            updateCalendar: function (month, year) {
-                this.tb = "<tbody ref='calendarBody' class='body'>";
-                let firstDay = (new Date(year, month)).getDay() - 1;
+        updateCalendar: function (month, year) {
+            this.tb = "<tbody ref='calendarBody' class='body'>";
+            let firstDay = (new Date(year, month)).getDay() - 1;
 
-                //Create all Cells
-                let date = 0;
-                let exit = false
-                for (let i = 0; i < 6; i++) {
-                    //Create each row
-                    let row = "<tr>";
+            //Create all Cells
+            let date = 0;
+            let exit = false
+            for (let i = 0; i < 6; i++) {
+                //Create each row
+                let row = "<tr>";
 
-                    //Create each cell and fill it up with data
-                    for (let j = 0; j < 7; j++) {
-                        if (i === 0 && j < firstDay) {
-                            //Checks if First day of month is not on monday fills table with cell from prev-month till start
-                            let cellText = this.daysInMonth(month - 1, year) - firstDay + j + 1;
-                            let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
-                            row += cell;
-                        } else if (date >= this.daysInMonth(month, year) && j === 6) {
-                            //Check if date is greater than days in month and Week is completed, Insert last week element
-                            date++;
-                            let cellText = date % (this.daysInMonth(month, year));
-                            let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
-                            row += cell;
+                //Create each cell and fill it up with data
+                for (let j = 0; j < 7; j++) {
+                    if (i === 0 && j < firstDay) {
+                        //Checks if First day of month is not on monday fills table with cell from prev-month till start
+                        let cellText = this.daysInMonth(month - 1, year) - firstDay + j + 1;
+                        let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
+                        row += cell;
+                    } else if (date >= this.daysInMonth(month, year) && j === 6) {
+                        //Check if date is greater than days in month and Week is completed, Insert last week element
+                        date++;
+                        let cellText = date % (this.daysInMonth(month, year));
+                        let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
+                        row += cell;
 
-                            exit = true;
-                            break;
-                        } else if (date >= this.daysInMonth(month, year) && j < 7) {
-                            date++;
-                            //Checks if date ist greater than month and Week is uncompleted
-
-                            //Create cells to fill up Table with cells from next month
-                            let cellText = date % (this.daysInMonth(month, year));
-                            let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
-                            row += cell;
-                        } else {
-                            date++;
-                            let cellText = this.checkEventOnDate(date, month, year);
-                            let cell = "<td class='month-day'>" + cellText + "</td>";
-
-                            //Check if it is Current Day
-                            if (date === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
-                                cell = "<td class='month-day current-day'>" + cellText + "</td>";
-                            }
-                            row += cell;
-                        }
-                    }
-                    row += "</tr>";
-                    this.tb += row;
-
-                    if (exit) {
-                        this.tb += "</tbody>";
+                        exit = true;
                         break;
+                    } else if (date >= this.daysInMonth(month, year) && j < 7) {
+                        date++;
+                        //Checks if date ist greater than month and Week is uncompleted
+
+                        //Create cells to fill up Table with cells from next month
+                        let cellText = date % (this.daysInMonth(month, year));
+                        let cell = "<td class='prev-month month-day'><p class='date'>" + cellText + "</p></td>";
+                        row += cell;
+                    } else {
+                        date++;
+                        let cellText = this.checkEventOnDate(date, month, year);
+                        let cell = "<td class='month-day'>" + cellText + "</td>";
+
+                        //Check if it is Current Day
+                        if (date === new Date().getDate() && year === new Date().getFullYear() && month === new Date().getMonth()) {
+                            cell = "<td class='month-day current-day'>" + cellText + "</td>";
+                        }
+                        row += cell;
                     }
                 }
-            },
-            daysInMonth: function (month, year) {
-                //Returns the Days in a Month (28,29,30,31)
-                return 32 - new Date(year, month, 32).getDate();
-            },
-            checkEventOnDate: function (date, month, year) {
-                let tableString = "<p class='date'>" + date + "</p>";
-                this.events.forEach((value) => {
-                    if (new Date(value.start_datum).getMonth() === month && new Date(value.start_datum).getFullYear() === year) {
-                        if (value.end_datum === undefined) {
-                            if (new Date(value.start_datum).getDate() === date) {
-                                tableString += "<div class='eventCal oneDay' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
-                            }
-                        } else {
-                            if (new Date(value.start_datum).getDate() <= date && new Date(value.end_datum).getDate() >= date) {
-                                tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + value.oaId + ")'><p class='eventTitle'>" + value.titel + "</p></div>";
-                            }
-                        }
-                    }
-                });
+                row += "</tr>";
+                this.tb += row;
 
-                return tableString;
-            },
-            reroute: function (id) {
-                this.$router.push("/events/" + id);
+                if (exit) {
+                    this.tb += "</tbody>";
+                    break;
+                }
             }
         },
-        async fetch() {
-            //Fetch Data from DB / API and save in Events
-            this.updateCalendar(this.currentMonth, this.currentYear);
+        daysInMonth: function (month, year) {
+            //Returns the Days in a Month (28,29,30,31)
+            return 32 - new Date(year, month, 32).getDate();
+        },
+        checkEventOnDate: function (date, month, year) {
+            let tableString = "<p class='date'>" + date + "</p>";
+            for(let value in this.events) {
+                if (new Date(this.events[value].start_datum).getMonth() === month && new Date(this.events[value].start_datum).getFullYear() === year) {
+                    if (this.events[value].end_datum === undefined) {
+                        if (new Date(this.events[value].start_datum).getDate() === date) {
+                            console.log("One Day Event on day");
+                            tableString += "<div class='eventCal oneDay' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                        }
+                    } else {
+                        if (new Date(this.events[value].start_datum).getDate() <= date && new Date(this.events[value].end_datum).getDate() >= date) {
+                            console.log("Between days!");
+                            tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                        }
+                    }
+                }
+            }
+
+            return tableString;
+        },
+        reroute: function (id) {
+            this.$router.push("/events/" + id);
         }
+    },
+    async fetch() {
+        let req = await axios.get(process.env.baseURL + "/events");
+        this.events = req.data;
+
+        this.updateCalendar(this.currentMonth, this.currentYear);
     }
+}
 </script>

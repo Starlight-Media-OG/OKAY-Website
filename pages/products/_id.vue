@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -16,7 +16,7 @@
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" alt="this.name" width="100%"/>
+                <img :src="this.bild" :alt="this.name" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center">
@@ -28,7 +28,7 @@
                 <div class="dateOpen">
                     <h2>Abholungsorte</h2>
                     <ul>
-                        <li class="opening flex flex-center" v-for="ort in orts" :key="orts.ortID">
+                        <li class="opening flex flex-center" v-for="ort in orts" :key="orts.ortId">
                             {{ ort.name }} @ {{ ort.adresse }}
                         </li>
                     </ul>
@@ -161,6 +161,7 @@ main {
 
 <script>
 import gallery from "~/components/gallery/gallery.vue";
+import axios from "axios";
 
 export default {
     name: "ProductDetailed",
@@ -170,33 +171,12 @@ export default {
             beschreibung: "",
             bild: "",
             price: "",
-            id: ""
+            id: "",
+            orts: [],
+            bilder_path: ""
         }
     },
     created() {
-        this.name = "Heinz Knapp";
-        this.beschreibung = "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam"
-        this.bild = "../img/HeinzKnapp/plakat.jpg"
-        this.price = "160"
-        this.id = this.$route.params.id;
-        this.bilder_path = null;
-        this.orts = [
-            {
-                ortId: 1,
-                name: 'Vereinslokal',
-                adresse: 'xyz 15 3370 Ybbs'
-            },
-            {
-                ortID: 2,
-                name: 'Gemeinde Ybbs',
-                adresse: 'xyz 15 3370 Ybbs'
-            }, {
-                ortId: 3,
-                name: 'Vereinslokal',
-                adresse: 'xyz 15 3370 Ybbs'
-            },
-        ]
-
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {todo: {step: 1, text: "Startseite", link: "/"}});
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {
@@ -213,6 +193,10 @@ export default {
                 link: `/products/${this.id}`
             }
         });
+
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        });
     },
     computed: {
         title: function () {
@@ -220,20 +204,46 @@ export default {
         },
         path: function () {
             return "img/Product" + this.id + "/";
+        },
+        bild: function() {
+          return this.bilder_path + "/plakat.jpg";
+        },
+        sizeDetection: function () {
+            if(this.name.length - this.name.split(" ").length <= 10 ) {
+                return "12vh";
+            } else if(this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                return "10vh";
+            } else if(this.name.length - this.name.split(" ").length > 20) {
+                return "8vh";
+            }
         }
     },
     async fetch() {
-        //Fetch Comment Data from API
+        let id = this.$route.params.id;
+        let req = await axios.get(process.env.baseURL + "/produkte/" + id);
+        let produkt = req.data;
+
+        console.log(produkt)
+
+        this.name = produkt.bezeichnung;
+        this.beschreibung = produkt.beschreibung;
+        this.price = produkt.preis;
+        this.id = id;
+
+        if(produkt.bilder_path !== "") {
+            this.bilder_path = produkt.bilder_path;
+        } else {
+            this.bilder_path = process.env.defaultIMAGE;
+        }
+        this.orts = produkt.orte;
     },
     components: {
         gallery
     },
-    mounted() {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        });
+    async mounted() {
+        await this.$fetch();
 
-        window.addEventListener("load", () => {
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         });
     },

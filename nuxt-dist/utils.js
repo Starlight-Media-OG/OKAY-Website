@@ -150,7 +150,7 @@ export async function setContext (app, context) {
       payload: context.payload,
       error: context.error,
       base: '/',
-      env: {}
+      env: {"baseURL":"http://server.okay-ybbs.at:3000","baseImage":"http://server.okay-ybbs.at:4000"}
     }
     // Only set once
     if (!process.static && context.req) {

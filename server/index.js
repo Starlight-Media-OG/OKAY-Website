@@ -234,7 +234,7 @@ function filewalker(dir, done) {
     fs.readdir(dir, function (err, list) {
         if (err) return done(err);
 
-        var pending = list.length;
+        let pending = list.length;
 
         if (!pending) return done(null, results);
 
