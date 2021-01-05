@@ -14,7 +14,7 @@
                     Ab {{ this.date }}
                 </p>
                 <p class="address">
-                    {{ this.adresse }}
+                    Projektpartner: {{ this.projektpartner }}
                 </p>
                 <p></p>
             </div>
@@ -27,12 +27,6 @@
                 <div class="bes">
                     <h2>Beschreibung</h2>
                     {{ this.beschreibung }}
-                </div>
-                <div class="dateOpen">
-                    <h2>Öffnungszeiten</h2>
-                    <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
-                        Am {{ day.wochentag }} von {{ day.start_zeit }} bis {{ day.end_zeit }}
-                    </p>
                 </div>
             </article>
             <div class="link">
@@ -56,22 +50,23 @@ import commentBox from "~/components/commentBox/commentBox.vue";
 import axios from "axios";
 
 export default {
-    name: "EventDetailed",
+    name: "ProjectDetailed",
     data() {
         return {
             name: "",
+            untertitel: "",
             beschreibung: "",
             bild: "",
+            projektpartner: "",
             date: "",
             id: "",
-            days: {},
-            adresse: null
         }
     },
     computed: {
         title: function () {
             let names = this.name.split(" ");
 
+            //Join Short Words
             for (let e in names) {
                 e = parseInt(e, 10);
                 if (names[e].length <= 15) {
@@ -81,6 +76,23 @@ export default {
                     }
                 }
             }
+
+            //Append Subtitle
+            names.push("-");
+
+            let subtitle = this.untertitel.split(" ");
+
+            //Join Short Subtitle
+            for (let e in subtitle) {
+                e = parseInt(e, 10);
+                if (subtitle[e].length <= 15) {
+                    if (e + 1 < subtitle.length) {
+                        subtitle[e + 1] = subtitle[e] + " " + subtitle[e + 1];
+                        subtitle[e] = "";
+                    }
+                }
+            }
+            names.push(subtitle);
 
             return names;
         },
@@ -111,12 +123,14 @@ export default {
     async fetch() {
         let id = this.$route.params.id;
 
-        let req = await axios.get(process.env.baseURL + "/events/" + id);
+        let req = await axios.get(process.env.baseURL + "/projekte/" + id);
 
         let event = req.data;
 
         this.name = event.titel;
+        this.untertitel = event.untertitel;
         this.beschreibung = event.beschreibung;
+        this.projektpartner = event.projektpartner;
 
         if(event.bilder_path == null) {
             this.bilder_path = event.bilder_path;
@@ -127,33 +141,8 @@ export default {
 
         this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
         this.id = id;
-
-        if(event.zeiten != null) {
-            this.days = event.zeiten;
-        }
-
-        this.adresse = event.adresse
     },
     created() {
-
-        this.days = [
-            {
-                wochentag: "Dienstag",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            },
-            {
-                wochentag: "Mittwoch",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            },
-            {
-                wochentag: "Donnerstag",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            }
-        ];
-
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
