@@ -104,8 +104,6 @@ export default {
 
         let req = await axios.get(process.env.baseURL + "/events/" + id);
 
-        console.log(req);
-
         let event = req.data;
 
         this.name = event.titel;

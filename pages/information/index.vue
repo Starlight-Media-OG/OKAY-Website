@@ -18,8 +18,8 @@
                 <div class="smallSize">
                     <h2>Projekte</h2>
                     <div class="cards row flex flex-center">
-                        <card v-for="project in projects" :key="project.id" :id="projects.id" :title="project.titel" :teaser="project.beschreibung"
-                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + 'plakat.png'" projects />
+                        <card v-for="project in projects" :key="project.pId" :id="projects.pId" :title="project.titel" :teaser="project.beschreibung"
+                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + '/plakat.png'" projects />
                     </div>
                 </div>
             </div>
@@ -231,16 +231,7 @@ export default {
                 }
             ],
             team: [],
-            projects: [
-                {
-                    id: 1,
-                    titel: "Projekt Diplomarbeit",
-                    start_datum: new Date(Date.now()).toLocaleDateString(),
-                    end_datum: new Date(Date.now()).toLocaleDateString(),
-                    bilder_pfad: "http://server.okay-ybbs.at:4000/projects/1/",
-                    beschreibung: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et"
-                }
-            ]
+            projects: []
         }
     },
     head() {
@@ -269,9 +260,7 @@ export default {
         this.team = req.data;
 
         let req2 = await axios.get(process.env.baseURL + "/projekte");
-        let projekte = req.data;
-
-        //console.log(projekte);
+        let projekte = req2.data;
 
         this.projects = projekte;
     },
