@@ -50,118 +50,8 @@
     </main>
 </template>
 
-<style lang="scss" scoped>
-@import '../../assets/style/variable.scss';
-
-main {
-    overflow: hidden;
-}
-
-.date {
-    @include font($header-font-name, 4rem, $primary-yellow, bold);
-    line-height: 4rem;
-
-    @media screen and (min-width: $breakpoint-large) {
-        margin-top: 2vh;
-    }
-
-    @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.5rem, $primary-yellow, bold);
-    }
-
-    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        @include font($header-font-name, 2rem, $primary-yellow, bold);
-    }
-}
-
-
-.address {
-    @include font($flow-font-name, 2rem, white);
-    line-height: 2rem;
-    @media screen and (max-width: $breakpoint-medium-max) {
-        padding-bottom: 5vh;
-    }
-    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        font-size: 1.8rem;
-    }
-}
-
-.back {
-    @include font($header-font-name, 2.5rem, $primary-yellow, 700);
-    transform: translateY(25%);
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.3rem, $primary-yellow, 700);
-        padding-bottom: 2vh;
-    }
-
-    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        @include font($header-font-name, 2rem, $primary-yellow, 700);
-    }
-}
-
-.header {
-    margin-top: 10vh;
-}
-
-.content {
-    margin-top: 5vh;
-    float: left;
-    width: 100%;
-
-    .commentBox {
-        width: 100%;
-    }
-
-    .beschreibung {
-        @include font($flow-font-name, 1rem, white);
-        padding: 5vw 7.5vw 2vw;
-
-        h2 {
-            @include font($header-font-name, 3rem, white, bold);
-
-            @media screen and (max-width: $breakpoint-medium-max) {
-                font-size: 2rem;
-            }
-        }
-
-        @media screen and (max-width: $breakpoint-medium-max) {
-            font-size: 1rem;
-        }
-
-        .dateOpen {
-            margin-top: 5vh;
-        }
-
-        @media screen and (min-width: $breakpoint-large) {
-            column-count: 2;
-            column-width: 40vw;
-            column-gap: 3vw;
-
-            .bes {
-                page-break-inside: avoid;
-                -webkit-column-break-inside: avoid;
-                break-inside: avoid;
-            }
-
-            .dateOpen {
-                page-break-inside: avoid;
-                -webkit-column-break-inside: avoid;
-                break-inside: avoid;
-            }
-        }
-    }
-
-    .link {
-        @media screen and (max-width: $breakpoint-medium-max) {
-            transform: translateY(400%);
-        }
-    }
-}
+<style scoped lang="scss">
+@import '../../assets/style/_id.scss';
 </style>
 
 <script>
@@ -169,7 +59,7 @@ import commentBox from "~/components/commentBox/commentBox.vue";
 import axios from "axios";
 
 export default {
-    name: "event-detailed",
+    name: "EventDetailed",
     data() {
         return {
             name: "",
@@ -186,12 +76,26 @@ export default {
             return this.name.split(" ");
         },
         sizeDetection: function () {
-            if(this.name.length - this.name.split(" ").length <= 10 ) {
-                return "12vh";
-            } else if(this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
-                return "10vh";
-            } else if(this.name.length - this.name.split(" ").length > 20) {
-                return "8vh";
+            if(process.client) {
+                let width = window.innerWidth;
+
+                if(width > 700) {
+                    if (this.name.length - this.name.split(" ").length <= 10) {
+                        return "12vh";
+                    } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                        return "10vh";
+                    } else if (this.name.length - this.name.split(" ").length > 20) {
+                        return "8vh";
+                    }
+                } else {
+                    if (this.name.length - this.name.split(" ").length <= 10) {
+                        return "3rem";
+                    } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                        return "2.5rem";
+                    } else if (this.name.length - this.name.split(" ").length > 20) {
+                        return "2rem";
+                    }
+                }
             }
         }
     },
@@ -203,7 +107,14 @@ export default {
 
         this.name = event.titel;
         this.beschreibung = event.beschreibung;
-        this.bild = event.bilder_path + "/plakat.jpg";
+
+        if(event.bilder_path == null) {
+            this.bilder_path = event.bilder_path;
+            this.bild = event.bilder_path + "/title.jpg";
+        } else {
+            this.bild = process.env.defaultImage;
+        }
+
         this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
         this.id = id;
 
@@ -239,10 +150,6 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: `${this.id}`, link:`/events/${this.id}`} });
-
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        })
     },
     components: {
         commentBox
@@ -270,7 +177,12 @@ export default {
         }
     },
     async mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        })
+
         await this.$fetch();
+
         this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         })

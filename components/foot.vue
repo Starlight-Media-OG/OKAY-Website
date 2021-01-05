@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <div class="modal flex flex-center" v-if="modal">
+        <div class="modal flex flex-center" v-if="loc">
             <div class="content flex flex-center">
                 <div class="close row" @click="modalToggle">
                     x
@@ -57,14 +57,14 @@
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             },
             modalToggle: function () {
-                this.modal = !this.modal;
+                this.loc =! this.loc;
             },
             showNewsletter: function() {
                 this.news =! this.news
             }
         }, data() {
             return {
-                modal: false,
+                loc: false,
                 news: false
             }
         }

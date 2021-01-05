@@ -30,14 +30,14 @@ export default {
             }
         });
     },
-    mounted() {
+    async mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
 
-        window.addEventListener("load", () => {
-            this.$nuxt.$loading.finish();
-        });
+        await this.$fetch();
+
+        this.$nuxt.$loading.finish();
     },
     head () {
         return {

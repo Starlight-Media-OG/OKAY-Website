@@ -35,11 +35,7 @@ main {
         z-index: -99;
 
         @media screen and (max-width: $breakpoint-medium-max) {
-            margin-left: 10vw;
-            img {
-                margin: 0 auto;
-                width: 80vw;
-            }
+            display: none;
         }
     }
 }

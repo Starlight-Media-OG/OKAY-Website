@@ -18,23 +18,23 @@
         </section>
         <section style="margin:0;">
             <div id="scroll" class="events">
-                <h2>Events</h2>
+                <h2 class="reduceMobile">Events</h2>
                 <div v-for="event of events" :key="event.oaId" class="singleEvents">
                     <card :id="event.oaId" :date="event.start_datum" :endDate="event.end_datum"
                           :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
                           events />
                 </div>
-                <div class="link center">
+                <div class="link center" style="margin-top: 3rem;">
                     <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
                 </div>
             </div>
             <div class="news">
-                <h2>News</h2>
+                <h2 class="reduceMobile">News</h2>
                 <div v-for="news1 of news" :key="news1.nId" class="singleNews">
                     <card :id="news1.nId" :date="news1.datum" :image="news1.bilder_path + '/plakat.jpg'"
                           :teaser="news1.anreisser" :title="news1.titel" news />
                 </div>
-                <div class="link center">
+                <div class="link center" style="margin-top: 3rem;">
                     <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
                 </div>
             </div>
@@ -42,8 +42,6 @@
         </section>
     </main>
 </template>
-
-<style></style>
 
 <style lang="scss" scoped>
 @import "../assets/style/variable.scss";
@@ -160,12 +158,11 @@ export default {
             this.$scrollTo(target, 500, options)
         }
     },
-    created() {
+    async mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
-    },
-    async mounted() {
+
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, text: "Startseite", link: "/"}});
 
@@ -278,8 +275,6 @@ export default {
         let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
         let events = reqE.data;
 
-        console.log(events);
-
         this.events = events;
 
 
@@ -291,12 +286,9 @@ export default {
         let news = req.data;
 
         for(let n in news) {
-
             if (news[n].anreisser === "") {
-                console.log(news[n].nId + " has empty anreisser")
                 news[n].anreisser = news[n].bericht;
             }
-
         }
 
         this.news = news;

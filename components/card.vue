@@ -2,7 +2,7 @@
     <div class="mainCard"  :style="{'background-color': cardColor, 'color': fontColor}">
         <div class="column">
             <div class="image">
-                <img :src="this.image" :alt="this.title" class="image-col">
+                <img :src="this.showImage" :alt="this.title" class="image-col">
             </div>
         </div>
         <div class="column content">
@@ -103,6 +103,9 @@
             },
             endDatum: function() {
                 return new Date(this.endDate).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
+            },
+            showImage: function() {
+                return (this.image == null ? this.image : process.env.defaultImage);
             }
         }
     }

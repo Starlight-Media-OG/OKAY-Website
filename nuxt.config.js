@@ -10,7 +10,8 @@ export default {
     },
     env: {
         baseURL: process.env.BASE_URL || "http://server.okay-ybbs.at:3000",
-        baseImage: process.env.BASE_IMAGE || "http://server.okay-ybbs.at:4000"
+        baseImage: process.env.BASE_IMAGE || "http://server.okay-ybbs.at:4000",
+        defaultImage: "/img/defaultImage.png"
     },
     server :{
       port: 3000, //Build change to 80

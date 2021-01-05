@@ -28,7 +28,7 @@
     user-focus: none;
 
     #canvas3d {
-        width: 300vw;
+        display: none;
     }
 }
 
@@ -60,4 +60,8 @@ main {
 
 .underline {
     @include text-underline($primary-blue, .1vh, 5px);
+}
+
+.reduceMobile {
+    margin-bottom: -6rem;
 }

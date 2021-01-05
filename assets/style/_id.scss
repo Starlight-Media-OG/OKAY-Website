@@ -1,0 +1,92 @@
+@import '../../assets/style/variable.scss';
+
+.date {
+    @include font($header-font-name, 4rem, $primary-yellow, bold);
+    line-height: 4rem;
+    @media screen and (min-width: $breakpoint-large) {
+        margin-top: 2vh;
+    }
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1.5rem, $primary-yellow, bold);
+        padding-bottom: 5vh;
+        line-height: 1.5rem;
+    }
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 2rem;
+    }
+}
+
+.back {
+    @include font($header-font-name, 2.5rem, $primary-yellow, 700);
+    transform: translateY(25%);
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1rem, $primary-yellow, 700);
+        padding-bottom: 2vh;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        @include font($header-font-name, 2rem, $primary-yellow, 700);
+    }
+}
+
+.header {
+    margin-top: 10vh;
+}
+
+.commentBox {
+    width: 100vw;
+}
+
+.dateOpen {
+    @include font($flow-font-name, 1rem, white);
+
+    h3 {
+        @include font($header-font-name, 4rem, white, bold);
+        margin-bottom: 1rem;
+    }
+
+}
+
+.content {
+    margin-top: 2vh;
+    width:100vw;
+
+    .beschreibung {
+        width: 50%;
+        padding: 5vh;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            width: 90%;
+        }
+
+        .title {
+            @include font($flow-font-name, 4rem, white, bold);
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                @include font($flow-font-name, 3rem, white, bold);
+                margin-bottom: 5vh;
+                margin-left: -5vw;
+            }
+        }
+
+        p {
+            margin-top: -5vh;
+            @include font($flow-font-name, 1rem, white);
+        }
+
+    }
+
+    .galleryBox {
+        width: 100%;
+        padding: 10vh 0;
+        margin: 10vh 0;
+        text-align: center;
+        @include font($flow-font-name, 3rem, white, bold);
+        background-color: $primary-blue;
+    }
+}

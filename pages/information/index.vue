@@ -266,9 +266,7 @@ export default {
     },
     async fetch() {
         let req = await axios.get(process.env.baseURL + "/mitglieder");
-        let mitglieder = req.data;
-
-        this.team = mitglieder;
+        this.team = req.data;
 
         let req2 = await axios.get(process.env.baseURL + "/projekte");
         let projekte = req.data;
