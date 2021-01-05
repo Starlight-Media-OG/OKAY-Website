@@ -30,15 +30,6 @@ export default {
             }
         });
     },
-    async mounted() {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        });
-
-        await this.$fetch();
-
-        this.$nuxt.$loading.finish();
-    },
     head () {
         return {
             title: "Kalender - OKAY Ybbs",

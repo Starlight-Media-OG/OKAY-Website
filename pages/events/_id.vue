@@ -103,6 +103,9 @@ export default {
         let id = this.$route.params.id;
 
         let req = await axios.get(process.env.baseURL + "/events/" + id);
+
+        console.log(req);
+
         let event = req.data;
 
         this.name = event.titel;
@@ -143,8 +146,6 @@ export default {
                 end_zeit: "12:00"
             }
         ];
-
-        this.adresse = "Herrengasse 15 3370 Ybbs";
 
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });

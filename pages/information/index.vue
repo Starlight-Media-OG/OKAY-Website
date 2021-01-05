@@ -271,9 +271,9 @@ export default {
         let req2 = await axios.get(process.env.baseURL + "/projekte");
         let projekte = req.data;
 
-        console.log(projekte);
+        //console.log(projekte);
 
-        //this.projects = projekte;
+        this.projects = projekte;
     },
     created() {
         this.$store.commit('breadcrumbs/clear');
