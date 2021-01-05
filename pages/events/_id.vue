@@ -65,13 +65,16 @@ export default {
             date: "",
             id: "",
             days: {},
-            adresse: null
+            adresse: null,
+            untertitel: ""
         }
     },
     computed: {
         title: function () {
-            let names = this.name.split(" ");
+            let tmp = this.name + " - " + this.untertitel
+            let names = tmp.split(" ");
 
+            //Join Short Words
             for (let e in names) {
                 e = parseInt(e, 10);
                 if (names[e].length <= 15) {
@@ -117,6 +120,7 @@ export default {
 
         this.name = event.titel;
         this.beschreibung = event.beschreibung;
+        this.untertitel = event.untertitel;
 
         if(event.bilder_path == null) {
             this.bilder_path = event.bilder_path;

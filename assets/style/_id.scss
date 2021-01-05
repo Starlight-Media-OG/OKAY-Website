@@ -34,6 +34,22 @@
     }
 }
 
+.address {
+    @include font($header-font-name, 4rem, $primary-yellow, bold);
+    line-height: 4rem;
+    @media screen and (min-width: $breakpoint-large) {
+        margin-top: 2vh;
+    }
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1.5rem, $primary-yellow, bold);
+        padding-bottom: 5vh;
+        line-height: 1.5rem;
+    }
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 2rem;
+    }
+}
+
 .header {
     margin-top: 10vh;
 }

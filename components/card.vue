@@ -20,7 +20,7 @@
             <div class="teaser-news">
                 <p v-html="trimString(this.teaser, 300)"></p>
             </div>
-            <div v-if="!news">
+            <div v-if="!news && !projects">
                 <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">
                   <div class="button" :style="{'background-color': buttonColor}">
                     <p  class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
@@ -32,6 +32,13 @@
                   <div class="button" :style="{'background-color': buttonColor}">
                     <p class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
                   </div>
+                </nuxt-link>
+            </div>
+            <div v-if="projects">
+                <nuxt-link :to="concat('/projects/', this.id)" class="ignoreTag">
+                    <div class="button" :style="{'background-color': buttonColor}">
+                        <p class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
+                    </div>
                 </nuxt-link>
             </div>
         </div>

@@ -64,7 +64,8 @@ export default {
     },
     computed: {
         title: function () {
-            let names = this.name.split(" ");
+            let tmp = this.name + " - " + this.untertitel
+            let names = tmp.split(" ");
 
             //Join Short Words
             for (let e in names) {
@@ -76,23 +77,6 @@ export default {
                     }
                 }
             }
-
-            //Append Subtitle
-            names.push("-");
-
-            let subtitle = this.untertitel.split(" ");
-
-            //Join Short Subtitle
-            for (let e in subtitle) {
-                e = parseInt(e, 10);
-                if (subtitle[e].length <= 15) {
-                    if (e + 1 < subtitle.length) {
-                        subtitle[e + 1] = subtitle[e] + " " + subtitle[e + 1];
-                        subtitle[e] = "";
-                    }
-                }
-            }
-            names.push(subtitle);
 
             return names;
         },
