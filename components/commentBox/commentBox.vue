@@ -137,18 +137,19 @@ export default {
         methods: {
             send: async function () {
                 let reqkomId = await axios.get(process.env.baseURL + "/kommentare")
-                let komId = reqkomId.data === [] ? 1 : reqkomId.data.komId;
+                console.log("Kommentar id: " + reqkomId.data.komId);
+                let komId = reqkomId.data.komId === undefined ? 1 : reqkomId.data.komId;
 
                 let req = await axios.post(process.env.baseURL + "/kommentare/", {
                     "email": this.mail,
                     "username": this.name,
                     "kommentar_text": this.txt,
-                    "datum": new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate(),
+                    "datum": new Date().getFullYear() + "-" + ('0' + (MyDate.getMonth()+1)).slice(-2) + "-" + ('0' + new Date().getDate()).slice(-2),
                     "bilder_pfad": process.env.baseImage + "/images?path=uploads/events/" + this.$props.eId + "/comment" + komId
                 });
                 console.log(req.status);
 
-                if(req.status === 200) {
+                if(req.status === 200 && this.files != null) {
                     if (this.files !== []) {
                         let data = await axios.post(process.env.baseImage + "/images/upload/events/", this.files);
                         this.$nuxt.refresh();
