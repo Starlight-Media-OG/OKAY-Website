@@ -144,7 +144,7 @@ export default {
                     "username": this.username,
                     "kommentar_text": this.txt,
                     "datum": new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate(),
-                    "bilder_pfad": process.env.baseImage + "/images?path=server/uploads/events/" + this.$props.eId + "/comment" + komId;
+                    "bilder_pfad": process.env.baseImage + "/images?path=server/uploads/events/" + this.$props.eId + "/comment" + komId
                 });
                 console.log(req.status);
 
