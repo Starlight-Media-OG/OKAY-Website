@@ -5,6 +5,7 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const _ = require("lodash");
 const path = require('path');
+const axios = require('axios');
 
 const app = express();
 
@@ -30,8 +31,8 @@ app.post('/images/upload/events/', async (req, res) => {
             });
         } else {
             let data = [];
-            let komID = 10; //Get id of last Comment send to db
-            let eID = 1020; //Get id of event from Comment ID
+            let komID = await axios.get(process.env.baseUrl + "/kommentare").data.komId;
+            let eID = await axios.get(process.env.baseURL + "/kommentare/getEvent/" + komID).data.oaId;
 
             _.forEach(
                 _.keysIn(req.files.uploaded), key => {
@@ -46,7 +47,6 @@ app.post('/images/upload/events/', async (req, res) => {
                     });
                 }
             );
-            res.redirect(301, "http://localhost:3000/events/" + eID);
         }
     } catch (err) {
         console.log(err);
@@ -62,8 +62,8 @@ app.post('/images/upload/projects/', async (req, res) => {
             });
         } else {
             let data = [];
-            let komId = 10; //Get ID from last inserted Comment
-            let pId = 1;    //Get ID from project, where comment belongs
+            let komID = await axios.get(process.env.baseUrl + "/kommentare").data.komId;
+            let eID = await axios.get(process.env.baseURL + "/kommentare/getEvent/" + komID).data.oaId;
 
             _.forEach(
                 _.keysIn(req.files.uploaded), key => {
@@ -78,7 +78,6 @@ app.post('/images/upload/projects/', async (req, res) => {
                     });
                 }
             );
-            res.redirect(301, "http://localhost:3000/events/" + pID);
         }
     } catch (err) {
         console.log(err);

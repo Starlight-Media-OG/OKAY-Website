@@ -77,6 +77,13 @@
     "_name": "_57acfc1a"
   },
   {
+    "name": "projects-id",
+    "path": "/projects/:id?",
+    "component": "/home/philipp/Dokumente/02_School/06_Diplomarbeit/Website/DIOK-Website/pages/projects/_id.vue",
+    "chunkName": "pages/projects/_id",
+    "_name": "_1fbd59ee"
+  },
+  {
     "name": "index",
     "path": "/",
     "component": "/home/philipp/Dokumente/02_School/06_Diplomarbeit/Website/DIOK-Website/pages/index.vue",

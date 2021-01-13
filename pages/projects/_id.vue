@@ -34,9 +34,6 @@
                     <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
                 </em>
             </div>
-            <section class="commentBox flex flex-center">
-                <commentBox :id="this.id"/>
-            </section>
         </section>
     </main>
 </template>

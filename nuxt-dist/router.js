@@ -14,6 +14,7 @@ const _76c6a0b0 = () => interopDefault(import('../pages/events/_id.vue' /* webpa
 const _68238207 = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
 const _99ef3b3c = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
 const _57acfc1a = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _1fbd59ee = () => interopDefault(import('../pages/projects/_id.vue' /* webpackChunkName: "pages/projects/_id" */))
 const _2baf80c4 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
@@ -76,6 +77,10 @@ export const routerOptions = {
     path: "/products/:id",
     component: _57acfc1a,
     name: "products-id"
+  }, {
+    path: "/projects/:id?",
+    component: _1fbd59ee,
+    name: "projects-id"
   }, {
     path: "/",
     component: _2baf80c4,

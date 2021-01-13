@@ -109,14 +109,14 @@
 </style>
 
 <script>
-    import axios from 'axios';
-    import check from "~/components/svg/check.vue";
-    import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
+import axios from 'axios';
+import check from "~/components/svg/check.vue";
+import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
 
-    export default {
+export default {
         name: "comment",
         props: {
-            eId: String,
+            eId: Number,
         },
         components: {
             check, NewsletterPopUp
@@ -125,27 +125,7 @@
             return {
                 activeAdd: false,
                 txt: "",
-                koms: [
-                    {
-                        id: 10,
-                        username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: "http://server.okay-ybbs.at:4000/images?path=uploads/events/1020/comment10",
-                        images: []
-                    }, {
-                        id: 123,
-                        username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: null,
-                        images: []
-                    }, {
-                        id: 122,
-                        username: "Philipp Dvorak",
-                        text: "Das war eine wunderschöne Ausstellung, ich habe keine Ideen mehr was hier noch stehen könnte",
-                        bilder_path: null,
-                        images: []
-                    }
-                ],
+                koms: [],
                 name: "",
                 mail: "",
                 newsletter: true,
@@ -156,11 +136,23 @@
         },
         methods: {
             send: async function () {
-                //Send text to DB
+                let reqkomId = await axios.get(process.env.baseURL + "/kommentare")
+                let komId = reqkomId.data === [] ? 1 : reqkomId.data.komId;
 
-                if (this.files !== []) {
-                    let data = await axios.post("http://server.okay-ybbs.at:4000/images/upload/events/", this.files);
-                    console.log(data.data);
+                let req = await axios.post(process.env.baseURL + "/kommentare/", {
+                    "email": this.email,
+                    "username": this.username,
+                    "kommentar_text": this.txt,
+                    "datum": new Date().getFullYear() + "-" + new Date().getMonth() + "-" + new Date().getDate(),
+                    "bilder_pfad": process.env.baseImage + "/images?path=server/uploads/events/" + this.$props.eId + "/comment" + komId;
+                });
+                console.log(req.status);
+
+                if(req.status === 200) {
+                    if (this.files !== []) {
+                        let data = await axios.post(process.env.baseImage + "/images/upload/events/", this.files);
+                        this.$nuxt.refresh();
+                    }
                 }
 
                 this.toggleModal();
@@ -183,7 +175,8 @@
             }
         },
         async fetch() {
-            //Fetch Comments
+            let req = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.$props.eId);
+            this.koms = req.data;
 
             for (const item of this.koms) {
                 if (item.bilder_path != null) {
@@ -196,5 +189,6 @@
                 }
             }
         },
+
     }
 </script>

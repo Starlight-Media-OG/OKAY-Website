@@ -61,7 +61,7 @@
 }
 
 .commentBox {
-    width: 100vw;
+    width: 100%;
 }
 
 .dateOpen {
@@ -76,11 +76,13 @@
 
 .content {
     margin-top: 2vh;
-    width:100vw;
+    width:100%;
 
     .beschreibung {
         width: 50%;
         padding: 5vh;
+        column-count: 2;
+        column-gap: 2rem;
 
         @media screen and (max-width: $breakpoint-medium-max) {
             width: 90%;
@@ -96,8 +98,15 @@
             }
         }
 
+        .bes {
+            page-break-inside: avoid;
+        }
+
+        .dateOpen {
+            page-break-inside: avoid;
+        }
+
         p {
-            margin-top: -5vh;
             @include font($flow-font-name, 1rem, white);
         }
 

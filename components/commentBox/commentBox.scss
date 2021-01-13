@@ -18,7 +18,7 @@
     }
 
     .comments {
-        height: 80vh;
+        max-height: 80vh;
         width: 70%;
         overflow: auto;
         overflow: -moz-scrollbars-none;

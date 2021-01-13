@@ -26,7 +26,7 @@
             <article class="beschreibung" style="padding: 1rem;width: 90%;">
                 <div class="bes">
                     <h2>Beschreibung</h2>
-                    {{ this.beschreibung }}
+                    <p>{{ this.beschreibung }}</p>
                 </div>
                 <div class="dateOpen">
                     <h2>Öffnungszeiten</h2>
@@ -41,7 +41,7 @@
                 </em>
             </div>
             <section class="commentBox flex flex-center">
-                <commentBox :id="this.id"/>
+                <commentBox :eId="this.id"/>
             </section>
         </section>
     </main>
@@ -130,7 +130,7 @@ export default {
         }
 
         this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
-        this.id = id;
+        this.id = event.oaId;
 
         if(event.zeiten != null) {
             this.days = event.zeiten;
