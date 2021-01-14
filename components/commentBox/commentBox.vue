@@ -20,11 +20,11 @@
                                 {{kom.kommentar_text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="kom.images === undefined || kom.images.length !== 0">
+                        <div class="flex flex-center" v-if="kom.images != undefined || kom.images.length != 0">
                             <div class="images flex flex-center">
                                 <div class="row">
                                     <div v-for="image in kom.images" :key="image" class="col flex flex-center">
-                                        <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" />
+                                        <img :src="image" alt="Bild von der Ausstellung" />
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +43,14 @@
                     <p class="text center" style="font-size: 5vh;">+</p>
                     <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
-                            <input type="file" accept="image/*" name="uploaded" multiple @change="previewFiles()" ref="myFiles" />
+                            <input type="file" name="files" multiple @change="registerFiles">
                         </div>
                     </div>
                 </div>
                 <div class="sendButton" @click="toggleModal()">
                     <p class="text center check">
-                        <button type="submit"> <check /> </button>
+                        <button type="submit">
+                            <check /> </button>
                     </p>
                 </div>
             </div>
@@ -98,7 +99,7 @@
             </div>
         </div>
 
-        <NewsletterPopUp :show="newsletterPopUp"/>
+        <NewsletterPopUp :show="newsletterPopUp" />
     </div>
 
 
@@ -109,17 +110,20 @@
 </style>
 
 <script>
-import axios from 'axios';
-import check from "~/components/svg/check.vue";
-import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
+    import axios from 'axios';
+    import check from "~/components/svg/check.vue";
+    import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
+    import FileUpload from "vue-simple-upload/dist/FileUpload"
 
-export default {
+    export default {
         name: "CommentBox",
         props: {
             eId: Number,
         },
         components: {
-            check, NewsletterPopUp
+            check,
+            NewsletterPopUp,
+            'fileupload': FileUpload
         },
         data() {
             return {
@@ -131,48 +135,67 @@ export default {
                 newsletter: false,
                 files: [],
                 modalShow: false,
-                newsletterPopUp: false
+                newsletterPopUp: false,
+                fileUplaodTarget: process.env.baseImage + "/images/upload/events/"
             }
         },
         methods: {
+            registerFiles: function(e) {
+                this.files = e.target.files;
+            },
             send: async function () {
-                if(this.eId != "") {
+                if (this.eId != "") {
                     let req = await axios.post(process.env.baseURL + "/kommentare/", {
                         "email": this.mail,
                         "username": this.name,
                         "kommentar_text": this.txt,
-                        "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth()+1)).slice(-2) + "-" + ('0' + new Date().getDate()).slice(-2),
+                        "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth() + 1)).slice(
+                            -2) + "-" + ('0' + new Date().getDate()).slice(-2),
                         "oaId": this.eId
                     });
 
                     let komId = req.data.id;
 
-                    if(komId != undefined) {
+                    if (komId != undefined) {
                         await axios.post(process.env.baseURL + "/setEvent", {
                             "komId": komId,
                             "oaId": this.eId
                         })
                     }
 
-                    if(req.status === 200 && this.files != null) {
-                        if (this.files !== []) {
-                            let data = await axios.post(process.env.baseImage + "/images/upload/events/", this.files);
-                            this.$nuxt.refresh();
+                    if(this.files != undefined || this.files != {}) {
+                        //Send Request to API
+                        let url = process.env.baseImage + "/images/upload/events/";
+                        
+                        let formData = new FormData();
+
+                        for (const i of Object.keys(this.files)) {
+                            formData.append('files', this.files[i])
+                        }
+
+                        let req = axios.post(url, formData);
+
+                        if(req.status === 200) {
+                            console.log(req.data);
                         }
                     }
 
                     this.toggleModal();
 
-                    if(this.newsletter === true)
-                        this.newsletterPopUp =! this.newsletterPopUp;
+                    if (this.newsletter === true)
+                        this.newsletterPopUp = !this.newsletterPopUp;
                 }
             },
             initials: function (kom) {
-                let tmp = kom.username.split(" ");
+                if (kom.username.indexOf(" ") >= 0) {
+                    let tmp = kom.username.split(" ");
 
-                tmp = tmp[0].charAt(0).toUpperCase() + tmp[1].charAt(0).toUpperCase();
+                    tmp = tmp[0].charAt(0).toUpperCase() + tmp[1].charAt(0).toUpperCase();
 
-                return tmp;
+                    return tmp;
+                } else {
+                    return " " + kom.username.charAt(0);
+                }
             },
             previewFiles() {
                 if (this.$refs.myFiles.files !== undefined)
@@ -183,16 +206,24 @@ export default {
             }
         },
         async fetch() {
-            let reqComment = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.eId);
+            let error = false;
 
-            this.koms = reqComment.data;
+            let reqComment = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.eId).catch(()=>{
+                error =true;
+            });
 
-            for (const item of this.koms) {
-                if (item.bilder_path != null) {
-                    let data = await axios.get(item.bilder_path);
-                    if (data.data.status === true) {
-                        for (const value of data.data.data) {
-                            item.images.push(process.env.baseImage + value.replace("server/uploads", ""));
+            if(!error) {
+                this.koms = reqComment.data;
+
+                for (const item of this.koms) {
+                    console.log(item);
+                    if (item.bilder_path != null) {
+                        let data = await axios.get(item.bilder_path);
+                        if (data.data.status === true) {
+                            item.images = [];
+                            for (const value of data.data.data) {
+                                item.images.push(process.env.baseImage + value.replace("server/uploads", ""));
+                            }
                         }
                     }
                 }

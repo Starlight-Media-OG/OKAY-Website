@@ -6,6 +6,10 @@ const bodyParser = require("body-parser");
 const _ = require("lodash");
 const path = require('path');
 const axios = require('axios');
+const fs = require('fs');
+
+const baseURL = "http://server.okay-ybbs.at:3000";
+const baseImage = "http://server.okay-ybbs.at:4000"
 
 const app = express();
 
@@ -14,7 +18,11 @@ app.use(fileUpload({
 }));
 
 app.use(express.static(__dirname + '/uploads'));
-app.use(cors());
+
+app.use(cors({
+    origin: "http://server.okay-ybbs.at"
+}));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(morgan('dev'));
@@ -24,6 +32,7 @@ const PORT = process.env.PORT || 4000;
 //Upload Event Images sorted by Comment
 app.post('/images/upload/events/', async (req, res) => {
     try {
+
         if (!req.files) {
             res.send({
                 status: false,
@@ -31,30 +40,51 @@ app.post('/images/upload/events/', async (req, res) => {
             });
         } else {
             let data = [];
-            let komID = await axios.get(process.env.baseUrl + "/kommentare").data.komId;
-            let eID = await axios.get(process.env.baseURL + "/kommentare/getEvent/" + komID).data.oaId;
 
-            _.forEach(
-                _.keysIn(req.files.uploaded), key => {
-                    let img = req.files.uploaded[key];
+            let req2 = await axios.get(baseURL + "/kommentare");
+            let komId = req2.data.komId;
 
-                    img.mv("./uploads/events/" + eID + "/comment" + komID + "/" + img.name);
+            req2 = await axios.get(baseURL + "/kommentare/getEvent/" + komId);
+            let eID = req2.data.oaId;
 
-                    data.push({
-                        name: img.name,
-                        mimetype: img.mimetype,
-                        size: img.size
-                    });
-                }
-            );
+            if(req.files != {}) {
+                _.forEach(
+                    _.keysIn(req.files), key => {
+                        let img = req.files[key];
 
-            await axios.put(process.env.baseURL + "/kommentar", {
-                "komId": komID,
-                "bilder_path": process.env.baseImage + "/images?path=server/uploads/events" + eID + "/comment" + komID
+                        let dir = "/root/Website/server/uploads/events/" + eID + "/comment" + komId;
+
+                        console.log(dir);
+
+                        if(!fs.existsSync(dir)) {
+                            fs.mkdirSync(dir);
+                        }
+
+                        img.mv(dir + "/" + img.name);
+
+                        
+
+                        console.log(img);
+
+                        data.push({
+                            name: img.name,
+                            mimetype: img.mimetype,
+                            size: img.size
+                        });
+                    }
+                );
+            }
+
+            await axios.put(baseURL + "/kommentar", {
+                "komId": komId,
+                "bilder_path": baseImage + "/images?path=uploads/events/" + eID + "/comment" + komId
             })
+
+            res.send(data);
         }
     } catch (err) {
         console.log(err);
+        res.status(500);
     }
 });
 
@@ -67,14 +97,13 @@ app.post('/images/upload/projects/', async (req, res) => {
             });
         } else {
             let data = [];
-            let komID = await axios.get(process.env.baseUrl + "/kommentare").data.komId;
-            let eID = await axios.get(process.env.baseURL + "/kommentare/getEvent/" + komID).data.oaId;
+            let pId = req.query.id; //Get id from GET Parameter id
 
             _.forEach(
                 _.keysIn(req.files.uploaded), key => {
                     let img = req.files.uploaded[key];
 
-                    img.mv("./uploads/projects/" + pId + "/comment" + komID + "/" + img.name);
+                    img.mv("./uploads/projects/" + pId + img.name);
 
                     data.push({
                         name: img.name,
@@ -114,7 +143,6 @@ app.post('/images/upload/news/', async (req, res) => {
                     });
                 }
             );
-            res.redirect(301, "http://localhost:3000/news/" + ID);
         }
     } catch (err) {
         console.log(err);
@@ -146,7 +174,6 @@ app.post('/images/upload/products/', async (req, res) => {
                     });
                 }
             );
-            res.redirect(301, "http://localhost:3000/products/" + ID);
         }
     } catch (err) {
         console.log(err);
@@ -207,30 +234,9 @@ app.get("/images", async (req, res) => {
     });
 });
 
-app.get("/newsletter/unsubscribe", async (req, res) => {
-    if(req.query.mail) {
-        //Update Newsletter DB and remove given mail address
-        //Remove this mail from any Mailverteiler
-
-        res.status(200);
-        res.send({
-           success: true,
-           message: "Sie wurden erfolgreich vom Newsletter abgemeldet."
-        });
-    } else {
-        res.status(404);
-        res.send({
-            success: false,
-            message: "Es konnte keine Mail Adresse gefunden werden."
-        });
-    }
-})
-
 app.listen(PORT, () => {
     console.log("App is Running on " + PORT);
 });
-
-const fs = require('fs');
 
 function filewalker(dir, done) {
     let results = [];

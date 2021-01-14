@@ -35,7 +35,7 @@
                     </p>
                 </div>
             </article>
-            <div class="link">
+            <div class="link-noMargin">
                 <em class="underline">
                     <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
                 </em>

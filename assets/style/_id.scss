@@ -80,9 +80,11 @@
 
     .beschreibung {
         width: 50%;
-        padding: 5vh;
-        column-count: 2;
-        column-gap: 2rem;
+        @media screen and (min-width: $breakpoint-medium) { 
+            padding: 5vh;
+            column-count: 2;
+            column-gap: 2rem;
+        }
 
         @media screen and (max-width: $breakpoint-medium-max) {
             width: 90%;
@@ -100,10 +102,22 @@
 
         .bes {
             page-break-inside: avoid;
+
+            h2 {
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    font-size: 2rem;
+                }
+            }
         }
 
         .dateOpen {
             page-break-inside: avoid;
+
+            h2 {
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    font-size: 2rem;
+                }
+            }
         }
 
         p {

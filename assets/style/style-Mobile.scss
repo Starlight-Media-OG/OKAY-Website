@@ -51,6 +51,16 @@ main {
     margin-top: -40%;
     margin-bottom: 7vh;
 
+    &-noMargin {
+        margin-top: 0;
+
+        .further-link {
+            text-decoration: none;
+            color: $primary-yellow;
+            @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        }
+    }
+
     .further-link {
         text-decoration: none;
         color: $primary-yellow;

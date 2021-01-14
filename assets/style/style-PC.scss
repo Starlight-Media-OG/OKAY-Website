@@ -48,6 +48,14 @@ main {
 .link {
     margin-bottom: 7vh;
 
+    &-noMargin {
+        .further-link {
+            text-decoration: none;
+            color: $primary-yellow;
+            @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        }
+    }
+
     .further-link {
         text-decoration: none;
         color: $primary-yellow;
