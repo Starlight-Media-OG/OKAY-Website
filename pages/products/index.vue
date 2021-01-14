@@ -10,7 +10,7 @@
         </section>
         <section class="content">
             <div class="cards flexWrap" v-for="product in products" :key="product.prodId">
-                <product-card :imgPath="product.bilder_path + '/plakat.jpg'" :id="product.prodId" :preis="product.preis"
+                <product-card :imgPath="product.bilder_path == null ? defaultImage : product.bilder_path + '/plakat.jpg'" :id="product.prodId" :preis="product.preis"
                               :title="product.bezeichnung"/>
             </div>
         </section>
@@ -66,7 +66,8 @@ export default {
     },
     data() {
         return {
-            products: []
+            products: [],
+            defaultImage: process.env.defaultImage
         }
     }, created() {
         this.$store.commit('breadcrumbs/clear');

@@ -32,9 +32,9 @@ export default {
     name: "productCard",
     props: {
         title: String,
-        preis: String,
+        preis: Number,
         imgPath: String,
-        id: String
+        id: Number
     }, methods: {
         concat: function (...strings) {
             let conString = "";
@@ -43,7 +43,7 @@ export default {
             });
             return conString;
         }
-    },
+    }
 }
 </script>
 
@@ -65,11 +65,11 @@ export default {
         width: 80%;
         display: block;
         margin: 0 auto;
-        transform: translateY(-25%);
+        transform: translateY(-40%);
 
         .image-col {
             width: 100%;
-            box-shadow: 5px 5px 10px rgba(0, 0, 0, .20);
+            filter: drop-shadow(5px 5px 10px rgba(0,0,0,.20));
         }
     }
 

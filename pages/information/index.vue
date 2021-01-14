@@ -18,8 +18,8 @@
                 <div class="smallSize">
                     <h2>Projekte</h2>
                     <div class="cards row flex flex-center">
-                        <card v-for="project in projects" :key="project.pId" :id="projects.pId" :title="project.titel" :teaser="project.beschreibung"
-                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_pfad + '/plakat.png'" projects />
+                        <card v-for="project in projects" :key="project.pId" :id="project.pId" :title="project.titel" :teaser="project.beschreibung"
+                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_path + '/plakat.png'" projects />
                     </div>
                 </div>
             </div>

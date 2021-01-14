@@ -113,7 +113,6 @@
     import axios from 'axios';
     import check from "~/components/svg/check.vue";
     import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
-    import FileUpload from "vue-simple-upload/dist/FileUpload"
 
     export default {
         name: "CommentBox",
@@ -122,8 +121,7 @@
         },
         components: {
             check,
-            NewsletterPopUp,
-            'fileupload': FileUpload
+            NewsletterPopUp
         },
         data() {
             return {
@@ -216,7 +214,6 @@
                 this.koms = reqComment.data;
 
                 for (const item of this.koms) {
-                    console.log(item);
                     if (item.bilder_path != null) {
                         let data = await axios.get(item.bilder_path);
                         if (data.data.status === true) {
