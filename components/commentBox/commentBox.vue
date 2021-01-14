@@ -128,7 +128,7 @@ export default {
                 koms: [],
                 name: "",
                 mail: "",
-                newsletter: true,
+                newsletter: false,
                 files: [],
                 modalShow: false,
                 newsletterPopUp: false

@@ -60,6 +60,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
     name: "NewsletterPopUp",
     props: {
@@ -69,8 +71,21 @@ export default {
         modalToggle: function() {
             this.show =! this.show;
         },
-        send: function() {
-            //SEND DATA TO API
+        send: async function() {
+            let req = await axios.post(process.env.baseURL + "/mailadressen", {
+                "vorname": this.vorname,
+                "nachname": this.nachname,
+                "email": this.mail,
+                "geschlecht": this.gender
+            });
+
+            if(req.status === 200) {
+                let reqVerteiler = await axios.post(process.env.baseURL + "/newsletter", {
+                    "mailerId": req.data.id
+                });
+            } else if(req.status === 404) {
+                
+            }
 
             this.modalToggle();
         }
