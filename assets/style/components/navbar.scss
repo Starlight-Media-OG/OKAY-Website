@@ -102,13 +102,13 @@ nav {
 .breadcrumbs {
     $tmp: 540px;
     position: fixed;
-    left: 0;
+    left: calc(-#{$tmp} + 80px);
+    transform: translateY(-50%);
     top: 50%;
     height: $tmp;
     width: $tmp;
     border-radius: $tmp;
     background-color: $primary-blue;
-    transform: translateX(-88%) translateY(-50%);
     user-select: none;
     font-family: $flow-font-name;
     filter: drop-shadow(5px 5px 15px rgba(0,0,0,.2));
@@ -118,11 +118,11 @@ nav {
     }
 
     .breadcrumbs-list {
-        transform: translateX(525px);
         margin-top: 165px;
         color: white;
         font-size: 2rem;
-        width: auto;
+        position: fixed;
+        left: calc(#{$tmp} - 20px);
 
         .breadcrumbs-list-item {
             opacity: .2;

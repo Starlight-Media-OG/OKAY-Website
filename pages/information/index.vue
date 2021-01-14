@@ -239,7 +239,15 @@ export default {
             title: "Über Uns - OKAY Ybbs",
             meta: [
                 {
-
+                    charset: 'utf-16'
+                },
+                {
+                    name: "description",
+                    content: "Allgemeine Informationen über den Kulturverein aus Ybbs"
+                },
+                {
+                    name: "keywords",
+                    content: "KIZ, Vereinshaus, OKAY, Allgemeine Information, Projekte, Mitglieder"
                 }
             ]
         }

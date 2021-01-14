@@ -140,12 +140,10 @@ export default {
                 if (new Date(this.events[value].start_datum).getMonth() === month && new Date(this.events[value].start_datum).getFullYear() === year) {
                     if (this.events[value].end_datum === undefined) {
                         if (new Date(this.events[value].start_datum).getDate() === date) {
-                            console.log("One Day Event on day");
                             tableString += "<div class='eventCal oneDay' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     } else {
                         if (new Date(this.events[value].start_datum).getDate() <= date && new Date(this.events[value].end_datum).getDate() >= date) {
-                            console.log("Between days!");
                             tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     }
