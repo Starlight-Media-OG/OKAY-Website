@@ -1,4 +1,5 @@
 <template>
+
 </template>
 
 <script>
@@ -8,7 +9,8 @@ export default {
     name: "unsubscribeFromNewsletter",
     data: () => {
         return {
-            "mail": ""
+            mail: "",
+            message: ""
         }
     },
     async fetch() {
@@ -17,7 +19,7 @@ export default {
         let mail = this.mail;
 
         //Get Id to Mail Address
-        let req = await axios.get(process.env.baseURL + "/mailadresse/" + mail);
+        let req = await axios.get(process.env.baseURL + "/mailadressen/" + mail);
 
         if(req.status === 200) {
             console.log(req.status + " and data " + req.data)
@@ -29,11 +31,20 @@ export default {
             if(delVerteiler.status === 200) {
                 let delMail = await axios.delete(process.env.baseURL + "/mailadressen/" + mailId);
 
-                if(delMail.status === 200) {
-                    this.$nuxt.router.push("/");
-                }
+                this.$router.push("/");
             }
         }
+    },
+    async mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start()
+        });
+
+        await this.$fetch();
+
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start()
+        });
     }
 }
 </script>
