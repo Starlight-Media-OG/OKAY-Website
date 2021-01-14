@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -112,51 +112,36 @@ export default {
         }
     },
     async fetch() {
-        let id = this.$route.params.id;
+        let id = this.id;
 
         let req = await axios.get(process.env.baseURL + "/events/" + id);
 
-        let event = req.data;
+        if(req.status === 200) {
+            let event = req.data;
 
-        this.name = event.titel;
-        this.beschreibung = event.beschreibung;
-        this.untertitel = event.untertitel;
+            this.name = event.titel;
+            this.beschreibung = event.beschreibung;
+            this.untertitel = event.untertitel;
 
-        if(event.bilder_path == null) {
-            this.bilder_path = event.bilder_path;
-            this.bild = event.bilder_path + "/title.jpg";
-        } else {
-            this.bild = process.env.defaultImage;
+            if(event.bilder_path == null) {
+                this.bilder_path = event.bilder_path;
+                this.bild = event.bilder_path + "/title.jpg";
+            } else {
+                this.bild = process.env.defaultImage;
+            }
+
+            this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
+            this.id = event.oaId;
+
+            if(event.zeiten != null) {
+                this.days = event.zeiten;
+            }
+
+            this.adresse = event.adresse;
         }
-
-        this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
-        this.id = event.oaId;
-
-        if(event.zeiten != null) {
-            this.days = event.zeiten;
-        }
-
-        this.adresse = event.adresse
     },
     created() {
-
-        this.days = [
-            {
-                wochentag: "Dienstag",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            },
-            {
-                wochentag: "Mittwoch",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            },
-            {
-                wochentag: "Donnerstag",
-                start_zeit: "10:00",
-                end_zeit: "12:00"
-            }
-        ];
+        this.id = this.$route.params.id;
 
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
@@ -193,7 +178,7 @@ export default {
             this.$nuxt.$loading.start();
         })
 
-        await this.$fetch();
+         await this.$fetch(); 
 
         this.$nextTick(() => {
             this.$nuxt.$loading.finish();

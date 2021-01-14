@@ -47,6 +47,11 @@ app.post('/images/upload/events/', async (req, res) => {
                     });
                 }
             );
+
+            await axios.put(process.env.baseURL + "/kommentar", {
+                "komId": komID,
+                "bilder_path": process.env.baseImage + "/images?path=server/uploads/events" + eID + "/comment" + komID
+            })
         }
     } catch (err) {
         console.log(err);

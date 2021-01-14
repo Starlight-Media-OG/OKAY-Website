@@ -5,7 +5,7 @@
         </div>
         <div class=" flex flex-center">
             <div class="comments">
-                <div v-for="kom in koms" :key="kom.id" class="comment">
+                <div v-for="kom in koms" :key="kom.komId" class="comment">
                     <div class="singleCommentBox">
                         <div class="row">
                             <div class="shotName">
@@ -17,10 +17,10 @@
                         </div>
                         <div class="row">
                             <div class="text">
-                                {{kom.text}}
+                                {{kom.kommentar_text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="kom.images.length !== 0">
+                        <div class="flex flex-center" v-if="kom.images === undefined || kom.images.length !== 0">
                             <div class="images flex flex-center">
                                 <div class="row">
                                     <div v-for="image in kom.images" :key="image" class="col flex flex-center">
@@ -114,7 +114,7 @@ import check from "~/components/svg/check.vue";
 import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
 
 export default {
-        name: "comment",
+        name: "CommentBox",
         props: {
             eId: Number,
         },
@@ -136,28 +136,36 @@ export default {
         },
         methods: {
             send: async function () {
-                let reqkomId = await axios.get(process.env.baseURL + "/kommentare")
-                let komId = reqkomId.data.komId === undefined ? 1 : reqkomId.data.komId;
+                if(this.eId != "") {
+                    let req = await axios.post(process.env.baseURL + "/kommentare/", {
+                        "email": this.mail,
+                        "username": this.name,
+                        "kommentar_text": this.txt,
+                        "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth()+1)).slice(-2) + "-" + ('0' + new Date().getDate()).slice(-2),
+                        "oaId": this.eId
+                    });
 
-                let req = await axios.post(process.env.baseURL + "/kommentare/", {
-                    "email": this.mail,
-                    "username": this.name,
-                    "kommentar_text": this.txt,
-                    "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth()+1)).slice(-2) + "-" + ('0' + new Date().getDate()).slice(-2),
-                    "bilder_pfad": process.env.baseImage + "/images?path=uploads/events/" + this.$props.eId + "/comment" + komId
-                });
-                console.log(req.status);
+                    let komId = req.data.id;
 
-                if(req.status === 200 && this.files != null) {
-                    if (this.files !== []) {
-                        let data = await axios.post(process.env.baseImage + "/images/upload/events/", this.files);
-                        this.$nuxt.refresh();
+                    if(komId != undefined) {
+                        await axios.post(process.env.baseURL + "/setEvent", {
+                            "komId": komId,
+                            "oaId": this.eId
+                        })
                     }
+
+                    if(req.status === 200 && this.files != null) {
+                        if (this.files !== []) {
+                            let data = await axios.post(process.env.baseImage + "/images/upload/events/", this.files);
+                            this.$nuxt.refresh();
+                        }
+                    }
+
+                    this.toggleModal();
+
+                    if(this.newsletter === true)
+                        this.newsletterPopUp =! this.newsletterPopUp;
                 }
-
-                this.toggleModal();
-
-                this.newsletterPopUp =! this.newsletterPopUp;
             },
             initials: function (kom) {
                 let tmp = kom.username.split(" ");
@@ -175,20 +183,20 @@ export default {
             }
         },
         async fetch() {
-            let req = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.$props.eId);
-            this.koms = req.data;
+            let reqComment = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.eId);
+
+            this.koms = reqComment.data;
 
             for (const item of this.koms) {
                 if (item.bilder_path != null) {
                     let data = await axios.get(item.bilder_path);
                     if (data.data.status === true) {
                         for (const value of data.data.data) {
-                            item.images.push("http://server.okay-ybbs.at:4000" + value.replace("server/uploads", ""));
+                            item.images.push(process.env.baseImage + value.replace("server/uploads", ""));
                         }
                     }
                 }
             }
         },
-
     }
 </script>

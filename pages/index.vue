@@ -159,6 +159,10 @@ export default {
         }
     },
     async mounted() {
+        this.$nextTick(() => {
+            this.$nuxt.$loading.start();
+        });
+
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit('breadcrumbs/addPositionedBreadcrumb', {todo: {step: 1, text: "Startseite", link: "/"}});
 
@@ -290,11 +294,6 @@ export default {
         this.news = news;
 
         //endregion
-    },
-    created() {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        });
     }
 }
 </script>
