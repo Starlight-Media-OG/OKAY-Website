@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -83,6 +83,7 @@
 
 <script>
 import gallery from "~/components/gallery/gallery.vue";
+import axios from "axios";
 
 export default {
     name: "imageGallery",
@@ -96,14 +97,55 @@ export default {
     },
     computed: {
         title: function () {
-            return this.name.split(" ");
+            let tmp = this.name
+            let names = tmp.split(" ");
+
+            //Join Short Words
+            for (let e in names) {
+                e = parseInt(e, 10);
+                if (names[e].length <= 15) {
+                    if (e + 1 < names.length) {
+                        names[e + 1] = names[e] + " " + names[e + 1];
+                        names[e] = "";
+                    }
+                }
+            }
+
+            return names;
         },
         imgPath: function () {
             return process.env.baseImage + "/events/" + this.$route.params.id + "/";
+        },
+        sizeDetection: function () {
+            if(process.client) {
+                let width = window.innerWidth;
+
+                if(width > 700) {
+                    if (this.name.length - this.name.split(" ").length <= 10) {
+                        return "12vh";
+                    } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                        return "10vh";
+                    } else if (this.name.length - this.name.split(" ").length > 20) {
+                        return "8vh";
+                    }
+                } else {
+                    if (this.name.length - this.name.split(" ").length <= 10) {
+                        return "3rem";
+                    } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
+                        return "2.5rem";
+                    } else if (this.name.length - this.name.split(" ").length > 20) {
+                        return "2rem";
+                    }
+                }
+            }
         }
     },
     async fetch() {
-        //Fetch Name of Event from api
+        let req = await axios.get(process.env.baseURL + "/events/title/" + this.$route.params.id);
+
+        if(req.status === 200) {
+            this.name = req.data.titel;
+        }
     },
     methods: {
         concat: function (...strings) {
@@ -114,16 +156,16 @@ export default {
             return conString;
         }
     },
-    mounted() {
-        this.name = "Heinz Knapp"
-
+    async mounted() {
         this.$nextTick(() => {
             this.$nuxt.$loading.start();
         });
 
-        window.addEventListener("load", () => {
+        await this.$fetch();
+
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
-        });
+        })
     },
     head() {
         return {

@@ -64,6 +64,7 @@ main {
     .header {
         margin-left: -20vw;
         transform: rotate(-8deg);
+        z-index: -98;
 
         @media screen and (max-width: $breakpoint-medium-max) {
           margin-bottom: 10vh;
@@ -141,7 +142,7 @@ export default {
     },
     created() {
         this.$store.commit('breadcrumbs/clear');
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
     },
     head() {
