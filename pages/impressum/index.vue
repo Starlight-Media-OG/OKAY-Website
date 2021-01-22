@@ -27,15 +27,6 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:2, text:"Impressum", link:"/impressum"} });
     },
-    mounted() {
-        this.$nextTick(() => {
-            this.$nuxt.$loading.start();
-        })
-
-        window.addEventListener("load", () => {
-            this.$nuxt.$loading.finish();
-        });
-    },
     head() {
       return {
           title: "Impressum - OKAY Ybbs",

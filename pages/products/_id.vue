@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -20,26 +20,26 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <article class="beschreibung" style="width: 90%;">
+            <article class="beschreibung" style="width: 90%; padding: 1rem;">
                 <div class="bes">
                     <h2>Beschreibung</h2>
-                    {{ this.beschreibung }}
+                    <p>{{ this.beschreibung }}</p>
                 </div>
                 <div class="dateOpen">
                     <h2>Abholungsorte</h2>
                     <ul>
-                        <li class="opening flex flex-center" v-for="ort in orts" :key="orts.ortId">
+                        <li class="opening flex flex-center" v-for="ort in orts" :key="ort.ortId">
                             {{ ort.name }} @ {{ ort.adresse }}
                         </li>
                     </ul>
                 </div>
             </article>
-            <section class="galleryBox" v-if="this.bilder_path == null">
+            <section class="galleryBox" v-if="this.bilder_path != null">
                 <gallery :imgPath="this.bilder_path"/>
             </section>
-            <div v-else class="galleryBox">
+            <section v-else class="galleryBox">
                 Für dieses Produkt sind keine Bilder verfügbar
-            </div>
+            </section>
         </section>
     </main>
 </template>
@@ -85,13 +85,24 @@ export default {
     },
     computed: {
         title: function () {
-            return this.name.split(" ");
+            let tmp = this.name;
+            let names = tmp.split(" ");
+
+            //Join Short Words
+            for (let e in names) {
+                e = parseInt(e, 10);
+                if (names[e].length <= 15) {
+                    if (e + 1 < names.length) {
+                        names[e + 1] = names[e] + " " + names[e + 1];
+                        names[e] = "";
+                    }
+                }
+            }
+
+            return names;
         },
         path: function () {
             return "img/Product" + this.id + "/";
-        },
-        bild: function() {
-          return this.bilder_path + "/plakat.jpg";
         },
         sizeDetection: function () {
             if(process.client) {
@@ -122,8 +133,6 @@ export default {
         let req = await axios.get(process.env.baseURL + "/produkte/" + id);
         let produkt = req.data;
 
-        console.log(produkt)
-
         this.name = produkt.bezeichnung;
         this.beschreibung = produkt.beschreibung;
         this.price = produkt.preis;
@@ -135,7 +144,6 @@ export default {
         } else {
             this.bild = process.env.defaultImage;
         }
-
 
         this.orts = produkt.orte;
     },

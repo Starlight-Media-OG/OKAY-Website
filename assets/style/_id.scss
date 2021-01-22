@@ -80,10 +80,58 @@
 
     .beschreibung {
         width: 50%;
+
         @media screen and (min-width: $breakpoint-medium) { 
             padding: 5vh;
             column-count: 2;
             column-gap: 2rem;
+        }
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            width: 90%;
+        }
+
+        .title {
+            @include font($flow-font-name, 4rem, white, bold);
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                @include font($flow-font-name, 3rem, white, bold);
+                margin-bottom: 5vh;
+                margin-left: -5vw;
+            }
+        }
+
+        .bes {
+            page-break-inside: avoid;
+
+            h2 {
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        .dateOpen {
+            page-break-inside: avoid;
+
+            h2 {
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    font-size: 2rem;
+                }
+            }
+        }
+
+        p {
+            @include font($flow-font-name, 1rem, white);
+        }
+
+    }
+
+    .beschreibung-news {
+        width: 50%;
+        
+        @media screen and (min-width: $breakpoint-medium) { 
+            padding: 5vh;
         }
 
         @media screen and (max-width: $breakpoint-medium-max) {

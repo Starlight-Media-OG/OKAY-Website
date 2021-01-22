@@ -255,7 +255,7 @@ export default {
         });
 
         //Sorgt für Anti-Aliasing, um Unebenheiten in diagonalen Linien zu vehindern
-        engine.setHardwareScalingLevel(0.5);
+        engine.setHardwareScalingLevel(0.8);
 
         //Das Objekt wird gerendert
         engine.runRenderLoop(function () {

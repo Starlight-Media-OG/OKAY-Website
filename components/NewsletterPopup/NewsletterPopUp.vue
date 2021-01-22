@@ -5,7 +5,7 @@
                 x
             </div>
             <div class="header row">
-                <h3>Bitte melden Sie sich beim Newsletter an!</h3>
+                <h3>Hier können Sie sich zum Newsletter anmelden!</h3>
             </div>
             <div class="form row">
                 <form>
