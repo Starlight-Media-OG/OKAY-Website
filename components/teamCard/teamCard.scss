@@ -63,7 +63,10 @@
 
     .body {
       margin-top: 2vh;
-      padding-bottom: 1.5vh;
+      padding: 0 1rem 1.5vh;
+      margin-left: -1rem;
+      word-break: break-word;
+      
       p {
         @include font($flow-font-name, $flow-size, #2f2f2f);
       }

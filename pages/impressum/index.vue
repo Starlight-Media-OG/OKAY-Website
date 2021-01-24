@@ -5,7 +5,7 @@
                 <h1 class="title">Impressum</h1>
             </div>
             <h2>Verein Offene Kultur Aus Ybbs</h2>
-            <ul class="noStyle">
+            <ul class="noStyle" style="margin-bottom: 10vh;">
                 <li><strong>ZVR-Zl.:</strong> 391625836</li>
                 <li><strong>Vereinssitz:</strong> Sandtorgasse 3, 3370 Ybbs an der Donau</li>
                 <li><strong>Obmann</strong> Dr. Karl Dorfmeister</li>
@@ -51,6 +51,13 @@ export default {
 .header {
     @include font($header-font-name, 3rem, white, bold);
     margin-bottom: 5vh;
+
+    .title {
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 2.5rem;
+            margin-left: -5vw;
+        }
+    }
 }
 
 h2 {

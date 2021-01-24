@@ -39,6 +39,10 @@
                 </div>
             </div>
           <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=x9yh2645s4" width="100%" height="480" seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen class="folder"></iframe>
+
+          <div class="link center" style="margin-top: 3rem;">
+            <a href="/pdfs/vorstellungsfolder.pdf" download="/pdfs/vorstellungsfolder.pdf" class="further-link" target="_blank">Folder Herunterladen!</a>
+          </div>
         </section>
     </main>
 </template>

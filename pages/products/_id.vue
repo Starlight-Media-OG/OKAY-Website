@@ -19,11 +19,11 @@
                 <img :src="this.bild" :alt="this.name" width="100%"/>
             </div>
         </section>
-        <section class="content flex flex-center">
+        <section class="content flex flex-center" style="margin-bottom: 0;">
             <article class="beschreibung" style="width: 90%; padding: 1rem;">
                 <div class="bes">
                     <h2>Beschreibung</h2>
-                    <p>{{ this.beschreibung }}</p>
+                    <p> {{ this.beschreibung }}</p>
                 </div>
                 <div class="dateOpen">
                     <h2>Abholungsorte</h2>

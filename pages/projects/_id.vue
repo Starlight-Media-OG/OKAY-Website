@@ -7,7 +7,7 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}">
+                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
                     {{ titlePart }}
                 </p>
                 <p class="date">
@@ -29,7 +29,7 @@
                     {{ this.beschreibung }}
                 </div>
             </article>
-            <div class="link">
+            <div class="link-noMargin" style="margin-bottom: 5vh">
                 <em class="underline">
                     <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
                 </em>

@@ -1,5 +1,13 @@
 @import '../../assets/style/variable.scss';
 
+.title {
+    margin-top: 15vh;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        margin-top: 5vh;
+    }
+}
+
 .date {
     @include font($header-font-name, 4rem, $primary-yellow, bold);
     line-height: 4rem;
@@ -80,6 +88,7 @@
 
     .beschreibung {
         width: 50%;
+        word-break: break-word;
 
         @media screen and (min-width: $breakpoint-medium) { 
             padding: 5vh;
@@ -181,5 +190,10 @@
         text-align: center;
         @include font($flow-font-name, 3rem, white, bold);
         background-color: $primary-blue;
+        margin-bottom: 0;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 1.5rem;
+        }
     }
 }

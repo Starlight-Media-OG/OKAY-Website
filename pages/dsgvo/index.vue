@@ -2,7 +2,7 @@
     <div class="flex flex-center height-100">
         <div class="row" style="width: 75vw;">
             <div class="row header flex flex-center" style="margin-top: 10vh;">
-                <h1 class="title">Datenschtuz</h1>
+                <h1 class="title">Datenschutz</h1>
             </div>
             <h2>Speicherung persönlicher Daten</h2>
             <p>Persönliche Daten, die Sie uns auf dieser Website übermitteln, wie zum Beispiel Name und E-Mail-Adresse oder andere persönlichen Angaben im Rahmen der Übermittlung eines Formulars oder Beitrags, werden nur zum jeweils angegebenen Zweck verwendet. Ihre Daten werden nur auf unseren Servern gespeichert und unter keine Umständen an dritte weitergegeben</p>
@@ -69,10 +69,18 @@ export default {
 .header {
     @include font($header-font-name, 3rem, white, bold);
     margin-bottom: 5vh;
+    margin-left: 0;
+
+    .title {
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 2.5rem;
+            margin-left: -5vw;
+        }
+    }
 }
 
 h2 {
-    @include font($header-font-name, 2rem, white, 600);
+    @include font($header-font-name, 1.5rem, white, 600);
     margin-bottom: 1rem;
 }
 

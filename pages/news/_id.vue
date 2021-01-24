@@ -20,7 +20,7 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <article class="beschreibung-news col-3">
+            <article class="beschreibung-news col-3" style="margin-top: 2rem;">
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox" v-if="this.bilder_path == null">
