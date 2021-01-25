@@ -20,7 +20,7 @@
                                 {{kom.kommentar_text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="kom.images != undefined || kom.images.length != 0">
+                        <div class="flex flex-center" v-if="kom.images != undefined">
                             <div class="images flex flex-center">
                                 <div class="row">
                                     <div v-for="image in kom.images" :key="image" class="col flex flex-center">
@@ -40,7 +40,7 @@
                     <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" />
                 </div>
                 <div class="addButton flex flex-center" @click="activeAdd =! activeAdd">
-                    <p class="text center" style="font-size: 5vh;">+</p>
+                    <p class="text center">+</p>
                     <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
                             <input type="file" name="files" multiple @change="registerFiles">
@@ -68,15 +68,15 @@
                     <form>
                         <div class="row">
                             <label>
-                                <div class="label">Name:</div>
-                                <input type="text" class="input" v-model="name" />
+                                <div class="label">Name: *</div>
+                                <input type="text" class="input" v-model="name" required/>
                             </label>
                         </div>
 
                         <div class="row">
                             <label>
-                                <div class="label">Mail Adressse:</div>
-                                <input type="email" class="input" v-model="mail" />
+                                <div class="label">Mail Adressse: *</div>
+                                <input type="email" class="input" v-model="mail" required/>
                             </label>
                         </div>
 
@@ -142,46 +142,51 @@
                 this.files = e.target.files;
             },
             send: async function () {
-                if (this.eId != "") {
-                    let req = await axios.post(process.env.baseURL + "/kommentare/", {
-                        "email": this.mail,
-                        "username": this.name,
-                        "kommentar_text": this.txt,
-                        "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth() + 1)).slice(
-                            -2) + "-" + ('0' + new Date().getDate()).slice(-2),
-                        "oaId": this.eId
-                    });
-
-                    let komId = req.data.id;
-
-                    if (komId != undefined) {
-                        await axios.post(process.env.baseURL + "/setEvent", {
-                            "komId": komId,
+                if(this.name != "" && this.mail != "") {
+                    if (this.eId != "") {
+                        let req = await axios.post(process.env.baseURL + "/kommentare/", {
+                            "email": this.mail,
+                            "username": this.name,
+                            "kommentar_text": this.txt,
+                            "datum": new Date().getFullYear() + "-" + ('0' + (new Date().getMonth() + 1)).slice(
+                                -2) + "-" + ('0' + new Date().getDate()).slice(-2),
                             "oaId": this.eId
-                        })
-                    }
+                        });
 
-                    if(this.files != undefined || this.files != {}) {
-                        //Send Request to API
-                        let url = process.env.baseImage + "/images/upload/events/";
-                        
-                        let formData = new FormData();
+                        let komId = req.data.id;
 
-                        for (const i of Object.keys(this.files)) {
-                            formData.append('files', this.files[i])
+                        if (komId != undefined) {
+                            await axios.post(process.env.baseURL + "/setEvent", {
+                                "komId": komId,
+                                "oaId": this.eId
+                            })
                         }
 
-                        let req = axios.post(url, formData);
+                        if(this.files != undefined || this.files != {}) {
+                            //Send Request to API
+                            let url = process.env.baseImage + "/images/upload/events/";
+                            
+                            let formData = new FormData();
 
-                        if(req.status === 200) {
-                            console.log(req.data);
+                            for (const i of Object.keys(this.files)) {
+                                formData.append('files', this.files[i])
+                            }
+
+                            let req = axios.post(url, formData);
+
+                            if(req.status === 200) {
+                                console.log(req.data);
+                            }
                         }
+
+
+                        this.txt = "";
+                        this.toggleModal();
+
+                        if (this.newsletter === true)
+                            this.newsletterPopUp = !this.newsletterPopUp;
+
                     }
-
-                    this.toggleModal();
-
-                    if (this.newsletter === true)
-                        this.newsletterPopUp = !this.newsletterPopUp;
                 }
             },
             initials: function (kom) {

@@ -48,24 +48,24 @@ export default {
         return {
             content: [
                 {
-                    title: "§1",
+                    title: "§1 - Name des Vereins",
                     text: "Der Verein führt den Namen „Offene Kultur Aus Ybbs“, die Kurzbezeichnung lautet „OKAY“",
                     active: false
                 },
                 {
-                    title: "§2",
+                    title: "§2 - Stiz des Vereins",
                     text: "Der Verein hat seinen Sitz in Ybbs an der Donau und erstreckt seine Tätigkeit auf das Gebiet der Stadtgemeinde Ybbs und Umgebung sowie auf deren Partnerstädte und das gesamte Bundesgebiet.",
                     active: false
                 },
                 {
-                    title: "§3",
+                    title: "§3 - Zweck des Vereins",
                     text: "(1) Der Zweck des Vereines ist die Durchführung, Förderung und Unterstützung kul-tureller, wissenschaftlicher, künstlerischer, bildender und völkerverbindender Aktivitä¬ten im Tätigkeitsgebiet. Hierzu wird eine enge Zusammenarbeit mit den örtlichen Vereinen sowie der Stadtgemeinde angestrebt.<br/>" +
                         "(2) Die Tätigkeit des Vereines ist nicht auf Gewinn ausgerichtet.<br/>" +
                         "(3) Der Verein verfolgt keine wie immer geartete parteipolitische Zwecke.<br/>",
                     active: false
                 },
                 {
-                    title: "§4",
+                    title: "§4 - Mittel zur Erreichung des Vereinszweckes",
                     text: "(1) Der Vereinszweck soll durch die in den Abs. 2 und 3 angeführten Tätigkeiten und finanziellen Mittel erreicht werden.<br/>" +
                         "(2) Für die Verwirklichung des Vereinszweckes vorgesehene Tätigkeiten sind<br/>" +
                         "a)\tKulturveranstaltungen aller Art, z.B.<br/>" +
@@ -84,20 +84,20 @@ export default {
                     active: false
                 },
                 {
-                    title: "§5",
+                    title: "§5 - Arten der Mitgliedschaft",
                     text: "(1) Der Verein besteht aus ordentlichen (Voll-, Anschluss- (Lebenspartner), und Schüler/Studentenmitgliedschaft), unterstützenden und Ehrenmitgliedern.<br/>" +
                         "(2) Jede natürliche Person kann sowohl ordentliches, unterstützendes als auch Ehrenmitglied werden.<br/>" +
                         "(3) Juristische Personen können nur unterstützende Mitglieder werden.<br/>",
                     active: false
                 },
                 {
-                    title: "§6",
+                    title: "§6 - Erwerb der Mitgliedschaft",
                     text: "1) Die Aufnahme erfolgt aufgrund einer schriftlichen Beitrittserklärung. Der Vorstand behält sich das Recht vor, in begründeten Fällen die Mitgliedschaft abzulehnen.<br/>" +
                         "(2) Personen, die sich um diesen Verein oder das kulturelle Leben in Ybbs außer-gewöhnliche Verdienste erworben haben, können auf Antrag des Vorstandes durch die Mitgliederversammlung als Ehrenmitglieder in den Verein aufgenommen werden. Diese haben die gleichen Rechte wie unterstützende Mitglieder, sind jedoch von der Bezahlung eines Mitgliedsbeitrages befreit.<br/>",
                     active: false
                 },
                 {
-                    title: "§7",
+                    title: "§7 - Beendigung der Mtigliedschaft",
                     text: "<br/>" +
                         "(1) Die Mitgliedschaft erlischt durch Tod, bei juristischen Personen durch Verlust der Rechtspersönlichkeit, durch freiwilligen Austritt oder durch Ausschluss.<br/>" +
                         "(2) Der Austritt ist dem Vorstand schriftlich mitzuteilen.<br/>" +
@@ -110,7 +110,7 @@ export default {
                     active: false
                 },
                 {
-                    title: "§8",
+                    title: "§8 - Rechte und Pflichten der Vereinsmitglieder",
                     text: "(1) Alle Mitglieder haben das Recht an den Mitgliederversammlungen teilzunehmen und dort das Wort zu ergreifen.<br/>" +
                         "(2) Ordentliche Mitglieder haben überdies das aktive und passive Wahlrecht, sowie das Recht auf schriftliche Antragstellung an den Vereinsvorstand. <br/>" +
                         "(3) Ein Mitglied kann jederzeit mit sofortiger Wirkung aus dem Verein austreten, wenn es dies schriftlich und nachweislich erklärt.<br/>" +
@@ -123,7 +123,7 @@ export default {
                     active: false
                 },
                 {
-                    title: "§9",
+                    title: "§9 - Organe des Vereins",
                     text: "(1) Die Organe des Vereines sind:<br/>" +
                         "1. Die Mitgliederversammlung (§ 10)<br/>" +
                         "2. Der Vereinsvorstand (§ 11)<br/>" +
@@ -133,22 +133,22 @@ export default {
                     active: false
                 },
                 {
-                    title: "§10",
+                    title: "§10 - Mitgliederversammlung",
                     text: "(1) Die ordentliche Mitgliederversammlung findet einmal im Kalenderjahr (Vereins-jahr) als „Jahreshauptversammlung“ statt. Eine außerordentliche Mitgliederversamm¬lung findet auf Beschluss des Vorstandes, der ordentlichen Mitgliederversammlung oder schriftlich begründetem Antrag von mindestens einem Zehntel der stimmberech¬tigten Mitglieder oder schließlich auf Verlangen der Rechnungsprüfer binnen 4 Wo¬chen statt.<br/>" +
                         "(2) Sofern nicht ausdrücklich anderen Organen vorbehalten, entscheidet die Mitglie¬derversammlung alle wichtigen Angelegenheiten des Vereines, insbesondere<br/>" +
-                        "a)\tNeu- bzw. Ergänzungswahlen der Organe des Vereins gemäß §9 Z 2 und 4<br/>" +
-                        "b)\tFestsetzung des Mitgliedsbeitrages<br/>" +
-                        "c)\tBericht der Kontrolle und eventuelle Entlastung des Vorstandes und der mit den Kassengeschäften betrauten Personen<br/>" +
-                        "d)\talle Angelegenheiten, die vom Vorstand in die Tagesordnung der Mitglieder-versammlung aufgenommen wurden<br/>" +
-                        "e)\tÄnderung der Statuten<br/>" +
-                        "f)\tAuflösung des Vereines.<br/>" +
+                        "a)Neu- bzw. Ergänzungswahlen der Organe des Vereins gemäß §9 Z 2 und 4<br/>" +
+                        "b)Festsetzung des Mitgliedsbeitrages<br/>" +
+                        "c)Bericht der Kontrolle und eventuelle Entlastung des Vorstandes und der mit den Kassengeschäften betrauten Personen<br/>" +
+                        "d)alle Angelegenheiten, die vom Vorstand in die Tagesordnung der Mitglieder-versammlung aufgenommen wurden<br/>" +
+                        "e)Änderung der Statuten<br/>" +
+                        "f)Auflösung des Vereines.<br/>" +
                         "(3) Lit. a) bis d) werden mit einfacher Mehrheit entschieden, Lit. e) mit einer Zwei-Drittel-Mehrheit und für eine Auflösung des Vereines (Lit. f)) sind drei Viertel aller abgegebenen Stimmen nötig.<br/>" +
                         "(4) Die Einladung zur Mitgliederversammlung ist schriftlich spätestens zwei Wochen vorher an alle Mitglieder des Vereines zu richten. Diese Einladung braucht nicht nachweislich erfolgen, wenn sie entweder in der Gemeindezeitung oder in allfälligen Vereinsnachrichten oder durch Anschlag an der Gemeindeamtstafel oder auf einer allfälligen Vereinsankündigungstafel erfolgt.<br/>" +
                         "(5) Die Mitgliederversammlung ist ohne Rücksicht auf die Zahl der Anwesenden beschlussfähig.<br/>",
                     active: false
                 },
                 {
-                    title: "§11",
+                    title: "§11 - Vereinsvorstand",
                     text: "(1) Der Vereinsvorstand besteht aus dem Obmann, zwei Obmann-Stellvertretern, dem Kassier, dessen Stellvertreter, dem Schriftführer und dessen Stellvertreter.<br/>" +
                         "(2) Der Vorstand entscheidet in allen Angelegenheiten, die durch diese Satzung nicht anderen Vereinsorganen zugewiesen sind, kann jedoch einzelne Entscheidungen der Mitgliederversammlung übertragen.<br/>" +
                         "(3) Der Vorstand bestellt, unterstützt, überwacht und koordiniert die einzelnen Arbeits- und Projektgruppen. Dazu haben die Verantwortlichen – bei deren Verhinde¬rung ihre Stellvertreter – an erweiterten Vorstandssitzungen mit beratender Stimme teilzunehmen.<br/>" +
@@ -160,14 +160,14 @@ export default {
                         "Neben der Begründung des Antrages (Dringlichkeit) ist das Ergebnis des schriftlichen Rundlaufes in das Protokoll der folgenden Vorstandssitzung aufzunehmen.<br/>",
                     active: false
                 },{
-                    title: "§12",
+                    title: "§12 - Obmann",
                     text: "(1) Der Obmann vertritt den Verein nach außen, führt den Vorsitz in der Mitglieder-versammlung und im Vorstand und unterfertigt die Schriftstücke des Vereins. Nähe-res regelt § 17.<br/>" +
                         "(2) Bei Gefahr im Verzug oder wenn dem Verein andernfalls Schaden drohen würde, ist der Obmann berechtigt und verpflichtet, auch in Angelegenheiten, die in den Wir¬kungsbereich anderer Vereinsorgane fallen, selbständig Anordnungen zu treffen, diese bedürfen jedoch der ehebaldigsten nachträglichen Genehmigung durch das zuständige Vereinsorgan.<br/>" +
                         "(3) Der Obmann ist berechtigt, an allen Sitzungen der Arbeits- und Projektgruppen teilzunehmen.<br/>",
                     active: false
                 },
                 {
-                    title: "§13",
+                    title: "§13 - Die übrigen Vorstandsmitglieder",
                     text: "(1) Alle Vorstandsmitglieder sind berechtigt, an allen Sitzungen der Arbeits- und Projektgruppen teilzunehmen.<br/>" +
                         "(2) Der Kassier ist berechtigt und verpflichtet, alle vom Vorstand beschlossenen Kas¬sengeschäfte zu vollziehen.<br/>" +
                         "(3) Der Schriftführer ist verpflichtet die Protokolle der Mitgliederversammlung und der Vorstandssitzung zu verfassen, sowie den gesamten Schriftverkehr des Vereines abzuwickeln.<br/>" +
@@ -175,19 +175,19 @@ export default {
                     active: false
                 },
                 {
-                    title: "§14",
+                    title: "§14 - Rechnungsprüfer",
                     text: "(1) Die zwei Rechnungsprüfer werden von der Mitgliederversammlung auf die Dauer der Funktionsperiode des Vorstandes gewählt. Ist eine Bestellung noch vor der nächsten Mitgliederversammlung notwendig, so hat der Vorstand diese auszuwählen und zu bestellen. Sie müssen unabhängig und unbefangen sein und dürfen nicht dem Vorstand angehören. <br/>" +
                         "(2) Den Rechnungsprüfern obliegt insbesondere die Prüfung der Finanzgebarung des Vereines auf die Ordnungsmäßigkeit der Rechnungslegung und die statutenge¬mäße Verwendung der Mittel für jedes Rechnungsjahr sowie die Erstellung eines Prüfberichtes innerhalb von vier Monaten ab Erstellung der Einnahmen- und Ausga¬benrechnung (Rechnungsabschluss) durch den Vorstand und die unverzügliche Übermittlung des Prüfberichtes an den Vorstand.<br/>",
                     active: false
                 },
                 {
-                    title: "§15",
+                    title: "§15 - Das Schiedsgericht",
                     text: "(1) Bei allfälligen Streitigkeiten zwischen Vereinsmitgliedern bzw. im Falle des § 7 Abs. 3 und 4 wird auf Verlangen jeweils ein Schiedsgericht bestellt. Dieses besteht aus dem vom Vorstand gewählten Vorsitzenden und höchstens vier weiteren Mitglie¬dern, die jeweils zu gleichen Teilen von den Streitparteien namhaft gemacht werden. Kann oder will eine Streitpartei keinen einzigen Vertreter namhaft machen, gilt der Streitfall ohne weiteres Verfahren im Sinne (Antrag) der Gegenpartei entschieden. In einem Verfahren gemäß § 7 gilt der Vereinsvorstand als Streitpartei. Entscheidungen erfolgen mit einfacher Mehrheit.<br/>" +
                         "(2) Die Mitglieder des Schiedsgerichts, ausgenommen der Vorsitzende, dürfen nicht dem Vereinsvorstand angehören.<br/>",
                     active: false
                 },
                 {
-                    title: "§16",
+                    title: "§16 - Arbeits- und Projektgruppen",
                     text: "(1) Zu seiner Entlastung kann der Vereinsvorstand zur Durchführung einzelner Veranstaltungen, Veranstaltungsreihen oder Behandlung einzelner Sachgebiete Arbeits- und Projektgruppen bilden.<br/>" +
                         "(2) Im Rahmen der vom Vorstand genehmigten Arbeits- und Projektinhalte entscheiden die Arbeits- und Projektgruppen selbständig.<br/>" +
                         "(3) Der Leiter der jeweiligen Arbeits- und Projektgruppe wird vom Vorstand bestimmt.<br/>" +
@@ -201,7 +201,7 @@ export default {
                     active: false
                 },
                 {
-                    title: "§17",
+                    title: "§17 - Verfahren",
                     text: "Falls in diesen Satzungen im Einzelfall nichts anderes bestimmt wird, gilt grundsätzlich Folgendes:<br/>" +
                         "(1) Die Wahl des Obmanns hat in einem gesonderten Wahlgang, auf Verlangen schriftlich und geheim, zu erfolgen. <br/>" +
                         "(2) Alle anderen Wahlgänge in allen Vereinsorganen sind getrennt, auf Verlangen schriftlich und geheim, durchzuführen.<br/>" +
@@ -220,12 +220,12 @@ export default {
                     active: false
                 },
                 {
-                    title: "§18",
+                    title: "§18 - Vereinsauflösung",
                     text: "Im Falle der Auflösung oder Aufhebung des Vereines oder bei Wegfall des bisherigen begünstigten Vereinszweckes ist das nach Abdeckung der Passiva verbleibende Vereinsvermögen ausschließlich für gemeinnützige, mildtätige oder kirchliche Zwecke im Sinne der §§ 34 ff Bundesabgabenordnung (BAO) zu verwenden.",
                     active: false
                 },
                 {
-                    title: "§19",
+                    title: "§19 - Genderhinweis",
                     text: "Im Sinne einer besseren Lesbarkeit wird in den Satzungen nur die männliche Bezeichnung verwendet, obwohl alle Geschlechter angesprochen werden.",
                     active: false
                 }

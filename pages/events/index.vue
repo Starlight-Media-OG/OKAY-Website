@@ -9,10 +9,10 @@
             </div>
         </section>
         <section class="main flex flex-center">
-            <div class="lastWeek flex flex-center">
-                <h2 class="weekHeader">Letzter Monat</h2>
+            <div class="nextWeek flex flex-center">
+                <h2 class="weekHeader">Nächster Monat</h2>
                 <div class="row flex flex-center">
-                    <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
+                    <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
                               :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
@@ -35,10 +35,10 @@
                     </div>
                 </div>
             </div>
-            <div class="nextWeek flex flex-center">
-                <h2 class="weekHeader">Nächster Monat</h2>
+            <div class="lastWeek flex flex-center">
+                <h2 class="weekHeader">Letzter Monat</h2>
                 <div class="row flex flex-center">
-                    <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
+                    <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
                         <card :title="event.titel" :teaser="event.beschreibung"
                               :image="event.bilder_path + '/plakat.jpg'"
                               :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>

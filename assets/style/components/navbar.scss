@@ -127,6 +127,7 @@ nav {
         .breadcrumbs-list-item {
             opacity: .2;
             width: auto;
+            @include min-max-height(55px);
 
             &:last-child {
                 opacity: 1;

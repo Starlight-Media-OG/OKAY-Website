@@ -42,7 +42,6 @@ main {
 }
 
 .singleEvents, .singleNews {
-    margin-top: 13vh;
     display: flex;
     flex-wrap: wrap;
 }
@@ -70,8 +69,4 @@ main {
 
 .underline {
     @include text-underline($primary-blue, .1vh, 5px);
-}
-
-.reduceMobile {
-    margin-bottom: -6rem;
 }

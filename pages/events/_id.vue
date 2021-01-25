@@ -123,12 +123,16 @@ export default {
             this.beschreibung = event.beschreibung;
             this.untertitel = event.untertitel;
 
-            if(event.bilder_path == null) {
+            console.log(event.bilder_path);
+
+            if(event.bilder_path != null) {
                 this.bilder_path = event.bilder_path;
                 this.bild = event.bilder_path + "/title.jpg";
             } else {
                 this.bild = process.env.defaultImage;
             }
+
+            console.log(this.bild);
 
             this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
             this.id = event.oaId;
@@ -146,7 +150,7 @@ export default {
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: "", link:`/events/${this.id}`} });
+        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 3, text: this.$route.params.id, link:"/events/" + this.$route.params.id} });
     },
     components: {
         commentBox

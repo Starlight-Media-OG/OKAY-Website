@@ -9,7 +9,7 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <div class="news" v-for="news1 in news" :key="nId">
+            <div class="news" v-for="news1 in news" :key="news1.nId">
                 <card :title="news1.titel" :teaser="news1.anreisser" :image="news1.bilder_path + '/plakat.jpg'"
                       :id="news1.nId" :date="news1.datum" news />
             </div>
@@ -63,12 +63,12 @@ export default {
             news: []
         }
     },
-    created() {
+    async mounted() {
+
         this.$nextTick(() => {
             this.$nuxt.$loading.start()
         })
-    },
-    async mounted() {
+
         this.$store.commit('breadcrumbs/clear');
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step:1, text:"Startseite", link:"/"} });
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "News", link:"/news"} });

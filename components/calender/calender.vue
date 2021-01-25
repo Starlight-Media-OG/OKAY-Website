@@ -32,6 +32,15 @@
 
 <style lang="scss">
     @import 'calender.scss';
+    @import '../NewsletterPopup/NewsletterPopUp';
+
+    .show {
+        display: block;
+    }
+
+    .hide {
+        display: none;
+    }
 </style>
 
 <script>
@@ -125,10 +134,10 @@ export default {
                 this.tb += row;
 
                 if (exit) {
-                    this.tb += "</tbody>";
                     break;
                 }
             }
+            this.tb += "</tbody>";
         },
         daysInMonth: function (month, year) {
             //Returns the Days in a Month (28,29,30,31)
@@ -136,24 +145,74 @@ export default {
         },
         checkEventOnDate: function (date, month, year) {
             let tableString = "<p class='date'>" + date + "</p>";
+            let badgeNumber = 0;
+            let eIds = [];
             for(let value in this.events) {
                 if (new Date(this.events[value].start_datum).getMonth() === month && new Date(this.events[value].start_datum).getFullYear() === year) {
                     if (this.events[value].end_datum === undefined) {
                         if (new Date(this.events[value].start_datum).getDate() === date) {
-                            tableString += "<div class='eventCal oneDay' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                            badgeNumber++;
+                            eIds.push(value);
+                            if(!tableString.includes("eventCal"))
+                                tableString += "<div class='eventCal oneDay' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     } else {
                         if (new Date(this.events[value].start_datum).getDate() <= date && new Date(this.events[value].end_datum).getDate() >= date) {
-                            tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                            badgeNumber++;
+                            eIds.push(value);
+                            if(!tableString.includes("eventCal"))
+                                tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     }
                 }
             }
 
+            if(badgeNumber > 0)  {
+                tableString += "<div class='badgeNumber' @click='toggle(" + date + ")'><p>" + badgeNumber + "</p></div>";
+                tableString += this.createPopUp(eIds, date, month, year);
+            }
+
             return tableString;
         },
         reroute: function (id) {
+            console.log(id);
             this.$router.push("/events/" + id);
+        },
+        createPopUp: function(array, date, month, year) {
+            let modal = "<div class='modal flex flex-center' id='calPopUp" + date +  "' style='display: none;'>";
+            let content = "<div class='content flex flex-center'>"
+
+            let close = "<div class='close row' id='close" + date + "' @click='toggle(" + date + ")'> x </div>";
+
+            let header = "<div class='header row'>" + date + "." + (month+1) + "." + year + "</div>";
+
+            content += close;
+            content += header;
+
+            let body = "<div class='form row'>";
+
+            for(let id of array) {
+                let row = "<div class='row calRow' @click='reroute(" + this.events[id].oaId + ")'><p>";
+                row += this.events[id].titel;
+                row += "</p></div>";
+                body += row;
+            }
+
+            body += "</div>";
+            content += body + "</div>";
+
+            modal += content + "</div>";
+
+            return modal;
+        },
+        toggle: function(date) {
+            let el = document.getElementById("calPopUp" + date);
+
+            if(el.style.display == "none") {
+                el.style.display = "block";
+            } else {
+                el.style.display = "none";
+            }
         }
     },
     async fetch() {

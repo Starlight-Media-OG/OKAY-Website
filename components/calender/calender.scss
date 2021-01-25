@@ -8,6 +8,7 @@
         border-radius: $border-radius;
         box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
         margin-top: -10vh;
+        margin-bottom: 10vh;
 
         .month {
             height: 10%;
@@ -54,6 +55,7 @@
             @include font($flow-font-name, 2vh, $primary-yellow);
             height: 10vh;
             width: 10vw;
+            position: relative;
 
             &.current-day {
                 background-color: $primary-blue;
@@ -61,14 +63,29 @@
             }
 
             .eventCal {
-                background-color: lighten($primary-blue, 5%);
-                @include font($flow-font-name, .6rem, white);
-                width: 80%;
-                transform: translateX(10%);
+                display: none;
             }
 
             .date {
-                transform: translateX(10%) translateY(50%);
+                position: absolute;
+                top: 10px;
+                left: 5px;
+            }
+
+            .badgeNumber {
+                position: absolute;
+                right: 20px;
+                bottom: 5px;
+                width: 20px;
+                height: 20px;
+                transform: translateX(50%) translateY(-50%);
+                background-color: $primary-blue;
+                border-radius: 20px;
+                font-size: .7rem;
+
+                p {
+                    margin-left: 6px;
+                }
             }
         }
     }
@@ -136,19 +153,39 @@
 
         .month-day {
             border-radius: 20px;
-            @include font($flow-font-name, 3vh, $primary-yellow, bold);
+            @include font($flow-font-name, 2rem, $primary-yellow, bold);
             background-color: $cal-day;
             height: $sqrLength;
             width: $sqrLength;
+            position: relative;
             box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
 
             &.current-day {
                 background-color: $primary-blue;
-                color: $primary-yellow;
             }
 
             .date {
-                transform: translateY(-80%) translateX(5%);
+                position: absolute;
+                top: 15px;
+                left: 15px;
+            }
+
+            .badgeNumber {
+                cursor: pointer;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                width: 50px;
+                height: 50px;
+                background-color: $primary-blue;
+                border-radius: 25px;
+                z-index: 2;
+                font-size: 2rem;
+
+                p {
+                    margin-left: 12.5px;
+                    margin-top: -2px;
+                }
             }
         }
     }
@@ -215,5 +252,17 @@
                 margin-top: -1.8vh;
             }
         }
+    }
+}
+
+.calRow {
+    background-color: $primary-blue;
+    width: 90%;
+    border-radius: 15px;
+    cursor: pointer;
+
+    p {
+        margin-left: 25px;
+        padding: 15px;
     }
 }

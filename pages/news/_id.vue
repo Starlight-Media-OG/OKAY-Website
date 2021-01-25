@@ -63,8 +63,8 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {
             todo: {
                 step: 3,
-                text: `${this.id}`,
-                link: `/news/${this.id}`
+                text: this.$route.params.id,
+                link: "/news/" + this.$route.params.id
             }
         });
     },

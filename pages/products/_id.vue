@@ -78,8 +78,8 @@ export default {
         this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {
             todo: {
                 step: 3,
-                text: `${this.id}`,
-                link: `/products/${this.id}`
+                text: this.$route.params.id,
+                link: "/products/" + this.$route.params.id
             }
         });
     },
@@ -138,7 +138,7 @@ export default {
         this.price = produkt.preis;
         this.id = id;
 
-        if(produkt.bilder_path == null) {
+        if(produkt.bilder_path != null) {
             this.bilder_path = produkt.bilder_path;
             this.bild = produkt.bilder_path + "/title.jpg";
         } else {
