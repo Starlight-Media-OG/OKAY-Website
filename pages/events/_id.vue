@@ -1,5 +1,5 @@
 <template>
-    <main class="root flex flex-center">
+    <main class="root flex flex-center" style="margin-bottom: 0;">
         <section class="row flex flex-center header">
             <div class="title col-4">
                 <p class="back" @click="$router.back()">

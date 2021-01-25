@@ -1,5 +1,5 @@
 <template>
-    <div class="commentBox">
+    <div class="commentBox" style="margin-bottom: 0;">
         <div class="heading">
             <h2>Kommentare</h2>
         </div>

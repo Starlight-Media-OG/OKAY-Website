@@ -16,10 +16,10 @@
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="concat(this.imgPath, 'plakat.jpg')" alt="Plakat" width="100%"/>
+                <img :src="this.imgPath()" alt="Plakat" width="100%"/>
             </div>
         </section>
-        <section class="content">
+        <section class="content" style="margin-bottom: 0;">
             <gallery :id="this.$route.params.id"/>
         </section>
     </main>
@@ -113,9 +113,6 @@ export default {
 
             return names;
         },
-        imgPath: function () {
-            return process.env.baseImage + "/events/" + this.$route.params.id + "/";
-        },
         sizeDetection: function () {
             if(process.client) {
                 let width = window.innerWidth;
@@ -154,6 +151,20 @@ export default {
                 conString += arg;
             });
             return conString;
+        },
+        imgPath: function () {
+            let path =
+             process.env.baseImage + "/events/" + this.$route.params.id + "/"  + 'plakat.jpg';
+
+             let req = new XMLHttpRequest();
+             req.open("GET", path, false);
+             req.send();
+
+             if(req.status == 200) {
+                 return path;
+             } else {
+                 return process.env.defaultImage;
+             }
         }
     },
     async mounted() {

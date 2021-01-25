@@ -21,6 +21,7 @@
 
     @media screen and (max-width: $breakpoint-medium-max) {
       width: 90%;
+      padding: 1rem;
     }
 
     .close {
@@ -52,6 +53,10 @@
           border-radius: 1vw;
           padding-left: 1vw;
           @include font($flow-font-name, 2vh, #2f2f2f);
+
+          @media screen and (max-width: $breakpoint-medium-max) {
+            width: 100%;
+          }
         }
 
         .checkInput {
@@ -76,6 +81,11 @@
         border-radius: 3vh;
         background-color: $primary-blue;
         @include font($flow-font-name, 2vh, white);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+          margin-right: 0;
+          width: 100%;
+        }
       }
 
       .failure {
@@ -87,6 +97,12 @@
         border-radius: 3vh;
         background-color: $primary-yellow;
         @include font($flow-font-name, 2vh, #2f2f2f);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+          margin-right: 0;
+          margin-top: 5%;
+          width: 100%;
+        }
       }
     }
 

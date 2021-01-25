@@ -8,7 +8,7 @@
                 <img src="/animations/news.gif" alt="Nachrichtenstapel Animation">
             </div>
         </section>
-        <section class="content flex flex-center">
+        <section class="content flex flex-center" style="margin-bottom: 10vh;">
             <div class="news" v-for="news1 in news" :key="news1.nId">
                 <card :title="news1.titel" :teaser="news1.anreisser" :image="news1.bilder_path + '/plakat.jpg'"
                       :id="news1.nId" :date="news1.datum" news />

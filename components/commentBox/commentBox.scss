@@ -151,18 +151,9 @@
                 color: #2f2f2f;
                 position: relative;
 
-                @media screen and (max-width: $breakpoint-medium-max) {
-                    width: 5vh;
-                    height: 5vh;
-                    border-radius: 5vh;
-                }
-
                 .text {
                     font-size: 5vh;
                     user-select: none;
-                    @media screen and (max-width: $breakpoint-medium-max) {
-                        font-size: 10vh;
-                    }
                 }
 
                 .flowUp {
@@ -271,6 +262,11 @@
         background-color: rgba(222,222,222,0.75);
         border-radius: 20px;
         padding: 2vh 2vw;
+        padding: 1rem;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            width: 80%;
+        }
 
         .close {
             text-align: right;
@@ -301,6 +297,10 @@
                     border-radius: 1vw;
                     padding-left: 1vw;
                     @include font($flow-font-name, 2vh, #2f2f2f);
+
+                    @media screen and (max-width: $breakpoint-medium-max) {
+                        width: 100%;
+                    }
                 }
 
                 .checkInput {
@@ -321,6 +321,11 @@
                 border-radius: 3vh;
                 background-color: $primary-blue;
                 @include font($flow-font-name, 2vh, white);
+
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    margin-right: 0;
+                    width: 100%;
+                }
             }
 
             .failure {
@@ -332,6 +337,12 @@
                 border-radius: 3vh;
                 background-color: $primary-yellow;
                 @include font($flow-font-name, 2vh, #2f2f2f);
+
+                @media screen and (max-width: $breakpoint-medium-max) {
+                    margin-right: 0;
+                    margin-top: 5%;
+                    width: 100%;
+                }
             }
         }
 

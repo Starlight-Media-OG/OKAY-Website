@@ -35,7 +35,7 @@
                     </div>
                 </div>
             </div>
-            <div class="lastWeek flex flex-center">
+            <div class="lastWeek flex flex-center" style="margin-bottom: 5vh;">
                 <h2 class="weekHeader">Letzter Monat</h2>
                 <div class="row flex flex-center">
                     <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
