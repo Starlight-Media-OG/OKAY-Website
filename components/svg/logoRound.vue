@@ -1,5 +1,5 @@
 <template>
-    <svg id="Ebene_1" style="enable-background:new 0 0 254.1 254.1;" version="1.1" viewBox="0 0 254.1 254.1"
+    <svg id="Ebene_6" style="enable-background:new 0 0 254.1 254.1;" version="1.1" viewBox="0 0 254.1 254.1"
          x="0px" xml:space="preserve"
          xmlns="http://www.w3.org/2000/svg"
          y="0px" height="100%" width="100%">

@@ -7,22 +7,20 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
-                    {{ titlePart }}
-                </p>
+                <h1 class="title col-4">
+                    {{ this.name }}
+                </h1>
                 <p class="date">
                     Für {{ this.price }} €
                 </p>
-                <p></p>
             </div>
             <div class="image col-5">
                 <img :src="this.bild" :alt="this.name" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center" style="margin-bottom: 0;">
-            <article class="beschreibung" style="width: 90%; padding: 1rem;">
+            <article class="beschreibung col-9" style="padding: 1rem;">
                 <div class="bes">
-                    <h2>Beschreibung</h2>
                     <p> {{ this.beschreibung }}</p>
                 </div>
                 <div class="dateOpen">
@@ -34,7 +32,7 @@
                     </ul>
                 </div>
             </article>
-            <section class="galleryBox" v-if="this.bilder_path != null">
+            <section class="galleryBox" v-if="this.bilder_path == null">
                 <gallery :imgPath="this.bilder_path"/>
             </section>
             <section v-else class="galleryBox">
@@ -140,7 +138,7 @@ export default {
 
         if(produkt.bilder_path != null) {
             this.bilder_path = produkt.bilder_path;
-            this.bild = produkt.bilder_path + "/title.jpg";
+            this.bild = produkt.bilder_path + "/plakat.jpg";
         } else {
             this.bild = process.env.defaultImage;
         }

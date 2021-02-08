@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div>
-                <nuxt-link :to="concat('/products/', this.id)" class="ignoreTag">
+                <nuxt-link :to="concat('/products/', this.id)" class="ignoreTag" :aria-label="'Gehe zu ' + this.title">
                     <div class="button">
                         <p class="button-text">Weitere Informationen...</p>
                     </div>

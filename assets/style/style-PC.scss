@@ -6,7 +6,10 @@
     line-height: 18vh;
     @include font($header-font-name, 20vh, white, bold);
     user-select: none;
-    transform: translateY(-20%);
+
+    h1 {
+        font-size: 20vh;
+    }
 
     .vertical {
         writing-mode: vertical-lr;
@@ -14,10 +17,6 @@
         font-size: 18vh;
         background-color: transparent;
         z-index: -1;
-    }
-
-    p:last-child {
-        transform: translateY(-33vh);
     }
 }
 
@@ -61,11 +60,24 @@ main {
         color: $primary-yellow;
         @include font($header-font-name, 3.32vh, $primary-yellow, bold);
         transition: font-size .3s;
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,.2)) drop-shadow(-2px -2px 5px rgba(255,255,255 , .2));
+        cursor: pointer;
+        background-color: $primary-blue;
+        padding: 10px 25px;
+        border-radius: 6px;
+        transition: box-shadow .5s;
 
-        &:hover{
-            font-size: 4vh;
-            transition: font-size .3s;
+        &:hover {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2), inset -2px -2px 5px rgba(0,0,0,.2);
+            transition: box-shadow .5s;
         }
+    }
+
+    .linkTop {
+        text-decoration: none;
+        color: $primary-yellow;
+        @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        cursor: pointer;
     }
 }
 

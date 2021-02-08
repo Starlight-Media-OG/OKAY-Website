@@ -1,5 +1,9 @@
 @import '../../assets/style/variable.scss';
 
+.badgeNumber {
+    filter: drop-shadow(3px 3px 3px rgba(0,0,0,.3)) drop-shadow(-3px -3px 3px rgba(255,255,255,.1));
+}
+
 //Smartphone & small Tablet Style
 @media screen and (max-width: $breakpoint-medium-max), handheld {
     .calender {
@@ -91,8 +95,123 @@
     }
 }
 
+//Tablet Style
+@media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+    $border-radius: 10px;
+    $width: 80vw;
+    $sqrLength: calc(#{$width} / 7);
+
+    .calender {
+        background-color: $bg-blue;
+        border-radius: $border-radius;
+        box-shadow: 10px 10px 15px rgba(0,0,0,0.2), -10px -10px 15px rgba(0,0,0,0.2);
+        width: $width;
+        margin: 2vh 0 10vh;
+
+        .month {
+            border-top-left-radius: $border-radius;
+            border-top-right-radius: $border-radius;
+            background-color: $primary-yellow;
+            width: 100%;
+            text-align: center;
+
+            .arrow {
+                width: 5vw;
+                height: 5vw;
+                position: absolute;
+
+
+                &-Left {
+                    float: left;
+                    left: 10%;
+                }
+
+                &-Right {
+                    float: left;
+                    right: 10%;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+
+            .monthDesc {
+                @include font($flow-font-name, 5rem, white, bold);
+                float: left;
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        .day {
+            background-color: $primary-blue;
+            border-radius: 10px;
+            @include font($flow-font-name, 3vh, $primary-yellow, bold);
+            height: 5vh;
+        }
+
+        .prev-month {
+            opacity: .5;
+        }
+
+        .month-day {
+            border-radius: 20px;
+            @include font($flow-font-name, 1.5rem, $primary-yellow, bold);
+            background-color: $cal-day;
+            height: $sqrLength;
+            width: $sqrLength;
+            position: relative;
+            box-shadow: 3px 3px 5px rgba(0,0,0,0.1);
+
+            &.current-day {
+                background-color: $primary-blue;
+            }
+
+            .date {
+                position: absolute;
+                top: 15px;
+                left: 15px;
+            }
+
+            .badgeNumber {
+                cursor: pointer;
+                position: absolute;
+                right: 15px;
+                top: 15px;
+                width: 38px;
+                height: 38px;
+                background-color: $primary-blue;
+                border-radius: 25px;
+                z-index: 2;
+                font-size: 1.5rem;
+
+                p {
+                    margin-left: 10px;
+                    margin-top: -2px;
+                }
+            }
+        }
+    }
+
+    .eventCal {
+        background-color: lighten($primary-blue,5%);
+        @include font($flow-font-name, 1rem, white);
+        border-radius: 6px;
+        width: calc(#{$sqrLength} - 40px);
+        box-shadow: 3px 3px 5px rgba(0,0,0,0.2), -3px -3px 5px rgba(0,0,0,0.2);
+        text-align: center;
+        position: absolute;
+        transform: translateX(18%);
+
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
 //Desktop Style
-@media screen and (min-width: $breakpoint-large) {
+@media screen and (min-width: $breakpoint-xlarge) {
     $border-radius: 15px;
     $width: 60vw;
     $sqrLength: calc(#{$width} / 7);
@@ -192,7 +311,7 @@
 
     .eventCal {
         background-color: lighten($primary-blue,5%);
-        @include font($flow-font-name, 1rem, white);
+        @include font($flow-font-name, .8rem, white);
         border-radius: 6px;
         width: calc(#{$sqrLength} - 40px);
         box-shadow: 3px 3px 5px rgba(0,0,0,0.2), -3px -3px 5px rgba(0,0,0,0.2);

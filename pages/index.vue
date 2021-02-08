@@ -1,11 +1,14 @@
 <template>
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center">
-            <div class="title col-3" style="margin-top: 17vh;">
-                <p class="line-height1">Offene</p>
+            <div class="title home col-3">
+                <h1 class="line-height1">Offene</h1>
                 <p class="line-height2">Kultur</p>
                 <p class="vertical opacity-50">Aus</p>
                 <p class="line-height3">Ybbs</p>
+                <div class="link linkToFolder">
+                    <a class="linkTop underline" @click="scrollTo('#folder')">Blättern Sie durch den Folder </a>
+                </div>
             </div>
             <div id="canvasSuper" class="image col-6">
                 <canvas id="canvas3d" class="image" style="transform: translateX(-35%) translateY(-5%);"></canvas>
@@ -16,32 +19,38 @@
                 </div>
             </div>
         </section>
-        <section style="margin:0;">
-            <div id="scroll" class="events">
-                <h2 class="reduceMobile">Events</h2>
-                <div v-for="event of events" :key="event.oaId" class="singleEvents">
-                    <card :id="event.oaId" :date="event.start_datum" :endDate="event.end_datum"
-                        :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
-                        events />
-                </div>
-                <div class="link center" style="margin-top: 3rem;">
-                    <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
+        <section style="margin-top:-20vh;" class="row-max">
+            <div class="area flex flex-center">
+                <div id="scroll" class="events">
+                    <h2 class="reduceMobile">Events</h2>
+                    <div v-for="event of events" :key="event.oaId" class="singleEvents">
+                        <card :id="event.oaId" :date="event.start_datum" :endDate="event.end_datum"
+                            :image="event.bilder_path + '/plakat.jpg'" :teaser="event.beschreibung" :title="event.titel"
+                            events />
+                    </div>
+                    <div class="link center" style="margin-top: 3rem;">
+                        <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
+                    </div>
                 </div>
             </div>
-            <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=x9yh2645s4" width="100%" height="480"
-                seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen class="folder"></iframe>
-            <div class="link center" style="margin-top: 2rem;">
-                <a href="/pdfs/vorstellungsfolder.pdf" download="/pdfs/vorstellungsfolder.pdf" class="further-link"
-                    target="_blank">Folder Herunterladen!</a>
-            </div>
-            <div class="news">
-                <h2 class="reduceMobile">News</h2>
-                <div v-for="news1 of news" :key="news1.nId" class="singleNews">
-                    <card :id="news1.nId" :date="news1.datum" :image="news1.bilder_path + '/plakat.jpg'"
-                        :teaser="news1.anreisser" :title="news1.titel" news />
+            <div class="area flex flex-center">
+                <div class="news">
+                    <h2 class="reduceMobile">News</h2>
+                    <div v-for="news1 of news" :key="news1.nId" class="singleNews">
+                        <card :id="news1.nId" :date="news1.datum" :image="news1.bilder_path + '/plakat.jpg'"
+                            :teaser="news1.anreisser" :title="news1.titel" news />
+                    </div>
+                    <div class="link center" style="margin-top: 3rem;">
+                        <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
+                    </div>
                 </div>
-                <div class="link center" style="margin-top: 3rem;">
-                    <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
+            </div>
+            <div class="area">
+                <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=x9yh2645s4" width="100%" height="480"
+                    seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen class="folder" id="folder" title="Vorstellungsfolder des Kulturverein Ybbs"></iframe>
+                <div class="link center" style="margin-top: 2rem;">
+                    <a href="/pdfs/vorstellungsfolder.pdf" download="/pdfs/vorstellungsfolder.pdf" class="further-link"
+                        target="_blank">Folder Herunterladen!</a>
                 </div>
             </div>
         </section>
@@ -103,18 +112,43 @@
         @media screen and (max-width: $breakpoint-medium-max) {
             line-height: 9vh;
         }
+
+        @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+            line-height: 12vh;
+        }
     }
 
     .line-height3 {
         line-height: 20vh;
+        transform: translateY(-33vh);
 
         @media screen and (max-width: $breakpoint-medium-max) {
+            transform: translateY(-15vh);
             line-height: 11vh;
+        }
+
+        @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+            line-height: 30vh;
         }
     }
 
     .folder {
         height: 70vh;
+        padding: 5vh 0;
+    }
+
+    .linkToFolder {
+        font-size: 2rem;
+        line-height: 2rem;
+        transform: translateY(-35vh);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            transform: translateY(-17vh);
+        }
+
+        @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+            transform: translateY(-42vh);
+        }
     }
 </style>
 

@@ -33,7 +33,6 @@ export default {
     expand: function(i) {
       gsap.registerPlugin(CSSPlugin);
 
-      //let el = this.$refs['accordion-body-' + i][0];
       let el = document.getElementsByClassName("accordion-body")[i];
 
       if (this.contents[i].active === false) {

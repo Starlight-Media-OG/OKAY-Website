@@ -14,13 +14,6 @@
         layout: 'default',
         components: {
             navbar, foot
-        },
-        watch: {
-            '$route': function () {
-                if (process.client) {
-                    this.$store.dispatch('menu/hideMenu');
-                }
-            }
         }
     }
 </script>

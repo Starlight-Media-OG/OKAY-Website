@@ -12,21 +12,21 @@
                     <div class="row">
                         <label>
                             <div class="label">Vorname: *</div>
-                            <input type="text" class="input" v-model="vorname" required />
+                            <input type="text" class="input" v-model="vorname" required tabindex="1" />
                         </label>
                     </div>
 
                     <div class="row">
                         <label>
                             <div class="label">Nachname: *</div>
-                            <input type="text" class="input" v-model="nachname" required />
+                            <input type="text" class="input" v-model="nachname" required tabindex="2" />
                         </label>
                     </div>
 
                     <div class="row">
                         <label>
                             <div class="label">Mail Adressse: *</div>
-                            <input type="email" class="input" v-model="mail" required/>
+                            <input type="email" class="input" v-model="mail" required tabindex="3" />
                         </label>
                     </div>
 
@@ -34,13 +34,13 @@
                         <label>
                             <div class="label">Geschlecht: *</div>
                             <div class="row">
-                                <input type="radio" value="m" name="gender" id="m" v-model="gender" required class="radio" />
+                                <input type="radio" value="m" name="gender" id="m" v-model="gender" required class="radio" tabindex="4" />
                                 <label for="m">Männlich</label>
 
-                                <input type="radio" value="f" name="gender" id="f" v-model="gender" required class="radio" />
+                                <input type="radio" value="f" name="gender" id="f" v-model="gender" required class="radio" tabindex="5" />
                                 <label for="f">Weiblich</label>
 
-                                <input type="radio" value="x" name="gender" id="x" v-model="gender" required class="radio" />
+                                <input type="radio" value="x" name="gender" id="x" v-model="gender" required class="radio" tabindex="6" />
                                 <label for="x">Divers</label>
                             </div>
                         </label>
@@ -48,10 +48,10 @@
                 </form>
             </div>
             <div class="buttons row flex flex-center">
-                <button class="success" @click="send()">
+                <button class="success" @click="send()" tabindex="7" aria-label="Absenden">
                     Absenden
                 </button>
-                <button class="failure" @click="modalToggle()">
+                <button class="failure" @click="modalToggle()" tabindex="8" aria-label="Abbrechen">
                     Abbrechen
                 </button>
             </div>

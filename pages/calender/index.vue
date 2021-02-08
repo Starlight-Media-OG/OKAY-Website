@@ -1,8 +1,8 @@
 <template>
     <main class="root flex flex-center">
-        <section class="row header">
-            <div class="title col-3">
-                Kalender
+        <section class="row header flex flex-center">
+            <div class="title">
+                <h1>Kalender</h1>
             </div>
         </section>
         <section class="content">
@@ -55,19 +55,13 @@ main {
 
     .header {
         height: $header-height;
-        margin-top: 15vh;
-        padding-left: 20vw;
-        transform: rotate(-8deg);
 
-        @media screen and (max-width: $breakpoint-large-max) {
-            padding-left: 0;
-            margin-left: -10vw;
-            margin-top: 0;
-        }
+        h1 {
+            font-size: 20vh;
 
-        .title {
             @media screen and (max-width: $breakpoint-medium-max) {
-                font-size: 8vh;
+                font-size: 10vh;
+                margin-bottom: 5vh;
             }
         }
 

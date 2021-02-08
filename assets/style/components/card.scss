@@ -41,10 +41,12 @@
 
             .header {
                 .card-title {
-                    @include font($header-font-name, $title-size);
-                    line-height: 2.7rem;
-                    margin-bottom: .5rem;
-                    hyphens: auto;
+                    h2 {
+                        @include font($header-font-name, $title-size);
+                        line-height: 2.7rem;
+                        margin-bottom: .5rem;
+                        hyphens: auto;
+                    }
                 }
 
                 .date {
@@ -102,15 +104,9 @@
         }
 
         .content {
-            $title-size: 3rem;
+            $title-size: 5vh;
             $date-size: 1.5rem;
             $flow-size: 1rem;
-
-            @media screen and (max-width: $breakpoint-large-max) {
-                $title-size: 2rem;
-                $date-size: 1.2rem;
-                $flow-size: 1rem;
-            }
 
             display: flex;
             margin-left: 1vw;
@@ -119,9 +115,12 @@
 
             .header {
                 .card-title {
-                    @include font($header-font-name, $title-size);
-                    float: left;
-                    margin-bottom: 1.5rem;
+                    h2 {
+                        @include font($header-font-name, $title-size);
+                        font-weight: bold;
+                        float: left;
+                        margin-bottom: 1.5rem;
+                    }
                 }
 
                 .date {
@@ -132,7 +131,7 @@
 
             .teaser, .teaser-news {
                 @include font($flow-font-name, $flow-size);
-                line-height: calc(#{$flow-size}+#{$flow-size}*0.1);
+                line-height: calc(#{$flow-size} * 1.8);
                 text-align: justify;
                 margin-bottom: 1vh;
                 hyphens: auto;

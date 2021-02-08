@@ -7,9 +7,9 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
-                    {{ titlePart }}
-                </p>
+                <h1 class="title col-4">
+                    {{ this.name }}
+                </h1>
                 <p class="date">
                     Vom {{ this.date }}
                 </p>
@@ -20,7 +20,7 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <article class="beschreibung-news col-3" style="margin-top: 2rem;">
+            <article class="beschreibung-news col-9" style="margin-top: 2rem;">
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox" v-if="this.bilder_path == null">

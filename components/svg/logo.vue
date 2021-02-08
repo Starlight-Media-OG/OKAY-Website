@@ -1,6 +1,6 @@
 <template>
 	<div v-if="big">
-		<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+		<svg version="1.1" id="Ebene_5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
 			x="0px" y="0px" viewBox="0 0 141.7 200.6" style="enable-background:new 0 0 141.7 200.6;"
 			xml:space="preserve">
 			<g>
@@ -81,7 +81,7 @@
 
 	</div>
 	<div v-else>
-		<svg id="Ebene_1" style="enable-background:new 0 0 231 231;" version="1.1" viewBox="0 0 231 231" x="0px"
+		<svg id="Ebene_7" style="enable-background:new 0 0 231 231;" version="1.1" viewBox="0 0 231 231" x="0px"
 			xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px">
 			<g>
 				<path class="st1" d="M96.6,109c0,7.6,0,15.2,0,22.8c0,5.9-1,11.7-2.9,17.3c-1.6,4.8-3.8,9.7-7.8,13c-7.1,5.8-18,5.8-25-0.2

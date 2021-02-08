@@ -51,6 +51,11 @@ $category: 'opacity';
     align-items: center;
 }
 
+.flex-break {
+    width: 100%;
+    margin: 1vh 0;
+}
+
 $col-values: 1,2,3,4,5,6,7,8,9,10,11,12;
 $opts: 'col','row';
 
@@ -143,8 +148,11 @@ em {
 
 .area {
     background-color: $primary-blue;
+    padding: 5vh 0;
+    margin-top: 5vh;
 
     &:nth-child(even) {
+        padding: 0;
         background-color: $bg-blue;
     }
 }

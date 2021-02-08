@@ -2,7 +2,7 @@
     <main class="root flex flex-center">
         <section class="row-12 flex flex-center header">
             <div class="title" style="margin-top: 5vh">
-                Über Uns
+                <h1>Über uns</h1>
             </div>
         </section>
         <section class="content flex flex-center" style="margin-bottom: 0;">
@@ -19,7 +19,7 @@
                     <h2>Projekte</h2>
                     <div class="cards row flex flex-center">
                         <card v-for="project in projects" :key="project.pId" :id="project.pId" :title="project.titel" :teaser="project.beschreibung"
-                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_path + '/plakat.png'" projects />
+                            :date="project.start_datum" :endDate="project.end_datum" :image="project.bilder_path + '/plakat.jpg'" projects />
                     </div>
                 </div>
             </div>
@@ -239,7 +239,7 @@ export default {
             title: "Über Uns - OKAY Ybbs",
             meta: [
                 {
-                    charset: 'utf-16'
+                    charset: 'utf-8'
                 },
                 {
                     name: "description",
@@ -287,25 +287,16 @@ export default {
     overflow: hidden;
 }
 
-.date {
-    color: $primary-yellow;
-    font-size: 5vh;
-    transform: translateY(-30%);
-}
-
-.back {
-    font-size: 3vh;
-    color: $primary-yellow;
-    transform: translateY(30%);
-
-    &:hover {
-        cursor: pointer;
-    }
-
-}
-
 .header {
     margin-top: 10vh;
+
+    h1 {
+        font-size: 20vh;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 8vh;
+        }
+    }
 }
 
 .link {

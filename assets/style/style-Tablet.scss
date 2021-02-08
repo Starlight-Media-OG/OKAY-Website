@@ -1,21 +1,24 @@
 @import "variable";
 
 .title {
-  margin-top: 20vh;
-  margin-left: 5vw;
   line-height: 16vh;
   @include font($header-font-name, 17vh, white, bold);
   z-index: 1;
+
+  &.home {
+    margin-left: 5vw;
+    margin-top: 20vh;
+  }
+
+  h1 {
+    font-size: 17vh;
+  }
 
   .vertical {
     writing-mode: vertical-lr;
     transform: translateX(-100%) translateY(-50%) rotate(180deg);
     font-size: 15vh;
     background-color: transparent;
-  }
-
-  p:last-child {
-    transform: translateY(-28vh);
   }
 }
 
@@ -47,18 +50,39 @@ main {
   margin-bottom: 7vh;
 
   &-noMargin {
-    .further-link {
-        text-decoration: none;
-        color: $primary-yellow;
-        @include font($header-font-name, 3.32vh, $primary-yellow, bold);
-    }
-}
+      .further-link {
+          text-decoration: none;
+          color: $primary-yellow;
+          @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+      }
+  }
 
   .further-link {
-    text-decoration: none;
-    @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+      text-decoration: none;
+      color: $primary-yellow;
+      @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+      transition: font-size .3s;
+      filter: drop-shadow(2px 2px 5px rgba(0,0,0,.2)) drop-shadow(-2px -2px 5px rgba(255,255,255 , .2));
+      cursor: pointer;
+      background-color: $primary-blue;
+      padding: 10px 25px;
+      border-radius: 6px;
+      transition: box-shadow .5s;
+
+      &:hover {
+          box-shadow: inset 2px 2px 5px rgba(0,0,0,.2), inset -2px -2px 5px rgba(0,0,0,.2);
+          transition: box-shadow .5s;
+      }
+  }
+
+  .linkTop {
+      text-decoration: none;
+      color: $primary-yellow;
+      @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+      cursor: pointer;
   }
 }
+
 
 .underline {
   @include text-underline($primary-blue, .1vh, 5px);

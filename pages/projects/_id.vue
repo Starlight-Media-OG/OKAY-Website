@@ -7,29 +7,28 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
-                    {{ titlePart }}
-                </p>
+                <h1 class="title col-4">
+                    {{ this.name }} - {{ this.untertitel }}
+                </h1>
                 <p class="date">
                     Ab {{ this.date }}
                 </p>
                 <p class="address">
                     Projektpartner: {{ this.projektpartner }}
                 </p>
-                <p></p>
             </div>
             <div class="image col-5">
                 <img :src="this.bild" alt="this.name" width="100%"/>
             </div>
         </section>
-        <section id="content" class="content flex flex-center">
-            <article class="beschreibung" style="padding: 1rem;width: 90%;">
+        <section class="content flex flex-center">
+            <article class="beschreibung col-9" style="padding: 1rem;">
                 <div class="bes">
-                    <h2>Beschreibung</h2>
-                    {{ this.beschreibung }}
+                    <p> {{ this.beschreibung }}</p>
                 </div>
             </article>
-            <div class="link-noMargin" style="margin-bottom: 5vh">
+            <div class="flex-break"></div>
+            <div class="link" style="margin: 5vh 0;">
                 <em class="underline">
                     <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
                 </em>
@@ -115,7 +114,7 @@ export default {
 
         if(event.bilder_path == null) {
             this.bilder_path = event.bilder_path;
-            this.bild = event.bilder_path + "/title.jpg";
+            this.bild = event.bilder_path + "/plakat.jpg";
         } else {
             this.bild = process.env.defaultImage;
         }
@@ -170,7 +169,7 @@ export default {
             title: this.name + " - OKAY Ybbs",
             meta: [
                 {
-                    charset: 'utf-16'
+                    charset: 'utf-8'
                 },
                 {
                     name: "description",

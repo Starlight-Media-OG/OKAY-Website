@@ -1,7 +1,8 @@
 <template>
     <main class="root flex flex-center">
         <canvas id="canvas" class="row"></canvas>
-        <h2 class="row weekHeader flex flex-center" style="margin-top: -12vh;line-height: 13vh;"><span style="font-size: 15vh;">Ups!</span> Ein Fehler ist aufgetreten</h2>
+        <h1 class="row title flex flex-center" style="margin-top: -20vh;">Ups!</h1>
+        <h2>Ein Fehler ist aufgetreten!</h2>
         <div class="row link center" style="margin-top: 4vh;">
           <nuxt-link to="/" class="further-link"><em class="underline">Zurück zur Startseite</em></nuxt-link>
         </div>

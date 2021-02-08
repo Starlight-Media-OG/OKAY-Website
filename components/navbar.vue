@@ -1,7 +1,7 @@
 <template>
     <header>
-        <nav :class="{navigationExt: menuActive, navigation: !menuActive}">
-            <div class="burger" @click="toggleMenu">
+        <nav :class="{navigationExt: menuActive, navigation: !menuActive}" @click="toggleMenu">
+            <div class="burger">
                 <div class="burger-icon">
                     <burger :menuActive="menuActive"/>
                 </div>
@@ -17,7 +17,7 @@
         </nav>
         <div class="logo">
             <nuxt-link to="/">
-                <logo big="true"/>
+                <logo big="true" aria-label="Choose Label!" />
             </nuxt-link>
         </div>
         <div class="bg" @click="hideMenu" v-if="menuActive">
@@ -25,7 +25,7 @@
 
         <div class="breadcrumbs" v-if="breadcrumbs !== 1">
             <ul class="breadcrumbs-list">
-                <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item" @click="pushToLink(item.link)">
+                <li v-for="item in breadcrumbsText" class="breadcrumbs-list-item" @click="pushToLink(item.link)" :key="item.text">
                     <p class="text-item">{{item.text}}</p>
                 </li>
             </ul>

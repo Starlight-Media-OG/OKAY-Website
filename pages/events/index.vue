@@ -1,55 +1,66 @@
 <template>
     <main class="root flex flex-center">
         <section class="row flex flex-center header">
-            <div class="title col-3">
-                Events
-            </div>
             <div class="svgGraphic">
                 <img src="/animations/events.gif" alt="Events Animation">
             </div>
+            <div class="flex-break"></div>
+            <div class="title">
+                <h1>Events</h1>
+            </div>
+            <div class="flex-break"></div>
         </section>
         <section class="main flex flex-center">
-            <div class="nextWeek flex flex-center">
-                <h2 class="weekHeader">Nächster Monat</h2>
-                <div class="row flex flex-center">
-                    <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
-                        <card :title="event.titel" :teaser="event.beschreibung"
-                              :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
-                    </div>
-                    <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Events statt</h5>
+            <div class="link center marginTopSmall">
+                <nuxt-link to="/calender" class="further-link"><em class="underline">Alle Events im Kalender anzeigen</em></nuxt-link>
+            </div>
+            <div class="area">
+                <div class="nextWeek flex flex-center">
+                    <h2 class="weekHeader">Nächster Monat</h2>
+                    <div class="row flex flex-center">
+                        <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
+                            <card :title="event.titel" :teaser="event.beschreibung"
+                                :image="event.bilder_path + '/plakat.jpg'"
+                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                        </div>
+                        <div class="noEvent" v-else>
+                            <h5>In dieser Woche finden keine Events statt</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="thisWeek flex flex-center">
-                <h2 class="weekHeader">Dieser Monat</h2>
-                <div class="row flex flex-center">
-                    <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
-                        <card :title="event.titel" :teaser="event.beschreibung"
-                              :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
-                    </div>
-                    <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Events statt</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="lastWeek flex flex-center" style="margin-bottom: 5vh;">
-                <h2 class="weekHeader">Letzter Monat</h2>
-                <div class="row flex flex-center">
-                    <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
-                        <card :title="event.titel" :teaser="event.beschreibung"
-                              :image="event.bilder_path + '/plakat.jpg'"
-                              :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
-                    </div>
-                    <div class="noEvent" v-else>
-                        <h5>In dieser Woche finden keine Events statt</h5>
+            <div class="area">
+                <div class="thisWeek flex flex-center">
+                    <h2 class="weekHeader">Aktueller Monat</h2>
+                    <div class="row flex flex-center">
+                        <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
+                            <card :title="event.titel" :teaser="event.beschreibung"
+                                :image="event.bilder_path + '/plakat.jpg'"
+                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                        </div>
+                        <div class="noEvent" v-else>
+                            <h5>In dieser Woche finden keine Events statt</h5>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="link center">
-                <nuxt-link to="/calender" class="further-link"><em class="underline">Zum Kalender</em></nuxt-link>
+            <div class="area">
+                <div class="lastWeek flex flex-center">
+                    <h2 class="weekHeader">Letzter Monat</h2>
+                    <div class="row flex flex-center">
+                        <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
+                            <card :title="event.titel" :teaser="event.beschreibung"
+                                :image="event.bilder_path + '/plakat.jpg'"
+                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                        </div>
+                        <div class="noEvent" v-else>
+                            <h5>In dieser Woche finden keine Events statt</h5>
+                        </div>
+                    </div>
+                </div>
+                <div class="link center">
+                    <nuxt-link to="/calender" class="further-link"><em class="underline">Zum Kalender</em></nuxt-link>
+                </div>
             </div>
         </section>
     </main>
@@ -62,17 +73,22 @@ main {
     overflow: hidden;
 
     .header {
-        margin-left: -20vw;
-        transform: rotate(-8deg);
         z-index: -98;
 
         @media screen and (max-width: $breakpoint-medium-max) {
           margin-bottom: 10vh;
         }
+
+        h1 {
+            font-size: 20vh;
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                font-size: 10vh;
+            }
+        }
     }
 
     .svgGraphic {
-        transform: rotate(8deg) translateX(20%);
         margin-top: 5vh;
         z-index: -99;
 
@@ -85,14 +101,21 @@ main {
 .weekHeader {
     margin-top: 5vh;
     margin-bottom: 2vh;
+    font-size: 5rem;
 
     @media screen and (max-width: $breakpoint-medium-max) {
         margin-bottom: 10vh;
-        margin-top: -10vh;
+        font-size: 2rem;
+    }
+}
 
-        &:first-child {
-            margin-top: 5vh;
-        }
+.marginTopSmall {
+    @media screen and (max-width: $breakpoint-medium-max) {
+         margin-top: -7vh;
+
+         .further-link {
+             font-size: 1rem;
+         }
     }
 }
 </style>

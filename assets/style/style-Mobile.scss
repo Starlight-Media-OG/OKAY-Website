@@ -2,10 +2,17 @@
 
 .title {
     margin-top: 10vh;
-    margin-left: 10vw;
     @include font($header-font-name, 10vh, white, bold);
     line-height: 10vh;
     z-index: 1;
+
+    &.home {
+        margin-left: 10vw;
+    }
+
+    h1 {
+        font-size: 10vh;
+    }
 
     .vertical {
         writing-mode: vertical-lr;
@@ -14,10 +21,6 @@
         background-color: transparent;
         z-index: -1;
     }
-
-    p:last-child {
-        transform: translateY(-15vh);
-    }
 }
 
 .image {
@@ -25,7 +28,6 @@
     filter: drop-shadow(5px 5px 15px rgba(0,0,0,.2)) drop-shadow(-5px -5px 15px rgba(0,0,0,.2));
     overflow: hidden;
     user-select: none;
-    user-focus: none;
 
     #canvas3d {
         display: none;
@@ -47,12 +49,9 @@ main {
 }
 
 .link {
-    margin-top: -40%;
     margin-bottom: 7vh;
 
     &-noMargin {
-        margin-top: 0;
-
         .further-link {
             text-decoration: none;
             color: $primary-yellow;
@@ -64,9 +63,35 @@ main {
         text-decoration: none;
         color: $primary-yellow;
         @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        transition: font-size .3s;
+        filter: drop-shadow(2px 2px 5px rgba(0,0,0,.2)) drop-shadow(-2px -2px 5px rgba(255,255,255 , .2));
+        cursor: pointer;
+        background-color: $primary-blue;
+        padding: 10px 25px;
+        border-radius: 6px;
+        transition: box-shadow .5s;
+
+        &:hover {
+            box-shadow: inset 2px 2px 5px rgba(0,0,0,.2), inset -2px -2px 5px rgba(0,0,0,.2);
+            transition: box-shadow .5s;
+        }
+    }
+
+    .linkTop {
+        text-decoration: none;
+        color: $primary-yellow;
+        @include font($header-font-name, 3.32vh, $primary-yellow, bold);
+        cursor: pointer;
     }
 }
 
+
 .underline {
     @include text-underline($primary-blue, .1vh, 5px);
+}
+
+.root {
+    width: 100%;
+    margin: 0;
+    padding: 0;
 }

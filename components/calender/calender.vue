@@ -85,7 +85,8 @@ export default {
         },
         updateCalendar: function (month, year) {
             this.tb = "<tbody ref='calendarBody' class='body'>";
-            let firstDay = (new Date(year, month)).getDay() - 1;
+            const tmp = (new Date(year, month)).getDay()
+            let firstDay = tmp == 0 ? 6 : tmp- 1;
 
             //Create all Cells
             let date = 0;

@@ -1,11 +1,12 @@
 <template>
     <main class="root flex flex-center">
         <section class="row flex flex-center header">
-            <div class="title col-3">
-                News
-            </div>
             <div class="svgGraphic">
                 <img src="/animations/news.gif" alt="Nachrichtenstapel Animation">
+            </div>
+            <div class="flex-break"></div>
+            <div class="title">
+                <h1>News</h1>
             </div>
         </section>
         <section class="content flex flex-center" style="margin-bottom: 10vh;">
@@ -24,17 +25,18 @@ main {
     overflow: hidden;
 
     .header {
-        margin-left: -20vw;
-        transform: rotate(-8deg);
         z-index: -98;
 
-        @media screen and (max-width: $breakpoint-medium-max) {
-            margin-bottom: 10vh;
+        h1 {
+            font-size: 20vh;
+            
+            @media screen and (max-width: $breakpoint-medium-max) {
+                font-size: 10vh;
+            }
         }
     }
 
     .svgGraphic {
-        transform: rotate(8deg);
         margin-top: 5vh;
         z-index: -99;
 

@@ -1,10 +1,5 @@
 <template>
     <article class="mainCard">
-        <div class="column">
-            <div class="image">
-                <img :src="this.bild_pfad" :alt="this.person.vorname + ' ' + this.person.nachname" class="image-col">
-            </div>
-        </div>
         <div class="content">
             <div class="header">
                 <div class="card-title">

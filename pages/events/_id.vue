@@ -7,9 +7,9 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
-                    {{ titlePart }}
-                </p>
+                <h1 class="title col-4">
+                    {{ this.name }} - {{ this.untertitel }}
+                </h1>
                 <p class="date">
                     Ab {{ this.date }}
                 </p>
@@ -23,9 +23,8 @@
             </div>
         </section>
         <section id="content" class="content flex flex-center">
-            <article class="beschreibung" style="padding: 1rem;width: 90%;">
+            <article class="beschreibung col-9" style="padding: 1rem;">
                 <div class="bes">
-                    <h2>Beschreibung</h2>
                     <p>{{ this.beschreibung }}</p>
                 </div>
                 <div class="dateOpen">
@@ -35,13 +34,12 @@
                     </p>
                 </div>
             </article>
-            <div class="link-noMargin">
-                <em class="underline">
-                    <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
-                </em>
+            <div class="flex-break"></div>
+            <div class="link flex flex-center">
+                <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
-                <commentBox :eId="this.id"/>
+                <commentBox :koms="this.koms" />
             </section>
         </section>
     </main>
@@ -66,26 +64,14 @@ export default {
             id: "",
             days: {},
             adresse: null,
-            untertitel: ""
+            untertitel: "",
+            koms: []
         }
     },
     computed: {
         title: function () {
             let tmp = this.name + " - " + this.untertitel
-            let names = tmp.split(" ");
-
-            //Join Short Words
-            for (let e in names) {
-                e = parseInt(e, 10);
-                if (names[e].length <= 15) {
-                    if (e + 1 < names.length) {
-                        names[e + 1] = names[e] + " " + names[e + 1];
-                        names[e] = "";
-                    }
-                }
-            }
-
-            return names;
+            return tmp;
         },
         sizeDetection: function () {
             if(process.client) {
@@ -123,16 +109,12 @@ export default {
             this.beschreibung = event.beschreibung;
             this.untertitel = event.untertitel;
 
-            console.log(event.bilder_path);
-
             if(event.bilder_path != null) {
                 this.bilder_path = event.bilder_path;
-                this.bild = event.bilder_path + "/title.jpg";
+                this.bild = event.bilder_path + "/plakat.jpg";
             } else {
                 this.bild = process.env.defaultImage;
             }
-
-            console.log(this.bild);
 
             this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
             this.id = event.oaId;
@@ -142,6 +124,16 @@ export default {
             }
 
             this.adresse = event.adresse;
+        }
+
+        let error = false;
+
+        let reqComment = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.id).catch(()=>{
+            error =true;
+        });
+
+        if(!error) {
+            this.koms = reqComment.data;
         }
     },
     created() {
@@ -182,18 +174,19 @@ export default {
             this.$nuxt.$loading.start();
         })
 
-         await this.$fetch(); 
+        await this.$fetch(); 
 
         this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         })
+
     },
     head() {
         return {
             title: this.name + " - OKAY Ybbs",
             meta: [
                 {
-                    charset: 'utf-16'
+                    charset: 'utf-8'
                 },
                 {
                     name: "description",
@@ -209,6 +202,7 @@ export default {
                 }
             ]
         }
-    }
+    },
+    fetchOnServer: true
 }
 </script>

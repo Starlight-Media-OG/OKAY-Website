@@ -1,5 +1,5 @@
 <template>
-    <svg id="Ebene_1" style="enable-background:new 0 0 28.4 28.4;" version="1.1" viewBox="0 0 28.4 28.4"
+    <svg id="Ebene_4" style="enable-background:new 0 0 28.4 28.4;" version="1.1" viewBox="0 0 28.4 28.4"
          x="0px" xml:space="preserve"
          xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" y="0px" height="100%" width="100%">
         <path class="st0" d="M28.3,13.2c0.5,7.5-4.8,13.8-11.8,15c-0.3,0.1-0.7-0.2-0.7-0.6v-9c0-0.2,0.1-0.3,0.3-0.3H19

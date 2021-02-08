@@ -1,6 +1,6 @@
 @import '../variable';
 
-@media screen and (max-width: $breakpoint-large-max), handheld {
+@media screen and (max-width: $breakpoint-large-max) {
     .footer {
         background-color: $primary-yellow;
         height: 35vh;
@@ -26,7 +26,7 @@
                     width: 100%;
                     margin-bottom: 1rem;
                     font-size: 3.5vh;
-                    color: white;
+                    color: $primary-blue;
                     transition: .5s;
                     text-decoration: none;
                     font-weight: bold;
@@ -126,13 +126,13 @@
 
     .footer-nav {
         font-size: 5vh;
-        color: white;
+        color: $primary-blue;
         text-decoration: none;
         transition: .5s;
         font-weight: bold;
 
         &:hover {
-            color: $primary-blue;
+            color: white;
             transition: .5s;
         }
     }
@@ -144,12 +144,12 @@
 
     .footer-nav-2 {
         font-size: 3.5vh;
-        color: white;
+        color: $primary-blue;
         transition: .5s;
         text-decoration: none;
 
         &:hover {
-            color: $primary-blue;
+            color: white;
             transition: .5s;
         }
     }
@@ -160,7 +160,7 @@
 }
 
 .row {
-    color: white;
+    color: $primary-blue;
 }
 
 a {

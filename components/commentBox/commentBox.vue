@@ -5,7 +5,7 @@
         </div>
         <div class=" flex flex-center">
             <div class="comments">
-                <div v-for="kom in koms" :key="kom.komId" class="comment">
+                <div v-for="kom in $props.koms" :key="kom.komId" class="comment">
                     <div class="singleCommentBox">
                         <div class="row">
                             <div class="shotName">
@@ -20,10 +20,10 @@
                                 {{kom.kommentar_text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="kom.images != undefined">
-                            <div class="images flex flex-center">
+                        <div class="flex flex-center" v-if="images(kom) !=  undefined">
+                            <div class="images flex flex-center" v-if="images(kom).length != 0">
                                 <div class="row">
-                                    <div v-for="image in kom.images" :key="image" class="col flex flex-center">
+                                    <div v-for="image in images(kom)" :key="image" class="col flex flex-center">
                                         <img :src="image" alt="Bild von der Ausstellung" />
                                     </div>
                                 </div>
@@ -37,20 +37,21 @@
         <div class="addComment flex flex-center">
             <div class="box flex flex-center">
                 <div class="textInput">
-                    <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" />
+                    <input type="text" placeholder="Einen Kommentar hinzufügen..." class="input" v-model="txt" name="komText" tabindex="1" aria-label="Kommentartext hinzufügen" />
                 </div>
-                <div class="addButton flex flex-center" @click="activeAdd =! activeAdd">
+                <div class="addButton flex flex-center" @click="activeAdd =! activeAdd" tabindex="2">
                     <p class="text center">+</p>
                     <div class="flowUp" :class="{'flowUp-active': this.activeAdd}">
                         <div class="row flex flex-center">
-                            <input type="file" name="files" multiple @change="registerFiles">
+                            <input type="file" name="files" multiple @change="registerFiles" tabindex="3" aria-label="Bilder zum Kommentar hinzufügen" />
                         </div>
                     </div>
                 </div>
                 <div class="sendButton" @click="toggleModal()">
                     <p class="text center check">
-                        <button type="submit">
-                            <check /> </button>
+                        <button type="submit" title="Kommentar absenden" tabindex="4" aria-label="Kommentar absenden">
+                            <arrow direction="right" />
+                        </button>
                     </p>
                 </div>
             </div>
@@ -69,37 +70,28 @@
                         <div class="row">
                             <label>
                                 <div class="label">Name: *</div>
-                                <input type="text" class="input" v-model="name" required/>
+                                <input type="text" class="input" v-model="name" required tabindex="1" aria-label="Name" />
                             </label>
                         </div>
 
                         <div class="row">
                             <label>
                                 <div class="label">Mail Adressse: *</div>
-                                <input type="email" class="input" v-model="mail" required/>
-                            </label>
-                        </div>
-
-                        <div class="row">
-                            <label>
-                                <input type="checkbox" class="checkInput" v-model="newsletter" />
-                                Newsletter Abonnieren
+                                <input type="email" class="input" v-model="mail" required tabindex="2" aria-label="Mail Adresse"/>
                             </label>
                         </div>
                     </form>
                 </div>
                 <div class="buttons row flex flex-center">
-                    <button class="success" @click="send()">
+                    <button class="success" @click="send()" tabindex="3" aria-label="Absenden">
                         Absenden
                     </button>
-                    <button class="failure" @click="toggleModal()">
+                    <button class="failure" @click="toggleModal()" tabindex="4" aria-label="Abbrechen">
                         Abbrechen
                     </button>
                 </div>
             </div>
         </div>
-
-        <NewsletterPopUp :show="newsletterPopUp" />
     </div>
 
 
@@ -111,29 +103,25 @@
 
 <script>
     import axios from 'axios';
-    import check from "~/components/svg/check.vue";
-    import NewsletterPopUp from "~/components/NewsletterPopup/NewsletterPopUp";
+    import arrow from "~/components/svg/arrow.vue";
 
     export default {
         name: "CommentBox",
         props: {
-            eId: Number,
+            koms: Array
         },
         components: {
-            check,
-            NewsletterPopUp
+            arrow
         },
         data() {
             return {
                 activeAdd: false,
                 txt: "",
-                koms: [],
                 name: "",
                 mail: "",
                 newsletter: false,
                 files: [],
                 modalShow: false,
-                newsletterPopUp: false,
                 fileUplaodTarget: process.env.baseImage + "/images/upload/events/"
             }
         },
@@ -173,19 +161,12 @@
                             }
 
                             let req = axios.post(url, formData);
-
-                            if(req.status === 200) {
-                                console.log(req.data);
-                            }
                         }
 
 
                         this.txt = "";
                         this.toggleModal();
-
-                        if (this.newsletter === true)
-                            this.newsletterPopUp = !this.newsletterPopUp;
-
+                        this.$fetch();
                     }
                 }
             },
@@ -206,30 +187,27 @@
             },
             toggleModal: function () {
                 this.modalShow = !this.modalShow;
-            }
-        },
-        async fetch() {
-            let error = false;
+            },
+            images: function(kom) {
+                let images = [];
+                if(kom.bilder_path != null) {
+                    if(process.client) {
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", kom.bilder_path, false);
+                        xhr.send();
 
-            let reqComment = await axios.get(process.env.baseURL + "/kommentare/getKommentare/" + this.eId).catch(()=>{
-                error =true;
-            });
-
-            if(!error) {
-                this.koms = reqComment.data;
-
-                for (const item of this.koms) {
-                    if (item.bilder_path != null) {
-                        let data = await axios.get(item.bilder_path);
-                        if (data.data.status === true) {
-                            item.images = [];
-                            for (const value of data.data.data) {
-                                item.images.push(process.env.baseImage + value.replace("server/uploads", ""));
+                        if(xhr.status === 200) {
+                            let data = JSON.parse(xhr.responseText);
+                            for (let image of data.data) {
+                                console.log(image)
+                                images.push(process.env.baseImage + image.replace("server/uploads", ""))
                             }
                         }
                     }
                 }
+
+                return images;
             }
-        },
+        }
     }
 </script>

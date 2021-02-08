@@ -14,30 +14,30 @@
                     <p>{{this.datum}}</p>
                 </div>
                 <div class="card-title column">
-                  <h1>{{this.title}}</h1>
+                  <h2>{{this.title}}</h2>
                 </div>
             </div>
-            <div class="teaser-news">
-                <p v-html="trimString(this.teaser, 300)"></p>
+            <div class="teaser-news" v-html="trimString(this.teaser, 300)">
+                <p ></p>
             </div>
             <div v-if="!news && !projects">
-                <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag">
+                <nuxt-link :to="concat('/events/', this.id)" class="ignoreTag" :aria-label="'Gehe zu ' + this.title">
                   <div class="button" :style="{'background-color': buttonColor}">
-                    <p  class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
+                    <p  class="button-text" :style="{'color': buttonFontColor}">Weitere Informationen...</p>
                   </div>
                 </nuxt-link>
             </div>
             <div v-if="news">
-                <nuxt-link :to="concat('/news/', this.id)" class="ignoreTag">
+                <nuxt-link :to="concat('/news/', this.id)" class="ignoreTag" :aria-label="'Gehe zu ' + this.title">
                   <div class="button" :style="{'background-color': buttonColor}">
-                    <p class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
+                    <p class="button-text" :style="{'color': buttonFontColor}">Weitere Informationen...</p>
                   </div>
                 </nuxt-link>
             </div>
             <div v-if="projects">
-                <nuxt-link :to="concat('/projects/', this.id)" class="ignoreTag">
+                <nuxt-link :to="concat('/projects/', this.id)" class="ignoreTag" :aria-label="'Gehe zu ' + this.title">
                     <div class="button" :style="{'background-color': buttonColor}">
-                        <p class="button-text" :style="{'color': fontColor}">Weitere Informationen...</p>
+                        <p class="button-text" :style="{'color': buttonFontColor}">Weitere Informationen...</p>
                     </div>
                 </nuxt-link>
             </div>
@@ -89,11 +89,11 @@
             },
             buttonColor: function () {
                 if(this.events) {
-                    return "#134364"
+                    return "#FFC72C"
                 } else if (this.news) {
-                    return "#fae057"
+                    return "#00629B"
                 } else if (this.projects) {
-                    return "#efefef"
+                    return "#FFC72C"
                 }
             },
             fontColor: function() {
@@ -101,6 +101,15 @@
                     return "#fff"
                 } else if (this.news) {
                     return "#000"
+                } else if (this.projects) {
+                    return "#000"
+                }
+            },
+            buttonFontColor: function() {
+                if(this.events) {
+                    return "#000"
+                } else if (this.news) {
+                    return "#fff"
                 } else if (this.projects) {
                     return "#000"
                 }

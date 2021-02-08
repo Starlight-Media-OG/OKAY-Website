@@ -7,11 +7,11 @@
                         < Zurück zur Übersicht
                     </em>
                 </p>
-                <p v-for="titlePart in title" :style="{fontSize: sizeDetection, lineHeight: sizeDetection}" :key="titlePart">
-                    {{ titlePart }}
-                </p>
+                <h1 class="title col-4">
+                    {{ this.name }} - {{ this.untertitel }}
+                </h1>
                 <p class="date">
-                    Bildergallerie
+                    Bildergalerie
                 </p>
                 <p></p>
             </div>
@@ -19,7 +19,7 @@
                 <img :src="this.imgPath()" alt="Plakat" width="100%"/>
             </div>
         </section>
-        <section class="content" style="margin-bottom: 0;">
+        <section class="content col-12" style="margin-bottom: 0;">
             <gallery :id="this.$route.params.id"/>
         </section>
     </main>
@@ -28,57 +28,7 @@
 <style lang="scss" scoped>
 @import '../../assets/style/variable.scss';
 
-.date {
-    color: $primary-yellow;
-    font-size: 5vh;
-    transform: translateY(-30%);
-}
-
-.back {
-    @include font($header-font-name, 3rem, $primary-yellow, 700);
-    transform: translateY(25%);
-
-    &:hover {
-        cursor: pointer;
-    }
-
-    @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.225rem, $primary-yellow, 700);
-        padding-bottom: 2vh;
-    }
-
-    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        @include font($header-font-name, 2rem, $primary-yellow, bold);
-    }
-}
-
-.header {
-    margin-top: 10vh;
-}
-
-.beschreibung {
-    margin-top: -20vh;
-    margin-left: -35vw;
-
-    .title {
-        @include font($flow-font-name, 5vh, white, bold);
-    }
-
-    p {
-        margin-top: -5vh;
-        @include font($flow-font-name, 1.2vh, white);
-    }
-
-}
-
-.link {
-    transform: translateY(250%);
-}
-
-.content {
-    width: 100%;
-    margin: 10vh 0;
-}
+@import "../../assets/style/_id.scss";
 </style>
 
 <script>
