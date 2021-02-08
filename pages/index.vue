@@ -29,7 +29,7 @@
                             events />
                     </div>
                     <div class="link center" style="margin-top: 3rem;">
-                        <nuxt-link class="further-link" to="/events"><em class="underline">Zu den Events</em></nuxt-link>
+                        <nuxt-link class="further-link" to="/events" aria-label="Zu den Events"><em class="underline">Zu den Events</em></nuxt-link>
                     </div>
                 </div>
             </div>
@@ -41,15 +41,15 @@
                             :teaser="news1.anreisser" :title="news1.titel" news />
                     </div>
                     <div class="link center" style="margin-top: 3rem;">
-                        <nuxt-link class="further-link" to="/news"><em class="underline">Zu den News</em></nuxt-link>
+                        <nuxt-link class="further-link" to="/news" aria-label="Zu den News"><em class="underline">Zu den News</em></nuxt-link>
                     </div>
                 </div>
             </div>
             <div class="area">
-                <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=x9yh2645s4" width="100%" height="480"
+                <iframe src="https://cdn.flipsnack.com/widget/v2/widget.html?hash=xkldq00n30" width="100%" height="480"
                     seamless="seamless" scrolling="no" frameBorder="0" allowFullScreen class="folder" id="folder" title="Vorstellungsfolder des Kulturverein Ybbs"></iframe>
                 <div class="link center" style="margin-top: 2rem;">
-                    <a href="/pdfs/vorstellungsfolder.pdf" download="/pdfs/vorstellungsfolder.pdf" class="further-link"
+                    <a href="/pdfs/vorstellungsfolder.pdf" download="/pdfs/vorstellungsfolder.pdf" class="further-link" aria-label="Vorstellungsfolder herunterladen"
                         target="_blank">Folder Herunterladen!</a>
                 </div>
             </div>

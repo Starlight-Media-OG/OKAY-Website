@@ -12,6 +12,8 @@
     "babylonjs": "^4.2.0",
     "createjs": "^1.0.1",
     "gsap": "^3.5.1",
+    "lodash": "^4.17.20",
+    "lodash.contains": "^2.4.3",
     "nuxt": "^2.14.4",
     "v-runtime-template": "^1.10.0",
     "vue": "^2.6.12",

@@ -3,12 +3,15 @@
         <div class="slider flex flex-center row">
             <div class="row">
                 <div v-for="image in images" :key="image" class="col flex flex-center">
-                    <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" />
+                    <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" v-if="isImage(image)" />
+                    <video :src="iamge" alt="Video von der Ausstellung" @click="selectedImage = image" v-if="!isImage(image)">
+</video>
                 </div>
             </div>
         </div>
         <div class="preview flex flex-center">
-            <img :src="selectedImage" alt="Preview Image of Slider" class="image" />
+            <img :src="selectedImage" alt="Preview Image of Slider" class="image" v-if="isImage(selectedImage)" />
+            <video :src="selectedImage" alt="Preview Video for the Slider" class="image" v-if="!isImage(selectedImage)"></video>
         </div>
     </div>
     <div class="gallery flex flex-center" v-else>
@@ -32,6 +35,39 @@
                 selectedImage: "",
                 images: null
             }
+        },
+        methods: {
+          isImage: function(path) {
+            let isImage = true;
+
+            isImage = this.contains(path, [
+              ".jpg",
+              ".jpeg",
+              ".bmp",
+              ".png",
+              ".svg",
+              ".ico",
+              ".gif"
+            ]);
+
+            return isImage;
+          },
+          contains: function (string, arr) {
+            const tmp = [];
+            for (const check of arr) {
+              if(string.includes(check)) {
+                tmp.push(true);
+              } else {
+                tmp.push(false)
+              }
+            }
+
+            if(tmp.includes(true)) {
+              return true;
+            } else {
+              return false;
+            }
+          }
         },
         async fetch() {
             let selectOneImage = true;

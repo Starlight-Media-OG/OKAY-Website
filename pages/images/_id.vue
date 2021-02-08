@@ -16,7 +16,7 @@
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="this.imgPath()" alt="Plakat" width="100%"/>
+                <img :src="this.bild" alt="Plakat" width="100%"/>
             </div>
         </section>
         <section class="content col-12" style="margin-bottom: 0;">
@@ -40,6 +40,7 @@ export default {
     data() {
         return {
             name: "",
+            untertitel: ""
         }
     },
     components: {
@@ -88,10 +89,17 @@ export default {
         }
     },
     async fetch() {
-        let req = await axios.get(process.env.baseURL + "/events/title/" + this.$route.params.id);
+        let req = await axios.get(process.env.baseURL + "/events/" + this.$route.params.id);
 
         if(req.status === 200) {
             this.name = req.data.titel;
+            this.untertitel = req.data.untertitel;
+
+            if(req.data.bilder_path != null) {
+                this.bild = req.data.bilder_path + "/plakat.jpg";
+            } else {
+                this.bild = process.env.defaultImage;
+            }
         }
     },
     methods: {
@@ -101,20 +109,6 @@ export default {
                 conString += arg;
             });
             return conString;
-        },
-        imgPath: function () {
-            let path =
-             process.env.baseImage + "/events/" + this.$route.params.id + "/"  + 'plakat.jpg';
-
-             let req = new XMLHttpRequest();
-             req.open("GET", path, false);
-             req.send();
-
-             if(req.status == 200) {
-                 return path;
-             } else {
-                 return process.env.defaultImage;
-             }
         }
     },
     async mounted() {
