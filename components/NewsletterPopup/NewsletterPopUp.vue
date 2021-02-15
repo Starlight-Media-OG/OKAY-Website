@@ -9,6 +9,9 @@
             </div>
             <div class="form row">
                 <form>
+                    <div class="row danger" v-if="this.error != ''">
+                        <p>{{ this.error }}</p>
+                    </div>
                     <div class="row">
                         <label>
                             <div class="label">Vorname: *</div>
@@ -45,13 +48,19 @@
                             </div>
                         </label>
                     </div>
+                    <div class="row">
+                        <input type="checkbox" required name="dsg" v-model="dsg" tabindex="7" id="dsg" /> <label for="dsg" @click="event.preventDefault(); document.getElementById('dsg').selected =! document.getElementById('dsg').selected">Hiermit erkläre ich mich mit den <nuxt-link to="/dsgvo">Nutzungsbedingungen</nuxt-link> einverstanden.</label>
+                    </div>
+                    <div class="row">
+                        <input type="checkbox" required name="want" v-model="want" tabindex="8" id="want" /> <label for="want" @click="event.preventDefault(); document.getElementById('want').selected =! document.getElementById('want').selected">Hiermit stimme ich den erhalt von Werbemails vom Verein "Offene Kultur Aus Ybbs" zu.</label>
+                    </div>
                 </form>
             </div>
             <div class="buttons row flex flex-center">
-                <button class="success" @click="send()" tabindex="7" aria-label="Absenden">
+                <button class="success" @click="send()" tabindex="9" aria-label="Absenden">
                     Absenden
                 </button>
-                <button class="failure" @click="modalToggle()" tabindex="8" aria-label="Abbrechen">
+                <button class="failure" @click="modalToggle()" tabindex="10" aria-label="Abbrechen">
                     Abbrechen
                 </button>
             </div>
@@ -72,22 +81,28 @@ export default {
             this.show =! this.show;
         },
         send: async function() {
-            let req = await axios.post(process.env.baseURL + "/mailadressen", {
-                "vorname": this.vorname,
-                "nachname": this.nachname,
-                "email": this.mail,
-                "geschlecht": this.gender
-            });
+            if(this.vorname != "" && this.nachname != "" && this.mail != "" && this.gender != "" && this.dsg && this.want) {
 
-            if(req.status === 200) {
-                let reqVerteiler = await axios.post(process.env.baseURL + "/newsletter", {
-                    "mailerId": req.data.id
+                let req = await axios.post(process.env.baseURL + "/mailadressen", {
+                    "vorname": this.vorname,
+                    "nachname": this.nachname,
+                    "email": this.mail,
+                    "geschlecht": this.gender
                 });
-            } else if(req.status === 404) {
-                
-            }
 
-            this.modalToggle();
+                if(req.status === 200) {
+                    let reqVerteiler = await axios.post(process.env.baseURL + "/newsletter", {
+                        "mailerId": req.data.id
+                    });
+
+                    this.error = "";
+                    this.modalToggle();
+                } else if(req.status === 404) {
+                    this.error = "Wir konnten Sie nicht zum Newsletter hinzufügen probieren Sie die Anmeldung später erneut.";
+                }
+            } else {
+                this.error = "Bitte füllen Sie alle Felder aus!";
+            }
         }
     },
     data() {
@@ -95,7 +110,10 @@ export default {
             vorname: "",
             nachname: "",
             mail: "",
-            gender: ""
+            gender: "",
+            dsg: false,
+            want: false,
+            error: "",
         }
     }
 }

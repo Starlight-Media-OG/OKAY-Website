@@ -33,6 +33,9 @@
                 <li>Recht auf Widerspruch</li>
             </ul>
             <p>Jede betroffenen Person hat das Recht, Beschwerde bei der Datenschutzbehörde zu erheben.</p>
+            <h2>Newsletter</h2>
+            <p>Sie haben die Möglichkeit, über unsere Website unseren Newsletter zu abonnieren. Hierfür benötigen wir Ihre E-Mail-Adresse, ihren Namen, ihr Geschlecht und ihre Erklärung, dass Sie mit dem Bezug des Newsletters einverstanden sind.</p>
+            <p>Ihre Daten werden nur für die Dauer des erhaltes des Newsletters gespeichert, sobald Sie sich von diesem abmelden werden alle gespeichert Daten gelöscht. Sie können sich über einen Link im Newsletter vom Erhalt weiterer Newsletter abmelden.</p>
         </div>
     </div>
 </template>

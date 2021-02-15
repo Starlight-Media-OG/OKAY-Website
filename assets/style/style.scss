@@ -162,3 +162,17 @@ em {
     color: white;
     padding-left: 1rem;
 }
+
+.danger {
+    background-color: #df4759;
+    padding: 25px;
+    border-radius: 5px;
+    color: #eee;
+}
+
+.success-alert {
+    background-color: green;
+    padding: 25px;
+    border-radius: 5px;
+    @include font($flow-font-name, 1.5rem, white);
+}
