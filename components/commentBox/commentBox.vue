@@ -5,7 +5,7 @@
         </div>
         <div class=" flex flex-center">
             <div class="comments">
-                <div v-for="kom in $props.koms" :key="kom.komId" class="comment">
+                <div v-for="(kom) in koms" :key="kom.komId" class="comment">
                     <div class="singleCommentBox">
                         <div class="row">
                             <div class="shotName">
@@ -20,11 +20,12 @@
                                 {{kom.kommentar_text}}
                             </div>
                         </div>
-                        <div class="flex flex-center" v-if="images(kom) !=  undefined">
-                            <div class="images flex flex-center" v-if="images(kom).length != 0">
+                        <div class="flex flex-center" v-if="imagesId(images, kom.komId) !=  undefined">
+                            <div class="images flex flex-center" v-if="imagesId(images, kom.komId).length != 0">
                                 <div class="row">
-                                    <div v-for="image in images(kom)" :key="image" class="col flex flex-center">
-                                        <img :src="image" alt="Bild von der Ausstellung" />
+                                    <div v-for="image in imagesId(images, kom.komId)" :key="image" class="col flex flex-center">
+                                        <img :src="image.image" alt="Bild von der Ausstellung" v-if="isImage(image.image)"/>
+                                        <video :src="image.image" alt="Bild von der Ausstellung" v-if="!isImage(image.image)" controls></video>
                                     </div>
                                 </div>
                             </div>
@@ -82,15 +83,15 @@
                         </div>
 
                         <div class="row">
-                            <input type="checkbox" required name="dsg" v-model="dsg" tabindex="7" id="dsg" /> <label for="dsg" @click="event.preventDefault(); document.getElementById('dsg').selected =! document.getElementById('dsg').selected">Hiermit erkläre ich mich mit den <nuxt-link to="/dsgvo">Nutzungsbedingungen</nuxt-link> einverstanden.</label>
+                            <input type="checkbox" required name="dsg" v-model="dsg" tabindex="3" id="dsg" /> <label for="dsg" @click="event.preventDefault(); document.getElementById('dsg').selected =! document.getElementById('dsg').selected">Hiermit erkläre ich mich mit den <nuxt-link to="/dsgvo">Nutzungsbedingungen</nuxt-link> einverstanden.</label>
                         </div>
                     </form>
                 </div>
                 <div class="buttons row flex flex-center">
-                    <button class="success" @click="send()" tabindex="3" aria-label="Absenden">
+                    <button class="success" @click="send()" tabindex="4" aria-label="Absenden">
                         Absenden
                     </button>
-                    <button class="failure" @click="toggleModal()" tabindex="4" aria-label="Abbrechen">
+                    <button class="failure" @click="toggleModal()" tabindex="5" aria-label="Abbrechen">
                         Abbrechen
                     </button>
                 </div>
@@ -108,14 +109,17 @@
 <script>
     import axios from 'axios';
     import arrow from "~/components/svg/arrow.vue";
+    import fragment from "vue-fragment";
 
     export default {
         name: "CommentBox",
         props: {
-            koms: Array
+            koms: Array,
+            images: Array,
+            eId: Number,
         },
         components: {
-            arrow
+            arrow, fragment
         },
         data() {
             return {
@@ -127,16 +131,19 @@
                 files: [],
                 modalShow: false,
                 fileUplaodTarget: process.env.baseImage + "/images/upload/events/",
-                dsg: false
+                dsg: false,
             }
         },
         methods: {
+            imagesId: function(arr, id) {
+                return arr.filter(item => item.id == id);
+            },
             registerFiles: function(e) {
                 this.files = e.target.files;
             },
             send: async function () {
                 if(this.name != "" && this.mail != "" && this.dsg) {
-                    if (this.eId != "") {
+                    if (this.eId != "" || this.eId != undefined) {
                         let req = await axios.post(process.env.baseURL + "/kommentare/", {
                             "email": this.mail,
                             "username": this.name,
@@ -170,7 +177,10 @@
 
                         this.txt = "";
                         this.toggleModal();
-                        this.$fetch();
+
+                        if(process.client) {
+                            window.location.reload(false);
+                        }
                     }
                 }
             },
@@ -192,25 +202,36 @@
             toggleModal: function () {
                 this.modalShow = !this.modalShow;
             },
-            images: function(kom) {
-                let images = [];
-                if(kom.bilder_path != null) {
-                    if(process.client) {
-                        let xhr = new XMLHttpRequest();
-                        xhr.open("GET", kom.bilder_path, false);
-                        xhr.send();
+            isImage: function(path) {
+                let isImage = true;
 
-                        if(xhr.status === 200) {
-                            let data = JSON.parse(xhr.responseText);
-                            for (let image of data.data) {
-                                console.log(image)
-                                images.push(process.env.baseImage + image.replace("server/uploads", ""))
-                            }
-                        }
+                isImage = this.contains(path, [
+                ".jpg",
+                ".jpeg",
+                ".bmp",
+                ".png",
+                ".svg",
+                ".ico",
+                ".gif"
+                ]);
+
+                return isImage;
+            },
+            contains: function (string, arr) {
+                const tmp = [];
+                for (const check of arr) {
+                    if(string.includes(check)) {
+                        tmp.push(true);
+                    } else {
+                        tmp.push(false)
                     }
                 }
 
-                return images;
+                if(tmp.includes(true)) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
     }

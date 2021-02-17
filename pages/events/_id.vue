@@ -39,7 +39,7 @@
                 <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
-                <commentBox :koms="this.koms" />
+                <commentBox :koms="this.koms" :images="this.images()" :eId="this.id" />
             </section>
         </section>
     </main>
@@ -167,6 +167,35 @@ export default {
             }
 
             this.$scrollTo(target, 500, options)
+        },
+        images: function () {
+            let images = [];
+
+            for ( const kom of this.koms) {
+                if(kom.bilder_path != null) {
+                    if(process.client) {
+                        let xhr = new XMLHttpRequest();
+                        xhr.open("GET", kom.bilder_path, false);
+                        xhr.send();
+
+                        if(xhr.status === 200) {
+                            let data = JSON.parse(xhr.responseText);
+
+                            for (let image of data.data) {
+                                let obj = {
+                                    id: kom.komId,
+                                    image: process.env.baseImage + image.replace("server/uploads", "")
+                                };
+
+                                images.push(obj);
+                            }
+                        }
+                    }
+                }
+            }
+            
+
+            return images;
         }
     },
     async mounted() {

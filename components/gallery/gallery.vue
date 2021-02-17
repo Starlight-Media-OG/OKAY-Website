@@ -4,14 +4,14 @@
             <div class="row">
                 <div v-for="image in images" :key="image" class="col flex flex-center">
                     <img :src="image" alt="Bild von der Ausstellung" @click="selectedImage = image" v-if="isImage(image)" />
-                    <video :src="iamge" alt="Video von der Ausstellung" @click="selectedImage = image" v-if="!isImage(image)">
-</video>
+                    <video :src="image" alt="Video von der Ausstellung" @click="selectedImage = image" v-if="!isImage(image)">
+                    </video>
                 </div>
             </div>
         </div>
         <div class="preview flex flex-center">
             <img :src="selectedImage" alt="Preview Image of Slider" class="image" v-if="isImage(selectedImage)" />
-            <video :src="selectedImage" alt="Preview Video for the Slider" class="image" v-if="!isImage(selectedImage)"></video>
+            <video :src="selectedImage" alt="Preview Video for the Slider" class="image" v-if="!isImage(selectedImage)" controls></video>
         </div>
     </div>
     <div class="gallery flex flex-center" v-else>

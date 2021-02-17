@@ -121,7 +121,11 @@
                 return new Date(this.endDate).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
             },
             showImage: function() {
-                return (this.image == null ? this.image : process.env.defaultImage);
+                if(this.image.includes(null)) {
+                    return process.env.defaultImage;
+                } else {
+                    return this.image;
+                }
             }
         }
     }
