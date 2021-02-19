@@ -121,7 +121,7 @@
                 return new Date(this.endDate).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
             },
             showImage: function() {
-                if(this.image.includes(null)) {
+                if(this.image.includes(null) || this.image.charAt(0) != "h") {
                     return process.env.defaultImage;
                 } else {
                     return this.image;
