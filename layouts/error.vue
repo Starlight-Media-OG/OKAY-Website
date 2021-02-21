@@ -1,4 +1,4 @@
-<template>
+ <template>
     <div v-if="error.statusCode === 404">
         <page style="margin-top: -5vh;"/>
     </div>

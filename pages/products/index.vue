@@ -56,7 +56,7 @@ main {
 }
 
 .flexWrap {
-    flex: 1 1 calc(#{$width} / 4);
+    width: calc(#{$width} / 4);
     margin-left: 5vw;
 }
 </style>
