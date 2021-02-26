@@ -9,7 +9,7 @@
                 <h1>Produkte</h1>
             </div>
         </section>
-        <section class="content">
+        <section class="content" style="margin-left: auto; margin-right: auto;">
             <div class="cards flexWrap" v-for="product in products" :key="product.prodId">
                 <product-card :imgPath="product.bilder_path == null ? defaultImage : product.bilder_path + '/plakat.jpg'" :id="product.prodId" :preis="product.preis"
                               :title="product.bezeichnung"/>

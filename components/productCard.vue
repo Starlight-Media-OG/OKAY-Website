@@ -74,7 +74,13 @@ export default {
     }
 
     .content {
-        $title-size: 3rem;
+
+@media screen and (max-width: $breakpoint-medium-max) {
+    $title-size: 1.5rem;
+    $date-size: 1.25rem;
+    $flow-size: 1rem;
+}
+        $title-size: 2.5rem;
         $date-size: 2rem;
         $flow-size: 1rem;
 
@@ -93,6 +99,7 @@ export default {
                 @include font($header-font-name, $title-size, white, bold);
                 line-height: 6vh;
                 margin-bottom: .5rem;
+                word-break: break-word;
             }
         }
 
