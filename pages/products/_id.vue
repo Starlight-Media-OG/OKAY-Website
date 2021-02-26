@@ -32,11 +32,8 @@
                     </ul>
                 </div>
             </article>
-            <section class="galleryBox" v-if="this.bilder_path == null">
-                <gallery :imgPath="this.bilder_path"/>
-            </section>
-            <section v-else class="galleryBox">
-                Für dieses Produkt sind keine Bilder verfügbar
+            <section class="galleryBox">
+                <gallery :imgPath="this.bilder_path" type="products" :id="this.id" />
             </section>
         </section>
     </main>
@@ -138,6 +135,7 @@ export default {
 
         if(produkt.bilder_path != null) {
             this.bilder_path = produkt.bilder_path;
+            console.log(this.bilder_path);
             this.bild = produkt.bilder_path + "/plakat.jpg";
         } else {
             this.bild = process.env.defaultImage;

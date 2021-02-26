@@ -2,99 +2,99 @@
   {
     "name": "calender",
     "path": "/calender",
-    "component": "/root/Website/pages/calender/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/calender/index.vue",
     "chunkName": "pages/calender/index",
-    "_name": "_a1c5a470"
+    "_name": "_3a33a6e1"
   },
   {
     "name": "dsgvo",
     "path": "/dsgvo",
-    "component": "/root/Website/pages/dsgvo/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/dsgvo/index.vue",
     "chunkName": "pages/dsgvo/index",
-    "_name": "_044815b9"
+    "_name": "_367cdb40"
   },
   {
     "name": "events",
     "path": "/events",
-    "component": "/root/Website/pages/events/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/events/index.vue",
     "chunkName": "pages/events/index",
-    "_name": "_6eb46927"
+    "_name": "_f9cf5700"
   },
   {
     "name": "impressum",
     "path": "/impressum",
-    "component": "/root/Website/pages/impressum/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/impressum/index.vue",
     "chunkName": "pages/impressum/index",
-    "_name": "_8e6cdc82"
+    "_name": "_defb8874"
   },
   {
     "name": "information",
     "path": "/information",
-    "component": "/root/Website/pages/information/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/information/index.vue",
     "chunkName": "pages/information/index",
-    "_name": "_c291de18"
+    "_name": "_6aed553b"
   },
   {
     "name": "news",
     "path": "/news",
-    "component": "/root/Website/pages/news/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/news/index.vue",
     "chunkName": "pages/news/index",
-    "_name": "_4c8e2321"
+    "_name": "_777710ba"
   },
   {
     "name": "products",
     "path": "/products",
-    "component": "/root/Website/pages/products/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/products/index.vue",
     "chunkName": "pages/products/index",
-    "_name": "_d0fb121c"
+    "_name": "_2298f00b"
   },
   {
     "name": "events-id",
     "path": "/events/:id",
-    "component": "/root/Website/pages/events/_id.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/events/_id.vue",
     "chunkName": "pages/events/_id",
-    "_name": "_626eed62"
+    "_name": "_0c9d1230"
   },
   {
     "name": "images-id",
     "path": "/images/:id?",
-    "component": "/root/Website/pages/images/_id.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/images/_id.vue",
     "chunkName": "pages/images/_id",
-    "_name": "_724f5bae"
+    "_name": "_c58f6d72"
   },
   {
     "name": "news-id",
     "path": "/news/:id",
-    "component": "/root/Website/pages/news/_id.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/news/_id.vue",
     "chunkName": "pages/news/_id",
-    "_name": "_21dc79c9"
+    "_name": "_0db40cbc"
   },
   {
     "name": "products-id",
     "path": "/products/:id",
-    "component": "/root/Website/pages/products/_id.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/products/_id.vue",
     "chunkName": "pages/products/_id",
-    "_name": "_02c58dda"
+    "_name": "_17297933"
   },
   {
     "name": "projects-id",
     "path": "/projects/:id?",
-    "component": "/root/Website/pages/projects/_id.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/projects/_id.vue",
     "chunkName": "pages/projects/_id",
-    "_name": "_1ebd5ef0"
+    "_name": "_33214a49"
   },
   {
     "name": "unsubscribe-mail",
     "path": "/unsubscribe/:mail?",
-    "component": "/root/Website/pages/unsubscribe/_mail.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/unsubscribe/_mail.vue",
     "chunkName": "pages/unsubscribe/_mail",
-    "_name": "_0697d01d"
+    "_name": "_5a63d738"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/root/Website/pages/index.vue",
+    "component": "/Users/philipp.dvorak/Documents/Schule/Diplomarbeit/DIOK-Website/pages/index.vue",
     "chunkName": "pages/index",
-    "_name": "_83f28cd2"
+    "_name": "_5283f05e"
   }
 ]

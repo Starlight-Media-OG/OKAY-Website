@@ -23,12 +23,9 @@
             <article class="beschreibung-news col-9" style="margin-top: 2rem;">
                 <p v-html="this.beschreibung"></p>
             </article>
-            <section class="galleryBox" v-if="this.bilder_path == null">
-                <gallery :imgPath="this.bilder_path"/>
+            <section class="galleryBox">
+                <gallery :imgPath="this.bilder_path" :id="this.id" type="news" />
             </section>
-            <div v-else class="galleryBox">
-                Für diesen Bericht sind keine Bilder verfügbar
-            </div>
         </section>
     </main>
 </template>
@@ -144,7 +141,7 @@ export default {
     async fetch() {
         let id = this.$route.params.id;
 
-        let req = await axios.get("http://server.okay-ybbs.at:3000/news/" + id);
+        let req = await axios.get(process.env.baseURL + "/news/" + id);
         let news = req.data;
 
         this.name = news.titel;
@@ -152,6 +149,7 @@ export default {
 
         if(news.bilder_path == null) {
             this.bild = news.bilder_path + "/plakat.jpg";
+            console.log(this.bild);
             this.bilder_path = news.bilder_path;
         } else {
             this.bild = process.env.defaultImage;
