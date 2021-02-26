@@ -76,13 +76,6 @@
                         </div>
 
                         <div class="row">
-                            <label>
-                                <div class="label">Mail Adressse: *</div>
-                                <input type="email" class="input" v-model="mail" required tabindex="2" aria-label="Mail Adresse"/>
-                            </label>
-                        </div>
-
-                        <div class="row">
                             <input type="checkbox" required name="dsg" v-model="dsg" tabindex="3" id="dsg" /> <label for="dsg" @click="event.preventDefault(); document.getElementById('dsg').selected =! document.getElementById('dsg').selected">Hiermit erkläre ich mich mit den <nuxt-link to="/dsgvo">Nutzungsbedingungen</nuxt-link> einverstanden.</label>
                         </div>
                     </form>
@@ -142,7 +135,7 @@
                 this.files = e.target.files;
             },
             send: async function () {
-                if(this.name != "" && this.mail != "" && this.dsg) {
+                if(this.name != "" && this.dsg) {
                     if (this.eId != "" || this.eId != undefined) {
                         let req = await axios.post(process.env.baseURL + "/kommentare/", {
                             "email": this.mail,

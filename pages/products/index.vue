@@ -52,12 +52,15 @@ main {
     align-items: center;
     justify-items: center;
     width: $width;
-    margin-top: 15vh;
+    margin-top: 20vh;
 }
 
 .flexWrap {
-    width: calc(#{$width} / 4);
-    margin-left: 5vw;
+    @media screen and (min-width: $breakpoint-medium-max) {
+        width: calc(#{$width} / 4);
+        margin-left: 5vw;   
+    }
+    width: $width;
 }
 </style>
 

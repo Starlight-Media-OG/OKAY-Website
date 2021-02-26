@@ -169,6 +169,7 @@ export default {
             this.$scrollTo(target, 500, options)
         },
         images: function () {
+	    console.log("Images");
             let images = [];
 
             for ( const kom of this.koms) {
