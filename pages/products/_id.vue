@@ -32,11 +32,8 @@
                     </ul>
                 </div>
             </article>
-            <section class="galleryBox" v-if="this.bilder_path == null">
-                <gallery :imgPath="this.bilder_path"/>
-            </section>
-            <section v-else class="galleryBox">
-                Für dieses Produkt sind keine Bilder verfügbar
+            <section class="galleryBox">
+                <gallery :imgPath="this.bilder_path" type="products" :id="this.$route.params.id" />
             </section>
         </section>
     </main>

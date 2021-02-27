@@ -9,7 +9,7 @@
                 <h1>Produkte</h1>
             </div>
         </section>
-        <section class="content">
+        <section class="content" style="margin-left: auto; margin-right: auto;">
             <div class="cards flexWrap" v-for="product in products" :key="product.prodId">
                 <product-card :imgPath="product.bilder_path == null ? defaultImage : product.bilder_path + '/plakat.jpg'" :id="product.prodId" :preis="product.preis"
                               :title="product.bezeichnung"/>
@@ -52,12 +52,15 @@ main {
     align-items: center;
     justify-items: center;
     width: $width;
-    margin-top: 15vh;
+    margin-top: 20vh;
 }
 
 .flexWrap {
-    width: calc(#{$width} / 4);
-    margin-left: 5vw;
+    @media screen and (min-width: $breakpoint-medium-max) {
+        width: calc(#{$width} / 4);
+        margin-left: 5vw;   
+    }
+    width: $width;
 }
 </style>
 

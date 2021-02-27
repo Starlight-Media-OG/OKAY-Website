@@ -150,6 +150,8 @@ export default {
         }
     },
     async fetch() {
+        this.events = [];
+
         let req = await axios.get(process.env.baseURL + "/events");
         let events = req.data;
 
