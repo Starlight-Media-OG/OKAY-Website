@@ -78,7 +78,6 @@ export default {
         let data;
 
         try {
-            console.log(this.id + " " + this.type);
             if (this.id !== undefined) {
                 switch (this.type) {
                     case "event":
