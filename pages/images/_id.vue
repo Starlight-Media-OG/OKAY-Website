@@ -20,7 +20,7 @@
             </div>
         </section>
         <section class="content col-12" style="margin-bottom: 0;">
-            <gallery :id="this.$route.params.id"/>
+            <gallery :id="this.$route.params.id" type="event"/>
         </section>
     </main>
 </template>

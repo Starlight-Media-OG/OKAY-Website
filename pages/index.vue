@@ -318,10 +318,15 @@
 
             //region Events
 
-            let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
-            let events = reqE.data;
+            try {
+    let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
+    let events = reqE.data;
 
-            this.events = events;
+    this.events = events;
+}
+catch {
+    this.events = [];
+}
 
 
             //endregion
