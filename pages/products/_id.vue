@@ -125,7 +125,7 @@ export default {
     },
     async fetch() {
         let id = this.$route.params.id;
-        let req = await axios.get(process.env.baseURL + "/produkte/" + id);
+        let req = await axios.get(process.env.baseURL + "/produkte/" + id);     
         let produkt = req.data;
 
         this.name = produkt.bezeichnung;

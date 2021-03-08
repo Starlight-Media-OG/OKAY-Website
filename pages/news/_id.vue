@@ -147,7 +147,7 @@ export default {
         this.name = news.titel;
         this.beschreibung = news.bericht;
 
-        if(news.bilder_path == null) {
+        if(news.bilder_path !== "") {
             this.bild = news.bilder_path + "/plakat.jpg";
             this.bilder_path = news.bilder_path;
         } else {

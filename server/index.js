@@ -8,8 +8,8 @@ const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
 
-const baseURL = "http://server.okay-ybbs.at:3000";
-const baseImage = "http://server.okay-ybbs.at:4000"
+const baseURL = "http://okay-ybbs.at:3000";
+const baseImage = "http://okay-ybbs.at:4000"
 
 const app = express();
 
@@ -20,7 +20,7 @@ app.use(fileUpload({
 app.use(express.static(__dirname + '/uploads'));
 
 app.use(cors({
-    origin: "http://server.okay-ybbs.at"
+    origin: "http://okay-ybbs.at"
 }));
 
 app.use(bodyParser.json());

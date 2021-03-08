@@ -1,5 +1,5 @@
 <template>
-    <div v-if="this.images !== null" class="gallery flex flex-center">
+    <div v-if="this.images != null" class="gallery flex flex-center">
         <div class="slider flex flex-center row">
             <div class="row">
                 <div v-for="image in images" :key="image" class="col flex flex-center">
@@ -78,7 +78,9 @@ export default {
         let data;
 
         try {
-            if (this.id !== undefined) {
+console.log(this.imgPath + "/" + this.id);
+            if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
+            if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
                 switch (this.type) {
                     case "event":
                         data = await axios.get(process.env.baseImage + "/images?path=uploads/events/" + this.id + "/");
@@ -92,7 +94,7 @@ export default {
                 }
             }
 
-            if (data.status === 200) {
+            if (data.status < 400 ) {
                 this.images = [];
                 let tmp = "server/uploads";
                 data.data.data.forEach(item => {
@@ -102,6 +104,7 @@ export default {
                         selectOneImage = false;
                     }
                 });
+console.log(this.images);
             }
         } catch (err) {
             this.images = null;
