@@ -1,6 +1,6 @@
 <template>
 <div>
-    <button @click="this.$fetch()">Refresh Page!</button>
+    <button @click="refresh">Refresh Page!</button>
     <div v-if="imageGallery == null" class="gallery flex flex-center">
         <div class="slider flex flex-center row error">
             Es sind noch keine Bilder hinzugefügt worden!
@@ -59,6 +59,9 @@ export default {
             ]);
 
             return isImage;
+        },
+        refresh() {
+            this.$nuxt.refresh()
         },
         contains: function (string, arr) {
             const tmp = [];
