@@ -35,7 +35,7 @@
 
 <script>
 import axios from "axios";
-import gallery from "@/components/gallery/gallery";
+import gallery from "~/components/gallery/gallery.vue";
 
 export default {
     name: "NewsDetailed",
