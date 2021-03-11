@@ -93,7 +93,6 @@ export default {
                         data = await axios.get(process.env.baseImage + "/images?path=uploads/products/" + this.id + "/");
                         break;
                 }
-		        console.log("JSON Data: " + data.data.data);
             }
 
             if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
@@ -111,7 +110,8 @@ export default {
             this.images = null;
         }
     	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
-    }
+    },
+    fetchOnServer: false;
 }
 </script>
 
