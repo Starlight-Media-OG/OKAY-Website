@@ -111,7 +111,7 @@ export default {
         }
     	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
     },
-    fetchOnServer: false;
+    fetchOnServer: false,
 }
 </script>
 
