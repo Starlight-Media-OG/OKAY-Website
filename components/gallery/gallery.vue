@@ -1,6 +1,6 @@
 <template>
 <div>
-    <div v-if="this.images == null" class="gallery flex flex-center">
+    <div v-if="imageGallery == null" class="gallery flex flex-center">
         <div class="slider flex flex-center row error">
             Es sind noch keine Bilder hinzugefügt worden!
         </div>
@@ -8,7 +8,7 @@
     <div v-else class="gallery flex flex-center">
         <div class="slider flex flex-center row">
             <div class="row">
-                <div v-for="(image, index) in images" :key="index" class="col flex flex-center">
+                <div v-for="(image, index) in imageGallery" :key="index" class="col flex flex-center">
                     <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
                          @click="selectedImage = image"/>
                     <video v-if="!isImage(image)" :src="image"
@@ -112,6 +112,11 @@ export default {
     	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
     },
     fetchOnServer: false,
+    computed: {
+        imageGallery: function() {
+            return this.images;
+        }
+    }
 }
 </script>
 
