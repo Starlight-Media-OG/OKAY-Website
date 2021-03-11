@@ -80,7 +80,6 @@ export default {
         let data;
 
         try {
-            console.log(this.imgPath);
             if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
             if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
                 switch (this.type) {
@@ -99,22 +98,19 @@ export default {
 
             if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
                 this.images = [];
-	        	console.log("Inside IF");
                 let tmp = "server/uploads";
                 data.data.data.forEach(item => {
-                    console.log("Iterating every item");
                     this.images.push(process.env.baseImage + item.replace(tmp, ''));
                     if (selectOneImage) {
                         this.selectedImage = process.env.baseImage + item.replace(tmp, "");
                         selectOneImage = false;
                     }
                 });
-	        	console.log(this.images);
             }
         } catch (err) {
             this.images = null;
         }
-    	console.log("end of Function: " + this.images);
+    	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
     }
 }
 </script>
