@@ -32,6 +32,15 @@
   }
 }
 
+.image-no-shadow {
+  z-index:0;
+  overflow: hidden;
+
+  #canvas3d {
+    height: 100vh;
+  }
+}
+
 main {
   h2 {
     font-size: 9.25vh;

@@ -155,7 +155,6 @@ export default {
 
         this.date = new Date(news.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
         this.id = id;
-    },
-    fetchOnServer: true
+    }
 }
 </script>
