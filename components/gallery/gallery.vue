@@ -1,6 +1,11 @@
 <template>
 <div>
-    <div v-if="this.images != null" class="gallery flex flex-center">
+    <div v-if="this.images == null" class="gallery flex flex-center">
+        <div class="slider flex flex-center row error">
+            Es sind noch keine Bilder hinzugefügt worden!
+        </div>
+    </div>
+    <div v-else class="gallery flex flex-center">
         <div class="slider flex flex-center row">
             <div class="row">
                 <div v-for="(image, index) in images" :key="index" class="col flex flex-center">
@@ -16,11 +21,6 @@
             <img v-if="isImage(selectedImage)" :src="selectedImage" alt="Preview Image of Slider" class="image"/>
             <video v-if="!isImage(selectedImage)" :src="selectedImage" class="image"
                    controls></video>
-        </div>
-    </div>
-    <div v-else class="gallery flex flex-center">
-        <div class="slider flex flex-center row error">
-            Es sind noch keine Bilder hinzugefügt worden!
         </div>
     </div>
 </div>
