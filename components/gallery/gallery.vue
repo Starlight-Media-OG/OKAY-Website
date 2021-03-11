@@ -38,8 +38,9 @@ export default {
     },
     data() {
         return {
-	    selectedImage: "",
-	    updateView: false,
+	        selectedImage: "",
+	        updateView: false,
+            imageGallery: []
         }
     },
     methods: {
@@ -112,9 +113,10 @@ export default {
     	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
     },
     fetchOnServer: false,
-    computed: {
-        imageGallery: function() {
-            return this.images;
+    watch: {
+        images: function() {
+            console.log("IMAGES UPDATED");
+            this.imageGallery = this.images;
         }
     }
 }
