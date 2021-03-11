@@ -115,6 +115,7 @@ export default {
         }
     	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
         this.imageGallery = this.images;
+        console.log("Bilder Galerie zwischenvar:" + this.imageGallery);
     },
     fetchOnServer: false,
     watch: {
