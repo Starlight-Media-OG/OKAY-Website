@@ -10,7 +10,7 @@
             <div class="row">
                 <div v-for="(image, index) in images" :key="index" class="col flex flex-center">
                     <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
-                         @click="selectedImage = image""/>
+                         @click="selectedImage = image"/>
                     <video v-if="!isImage(image)" :src="image"
                            @click="selectedImage = image">
                     </video>
@@ -81,6 +81,7 @@ export default {
         let data;
 
         try {
+            console.log(this.imgPath);
             if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
             if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
                 switch (this.type) {
@@ -94,27 +95,27 @@ export default {
                         data = await axios.get(process.env.baseImage + "/images?path=uploads/products/" + this.id + "/");
                         break;
                 }
-		console.log("JSON Data: " + data.data.data);
+		        console.log("JSON Data: " + data.data.data);
             }
 
             if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
                 this.images = [];
-		console.log("Inside IF");
+	        	console.log("Inside IF");
                 let tmp = "server/uploads";
                 data.data.data.forEach(item => {
-		    console.log("Iterating every item");
+                    console.log("Iterating every item");
                     this.images.push(process.env.baseImage + item.replace(tmp, ''));
                     if (selectOneImage) {
                         this.selectedImage = process.env.baseImage + item.replace(tmp, "");
                         selectOneImage = false;
                     }
                 });
-		console.log(this.images);
+	        	console.log(this.images);
             }
         } catch (err) {
             this.images = null;
         }
-	console.log("end of Function: " + this.images);
+    	console.log("end of Function: " + this.images);
     }
 }
 </script>
