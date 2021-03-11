@@ -13,7 +13,6 @@
                 <p class="date">
                     Vom {{ this.date }}
                 </p>
-                <p></p>
             </div>
             <div class="image col-5">
                 <img :src="this.bild" :alt="this.name" width="100%"/>
@@ -24,7 +23,7 @@
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox">
-                <gallery :imgPath="this.bilder_path" :id="this.$route.params.id" type="news" />
+                <gallery :imgPath="this.bilder_path" type="news" :id="this.$route.params.id" />
             </section>
         </section>
     </main>
