@@ -112,12 +112,11 @@ export default {
             this.$nuxt.$loading.start();
         });
 
-        window.addEventListener("load", () => {
+        await this.$fetch();
+
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         });
-
-        await this.$fetch();
-        this.$nuxt.$loading.finish();
     },
     head() {
         return {
