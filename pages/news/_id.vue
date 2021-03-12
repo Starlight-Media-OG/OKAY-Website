@@ -23,7 +23,7 @@
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox">
-                <gallery :id="this.$route.params.id" :imgPath="this.bilder_path" type="news"/>
+                <gallery :id="this.$route.params.id" imgPath="bla" type="news"/>
             </section>
         </section>
     </main>
