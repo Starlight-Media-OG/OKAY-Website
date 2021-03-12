@@ -15,7 +15,7 @@
                 </p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" :alt="this.name" width="100%"/>
+                <img :alt="this.name" :src="this.bild" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center">
@@ -23,13 +23,13 @@
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox">
-                <gallery :imgPath="this.bilder_path" type="news" :id="this.$route.params.id" />
+                <gallery :id="this.$route.params.id" :imgPath="this.bilder_path" type="news"/>
             </section>
         </section>
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/_id.scss';
 </style>
 
@@ -145,7 +145,7 @@ export default {
         this.name = news.titel;
         this.beschreibung = news.bericht;
 
-        if(news.bilder_path !== "") {
+        if (news.bilder_path !== "") {
             this.bild = news.bilder_path + "/plakat.jpg";
             this.bilder_path = news.bilder_path;
         } else {

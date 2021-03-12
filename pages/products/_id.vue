@@ -15,7 +15,7 @@
                 </p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" :alt="this.name" width="100%"/>
+                <img :alt="this.name" :src="this.bild" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center" style="margin-bottom: 0;">
@@ -26,20 +26,20 @@
                 <div class="dateOpen">
                     <h2>Abholungsorte</h2>
                     <ul>
-                        <li class="opening flex flex-center" v-for="ort in orts" :key="ort.ortId">
+                        <li v-for="ort in orts" :key="ort.ortId" class="opening flex flex-center">
                             {{ ort.name }} @ {{ ort.adresse }}
                         </li>
                     </ul>
                 </div>
             </article>
             <section class="galleryBox">
-                <gallery :imgPath="this.bilder_path" type="products" :id="this.$route.params.id" />
+                <gallery :id="this.$route.params.id" :imgPath="this.bilder_path" type="products"/>
             </section>
         </section>
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/_id.scss';
 </style>
 
@@ -100,10 +100,10 @@ export default {
             return "img/Product" + this.id + "/";
         },
         sizeDetection: function () {
-            if(process.client) {
+            if (process.client) {
                 let width = window.innerWidth;
 
-                if(width > 700) {
+                if (width > 700) {
                     if (this.name.length - this.name.split(" ").length <= 10) {
                         return "12vh";
                     } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {
@@ -125,7 +125,7 @@ export default {
     },
     async fetch() {
         let id = this.$route.params.id;
-        let req = await axios.get(process.env.baseURL + "/produkte/" + id);     
+        let req = await axios.get(process.env.baseURL + "/produkte/" + id);
         let produkt = req.data;
 
         this.name = produkt.bezeichnung;
@@ -133,7 +133,7 @@ export default {
         this.price = produkt.preis;
         this.id = id;
 
-        if(produkt.bilder_path != null) {
+        if (produkt.bilder_path != null) {
             this.bilder_path = produkt.bilder_path;
             this.bild = produkt.bilder_path + "/plakat.jpg";
         } else {
