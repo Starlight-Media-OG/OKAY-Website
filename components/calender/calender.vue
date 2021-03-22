@@ -170,6 +170,13 @@ export default {
                     eIds.push(value);
                     if(!tableString.includes("eventCal"))
                         tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                } else if(new Date(this.events[value].end_datum).getMonth() === month) {
+                    if (new Date(this.events[value].end_datum).getDate() >= date) {
+                        badgeNumber++;
+                        eIds.push(value);
+                        if(!tableString.includes("eventCal"))
+                            tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
+                    }
                 }
             }
 
