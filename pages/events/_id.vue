@@ -27,7 +27,7 @@
                 <div class="bes">
                     <p>{{ this.beschreibung }}</p>
                 </div>
-                <div class="dateOpen">
+                <div class="dateOpen" v-if="this.days != null ||  this.days !== '' || this.days !== []">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
                         Am {{ day.wochentag }} von {{ day.start_zeit }} bis {{ day.end_zeit }}
@@ -194,7 +194,7 @@ export default {
                     }
                 }
             }
-            
+
 
             return images;
         }
@@ -204,7 +204,7 @@ export default {
             this.$nuxt.$loading.start();
         })
 
-        await this.$fetch(); 
+        await this.$fetch();
 
         this.$nextTick(() => {
             this.$nuxt.$loading.finish();
