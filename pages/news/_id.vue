@@ -23,7 +23,7 @@
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox">
-                <gallery :id="this.$route.params.id" imgPath="bla" type="news"/>
+                <gallery :id="this.$route.params.id" :imgPath="this.bilder_path != NULL || this.bilder_path != '' || this.bilder_path != 'NULL' ? 'bla' : null" type="news"/>
             </section>
         </section>
     </main>
@@ -145,7 +145,7 @@ export default {
         this.name = news.titel;
         this.beschreibung = news.bericht;
 
-        if (news.bilder_path !== "") {
+        if (news.bilder_path !== ""||news.bilder_path !== null || news.bilder_path !== 'NULL') {
             this.bild = news.bilder_path + "/plakat.jpg";
             this.bilder_path = news.bilder_path;
         } else {
