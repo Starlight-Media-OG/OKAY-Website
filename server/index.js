@@ -7,9 +7,10 @@ const _ = require("lodash");
 const path = require('path');
 const axios = require('axios');
 const fs = require('fs');
+const https = require("https");
 
-const baseURL = "http://server.okay-ybbs.at:3000";
-const baseImage = "http://server.okay-ybbs.at:4000"
+const baseURL = "http://okay-ybbs.at:3000";
+const baseImage = "http://okay-ybbs.at:4000"
 
 const app = express();
 
@@ -19,8 +20,15 @@ app.use(fileUpload({
 
 app.use(express.static(__dirname + '/uploads'));
 
+var whitelist = ["http://okay-ybbs.at", "http://www.okay-ybbs.at", "http://server.okay-ybbs.at"]
 app.use(cors({
-    origin: "http://server.okay-ybbs.at"
+    origin: function (origin, callback) {
+	if (!origin || whitelist.indexOf(origin) !== -1) {
+            callback(null, true)
+	} else {
+	    callback(new Error('Not allowed by CORS'))
+	}
+    }
 }));
 
 app.use(bodyParser.json());

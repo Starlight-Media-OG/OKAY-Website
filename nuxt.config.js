@@ -1,6 +1,8 @@
+import path from 'path';
+import fs from 'fs';
+
 export default {
     build: {
-        analyze: true,
         extend(config) {
             config.resolve.alias['vue'] = 'vue/dist/vue.common'
         },
@@ -9,13 +11,13 @@ export default {
         ]
     },
     env: {
-        baseURL: process.env.BASE_URL || "http://server.okay-ybbs.at:3000",
-        baseImage: process.env.BASE_IMAGE || "http://server.okay-ybbs.at:4000",
+        baseURL: process.env.BASE_URL || "http://okay-ybbs.at:3000",
+        baseImage: process.env.BASE_IMAGE || "http://okay-ybbs.at:4000",
         defaultImage: "/img/defaultImage.png"
     },
     server :{
-      port: 80, //Build change to 80
-      host: "0.0.0.0"
+      port: 80,
+      host: '0.0.0.0',
     },
     buildDir: 'nuxt-dist',
     css: [

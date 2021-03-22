@@ -1,8 +1,14 @@
 <template>
-    <div v-if="this.images !== null" class="gallery flex flex-center">
+<div>
+    <div v-if="imageGallery == null" class="gallery flex flex-center">
+        <div class="slider flex flex-center row error">
+            Es sind noch keine Bilder hinzugefügt worden!
+        </div>
+    </div>
+    <div v-else class="gallery flex flex-center">
         <div class="slider flex flex-center row">
             <div class="row">
-                <div v-for="image in images" :key="image" class="col flex flex-center">
+                <div v-for="(image, index) in imageGallery" :key="index" class="col flex flex-center">
                     <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
                          @click="selectedImage = image"/>
                     <video v-if="!isImage(image)" :src="image"
@@ -17,11 +23,7 @@
                    controls></video>
         </div>
     </div>
-    <div v-else class="gallery flex flex-center">
-        <div class="slider flex flex-center row error">
-            Es sind noch keine Bilder hinzugefügt worden!
-        </div>
-    </div>
+</div>
 </template>
 
 <script>
@@ -36,8 +38,9 @@ export default {
     },
     data() {
         return {
-            selectedImage: "",
-            images: null
+	        selectedImage: "",
+	        updateView: false,
+            imageGallery: null
         }
     },
     methods: {
@@ -55,6 +58,9 @@ export default {
             ]);
 
             return isImage;
+        },
+        refresh() {
+            this.$nuxt.refresh()
         },
         contains: function (string, arr) {
             const tmp = [];
@@ -78,7 +84,8 @@ export default {
         let data;
 
         try {
-            if (this.id !== undefined) {
+            if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
+            if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
                 switch (this.type) {
                     case "event":
                         data = await axios.get(process.env.baseImage + "/images?path=uploads/events/" + this.id + "/");
@@ -92,7 +99,7 @@ export default {
                 }
             }
 
-            if (data.status === 200) {
+            if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
                 this.images = [];
                 let tmp = "server/uploads";
                 data.data.data.forEach(item => {
@@ -105,6 +112,16 @@ export default {
             }
         } catch (err) {
             this.images = null;
+        }
+    	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
+        this.imageGallery = this.images;
+        console.log("Bilder Galerie zwischenvar:" + this.imageGallery);
+    },
+    fetchOnServer: false,
+    watch: {
+        images: function() {
+            console.log("IMAGES UPDATED");
+            this.imageGallery = this.images;
         }
     }
 }

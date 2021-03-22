@@ -13,10 +13,9 @@
                 <p class="date">
                     Vom {{ this.date }}
                 </p>
-                <p></p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" :alt="this.name" width="100%"/>
+                <img :alt="this.name" :src="this.bild" width="100%"/>
             </div>
         </section>
         <section class="content flex flex-center">
@@ -24,19 +23,19 @@
                 <p v-html="this.beschreibung"></p>
             </article>
             <section class="galleryBox">
-                <gallery :imgPath="this.bilder_path" :id="this.$route.params.id" type="news" />
+                <gallery :id="this.$route.params.id" :imgPath="this.bilder_path != NULL || this.bilder_path != '' || this.bilder_path != 'NULL' ? 'bla' : null" type="news"/>
             </section>
         </section>
     </main>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../../assets/style/_id.scss';
 </style>
 
 <script>
 import axios from "axios";
-import gallery from "@/components/gallery/gallery";
+import gallery from "~/components/gallery/gallery.vue";
 
 export default {
     name: "NewsDetailed",
@@ -113,12 +112,11 @@ export default {
             this.$nuxt.$loading.start();
         });
 
-        window.addEventListener("load", () => {
+        await this.$fetch();
+
+        this.$nextTick(() => {
             this.$nuxt.$loading.finish();
         });
-
-        await this.$fetch();
-        this.$nuxt.$loading.finish();
     },
     head() {
         return {
@@ -147,7 +145,7 @@ export default {
         this.name = news.titel;
         this.beschreibung = news.bericht;
 
-        if(news.bilder_path == null) {
+        if (news.bilder_path !== ""||news.bilder_path !== null || news.bilder_path !== 'NULL') {
             this.bild = news.bilder_path + "/plakat.jpg";
             this.bilder_path = news.bilder_path;
         } else {
@@ -156,7 +154,6 @@ export default {
 
         this.date = new Date(news.datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
         this.id = id;
-    },
-    fetchOnServer: true
+    }
 }
 </script>

@@ -10,8 +10,8 @@
                     <a class="linkTop underline" @click="scrollTo('#folder')">Blättern Sie durch den Folder </a>
                 </div>
             </div>
-            <div id="canvasSuper" class="image col-6">
-                <canvas id="canvas3d" class="image" style="transform: translateX(-35%) translateY(-5%);"></canvas>
+            <div id="canvasSuper" class="image-no-shadow col-6">
+                <canvas id="canvas3d" class="image-no-shadow" style="transform: translateX(-35%) translateY(-5%);"></canvas>
             </div>
             <div class="flex flex-center arrow-super">
                 <div class="arrow flex flex-center" @click="scrollTo('#scroll')">
@@ -318,10 +318,15 @@
 
             //region Events
 
-            let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
-            let events = reqE.data;
+            try {
+    let reqE = await axios.get(process.env.baseURL + "/events/recent/3");
+    let events = reqE.data;
 
-            this.events = events;
+    this.events = events;
+}
+catch {
+    this.events = [];
+}
 
 
             //endregion
