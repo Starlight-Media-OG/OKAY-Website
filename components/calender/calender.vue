@@ -149,7 +149,7 @@ export default {
             let badgeNumber = 0;
             let eIds = [];
             for(let value in this.events) {
-                if (new Date(this.events[value].start_datum).getMonth() <= month && new Date(this.events[value].start_datum).getFullYear() === year) {
+                if (new Date(this.events[value].start_datum).getMonth() === month && new Date(this.events[value].start_datum).getFullYear() === year) {
                     if (this.events[value].end_datum === undefined) {
                         if (new Date(this.events[value].start_datum).getDate() === date) {
                             badgeNumber++;
@@ -165,6 +165,11 @@ export default {
                                 tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     }
+                } else if (new Date(this.events[value].start_datum) < month && new Date(this.events[value].end_datum) > month) {
+                    badgeNumber++;
+                    eIds.push(value);
+                    if(!tableString.includes("eventCal"))
+                        tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                 }
             }
 
