@@ -158,7 +158,7 @@ export default {
                                 tableString += "<div class='eventCal oneDay' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     } else {
-                        if (new Date(this.events[value].start_datum).getDate() <= date && (new Date(this.events[value].end_datum).getDate() >= date || new Date(this.events[value].end_datum).getMonth() <= month)) {
+                        if (new Date(this.events[value].start_datum).getDate() <= date && (new Date(this.events[value].end_datum).getDate() >= date || new Date(this.events[value].end_datum).getMonth() >= month)) {
                             badgeNumber++;
                             eIds.push(value);
                             if(!tableString.includes("eventCal"))
