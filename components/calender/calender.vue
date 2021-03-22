@@ -165,7 +165,7 @@ export default {
                                 tableString += "<div class='eventCal oneDay flex flex-center' @click='reroute(" + this.events[value].oaId + ")'><p class='eventTitle'>" + this.events[value].titel + "</p></div>";
                         }
                     }
-                } else if (new Date(this.events[value].start_datum) < month && new Date(this.events[value].end_datum) > month) {
+                } else if (new Date(this.events[value].start_datum).getMonth() < month && new Date(this.events[value].end_datum).getMonth() > month) {
                     badgeNumber++;
                     eIds.push(value);
                     if(!tableString.includes("eventCal"))
