@@ -149,7 +149,7 @@ export default {
             let badgeNumber = 0;
             let eIds = [];
             for(let value in this.events) {
-                if (new Date(this.events[value].start_datum).getMonth() === month && new Date(this.events[value].start_datum).getFullYear() === year) {
+                if (new Date(this.events[value].start_datum).getMonth() <= month && new Date(this.events[value].start_datum).getFullYear() === year) {
                     if (this.events[value].end_datum === undefined) {
                         if (new Date(this.events[value].start_datum).getDate() === date) {
                             badgeNumber++;
