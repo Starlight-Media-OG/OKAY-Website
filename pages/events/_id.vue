@@ -27,7 +27,7 @@
                 <div class="bes">
                     <p>{{ this.beschreibung }}</p>
                 </div>
-                <div class="dateOpen" v-if="days !== null ||  days !== '' || days !== {} || days !== [] ">
+                <div class="dateOpen" v-if="days !== null &&  days !== '' && days !== {} && days !== [] ">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
                         Am {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
