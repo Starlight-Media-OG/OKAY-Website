@@ -35,7 +35,7 @@
                 </div>
             </article>
             <div class="flex-break"></div>
-            <div class="link flex flex-center" v-if="bild == process.env.defaultImage">
+            <div class="link flex flex-center" v-if="this.bilder_path !== null || this.bilder_path !== ''">
                 <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
@@ -65,13 +65,13 @@ export default {
             days: {},
             adresse: null,
             untertitel: "",
-            koms: []
+            koms: [],
+            bilder_path: "",
         }
     },
     computed: {
         title: function () {
-            let tmp = this.name + " - " + this.untertitel
-            return tmp;
+            return this.name + " - " + this.untertitel;
         },
         sizeDetection: function () {
             if(process.client) {

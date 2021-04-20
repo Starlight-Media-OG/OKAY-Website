@@ -11,7 +11,7 @@
                 <div v-for="(image, index) in imageGallery" :key="index" class="col flex flex-center">
                     <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
                          @click="selectedImage = image"/>
-                    <video v-if="!isImage(image)" :src="image"
+                    <video v-if="isVideo(image)" :src="image"
                            @click="selectedImage = image">
                     </video>
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="preview flex flex-center">
             <img v-if="isImage(selectedImage)" :src="selectedImage" alt="Preview Image of Slider" class="image"/>
-            <video v-if="!isImage(selectedImage)" :src="selectedImage" class="image"
+            <video v-if="isVideo(selectedImage)" :src="selectedImage" class="image"
                    controls></video>
         </div>
     </div>
@@ -58,6 +58,17 @@ export default {
             ]);
 
             return isImage;
+        },
+        isVideo: function (path) {
+            let isVideo = true;
+
+            isVideo = this.contains(path, [
+                ".mov",
+                ".avi",
+                ".mp4",
+            ]);
+
+            return isVideo;
         },
         refresh() {
             this.$nuxt.refresh()
@@ -113,14 +124,11 @@ export default {
         } catch (err) {
             this.images = null;
         }
-    	console.log("End of Fetch Method: " + this.images + " \n Pfad zu den Bildern: " + this.imgPath);
         this.imageGallery = this.images;
-        console.log("Bilder Galerie zwischenvar:" + this.imageGallery);
     },
     fetchOnServer: false,
     watch: {
         images: function() {
-            console.log("IMAGES UPDATED");
             this.imageGallery = this.images;
         }
     }
