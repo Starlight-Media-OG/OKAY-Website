@@ -35,7 +35,7 @@
                 </div>
             </article>
             <div class="flex-break"></div>
-            <div class="link flex flex-center" v-if="this.bild === process.env.defaultImage">
+            <div class="link flex flex-center" v-if="this.images().length != 0">
                 <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
@@ -169,7 +169,6 @@ export default {
             this.$scrollTo(target, 500, options)
         },
         images: function () {
-	    console.log("Images");
             let images = [];
 
             for ( const kom of this.koms) {
