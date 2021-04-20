@@ -15,13 +15,13 @@
                 <nuxt-link to="/calender" class="further-link"><em class="underline">Alle Events im Kalender anzeigen</em></nuxt-link>
             </div>
             <div class="area">
-                <div class="nextWeek flex flex-center">
-                    <h2 class="weekHeader">Nächster Monat</h2>
+                <div class="thisWeek flex flex-center">
+                    <h2 class="weekHeader">Aktueller Monat</h2>
                     <div class="row flex flex-center">
-                        <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
+                        <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
                             <card :title="event.titel" :teaser="event.beschreibung"
-                                :image="event.bilder_path + '/plakat.jpg'"
-                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                                  :image="event.bilder_path + '/plakat.jpg'"
+                                  :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
                         </div>
                         <div class="noEvent" v-else>
                             <h5>In dieser Woche finden keine Events statt</h5>
@@ -30,10 +30,10 @@
                 </div>
             </div>
             <div class="area">
-                <div class="thisWeek flex flex-center">
-                    <h2 class="weekHeader">Aktueller Monat</h2>
+                <div class="nextWeek flex flex-center">
+                    <h2 class="weekHeader">Nächster Monat</h2>
                     <div class="row flex flex-center">
-                        <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
+                        <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
                             <card :title="event.titel" :teaser="event.beschreibung"
                                 :image="event.bilder_path + '/plakat.jpg'"
                                 :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>

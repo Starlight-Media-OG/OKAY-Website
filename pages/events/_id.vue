@@ -19,7 +19,7 @@
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="this.bild" alt="this.name" width="100%"/>
+                <img :src="this.bild" :alt="this.name" width="100%"/>
             </div>
         </section>
         <section id="content" class="content flex flex-center">
@@ -30,7 +30,7 @@
                 <div class="dateOpen" v-if="this.days != null ||  this.days !== '' || this.days !== []">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
-                        Am {{ day.wochentag }} von {{ day.start_zeit }} bis {{ day.end_zeit }}
+                        Am {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
                     </p>
                 </div>
             </article>
@@ -197,6 +197,10 @@ export default {
 
 
             return images;
+        },
+        timeFormatter: function(time) {
+            let splitted = time.split(":");
+            return splitted[0] + ":" + splitted[1];
         }
     },
     async mounted() {

@@ -105,10 +105,10 @@
         }
 
         .title {
-            @include font($flow-font-name, 4rem, white, bold);
+            @include font($flow-font-name, 3rem, white, bold);
 
             @media screen and (max-width: $breakpoint-medium-max) {
-                @include font($flow-font-name, 3rem, white, bold);
+                @include font($flow-font-name, 2rem, white, bold);
                 margin-bottom: 5vh;
                 margin-left: -5vw;
             }
