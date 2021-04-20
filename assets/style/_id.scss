@@ -3,7 +3,7 @@
 .title {
     font-size: 7vh;
     word-break: break-word;
-    line-height: 10vh;
+    line-height: 7vh;
     max-width: 33.33vw;
 
     @media screen and (max-width: $breakpoint-medium-max) {
@@ -21,7 +21,7 @@
 
 .date {
     @include font($header-font-name, 2rem, $primary-yellow, bold);
-    line-height: 4rem;
+    line-height: 2rem;
 
     @media screen and (max-width: $breakpoint-medium-max) {
         @include font($header-font-name, 1.25rem, $primary-yellow, bold);
@@ -54,7 +54,7 @@
 
 .address {
     @include font($header-font-name, 2rem, white, bold);
-    line-height: 4rem;
+    line-height: 2.5rem;
 
     @media screen and (min-width: $breakpoint-large) {
         margin-top: 2vh;
