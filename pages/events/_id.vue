@@ -35,7 +35,7 @@
                 </div>
             </article>
             <div class="flex-break"></div>
-            <div class="link flex flex-center" v-if="this.images().length != 0">
+            <div class="link flex flex-center" v-if="bild == process.env.defaultImage">
                 <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
