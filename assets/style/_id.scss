@@ -1,10 +1,11 @@
 @import '../../assets/style/variable.scss';
 
 .title {
-    font-size: 10vh;
+    font-size: 7vh;
     word-break: break-word;
     line-height: 10vh;
     max-width: 33.33vw;
+    min-height: 80vh;
 
     @media screen and (max-width: $breakpoint-medium-max) {
         margin-top: 5vh;
@@ -105,11 +106,10 @@
         }
 
         .title {
-            @include font($flow-font-name, 3rem, white, bold);
-            min-height: 80vh;
+            @include font($flow-font-name, 4rem, white, bold);
 
             @media screen and (max-width: $breakpoint-medium-max) {
-                @include font($flow-font-name, 2rem, white, bold);
+                @include font($flow-font-name, 3rem, white, bold);
                 margin-bottom: 5vh;
                 margin-left: -5vw;
             }
