@@ -27,7 +27,7 @@
                 <div class="bes">
                     <p>{{ this.beschreibung }}</p>
                 </div>
-                <div class="dateOpen" v-if="this.days != null ||  this.days !== '' || this.days !== []">
+                <div class="dateOpen" v-if="days !== null ||  days !== '' || days !== []">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
                         Am {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
@@ -35,7 +35,7 @@
                 </div>
             </article>
             <div class="flex-break"></div>
-            <div class="link flex flex-center">
+            <div class="link flex flex-center" v-if="this.bild === process.env.defaultImage">
                 <nuxt-link :to="concat('/images/', this.id)" class="further-link">Zu den Bildern</nuxt-link>
             </div>
             <section class="commentBox flex flex-center">
