@@ -106,6 +106,7 @@
 
         .title {
             @include font($flow-font-name, 3rem, white, bold);
+            min-height: 80vh;
 
             @media screen and (max-width: $breakpoint-medium-max) {
                 @include font($flow-font-name, 2rem, white, bold);
