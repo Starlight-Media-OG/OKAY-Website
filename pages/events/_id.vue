@@ -27,7 +27,7 @@
                 <div class="bes">
                     <p>{{ this.beschreibung }}</p>
                 </div>
-                <div class="dateOpen" v-if="days != {}">
+                <div class="dateOpen" v-if="showTime">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
                         Am {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
@@ -72,6 +72,11 @@ export default {
     computed: {
         title: function () {
             return this.name + " - " + this.untertitel;
+        },
+        showTime: function() {
+            console.log(this.days);
+            return this.days !== {} && this.days !== undefined && this.days !== [] && this.days !== null;
+
         },
         sizeDetection: function () {
             if(process.client) {
