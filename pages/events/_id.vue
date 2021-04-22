@@ -62,7 +62,7 @@ export default {
             bild: "",
             date: "",
             id: "",
-            days: {},
+            days: null,
             adresse: null,
             untertitel: "",
             koms: [],
@@ -118,7 +118,7 @@ export default {
                 this.bilder_path = event.bilder_path;
                 this.bild = event.bilder_path + "/plakat.jpg";
             } else {
-		this.bilder_path = null;
+		        this.bilder_path = null;
                 this.bild = process.env.defaultImage;
             }
 
@@ -126,7 +126,9 @@ export default {
             this.id = event.oaId;
 
             if(event.zeiten != null) {
+                console.log(event.zeiten);
                 this.days = event.zeiten;
+                console.log(this.days);
             }
 
             this.adresse = event.adresse;
