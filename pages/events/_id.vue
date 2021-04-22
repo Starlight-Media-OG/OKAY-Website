@@ -74,9 +74,7 @@ export default {
             return this.name + " - " + this.untertitel;
         },
         showTime: function() {
-            console.log(this.days);
             return this.days !== {} && this.days !== undefined && this.days !== [] && this.days !== null;
-
         },
         sizeDetection: function () {
             if(process.client) {
@@ -125,11 +123,7 @@ export default {
             this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
             this.id = event.oaId;
 
-            if(event.zeiten != null) {
-                console.log(event.zeiten);
-                this.days = event.zeiten;
-                console.log(this.days);
-            }
+            this.days = event.zeiten;
 
             this.adresse = event.adresse;
         }
