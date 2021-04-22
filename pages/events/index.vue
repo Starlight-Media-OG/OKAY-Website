@@ -139,7 +139,7 @@ export default {
     methods: {
         sortEvents: function (arr) {
             arr.forEach((value) => {
-                if (new Date(value.start_datum).getMonth() === new Date().getMonth()) {
+                if (( new Date(value.end_datum).getMonth() > new Date().getMonth() && new Date(value.start_datum).getMonth() <= new Date().getMonth() )) {
                     this.objectsCurrent.push(value);
                 } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() - 31 * 24 * 60 * 60 * 1000).getMonth()) {
                     this.objectsLast.push(value);
