@@ -24,7 +24,7 @@
                                   :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
                         </div>
                         <div class="noEvent" v-else>
-                            <h5>In dieser Woche finden keine Events statt</h5>
+                            <h5>In diesem Monat finden keine Events statt</h5>
                         </div>
                     </div>
                 </div>
@@ -39,27 +39,27 @@
                                 :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
                         </div>
                         <div class="noEvent" v-else>
-                            <h5>In dieser Woche finden keine Events statt</h5>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="area">
-                <div class="lastWeek flex flex-center">
-                    <h2 class="weekHeader">Letzter Monat</h2>
-                    <div class="row flex flex-center">
-                        <div v-if="objectsLast.length !== 0" class="cards" v-for="event in objectsLast" :key="event.oaId">
-                            <card :title="event.titel" :teaser="event.beschreibung"
-                                :image="event.bilder_path + '/plakat.jpg'"
-                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
-                        </div>
-                        <div class="noEvent" v-else>
-                            <h5>In dieser Woche finden keine Events statt</h5>
+                            <h5>In diesem Monat finden keine Events statt</h5>
                         </div>
                     </div>
                 </div>
                 <div class="link center">
                     <nuxt-link to="/calender" class="further-link"><em class="underline">Zum Kalender</em></nuxt-link>
+                </div>
+            </div>
+            <div class="area">
+                <div class="lastWeek flex flex-center">
+                    <h2 class="weekHeader">Alle Events</h2>
+                    <div class="row flex flex-center">
+                        <div v-if="objectsOther.length !== 0" class="cards" v-for="event in objectsOther" :key="event.oaId">
+                            <card :title="event.titel" :teaser="event.beschreibung"
+                                :image="event.bilder_path + '/plakat.jpg'"
+                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                        </div>
+                        <div class="noEvent" v-else>
+                            <h5>Es gibt noch keine anderen Events</h5>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -129,7 +129,7 @@ export default {
     data() {
         return {
             objectsCurrent: [],
-            objectsLast: [],
+            objectsOther: [],
             objectsNext: []
         }
     },
@@ -141,10 +141,10 @@ export default {
             arr.forEach((value) => {
                 if (( new Date(value.end_datum).getMonth() > new Date().getMonth() && new Date(value.start_datum).getMonth() <= new Date().getMonth() )) {
                     this.objectsCurrent.push(value);
-                } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() - 31 * 24 * 60 * 60 * 1000).getMonth()) {
-                    this.objectsLast.push(value);
                 } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).getMonth()) {
                     this.objectsNext.push(value);
+                } else {
+                    this.objectsOther.push(value);
                 }
             });
         }

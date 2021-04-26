@@ -59,7 +59,7 @@ export default {
                 },
                 {
                     title: "§3 - Zweck des Vereins",
-                    text: "(1) Der Zweck des Vereines ist die Durchführung, Förderung und Unterstützung kul-tureller, wissenschaftlicher, künstlerischer, bildender und völkerverbindender Aktivitä¬ten im Tätigkeitsgebiet. Hierzu wird eine enge Zusammenarbeit mit den örtlichen Vereinen sowie der Stadtgemeinde angestrebt.<br/>" +
+                    text: "(1) Der Zweck des Vereines ist die Durchführung, Förderung und Unterstützung kultureller, wissenschaftlicher, künstlerischer, bildender und völkerverbindender Aktivitäten im Tätigkeitsgebiet. Hierzu wird eine enge Zusammenarbeit mit den örtlichen Vereinen sowie der Stadtgemeinde angestrebt.<br/>" +
                         "(2) Die Tätigkeit des Vereines ist nicht auf Gewinn ausgerichtet.<br/>" +
                         "(3) Der Verein verfolgt keine wie immer geartete parteipolitische Zwecke.<br/>",
                     active: false
@@ -93,11 +93,11 @@ export default {
                 {
                     title: "§6 - Erwerb der Mitgliedschaft",
                     text: "1) Die Aufnahme erfolgt aufgrund einer schriftlichen Beitrittserklärung. Der Vorstand behält sich das Recht vor, in begründeten Fällen die Mitgliedschaft abzulehnen.<br/>" +
-                        "(2) Personen, die sich um diesen Verein oder das kulturelle Leben in Ybbs außer-gewöhnliche Verdienste erworben haben, können auf Antrag des Vorstandes durch die Mitgliederversammlung als Ehrenmitglieder in den Verein aufgenommen werden. Diese haben die gleichen Rechte wie unterstützende Mitglieder, sind jedoch von der Bezahlung eines Mitgliedsbeitrages befreit.<br/>",
+                        "(2) Personen, die sich um diesen Verein oder das kulturelle Leben in Ybbs außergewöhnliche Verdienste erworben haben, können auf Antrag des Vorstandes durch die Mitgliederversammlung als Ehrenmitglieder in den Verein aufgenommen werden. Diese haben die gleichen Rechte wie unterstützende Mitglieder, sind jedoch von der Bezahlung eines Mitgliedsbeitrages befreit.<br/>",
                     active: false
                 },
                 {
-                    title: "§7 - Beendigung der Mtigliedschaft",
+                    title: "§7 - Beendigung der Mitgliedschaft",
                     text: "<br/>" +
                         "(1) Die Mitgliedschaft erlischt durch Tod, bei juristischen Personen durch Verlust der Rechtspersönlichkeit, durch freiwilligen Austritt oder durch Ausschluss.<br/>" +
                         "(2) Der Austritt ist dem Vorstand schriftlich mitzuteilen.<br/>" +
@@ -134,12 +134,12 @@ export default {
                 },
                 {
                     title: "§10 - Mitgliederversammlung",
-                    text: "(1) Die ordentliche Mitgliederversammlung findet einmal im Kalenderjahr (Vereins-jahr) als „Jahreshauptversammlung“ statt. Eine außerordentliche Mitgliederversamm¬lung findet auf Beschluss des Vorstandes, der ordentlichen Mitgliederversammlung oder schriftlich begründetem Antrag von mindestens einem Zehntel der stimmberech¬tigten Mitglieder oder schließlich auf Verlangen der Rechnungsprüfer binnen 4 Wo¬chen statt.<br/>" +
-                        "(2) Sofern nicht ausdrücklich anderen Organen vorbehalten, entscheidet die Mitglie¬derversammlung alle wichtigen Angelegenheiten des Vereines, insbesondere<br/>" +
+                    text: "(1) Die ordentliche Mitgliederversammlung findet einmal im Kalenderjahr (Vereinsjahr) als „Jahreshauptversammlung“ statt. Eine außerordentliche Mitgliederversammlung findet auf Beschluss des Vorstandes, der ordentlichen Mitgliederversammlung oder schriftlich begründetem Antrag von mindestens einem Zehntel der stimmberechtigten Mitglieder oder schließlich auf Verlangen der Rechnungsprüfer binnen 4 Wochen statt.<br/>" +
+                        "(2) Sofern nicht ausdrücklich anderen Organen vorbehalten, entscheidet die Mitgliederversammlung alle wichtigen Angelegenheiten des Vereines, insbesondere<br/>" +
                         "a)Neu- bzw. Ergänzungswahlen der Organe des Vereins gemäß §9 Z 2 und 4<br/>" +
                         "b)Festsetzung des Mitgliedsbeitrages<br/>" +
                         "c)Bericht der Kontrolle und eventuelle Entlastung des Vorstandes und der mit den Kassengeschäften betrauten Personen<br/>" +
-                        "d)alle Angelegenheiten, die vom Vorstand in die Tagesordnung der Mitglieder-versammlung aufgenommen wurden<br/>" +
+                        "d)alle Angelegenheiten, die vom Vorstand in die Tagesordnung der Mitgliederversammlung aufgenommen wurden<br/>" +
                         "e)Änderung der Statuten<br/>" +
                         "f)Auflösung des Vereines.<br/>" +
                         "(3) Lit. a) bis d) werden mit einfacher Mehrheit entschieden, Lit. e) mit einer Zwei-Drittel-Mehrheit und für eine Auflösung des Vereines (Lit. f)) sind drei Viertel aller abgegebenen Stimmen nötig.<br/>" +
@@ -151,25 +151,25 @@ export default {
                     title: "§11 - Vereinsvorstand",
                     text: "(1) Der Vereinsvorstand besteht aus dem Obmann, zwei Obmann-Stellvertretern, dem Kassier, dessen Stellvertreter, dem Schriftführer und dessen Stellvertreter.<br/>" +
                         "(2) Der Vorstand entscheidet in allen Angelegenheiten, die durch diese Satzung nicht anderen Vereinsorganen zugewiesen sind, kann jedoch einzelne Entscheidungen der Mitgliederversammlung übertragen.<br/>" +
-                        "(3) Der Vorstand bestellt, unterstützt, überwacht und koordiniert die einzelnen Arbeits- und Projektgruppen. Dazu haben die Verantwortlichen – bei deren Verhinde¬rung ihre Stellvertreter – an erweiterten Vorstandssitzungen mit beratender Stimme teilzunehmen.<br/>" +
-                        "(4) Der Vorstand hat eine Einnahmen- und Ausgabenrechnung samt Vermögens-rechnung innerhalb der ersten fünf Monate eines Rechnungsjahres für das vorange¬gangene Rechnungsjahr zu erstellen und den Rechnungsprüfern vorzulegen.<br/>" +
-                        "(5) Der Vorstand setzt den Termin und die Tagesordnung für die Mitgliederver-sammlung fest.<br/>" +
+                        "(3) Der Vorstand bestellt, unterstützt, überwacht und koordiniert die einzelnen Arbeits- und Projektgruppen. Dazu haben die Verantwortlichen – bei deren Verhinderung ihre Stellvertreter – an erweiterten Vorstandssitzungen mit beratender Stimme teilzunehmen.<br/>" +
+                        "(4) Der Vorstand hat eine Einnahmen- und Ausgabenrechnung samt Vermögensrechnung innerhalb der ersten fünf Monate eines Rechnungsjahres für das vorangegangene Rechnungsjahr zu erstellen und den Rechnungsprüfern vorzulegen.<br/>" +
+                        "(5) Der Vorstand setzt den Termin und die Tagesordnung für die Mitgliederversammlung fest.<br/>" +
                         "(6) Der Vorstand kann temporär und Themen/Projekt bezogen Mitglieder kooptieren; sie haben beratende Stimme.<br/>" +
-                        "(7) Der Vereinsvorstand ist zumindest bei Anwesenheit des Obmanns, oder eines seiner Stellvertreter, und zwei weiteren gewählten Vorstandsmitgliedern beschluss-fähig und entscheidet mit einfacher Mehrheit der zur Zeit der Beschlussfassung an-wesenden Vorstandsmitglieder. Bei Stimmengleichheit gilt §17 Abs. 7.<br/>" +
-                        "(8) In dringenden Angelegenheiten kann der Vorstand über einen begründeten An-trag des Obmannes einen schriftlichen Rundlaufbeschluss fassen. Hierzu ist es er-forderlich, dass dieser Antrag allen Vorstandsmitgliedern zugegangen ist und von diesen binnen einer Woche eine Reaktion (Zustimmung, Ablehnung, keine Antwort = Stimmenthaltung) einlangt (einfacher Mehrheitsbeschluss). Bei einem Verlangen, den Antrag in einer Sitzung zu beschließen, ist dieser auf die Tagesordnung der nächsten Vorstandsitzung zu setzen und gilt als nicht behandelt/erledigt.<br/>" +
+                        "(7) Der Vereinsvorstand ist zumindest bei Anwesenheit des Obmanns, oder eines seiner Stellvertreter, und zwei weiteren gewählten Vorstandsmitgliedern beschlussfähig und entscheidet mit einfacher Mehrheit der zur Zeit der Beschlussfassung anwesenden Vorstandsmitglieder. Bei Stimmengleichheit gilt §17 Abs. 7.<br/>" +
+                        "(8) In dringenden Angelegenheiten kann der Vorstand über einen begründeten An-trag des Obmannes einen schriftlichen Rundlaufbeschluss fassen. Hierzu ist es erforderlich, dass dieser Antrag allen Vorstandsmitgliedern zugegangen ist und von diesen binnen einer Woche eine Reaktion (Zustimmung, Ablehnung, keine Antwort = Stimmenthaltung) einlangt (einfacher Mehrheitsbeschluss). Bei einem Verlangen, den Antrag in einer Sitzung zu beschließen, ist dieser auf die Tagesordnung der nächsten Vorstandsitzung zu setzen und gilt als nicht behandelt/erledigt.<br/>" +
                         "Neben der Begründung des Antrages (Dringlichkeit) ist das Ergebnis des schriftlichen Rundlaufes in das Protokoll der folgenden Vorstandssitzung aufzunehmen.<br/>",
                     active: false
                 },{
                     title: "§12 - Obmann",
-                    text: "(1) Der Obmann vertritt den Verein nach außen, führt den Vorsitz in der Mitglieder-versammlung und im Vorstand und unterfertigt die Schriftstücke des Vereins. Nähe-res regelt § 17.<br/>" +
-                        "(2) Bei Gefahr im Verzug oder wenn dem Verein andernfalls Schaden drohen würde, ist der Obmann berechtigt und verpflichtet, auch in Angelegenheiten, die in den Wir¬kungsbereich anderer Vereinsorgane fallen, selbständig Anordnungen zu treffen, diese bedürfen jedoch der ehebaldigsten nachträglichen Genehmigung durch das zuständige Vereinsorgan.<br/>" +
+                    text: "(1) Der Obmann vertritt den Verein nach außen, führt den Vorsitz in der Mitgliederversammlung und im Vorstand und unterfertigt die Schriftstücke des Vereins. Näheres regelt § 17.<br/>" +
+                        "(2) Bei Gefahr im Verzug oder wenn dem Verein andernfalls Schaden drohen würde, ist der Obmann berechtigt und verpflichtet, auch in Angelegenheiten, die in den Wirkungsbereich anderer Vereinsorgane fallen, selbständig Anordnungen zu treffen, diese bedürfen jedoch der ehebaldigsten nachträglichen Genehmigung durch das zuständige Vereinsorgan.<br/>" +
                         "(3) Der Obmann ist berechtigt, an allen Sitzungen der Arbeits- und Projektgruppen teilzunehmen.<br/>",
                     active: false
                 },
                 {
                     title: "§13 - Die übrigen Vorstandsmitglieder",
                     text: "(1) Alle Vorstandsmitglieder sind berechtigt, an allen Sitzungen der Arbeits- und Projektgruppen teilzunehmen.<br/>" +
-                        "(2) Der Kassier ist berechtigt und verpflichtet, alle vom Vorstand beschlossenen Kas¬sengeschäfte zu vollziehen.<br/>" +
+                        "(2) Der Kassier ist berechtigt und verpflichtet, alle vom Vorstand beschlossenen Kassengeschäfte zu vollziehen.<br/>" +
                         "(3) Der Schriftführer ist verpflichtet die Protokolle der Mitgliederversammlung und der Vorstandssitzung zu verfassen, sowie den gesamten Schriftverkehr des Vereines abzuwickeln.<br/>" +
                         "(4) Die Agenden gemäß Abs. 2 und 3 können mit Vorstandsbeschluss auf einen Stellvertreter aufgeteilt werden.<br/>",
                     active: false
@@ -177,12 +177,12 @@ export default {
                 {
                     title: "§14 - Rechnungsprüfer",
                     text: "(1) Die zwei Rechnungsprüfer werden von der Mitgliederversammlung auf die Dauer der Funktionsperiode des Vorstandes gewählt. Ist eine Bestellung noch vor der nächsten Mitgliederversammlung notwendig, so hat der Vorstand diese auszuwählen und zu bestellen. Sie müssen unabhängig und unbefangen sein und dürfen nicht dem Vorstand angehören. <br/>" +
-                        "(2) Den Rechnungsprüfern obliegt insbesondere die Prüfung der Finanzgebarung des Vereines auf die Ordnungsmäßigkeit der Rechnungslegung und die statutenge¬mäße Verwendung der Mittel für jedes Rechnungsjahr sowie die Erstellung eines Prüfberichtes innerhalb von vier Monaten ab Erstellung der Einnahmen- und Ausga¬benrechnung (Rechnungsabschluss) durch den Vorstand und die unverzügliche Übermittlung des Prüfberichtes an den Vorstand.<br/>",
+                        "(2) Den Rechnungsprüfern obliegt insbesondere die Prüfung der Finanzgebarung des Vereines auf die Ordnungsmäßigkeit der Rechnungslegung und die statutengemäße Verwendung der Mittel für jedes Rechnungsjahr sowie die Erstellung eines Prüfberichtes innerhalb von vier Monaten ab Erstellung der Einnahmen- und Ausgabenrechnung (Rechnungsabschluss) durch den Vorstand und die unverzügliche Übermittlung des Prüfberichtes an den Vorstand.<br/>",
                     active: false
                 },
                 {
                     title: "§15 - Das Schiedsgericht",
-                    text: "(1) Bei allfälligen Streitigkeiten zwischen Vereinsmitgliedern bzw. im Falle des § 7 Abs. 3 und 4 wird auf Verlangen jeweils ein Schiedsgericht bestellt. Dieses besteht aus dem vom Vorstand gewählten Vorsitzenden und höchstens vier weiteren Mitglie¬dern, die jeweils zu gleichen Teilen von den Streitparteien namhaft gemacht werden. Kann oder will eine Streitpartei keinen einzigen Vertreter namhaft machen, gilt der Streitfall ohne weiteres Verfahren im Sinne (Antrag) der Gegenpartei entschieden. In einem Verfahren gemäß § 7 gilt der Vereinsvorstand als Streitpartei. Entscheidungen erfolgen mit einfacher Mehrheit.<br/>" +
+                    text: "(1) Bei allfälligen Streitigkeiten zwischen Vereinsmitgliedern bzw. im Falle des § 7 Abs. 3 und 4 wird auf Verlangen jeweils ein Schiedsgericht bestellt. Dieses besteht aus dem vom Vorstand gewählten Vorsitzenden und höchstens vier weiteren Mitgliedern, die jeweils zu gleichen Teilen von den Streitparteien namhaft gemacht werden. Kann oder will eine Streitpartei keinen einzigen Vertreter namhaft machen, gilt der Streitfall ohne weiteres Verfahren im Sinne (Antrag) der Gegenpartei entschieden. In einem Verfahren gemäß § 7 gilt der Vereinsvorstand als Streitpartei. Entscheidungen erfolgen mit einfacher Mehrheit.<br/>" +
                         "(2) Die Mitglieder des Schiedsgerichts, ausgenommen der Vorsitzende, dürfen nicht dem Vereinsvorstand angehören.<br/>",
                     active: false
                 },

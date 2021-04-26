@@ -3,20 +3,20 @@ import Router from 'vue-router'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _a1c5a470 = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
-const _044815b9 = () => interopDefault(import('../pages/dsgvo/index.vue' /* webpackChunkName: "pages/dsgvo/index" */))
-const _6eb46927 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
-const _8e6cdc82 = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
-const _c291de18 = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
-const _4c8e2321 = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
-const _d0fb121c = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
-const _626eed62 = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
-const _724f5bae = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
-const _21dc79c9 = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
-const _02c58dda = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
-const _1ebd5ef0 = () => interopDefault(import('../pages/projects/_id.vue' /* webpackChunkName: "pages/projects/_id" */))
-const _0697d01d = () => interopDefault(import('../pages/unsubscribe/_mail.vue' /* webpackChunkName: "pages/unsubscribe/_mail" */))
-const _83f28cd2 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
+const _82a151be = () => interopDefault(import('../pages/calender/index.vue' /* webpackChunkName: "pages/calender/index" */))
+const _3dd91300 = () => interopDefault(import('../pages/dsgvo/index.vue' /* webpackChunkName: "pages/dsgvo/index" */))
+const _674314c0 = () => interopDefault(import('../pages/events/index.vue' /* webpackChunkName: "pages/events/index" */))
+const _c906d8f4 = () => interopDefault(import('../pages/impressum/index.vue' /* webpackChunkName: "pages/impressum/index" */))
+const _be9e860a = () => interopDefault(import('../pages/information/index.vue' /* webpackChunkName: "pages/information/index" */))
+const _08563e0c = () => interopDefault(import('../pages/news/index.vue' /* webpackChunkName: "pages/news/index" */))
+const _b1d6bf6a = () => interopDefault(import('../pages/products/index.vue' /* webpackChunkName: "pages/products/index" */))
+const _7e0f4728 = () => interopDefault(import('../pages/events/_id.vue' /* webpackChunkName: "pages/events/_id" */))
+const _21961987 = () => interopDefault(import('../pages/images/_id.vue' /* webpackChunkName: "pages/images/_id" */))
+const _a18a4c3c = () => interopDefault(import('../pages/news/_id.vue' /* webpackChunkName: "pages/news/_id" */))
+const _09578d1a = () => interopDefault(import('../pages/products/_id.vue' /* webpackChunkName: "pages/products/_id" */))
+const _174c0a89 = () => interopDefault(import('../pages/projects/_id.vue' /* webpackChunkName: "pages/projects/_id" */))
+const _08917c24 = () => interopDefault(import('../pages/unsubscribe/_mail.vue' /* webpackChunkName: "pages/unsubscribe/_mail" */))
+const _4254f81e = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -36,59 +36,59 @@ export const routerOptions = {
 
   routes: [{
     path: "/calender",
-    component: _a1c5a470,
+    component: _82a151be,
     name: "calender"
   }, {
     path: "/dsgvo",
-    component: _044815b9,
+    component: _3dd91300,
     name: "dsgvo"
   }, {
     path: "/events",
-    component: _6eb46927,
+    component: _674314c0,
     name: "events"
   }, {
     path: "/impressum",
-    component: _8e6cdc82,
+    component: _c906d8f4,
     name: "impressum"
   }, {
     path: "/information",
-    component: _c291de18,
+    component: _be9e860a,
     name: "information"
   }, {
     path: "/news",
-    component: _4c8e2321,
+    component: _08563e0c,
     name: "news"
   }, {
     path: "/products",
-    component: _d0fb121c,
+    component: _b1d6bf6a,
     name: "products"
   }, {
     path: "/events/:id",
-    component: _626eed62,
+    component: _7e0f4728,
     name: "events-id"
   }, {
     path: "/images/:id?",
-    component: _724f5bae,
+    component: _21961987,
     name: "images-id"
   }, {
     path: "/news/:id",
-    component: _21dc79c9,
+    component: _a18a4c3c,
     name: "news-id"
   }, {
     path: "/products/:id",
-    component: _02c58dda,
+    component: _09578d1a,
     name: "products-id"
   }, {
     path: "/projects/:id?",
-    component: _1ebd5ef0,
+    component: _174c0a89,
     name: "projects-id"
   }, {
     path: "/unsubscribe/:mail?",
-    component: _0697d01d,
+    component: _08917c24,
     name: "unsubscribe-mail"
   }, {
     path: "/",
-    component: _83f28cd2,
+    component: _4254f81e,
     name: "index"
   }],
 

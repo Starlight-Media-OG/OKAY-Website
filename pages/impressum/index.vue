@@ -8,8 +8,6 @@
             <ul class="noStyle" style="margin-bottom: 10vh;">
                 <li><strong>ZVR-Zl.:</strong> 391625836</li>
                 <li><strong>Vereinssitz:</strong> Sandtorgasse 3, 3370 Ybbs an der Donau</li>
-                <li><strong>Obmann</strong> Dr. Karl Dorfmeister</li>
-                <li><strong>Obmannstellvertreter:</strong> Mag. Gerlinde Stöger, DI Gerald Böhm</li>
                 <li><strong>E-Mail: </strong>kulturverein@okay-ybbs.at</li>
                 <li class="break"><strong>Erstellung der Website: </strong>Philipp Dvorak</li>
                 <li>Dieser Webauftritt ist im Zusammenhang mit einer Diplomarbeit der IT-HTL Ybbs/Donau errichtet worden</li>
