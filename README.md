@@ -1,5 +1,6 @@
 # Website DIOK
 
+Website created with Nuxt.JS and data fetching over an REST API realisied with Express
 ## Build Setup
 
 ```bash
