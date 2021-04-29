@@ -8,9 +8,9 @@
             </div>
             <div class="navigation-Text" :class="{navigationTextExt: menuActive}">
                 <nuxt-link to="/" class="navigation-link" exact><p>Home</p></nuxt-link>
-                <nuxt-link to="/news" class="navigation-link"><p>News</p></nuxt-link>
-                <nuxt-link to="/calender" class="navigation-link"><p>Kalender</p></nuxt-link>
                 <nuxt-link to="/events" class="navigation-link"><p>Events</p></nuxt-link>
+                <nuxt-link to="/calender" class="navigation-link"><p>Kalender</p></nuxt-link>
+                <nuxt-link to="/news" class="navigation-link"><p>News</p></nuxt-link>
                 <nuxt-link to="/products" class="navigation-link"><p>Produkte</p></nuxt-link>
                 <nuxt-link to="/information" class="navigation-link"><p>Über OKAY</p></nuxt-link>
             </div>
