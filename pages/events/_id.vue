@@ -30,7 +30,7 @@
                 <div class="dateOpen" v-if="showTime">
                     <h2>Öffnungszeiten</h2>
                     <p v-for="day in days" :key="day.wochentag" class="opening flex flex-center">
-                        Am {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
+                        {{ day.wochentag }} von {{ timeFormatter(day.start_zeit) }} bis {{ timeFormatter(day.end_zeit) }}
                     </p>
                 </div>
             </article>

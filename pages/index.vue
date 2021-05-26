@@ -241,32 +241,10 @@
             light.specular = new BABYLON.Color3(0, 0, 0);
             light.groundColor = new BABYLON.Color3(0, 0, 0);
 
-            //Festlegung der Animationsparameter für das drehen des Bilderrahmens
-            const animation = new BABYLON.Animation("animationIn", "rotation.y", 30, BABYLON.Animation
-                .ANIMATIONTYPE_FLOAT, BABYLON.Animation.ANIMATIONLOOPMODE_CYCLE);
-
-            //In diesem Array werden die einzelnen Animationsstadien gespeichert, zwischen welchen Interpoliert wird
-            let keys = [];
-
-            //Bei Frame: 0 wird das Objekt um auf den Wert 0.4 gedreht
-            keys.push({
-                frame: 0,
-                value: 0.4
-            });
-
-            //Bei Frame: 30 wird das Objekt um auf den Wert 0.8 gedreht
-            keys.push({
-                frame: 30,
-                value: 0.8
-            });
-
-            //Der Animation werden die Framestadien zugewiesen
-            animation.setKeys(keys);
-
             // Die Szene welche sich in der Datei "/babylon/rahmen.babylon" befindet wird geladen
             BABYLON.SceneLoader.Append("/babylon/", "rahmen.babylon", scene, function (meshes) {
 
-                //Die Meshs werden auf Basis ihrer ID geladen
+                //Die Meshes werden auf Basis ihrer ID geladen
                 rahmen = scene.getMeshByID("Rahmen");
                 bild = scene.getMeshByID("Bild");
 
@@ -276,28 +254,6 @@
                 //Die Anfangswerte für die Rotation der Objekte setzen
                 bild.rotation.y = 0.4;
                 rahmen.rotation.y = 0.4;
-
-                //Dem Bild wird der Animatiosablauf zugewiesen
-                bild.animations = [];
-                bild.animations.push(animation);
-
-                //Dem rahmen wird der Animatiosablauf zugewiesen
-                rahmen.animations = [];
-                rahmen.animations.push(animation);
-
-                //Wird ausgelöst, sobald sich die Maus über dem Canvas-Element befindet
-                canvasSuper.addEventListener("mouseover", function (event) {
-                    //Die Animation wird ausgelöst
-                    scene.beginAnimation(bild, 0, 10, false);
-                    scene.beginAnimation(rahmen, 0, 10, false);
-                });
-
-                //Wird ausgelöst, sobald die Maus das Canvas-Element verlässt
-                canvasSuper.addEventListener("mouseleave", function (event) {
-                    //Die Animation wird nun rückwertsbeginned abgespielt
-                    scene.beginAnimation(bild, 10, 0, false);
-                    scene.beginAnimation(rahmen, 10, 0, false);
-                });
             });
 
             //Sorgt für Anti-Aliasing, um Unebenheiten in diagonalen Linien zu vehindern

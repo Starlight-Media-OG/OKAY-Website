@@ -13,6 +13,7 @@
                 <nuxt-link to="/news" class="navigation-link"><p>News</p></nuxt-link>
                 <nuxt-link to="/products" class="navigation-link"><p>Produkte</p></nuxt-link>
                 <nuxt-link to="/information" class="navigation-link"><p>Über OKAY</p></nuxt-link>
+                <a href="https://www.facebook.com/okay.ybbs/" class="navigation-link"><p>Facebook</p></a>
             </div>
         </nav>
         <div class="logo">
