@@ -10,10 +10,13 @@
                 <h1 class="title col-4">
                     {{ this.name }} - {{ this.untertitel }}
                 </h1>
-                <p class="date">
+                <p class="date" v-if="this.end_date !== ''">
                     Ab {{ this.date }}
                 </p>
-                <p class="address">
+                <p class="date" v-else>
+                    Von {{ this.date }} bis {{ this.end_date }}
+                </p>
+                <p class="address" v-if="this.adresse !== '' || this.adresse != null">
                     {{ this.adresse }}
                 </p>
                 <p></p>
@@ -25,7 +28,7 @@
         <section id="content" class="content flex flex-center">
             <article class="beschreibung col-9" style="padding: 1rem;">
                 <div class="bes">
-                    <p>{{ this.beschreibung }}</p>
+                    <p v-html="this.beschreibung"></p>
                 </div>
                 <div class="dateOpen" v-if="showTime">
                     <h2>Öffnungszeiten</h2>
@@ -61,6 +64,7 @@ export default {
             beschreibung: "",
             bild: "",
             date: "",
+            end_date: "",
             id: "",
             days: null,
             adresse: null,
@@ -121,6 +125,7 @@ export default {
             }
 
             this.date = new Date(event.start_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"});
+            this.end_date = new Date(event.end_datum).toLocaleDateString("de-DE", {year: "numeric", month: "long", day: "numeric"})
             this.id = event.oaId;
 
             this.days = event.zeiten;
@@ -152,7 +157,7 @@ export default {
     methods: {
         concat: function (...strings) {
             let conString = "";
-            strings.forEach((arg, index) => {
+            strings.forEach((arg) => {
                 conString += arg;
             });
             return conString;
