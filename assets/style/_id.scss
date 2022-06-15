@@ -61,7 +61,7 @@
     }
 
     @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.5rem, white, bold);
+        @include font($header-font-name, 1.25rem, white, bold);
         padding-bottom: 5vh;
         line-height: 1.5rem;
     }
