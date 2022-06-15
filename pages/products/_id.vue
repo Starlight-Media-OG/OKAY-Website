@@ -20,8 +20,7 @@
         </section>
         <section class="content flex flex-center" style="margin-bottom: 0;">
             <article class="beschreibung col-9" style="padding: 1rem;">
-                <div class="bes">
-                    <p> {{ this.beschreibung }}</p>
+                <div class="bes" v-html="this.beschreibung">
                 </div>
                 <div class="dateOpen">
                     <h2>Abholungsorte</h2>

@@ -19,8 +19,7 @@
             </div>
         </section>
         <section class="content flex flex-center">
-            <article class="beschreibung-news col-9" style="margin-top: 0;">
-                <p v-html="this.beschreibung"></p>
+            <article class="beschreibung-news col-9" style="margin-top: 0;" v-html="this.beschreibung">
             </article>
             <section class="galleryBox">
                 <gallery :id="this.$route.params.id" :imgPath="this.bilder_path != null || this.bilder_path != '' || this.bilder_path != 'NULL' ? 'bla' : null" type="news"/>

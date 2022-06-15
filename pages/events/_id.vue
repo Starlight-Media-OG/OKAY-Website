@@ -27,8 +27,7 @@
         </section>
         <section id="content" class="content flex flex-center">
             <article class="beschreibung col-9" style="padding: 1rem;">
-                <div class="bes">
-                    <p v-html="this.beschreibung"></p>
+                <div class="bes" v-html="this.beschreibung">
                 </div>
                 <div class="dateOpen" v-if="showTime">
                     <h2>Öffnungszeiten</h2>
