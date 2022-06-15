@@ -117,7 +117,7 @@
         .bes {
             page-break-inside: avoid;
 
-            p {
+            p > p {
                 &:not(:last-child) {
                     margin-bottom: 2vh;
                 }
