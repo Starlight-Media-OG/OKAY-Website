@@ -92,5 +92,6 @@ main {
 
 .underline {
     @include text-underline($primary-blue, .1vh, 5px);
+    font-style: normal;
 }
 

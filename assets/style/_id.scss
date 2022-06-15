@@ -15,6 +15,7 @@
 
     @media screen and (min-width: $breakpoint-medium-max) and (max-width: $breakpoint-large-max) {
         margin-top: 0;
+        font-size: 5vh;
         margin-left: 0;
     }
 }
@@ -61,13 +62,12 @@
     }
 
     @media screen and (max-width: $breakpoint-medium-max) {
-        @include font($header-font-name, 1.25rem, white, bold);
+        font-size: 1.25rem;
         padding-bottom: 5vh;
-        line-height: 1.5rem;
+        line-height: 1.25rem;
     }
 
     @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
-        margin-top: -5vh;
         font-size: 2rem;
     }
 }
