@@ -116,6 +116,12 @@
 
         .bes {
             page-break-inside: avoid;
+
+            p {
+                &:not(:last-child) {
+                    margin-bottom: 2vh;
+                }
+            }
         }
 
         .dateOpen {
