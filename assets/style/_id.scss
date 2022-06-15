@@ -115,6 +115,8 @@
         }
 
         .bes {
+            @include font($flow-font-name, 1rem, white);
+
             page-break-inside: avoid;
 
             p {
@@ -139,13 +141,13 @@
     }
 
     .beschreibung-news {
+        @include font($flow-font-name, 1rem, white);
 
         @media screen and (max-width: $breakpoint-medium-max) {
             width: 90%;
         }
 
         p {
-            @include font($flow-font-name, 1rem, white);
             line-height: 1.8rem;
         }
 
