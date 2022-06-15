@@ -87,7 +87,7 @@ export default {
             if (process.client) {
                 let width = window.innerWidth;
 
-                if (width > 1490) {
+                if (width > 700) {
                     if (this.name.length - this.name.split(" ").length <= 10) {
                         return "12vh";
                     } else if (this.name.length - this.name.split(" ").length > 10 && this.name.length - this.name.split(" ").length < 20) {

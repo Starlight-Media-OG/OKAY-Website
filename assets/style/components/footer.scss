@@ -7,6 +7,10 @@
         min-height: 330px;
         font-family: $flow-font-name;
 
+        .scrollTop {
+            display: none;
+        }
+
         .navigation {
             width: 90%;
             height: 90%;
@@ -31,10 +35,6 @@
                     text-decoration: none;
                     font-weight: bold;
                 }
-            }
-
-            .scrollTop {
-                display: none;
             }
 
             .copyright{
