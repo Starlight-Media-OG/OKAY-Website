@@ -114,7 +114,7 @@ main {
          margin-top: -7vh;
 
          .further-link {
-             font-size: 1rem;
+             font-size: .75rem;
          }
     }
 }
