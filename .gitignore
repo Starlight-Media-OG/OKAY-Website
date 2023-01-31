@@ -118,3 +118,4 @@ dist
 
 # NPM Package lock
 package-lock.json
+server/package-lock.json
