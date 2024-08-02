@@ -4,13 +4,22 @@
   "type": "module",
   "scripts": {
     "build": "nuxt build",
-    "dev": "nuxt dev",
+    "dev": "nuxt dev --port=8081",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.2",
     "nuxt": "^3.12.4",
+    "pinia": "^2.2.0",
+    "vue": "latest",
+    "vue-scrollto": "^2.20.0"
+  },
+  "devDependencies": {
+    "sass": "^1.77.8"
+  },
+  "overrides": {
     "vue": "latest"
   }
 }
