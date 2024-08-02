@@ -2,12 +2,10 @@ interface menuStore {
   menuActive: boolean;
 }
 
-const initalMenuStoreState = {
-  menuActive: false,
-};
-
 export const useMenuStore = defineStore("menu", {
-  state: (): menuStore => initalMenuStoreState,
+  state: (): menuStore => ({
+    menuActive: false,
+  }),
   actions: {
     toggleMenu() {
       this.menuActive = !this.menuActive;

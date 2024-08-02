@@ -6,13 +6,11 @@ interface BreadcrumbStoreState {
   items: Breadcrumb[];
 }
 
-const initalBreadcrumbStoreState = {
-  steps: 0,
-  items: [],
-};
-
 export const useBreadcrumbStore = defineStore("breadcrumb", {
-  state: (): BreadcrumbStoreState => initalBreadcrumbStoreState,
+  state: (): BreadcrumbStoreState => ({
+    steps: 0,
+    items: [],
+  }),
   actions: {
     addBreadcrumb(breadcrumb: Breadcrumb) {
       if (!breadcrumb.step) {
