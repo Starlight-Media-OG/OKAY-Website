@@ -46,7 +46,5 @@ export default defineNuxtConfig({
   },
   plugins: [{ src: "~/plugins/scroll-to.plugin.ts", mode: "client" }],
   modules: ["@pinia/nuxt"],
-  loading: "~/components/loading/loading.vue",
   css: ["~/assets/style/style.scss", "~/assets/style/variable.scss"],
-  components: true,
 });

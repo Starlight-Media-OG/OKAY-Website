@@ -1,47 +1,66 @@
 <template>
-<div>
-    <div v-if="imageGallery == null" class="gallery flex flex-center">
-        <div class="slider flex flex-center row error">
-            Es sind noch keine Bilder hinzugefügt worden!
-        </div>
-    </div>
-    <div v-else class="gallery flex flex-center">
-        <div class="slider flex flex-center row">
-            <div class="row">
-                <div v-for="(image, index) in imageGallery" :key="index" class="col flex flex-center">
-                    <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
-                         @click="selectedImage = image"/>
-                    <video v-if="isVideo(image)" :src="image"
-                           @click="selectedImage = image">
-                    </video>
-                </div>
+    <div>
+        <div v-if="imageGallery == null" class="gallery flex flex-center">
+            <div class="slider flex flex-center row error">
+                Es sind noch keine Bilder hinzugefügt worden!
             </div>
         </div>
-        <div class="preview flex flex-center">
-            <img v-if="isImage(selectedImage)" :src="selectedImage" alt="Preview Image of Slider" class="image"/>
-            <video v-if="isVideo(selectedImage)" :src="selectedImage" class="image"
-                   controls></video>
+        <div v-else class="gallery flex flex-center">
+            <div class="slider flex flex-center row">
+                <div class="row">
+                    <div
+                        v-for="(image, index) in imageGallery"
+                        :key="index"
+                        class="col flex flex-center"
+                    >
+                        <img
+                            v-if="isImage(image)"
+                            :src="image"
+                            alt="Bild von der Ausstellung"
+                            @click="selectedImage = image"
+                        />
+                        <video
+                            v-if="isVideo(image)"
+                            :src="image"
+                            @click="selectedImage = image"
+                        ></video>
+                    </div>
+                </div>
+            </div>
+            <div class="preview flex flex-center">
+                <img
+                    v-if="isImage(selectedImage)"
+                    :src="selectedImage"
+                    alt="Preview Image of Slider"
+                    class="image"
+                />
+                <video
+                    v-if="isVideo(selectedImage)"
+                    :src="selectedImage"
+                    class="image"
+                    controls
+                ></video>
+            </div>
         </div>
     </div>
-</div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
     name: "gallery",
     props: {
         imgPath: String,
         id: String,
-        type: String
+        type: String,
     },
     data() {
         return {
-	        selectedImage: "",
-	        updateView: false,
-            imageGallery: null
-        }
+            selectedImage: "",
+            updateView: false,
+            imageGallery: null,
+        };
     },
     methods: {
         isImage: function (path) {
@@ -54,7 +73,7 @@ export default {
                 ".png",
                 ".svg",
                 ".ico",
-                ".gif"
+                ".gif",
             ]);
 
             return isImage;
@@ -62,16 +81,12 @@ export default {
         isVideo: function (path) {
             let isVideo = true;
 
-            isVideo = this.contains(path, [
-                ".mov",
-                ".avi",
-                ".mp4",
-            ]);
+            isVideo = this.contains(path, [".mov", ".avi", ".mp4"]);
 
             return isVideo;
         },
         refresh() {
-            this.$nuxt.refresh()
+            this.$nuxt.refresh();
         },
         contains: function (string, arr) {
             const tmp = [];
@@ -79,7 +94,7 @@ export default {
                 if (string.includes(check)) {
                     tmp.push(true);
                 } else {
-                    tmp.push(false)
+                    tmp.push(false);
                 }
             }
 
@@ -88,35 +103,63 @@ export default {
             } else {
                 return false;
             }
-        }
+        },
     },
     async fetch() {
         let selectOneImage = true;
         let data;
 
         try {
-            if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
-            if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
+            if (this.imgPath === null || this.imgPath === "")
+                throw "Bilder Path is null";
+            if (
+                (this.id !== undefined && this.imgPath !== null) ||
+                this.imgPath !== ""
+            ) {
                 switch (this.type) {
                     case "event":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/events/" + this.id + "/");
+                        data = await axios.get(
+                            useRuntimeConfig().public.baseImage +
+                                "/images?path=uploads/events/" +
+                                this.id +
+                                "/",
+                        );
                         break;
                     case "news":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/news/" + this.id + "/");
+                        data = await axios.get(
+                            useRuntimeConfig().public.baseImage +
+                                "/images?path=uploads/news/" +
+                                this.id +
+                                "/",
+                        );
                         break;
                     case "products":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/products/" + this.id + "/");
+                        data = await axios.get(
+                            useRuntimeConfig().public.baseImage +
+                                "/images?path=uploads/products/" +
+                                this.id +
+                                "/",
+                        );
                         break;
                 }
             }
 
-            if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
+            if (
+                data.status < 400 &&
+                data.data.data !== null &&
+                data.data.date !== {}
+            ) {
                 this.images = [];
                 let tmp = "server/uploads";
-                data.data.data.forEach(item => {
-                    this.images.push(process.env.baseImage + item.replace(tmp, ''));
+                data.data.data.forEach((item) => {
+                    this.images.push(
+                        useRuntimeConfig().public.baseImage +
+                            item.replace(tmp, ""),
+                    );
                     if (selectOneImage) {
-                        this.selectedImage = process.env.baseImage + item.replace(tmp, "");
+                        this.selectedImage =
+                            useRuntimeConfig().public.baseImage +
+                            item.replace(tmp, "");
                         selectOneImage = false;
                     }
                 });
@@ -128,11 +171,11 @@ export default {
     },
     fetchOnServer: false,
     watch: {
-        images: function() {
+        images: function () {
             this.imageGallery = this.images;
-        }
-    }
-}
+        },
+    },
+};
 </script>
 
 <style lang="scss" scoped>
