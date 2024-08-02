@@ -346,7 +346,7 @@ export default {
         },
     },
     async fetch() {
-        let req = await axios.get(
+        let req = await $fetch(
             useRuntimeConfig().public.baseURL + "/events",
         );
         this.events = req.data;

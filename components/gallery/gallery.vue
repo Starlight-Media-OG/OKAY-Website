@@ -46,8 +46,6 @@
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
     name: "gallery",
     props: {
@@ -118,7 +116,7 @@ export default {
             ) {
                 switch (this.type) {
                     case "event":
-                        data = await axios.get(
+                        data = await $fetch(
                             useRuntimeConfig().public.baseImage +
                                 "/images?path=uploads/events/" +
                                 this.id +
@@ -126,7 +124,7 @@ export default {
                         );
                         break;
                     case "news":
-                        data = await axios.get(
+                        data = await $fetch(
                             useRuntimeConfig().public.baseImage +
                                 "/images?path=uploads/news/" +
                                 this.id +
@@ -134,7 +132,7 @@ export default {
                         );
                         break;
                     case "products":
-                        data = await axios.get(
+                        data = await $fetch(
                             useRuntimeConfig().public.baseImage +
                                 "/images?path=uploads/products/" +
                                 this.id +

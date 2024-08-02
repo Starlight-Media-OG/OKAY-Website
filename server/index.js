@@ -56,10 +56,10 @@ app.post("/images/upload/events/", async (req, res) => {
     } else {
       let data = [];
 
-      let req2 = await axios.get(baseURL + "/kommentare");
+      let req2 = await $fetch(baseURL + "/kommentare");
       let komId = req2.data.komId;
 
-      req2 = await axios.get(baseURL + "/kommentare/getEvent/" + komId);
+      req2 = await $fetch(baseURL + "/kommentare/getEvent/" + komId);
       let eID = req2.data.oaId;
 
       if (req.files != {}) {
