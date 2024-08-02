@@ -4,7 +4,10 @@ import * as BABYLON from "babylonjs";
 const babylonCanvas = ref(null);
 
 onMounted(() => {
-    let engine = new BABYLON.Engine(babylonCanvas, true);
+    let engine = new BABYLON.Engine(
+        document.getElementById("babylonCanvas"),
+        true,
+    );
     let modell;
 
     //Verhindern das der Babylon Loading Screen gezeigt wird
@@ -110,6 +113,20 @@ onMounted(() => {
 </template>
 
 <style scoped lang="scss">
+@import "./assets/style/variable.scss";
+
+@media screen and (max-width: $breakpoint-small-max), handheld {
+    @import "./assets/style/style-Mobile.scss";
+}
+
+@media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large-max) {
+    @import "./assets/style/style-Tablet.scss";
+}
+
+@media screen and (min-width: $breakpoint-xlarge) {
+    @import "./assets/style/style-PC.scss";
+}
+
 .super {
     position: relative;
     width: 100vw;
