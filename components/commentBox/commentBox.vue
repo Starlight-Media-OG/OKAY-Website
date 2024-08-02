@@ -100,7 +100,7 @@
                             tabindex="4"
                             aria-label="Kommentar absenden"
                         >
-                            <arrow direction="right" />
+                            <SvgArrow direction="right" />
                         </button>
                     </p>
                 </div>
@@ -183,8 +183,6 @@
 </style>
 
 <script>
-import axios from "axios";
-import arrow from "~/components/svg/arrow.vue";
 import fragment from "vue-fragment";
 
 export default {
@@ -195,7 +193,6 @@ export default {
         eId: Number,
     },
     components: {
-        arrow,
         fragment,
     },
     data() {
