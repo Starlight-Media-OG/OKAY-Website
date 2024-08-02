@@ -1,0 +1,180 @@
+@import '../variable';
+
+.mainCard {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 2.5vh;
+    max-width: 100vw;
+}
+
+//Smartphone Style
+@media screen and (max-width: $breakpoint-small-max), handheld {
+    .mainCard {
+        width: $width;
+        background-color: $primary-blue;
+        box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
+        border-radius: 6px;
+        margin-top: 4rem;
+
+        .image {
+            width: 80%;
+            display: block;
+            transform: translateY(-20%);
+            margin: -2rem auto 1.5rem;
+
+            .image-col {
+                width: 100%;
+            }
+        }
+
+        .content {
+            $title-size: 1.5rem;
+            $date-size: 1.25rem;
+            $flow-size: 1rem;
+
+            margin-top: -20%;
+            margin-left: auto;
+            margin-right: auto;
+
+            .header {
+                .card-title {
+                    h2 {
+                        @include font($header-font-name, $title-size);
+			font-weight: bold;
+			text-algin: left;
+                        line-height: 1.7rem;
+                        margin-bottom: .5rem;
+                        hyphens: auto;
+                    }
+                }
+
+                .date {
+                    @include font($header-font-name, $date-size);
+                    padding-bottom: .2rem;
+                }
+            }
+
+            .teaser, .teaser-news {
+                @include font($flow-font-name, $flow-size);
+                text-align: justify;
+                hyphens: auto;
+            }
+
+            .button {
+                background-color: lighten($primary-blue, 10%);
+                width: 90%;
+                border-radius: 6px;
+                text-align: center;
+                margin: 2vh auto;
+                text-decoration: none;
+
+                .button-text {
+                    @include font($flow-font-name, 1.3rem);
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+//Tablet and Larger
+@media screen and (min-width: $breakpoint-large) {
+    .mainCard {
+        display: flex;
+        width: $width-card;
+        min-height: 350px;
+        margin-bottom: 2rem;
+        border-radius: 6px;
+        box-shadow: 5px 5px 15px rgba(0,0,0,.20), -5px -5px 15px rgba(255,255,255,.20);
+        justify-items: center;
+        align-items: center;
+
+        @media screen and (min-width: 2000px) {
+            height: auto;
+            min-height: 30vh;
+        }
+
+        .image {
+            margin: 15px;
+
+            .image-col {
+                width: 12vw;
+            }
+        }
+
+        .content {
+            $title-size: 5vh;
+            $date-size: 1.5rem;
+            $flow-size: 1rem;
+
+            display: flex;
+            margin-left: 1vw;
+            margin-right: 3vw;
+            width: 80%;
+
+            .header {
+                .card-title {
+                    h2 {
+                        @include font($header-font-name, $title-size);
+                        font-weight: bold;
+			text-align: left;
+                        float: left;
+                        margin-bottom: 1.5rem;
+                    }
+                }
+
+                .date {
+                    @include font($header-font-name, $date-size);
+                    text-align: right;
+                }
+            }
+
+            .teaser, .teaser-news {
+                @include font($flow-font-name, $flow-size);
+                line-height: calc(#{$flow-size} * 1.8);
+                text-align: justify;
+                margin-bottom: 1vh;
+                hyphens: auto;
+            }
+        }
+
+        .button {
+            border-radius: 6px;
+            min-width: 350px;
+            min-height: 45px;
+            text-align: center;
+            vertical-align: center;
+            margin-top: 1vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 1vh;
+
+            .button-text {
+                font-weight: bold;
+                @include font($flow-font-name, 1.5rem);
+                text-decoration: none;
+            }
+
+            &:hover {
+                box-shadow: 5px 5px 15px rgba(0,0,0,.40);
+                transition: box-shadow .5s;
+            }
+
+            transition: box-shadow .5s;
+            cursor: pointer;
+        }
+    }
+
+    .column {
+        flex-direction: column;
+    }
+}
+
+.ignoreTag {
+    text-decoration: none;
+}
+
+.button {
+    padding: .5rem;
+}

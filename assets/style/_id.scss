@@ -1,0 +1,179 @@
+@import '../../assets/style/variable.scss';
+
+.title {
+    font-size: 7vh;
+    word-break: break-word;
+    line-height: 7vh;
+    max-width: 33.33vw;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        margin-top: 5vh;
+        line-height: 5vh;
+        font-size: 5vh;
+        max-width: 100%;
+    }
+
+    @media screen and (min-width: $breakpoint-medium-max) and (max-width: $breakpoint-large-max) {
+        margin-top: 0;
+        font-size: 5vh;
+        margin-left: 0;
+    }
+}
+
+.date {
+    @include font($header-font-name, 2rem, $primary-yellow, bold);
+    line-height: 2rem;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1.25rem, $primary-yellow, bold);
+        padding-bottom: 5vh;
+        line-height: 1.5rem;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 2rem;
+    }
+}
+
+.back {
+    @include font($header-font-name, 2rem, $primary-yellow, 700);
+    margin-bottom: 3rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        @include font($header-font-name, 1rem, $primary-yellow, 700);
+        padding-bottom: 2vh;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        @include font($header-font-name, 1.5rem, $primary-yellow, 700);
+    }
+}
+
+.address {
+    @include font($header-font-name, 2rem, white, bold);
+    line-height: 2.5rem;
+
+    @media screen and (min-width: $breakpoint-large) {
+        margin-top: 2vh;
+    }
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        font-size: 1.25rem;
+        padding-bottom: 5vh;
+        line-height: 1.25rem;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 2rem;
+    }
+}
+
+.header {
+    margin-top: 10vh;
+}
+
+.commentBox {
+    width: 100%;
+}
+
+.dateOpen {
+    @include font($flow-font-name, 1rem, white);
+
+    h3 {
+        @include font($header-font-name, 4rem, white, bold);
+        margin-bottom: 1rem;
+    }
+}
+
+.content {
+    margin-top: 2vh;
+
+    .beschreibung {
+        word-break: break-word;
+
+        @media screen and (min-width: $breakpoint-medium) { 
+            column-count: 2;
+            column-gap: 2rem;
+        }
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            width: 90%;
+        }
+
+        .title {
+            @include font($flow-font-name, 4rem, white, bold);
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                @include font($flow-font-name, 3rem, white, bold);
+                margin-bottom: 5vh;
+                margin-left: -5vw;
+            }
+        }
+
+        .bes {
+            @include font($flow-font-name, 1rem, white);
+
+            page-break-inside: avoid;
+
+            p {
+                margin-bottom: 2vh;
+            }
+        }
+
+        .dateOpen {
+            page-break-inside: avoid;
+
+            @media screen and (max-width: $breakpoint-medium-max) {
+                margin-top: 1rem;
+            }
+        }
+
+        p {
+            @include font($flow-font-name, 1rem, white);
+        }
+
+    }
+
+    .beschreibung-news {
+        @include font($flow-font-name, 1rem, white);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            width: 90%;
+        }
+
+        p {
+            line-height: 1.8rem;
+        }
+
+    }
+
+    .galleryBox {
+        width: 100%;
+        padding: 10vh 0;
+        margin: 10vh 0;
+        text-align: center;
+        @include font($flow-font-name, 3rem, white, bold);
+        background-color: $primary-blue;
+        margin-bottom: 0;
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+            font-size: 1.5rem;
+        }
+    }
+}
+
+h2 {
+    font-size: 4rem;
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+        font-size: 2rem;
+    }
+
+    @media screen and (min-width: $breakpoint-large) and (max-width: $breakpoint-large-max) {
+        font-size: 2.5rem;
+    }
+}
