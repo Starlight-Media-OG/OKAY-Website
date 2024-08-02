@@ -6,10 +6,6 @@ const menuStore = useMenuStore();
 const breadcrumbStore = useBreadcrumbStore();
 const router = useRouter();
 
-const menuActive = menuStore.menuActive;
-const breadcrumbs = breadcrumbStore.steps;
-const breadcrumbsText = breadcrumbStore.items;
-
 function toggleMenu() {
     menuStore.toggleMenu();
 }
@@ -26,17 +22,20 @@ function pushToLink(link) {
 <template>
     <header>
         <nav
-            :class="{ navigationExt: menuActive, navigation: !menuActive }"
+            :class="{
+                navigationExt: menuStore.menuActive,
+                navigation: !menuStore.menuActive,
+            }"
             @click="toggleMenu()"
         >
             <div class="burger">
                 <div class="burger-icon">
-                    <SvgBurger :menuActive="menuActive" />
+                    <SvgBurger :menuActive="menuStore.menuActive" />
                 </div>
             </div>
             <div
                 class="navigation-Text"
-                :class="{ navigationTextExt: menuActive }"
+                :class="{ navigationTextExt: menuStore.menuActive }"
             >
                 <nuxt-link to="/" class="navigation-link" exact>
                     <p>Home</p>
@@ -69,12 +68,12 @@ function pushToLink(link) {
                 <SvgLogo big="true" aria-label="Offene Kultur Aus Ybbs" />
             </nuxt-link>
         </div>
-        <div class="bg" @click="hideMenu()" v-if="menuActive"></div>
+        <div class="bg" @click="hideMenu()" v-if="menuStore.menuActive"></div>
 
-        <div class="breadcrumbs" v-if="breadcrumbs !== 1">
+        <div class="breadcrumbs" v-if="breadcrumbStore.steps !== 1">
             <ul class="breadcrumbs-list">
                 <li
-                    v-for="item in breadcrumbsText"
+                    v-for="item in breadcrumbStore.items"
                     class="breadcrumbs-list-item"
                     @click="pushToLink(item.link)"
                     :key="item.text"

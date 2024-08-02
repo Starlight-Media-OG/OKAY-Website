@@ -24,9 +24,10 @@
                     <h2>{{ this.title }}</h2>
                 </div>
             </div>
-            <div class="teaser-news" v-html="trimString(this.teaser, 300)">
-                <p></p>
-            </div>
+            <div
+                class="teaser-news"
+                v-html="trimString(this.teaser, 300)"
+            ></div>
             <div v-if="!news && !projects">
                 <nuxt-link
                     :to="concat('/events/', this.id)"
