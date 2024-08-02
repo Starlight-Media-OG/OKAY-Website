@@ -3,7 +3,7 @@ import { TweenLite, Elastic, Bounce, gsap } from "gsap";
 import { CSSPlugin } from "gsap/CSSPlugin";
 
 const { contents } = defineProps({
-    contents: [],
+    contents: Array,
 });
 
 function expand(i) {
@@ -11,15 +11,15 @@ function expand(i) {
 
     let el = document.getElementsByClassName("accordion-body")[i];
 
-    if (this.contents[i].active === false) {
-        this.contents[i].active = true;
+    if (contents[i].active === false) {
+        contents[i].active = true;
 
         TweenLite.to(el, 1, {
             height: el.scrollHeight,
             ease: Elastic.easeOut.config(1, 0.3),
         });
     } else {
-        this.contents[i].active = false;
+        contents[i].active = false;
 
         TweenLite.to(el, 0.5, {
             height: 0,
@@ -38,7 +38,7 @@ function expand(i) {
         >
             <div class="accordion-title">
                 <div class="accordion-header">
-                    <a class="fakeLink" v-on:click="expand(index)">
+                    <a class="fakeLink" @click="expand(index)">
                         <div class="accordion-header-div">
                             {{ content.title }}
                         </div>

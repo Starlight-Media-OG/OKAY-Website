@@ -1,3 +1,13 @@
+<script setup>
+const { id } = defineProps({
+    id: Number,
+});
+
+const { data: person } = await useFetch(
+    `${useRuntimeConfig().public.baseURL}/mitgleider/${id}`,
+);
+</script>
+
 <template>
     <article class="mainCard">
         <div class="content">
@@ -15,32 +25,6 @@
         </div>
     </article>
 </template>
-
-<script>
-import axios from "axios";
-
-export default {
-    name: "teamCard",
-    props: {
-        id: Number,
-    },
-    data: function () {
-        return {
-            person: {},
-        };
-    },
-    async fetch() {
-        let id = this.$props.id;
-
-        let req = await axios.get(
-            useRuntimeConfig().public.baseURL + "/mitglieder/" + id,
-        );
-        let person = req.data;
-
-        this.person = person;
-    },
-};
-</script>
 
 <style scoped lang="scss">
 @import "teamCard";

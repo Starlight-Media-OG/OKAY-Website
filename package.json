@@ -12,6 +12,7 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.2",
     "babylonjs": "^7.18.0",
+    "gsap": "^3.12.5",
     "nuxt": "^3.12.4",
     "pinia": "^2.2.0",
     "vue": "latest",
