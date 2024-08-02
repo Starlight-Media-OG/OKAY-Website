@@ -86,3 +86,5 @@ dist
 .idea
 .vs
 .zed
+
+**/.DS_Store
