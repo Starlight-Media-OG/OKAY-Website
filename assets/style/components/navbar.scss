@@ -1,4 +1,4 @@
-@import '../variable';
+@import "../variable";
 
 nav {
     position: fixed;
@@ -13,11 +13,14 @@ nav {
     border-bottom-right-radius: 10vw;
     top: 0;
     left: 0;
-    transition: width .7s, height .7s, border-bottom-right-radius .7s;
-    box-shadow: 5px 5px 15px rgba(0,0,0,.50);
+    transition:
+        width 0.7s,
+        height 0.7s,
+        border-bottom-right-radius 0.7s;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     display: flex;
     z-index: 99;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .burger {
@@ -39,12 +42,16 @@ nav {
     width: 70vw;
     height: 100vh;
     border-bottom-right-radius: 50vw;
-    transition: width .7s, height .7s, border-bottom-right-radius .7s;
-    box-shadow: 5px 5px 15px rgba(0,0,0,.50);
+    transition:
+        width 0.7s,
+        height 0.7s,
+        border-bottom-right-radius 0.7s;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.5);
     background-color: $primary-yellow;
-    cursor:pointer;
+    cursor: pointer;
 
-    @media screen and(min-width: $breakpoint-medium) and (max-width: $breakpoint-large-max), handheld {
+    @media screen and (min-width: $breakpoint-medium) and (max-width: $breakpoint-large-max),
+        handheld {
         width: 78vw;
     }
 }
@@ -53,7 +60,7 @@ nav {
     position: fixed;
     top: 16vh;
     left: -100vw;
-    transition: .3s;
+    transition: 0.3s;
     display: block;
 
     .navigation-link {
@@ -61,7 +68,7 @@ nav {
         transition: color 1s;
         text-decoration: none;
         @include font($flow-font-name, $font-size-nav, white, bold);
-        margin-top: .2vh;
+        margin-top: 0.2vh;
     }
 
     .navigation-link:hover {
@@ -98,7 +105,7 @@ nav {
     right: 2vw;
     top: 2vw;
     z-index: 97;
-    filter: drop-shadow(5px 5px 15px rgba(0,0,0,.4));
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.4));
 }
 
 .breadcrumbs {
@@ -113,7 +120,7 @@ nav {
     background-color: $primary-blue;
     user-select: none;
     font-family: $flow-font-name;
-    filter: drop-shadow(5px 5px 15px rgba(0,0,0,.2));
+    filter: drop-shadow(5px 5px 15px rgba(0, 0, 0, 0.2));
 
     @media screen and (max-width: $breakpoint-large-max) {
         display: none;
@@ -127,7 +134,7 @@ nav {
         left: calc(#{$tmp} - 20px);
 
         .breadcrumbs-list-item {
-            opacity: .2;
+            opacity: 0.2;
             width: auto;
             @include min-max-height(55px);
 
