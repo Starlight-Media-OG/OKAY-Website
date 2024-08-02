@@ -3,10 +3,10 @@
         <div class="month">
             <div class="flex flex-center month-banner">
                 <div class="arrow arrow-Left" @click="prev()">
-                    <arrow direction="left" />
+                    <SvgArrow direction="left" />
                 </div>
                 <div class="arrow arrow-Right" @click="next()">
-                    <arrow direction="right" />
+                    <SvgArrow direction="right" />
                 </div>
                 <div class="monthDesc">
                     <p>
@@ -47,9 +47,7 @@
 </style>
 
 <script>
-import arrow from "~/components/svg/arrow";
 import VRuntimeTemplate from "v-runtime-template";
-import axios from "axios";
 
 export default {
     name: "calender",
@@ -76,7 +74,6 @@ export default {
         };
     },
     components: {
-        arrow,
         VRuntimeTemplate,
     },
     head() {
@@ -346,9 +343,7 @@ export default {
         },
     },
     async fetch() {
-        let req = await $fetch(
-            useRuntimeConfig().public.baseURL + "/events",
-        );
+        let req = await $fetch(useRuntimeConfig().public.baseURL + "/events");
         this.events = req.data;
 
         this.updateCalendar(this.currentMonth, this.currentYear);
