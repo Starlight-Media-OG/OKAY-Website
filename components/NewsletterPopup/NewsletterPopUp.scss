@@ -1,0 +1,114 @@
+@import "../../assets/style/variable";
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(20,20,20, 0.8);
+  z-index: 200;
+
+  .content {
+    width: 60%;
+    background-color: rgba(222,222,222,0.75);
+    border-radius: 20px;
+    padding: 2vh 2vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+
+    @media screen and (max-width: $breakpoint-medium-max) {
+      width: 90%;
+      padding: 1rem;
+    }
+
+    .close {
+      text-align: right;
+      @include font($flow-font-name, 4vh, white, bold);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .header {
+      @include font($flow-font-name, 2vh, #2f2f2f, bold);
+    }
+
+    .form {
+      form {
+        label {
+          @include font($flow-font-name, 2vh, #2f2f2f, bold);
+        }
+
+        .label {
+          float:left;
+          min-width: 15%;
+        }
+
+        .input {
+          width: 80%;
+          height: 5vh;
+          border: 0;
+          border-radius: 1vw;
+          padding-left: 1vw;
+          @include font($flow-font-name, 2vh, #2f2f2f);
+
+          @media screen and (max-width: $breakpoint-medium-max) {
+            width: 100%;
+          }
+        }
+
+        .checkInput {
+          height: 2vh;
+          width: 2vh;
+        }
+
+        .radio {
+          height: 2vh;
+          width: 2vh;
+        }
+      }
+    }
+
+    .buttons {
+      .success {
+        cursor: pointer;
+        border: none;
+        height: 5vh;
+        width: 20vw;
+        margin-right: 5vw;
+        border-radius: 3vh;
+        background-color: $primary-blue;
+        @include font($flow-font-name, 2vh, white);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+          margin-right: 0;
+          width: 100%;
+        }
+      }
+
+      .failure {
+        cursor: pointer;
+        border: none;
+        height: 5vh;
+        width: 20vw;
+        margin-right: 5vw;
+        border-radius: 3vh;
+        background-color: $primary-yellow;
+        @include font($flow-font-name, 2vh, #2f2f2f);
+
+        @media screen and (max-width: $breakpoint-medium-max) {
+          margin-right: 0;
+          margin-top: 5%;
+          width: 100%;
+        }
+      }
+    }
+
+    .row {
+      width: 100%;
+      margin-bottom: 2vh;
+    }
+  }
+}
