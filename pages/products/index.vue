@@ -14,7 +14,7 @@ useHead({
         },
         {
             name: "keywords",
-            content: "Bücher",
+            content: "Bücher, Shop, Produkte",
         },
     ],
 });
@@ -32,7 +32,7 @@ breadcrumbStore.addBreadcrumb({
     link: "/products",
 });
 
-const { data: products } = await useFetch(`${useRuntimeConfig()}/produkte`);
+const { data: products } = await useFetch(`${useRuntimeConfig().public.baseURL}/produkte`);
 const defaultImage = useRuntimeConfig().public.defaultImage;
 </script>
 

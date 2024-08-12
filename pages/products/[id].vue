@@ -2,18 +2,36 @@
 import { useBreadcrumbStore } from "~/store/breadcrumb.store";
 
 const id = useRoute().params.id;
-const { data: product } = await useFetch(
+const product = await useFetch(
     `${useRuntimeConfig().public.baseURL}/produkte/${id}`,
 ).then((res) => {
     if (!res.data.value) {
         return {};
     }
+
+    const formatAddress = (address) => {
+        // splits address into 1. street 2. house number 3. city 4. postal code
+        const addressPart = address.split(";");
+        return `${addressPart[0]} ${addressPart[1]}, ${addressPart[3]} ${addressPart[2]}`;
+    };
+
     return {
         ...res.data.value,
+        name: res.data.value.bezeichnung,
+        price: res.data.value.preis,
         bild:
             res.data.value.bilder_path != null
                 ? res.data.value.bilder_path + "/plakat.jpg"
                 : useRuntimeConfig().public.defaultImage,
+        orte: [
+            ...res.data.value.orte.map((ort) => {
+                return {
+                    ortId: ort.ortId,
+                    name: ort.name,
+                    adresse: formatAddress(ort.adresse),
+                };
+            }),
+        ]
     };
 });
 
@@ -59,7 +77,7 @@ breadcrumbStore.addBreadcrumb({
                 <h1 class="title col-4">
                     {{ product.name }}
                 </h1>
-                <p class="date">Für {{ product.price }} €</p>
+                <p class="date">Für {{ product.price.toString().replace('.', ',') }} €</p>
             </div>
             <div class="image col-5">
                 <img :alt="product.name" :src="product.bild" width="100%" />
