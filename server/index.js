@@ -23,6 +23,7 @@ app.use(
 
 app.use(express.static(__dirname + "/uploads"));
 
+// TODO: Switch CORS back to production
 // let whitelist = [
 //     "http://okay-ybbs.at",
 //     "http://www.okay-ybbs.at",
@@ -39,6 +40,12 @@ app.use(express.static(__dirname + "/uploads"));
 //         },
 //     }),
 // );
+
+app.use(
+    cors({
+        origin: "*",
+    }),
+);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));

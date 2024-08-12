@@ -74,18 +74,10 @@ function concat(...strings) {
 }
 
 function scrollTo(target) {
-    let options = {
-        container: "body",
-        easing: "ease-in-out",
-        force: true,
-        cancelable: false,
-        offset: -100,
-        x: false,
-        y: true,
-    };
-
-    // TODO: Replace event fuckting shit with scroll-to plugin
-    event.$scrollTo(target, 500, options);
+    window.scrollTo({
+        top: document.querySelector(target).offsetTop,
+        behavior: "smooth",
+    })
 }
 
 function images() {

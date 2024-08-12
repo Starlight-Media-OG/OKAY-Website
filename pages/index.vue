@@ -109,17 +109,10 @@ onMounted(() => {
 });
 
 function scrollTo(target) {
-    let options = {
-        container: "body",
-        easing: "ease-in-out",
-        force: true,
-        cancelable: false,
-        x: false,
-        y: true,
-    };
-
-    // TODO: Update this fucking shit to use scroll-To plugin
-    this.$scrollTo(target, 500, options);
+    window.scrollTo({
+        top: document.querySelector(target).offsetTop,
+        behavior: "smooth",
+    });
 }
 </script>
 

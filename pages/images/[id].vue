@@ -68,7 +68,7 @@ breadcrumbStore.addBreadcrumb({
             </div>
         </section>
         <section class="content col-12" style="margin-bottom: 0">
-            <gallery :id="id" type="event" />
+            <gallery :id="id" type="event" :img-path="bild"/>
         </section>
     </main>
 </template>
