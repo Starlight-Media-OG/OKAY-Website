@@ -15,10 +15,10 @@
     "gsap": "^3.12.5",
     "nuxt": "^3.12.4",
     "pinia": "^2.2.0",
-    "v-runtime-template": "^1.10.0",
     "vue": "latest",
     "vue-fragment": "^1.6.0",
-    "vue-scrollto": "^2.20.0"
+    "vue-scrollto": "^2.20.0",
+    "vue3-runtime-template-next": "^1.0.0"
   },
   "devDependencies": {
     "sass": "^1.77.8"

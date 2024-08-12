@@ -48,4 +48,11 @@ export default defineNuxtConfig({
   plugins: [{ src: "~/plugins/scroll-to.plugin.ts", mode: "client" }],
   modules: ["@pinia/nuxt"],
   css: ["~/assets/style/style.scss", "~/assets/style/variable.scss"],
+  hooks: {
+    'vite:extendConfig': (config, { isClient, isServer }) => {
+      if (isClient) {
+        config.resolve!.alias!.vue = 'vue/dist/vue.esm-bundler'
+      }
+    },
+  },
 });
