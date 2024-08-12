@@ -257,24 +257,24 @@ breadcrumbStore.addBreadcrumb({
                     </div>
                 </div>
             </div>
-            <div class="area flex flex-center">
-                <div class="smallSize">
-                    <h2>Projekte</h2>
-                    <div class="cards row flex flex-center">
-                        <card
-                            v-for="project in projects"
-                            :key="project.pId"
-                            :id="project.pId"
-                            :title="project.titel"
-                            :teaser="project.beschreibung"
-                            :date="project.start_datum"
-                            :endDate="project.end_datum"
-                            :image="project.bilder_path + '/plakat.jpg'"
-                            projects
-                        />
-                    </div>
-                </div>
-            </div>
+<!--            <div class="area flex flex-center">-->
+<!--                <div class="smallSize">-->
+<!--                    <h2>Projekte</h2>-->
+<!--                    <div class="cards row flex flex-center">-->
+<!--                        <card-->
+<!--                            v-for="project in projects"-->
+<!--                            :key="project.pId"-->
+<!--                            :id="project.pId"-->
+<!--                            :title="project.titel"-->
+<!--                            :teaser="project.beschreibung"-->
+<!--                            :date="project.start_datum"-->
+<!--                            :endDate="project.end_datum"-->
+<!--                            :image="project.bilder_path + '/plakat.jpg'"-->
+<!--                            projects-->
+<!--                        />-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
             <div class="area flex flex-center" style="margin-bottom: 0">
                 <div class="smallSize">
                     <h2>Statuten</h2>
