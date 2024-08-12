@@ -31,7 +31,7 @@ onMounted(() => {
             <p
                 class="row flex flex-center"
                 style="
-                    font-family: &quot;Nunito Sans&quot;, sans-serif;
+                    font-family: 'Nunito Sans', sans-serif;
                     text-align: center;
                 "
             >

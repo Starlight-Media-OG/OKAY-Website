@@ -1,3 +1,105 @@
+<script setup>
+const props = defineProps({
+    title: String,
+    teaser: String,
+    image: String,
+    date: String,
+    endDate: String,
+    id: Number,
+    news: Boolean,
+    events: Boolean,
+    projects: Boolean,
+});
+
+const trimString = (txt, length) => {
+    if(txt.length < length) {
+        return txt;
+    }
+
+    if (txt.length > length) {
+        return txt.substr(0, length) + '...';
+    } else {
+        return txt + '...';
+    }
+};
+
+const concat = (...strings) => {
+    let conString = '';
+    strings.forEach((arg) => {
+        conString += arg;
+    });
+    return conString;
+};
+
+const duration = computed(() => {
+    return props.endDate != null && props.date != null;
+});
+
+const cardColor = computed(() => {
+    if (props.events) {
+        return '#00629B';
+    } else if (props.news) {
+        return '#FFC72C';
+    } else if (props.projects) {
+        return '#dedede';
+    }
+});
+
+const buttonColor = computed(() => {
+    if (props.events) {
+        return '#FFC72C';
+    } else if (props.news) {
+        return '#00629B';
+    } else if (props.projects) {
+        return '#FFC72C';
+    }
+});
+
+const fontColor = computed(() => {
+    if (props.events) {
+        return '#fff';
+    } else if (props.news) {
+        return '#000';
+    } else if (props.projects) {
+        return '#000';
+    }
+});
+
+const buttonFontColor = computed(() => {
+    if (props.events) {
+        return '#000';
+    } else if (props.news) {
+        return '#fff';
+    } else if (props.projects) {
+        return '#000';
+    }
+});
+
+const datum = computed(() => {
+    return new Date(props.date).toLocaleDateString('de-DE', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+});
+
+const endDatum = computed(() => {
+    return new Date(props.endDate).toLocaleDateString('de-DE', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+    });
+});
+
+const showImage = computed(() => {
+    if (props.image.includes(null) || props.image.charAt(0) != 'h') {
+        return useRuntimeConfig().public.defaultImage;
+    } else {
+        return props.image;
+    }
+});
+</script>
+
 <template>
     <div
         class="mainCard"
@@ -6,8 +108,8 @@
         <div class="column">
             <div class="image">
                 <img
-                    :src="this.showImage"
-                    :alt="this.title"
+                    :src="showImage"
+                    :alt="title"
                     class="image-col"
                 />
             </div>
@@ -15,24 +117,24 @@
         <div class="column content">
             <div class="header">
                 <div class="date column" v-if="duration">
-                    <p>{{ this.datum }} - {{ this.endDatum }}</p>
+                    <p>{{ datum }} - {{ endDatum }}</p>
                 </div>
                 <div class="date column" v-if="!duration">
-                    <p>{{ this.datum }}</p>
+                    <p>{{ datum }}</p>
                 </div>
                 <div class="card-title column">
-                    <h2>{{ this.title }}</h2>
+                    <h2>{{ title }}</h2>
                 </div>
             </div>
             <div
                 class="teaser-news"
-                v-html="trimString(this.teaser, 300)"
+                v-html="trimString(teaser, 300)"
             ></div>
             <div v-if="!news && !projects">
                 <nuxt-link
-                    :to="concat('/events/', this.id)"
+                    :to="concat('/events/', id)"
                     class="ignoreTag"
-                    :aria-label="'Gehe zu ' + this.title"
+                    :aria-label="'Gehe zu ' + title"
                 >
                     <div
                         class="button"
@@ -49,9 +151,9 @@
             </div>
             <div v-if="news">
                 <nuxt-link
-                    :to="concat('/news/', this.id)"
+                    :to="concat('/news/', id)"
                     class="ignoreTag"
-                    :aria-label="'Gehe zu ' + this.title"
+                    :aria-label="'Gehe zu ' + title"
                 >
                     <div
                         class="button"
@@ -68,9 +170,9 @@
             </div>
             <div v-if="projects">
                 <nuxt-link
-                    :to="concat('/projects/', this.id)"
+                    :to="concat('/projects/', id)"
                     class="ignoreTag"
-                    :aria-label="'Gehe zu ' + this.title"
+                    :aria-label="'Gehe zu ' + title"
                 >
                     <div
                         class="button"
@@ -88,101 +190,6 @@
         </div>
     </div>
 </template>
-
-<script>
-export default {
-    name: "card",
-    props: {
-        title: String,
-        teaser: String,
-        image: String,
-        date: String,
-        endDate: String,
-        id: Number,
-        news: Boolean,
-        events: Boolean,
-        projects: Boolean,
-    },
-    methods: {
-        trimString: function (txt, length) {
-            if (txt.length > length) {
-                return txt.substr(0, length) + "...";
-            } else {
-                return txt + "...";
-            }
-        },
-        concat: function (...strings) {
-            let conString = "";
-            strings.forEach((arg, index) => {
-                conString += arg;
-            });
-            return conString;
-        },
-    },
-    computed: {
-        duration: function () {
-            return this.endDate != null && this.date != null;
-        },
-        cardColor: function () {
-            if (this.events) {
-                return "#00629B";
-            } else if (this.news) {
-                return "#FFC72C";
-            } else if (this.projects) {
-                return "#dedede";
-            }
-        },
-        buttonColor: function () {
-            if (this.events) {
-                return "#FFC72C";
-            } else if (this.news) {
-                return "#00629B";
-            } else if (this.projects) {
-                return "#FFC72C";
-            }
-        },
-        fontColor: function () {
-            if (this.events) {
-                return "#fff";
-            } else if (this.news) {
-                return "#000";
-            } else if (this.projects) {
-                return "#000";
-            }
-        },
-        buttonFontColor: function () {
-            if (this.events) {
-                return "#000";
-            } else if (this.news) {
-                return "#fff";
-            } else if (this.projects) {
-                return "#000";
-            }
-        },
-        datum: function () {
-            return new Date(this.date).toLocaleDateString("de-DE", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            });
-        },
-        endDatum: function () {
-            return new Date(this.endDate).toLocaleDateString("de-DE", {
-                year: "numeric",
-                month: "long",
-                day: "numeric",
-            });
-        },
-        showImage: function () {
-            if (this.image.includes(null) || this.image.charAt(0) != "h") {
-                return useRuntimeConfig().public.defaultImage;
-            } else {
-                return this.image;
-            }
-        },
-    },
-};
-</script>
 
 <style scoped lang="scss">
 @import "../assets/style/components/card.scss";

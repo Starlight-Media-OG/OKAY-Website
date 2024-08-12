@@ -20,6 +20,10 @@ useHead({
     ],
 });
 
+let objectsCurrent = ref([]);
+let objectsNext = ref([]);
+let objectsOther = ref([]);
+
 await useFetch(useRuntimeConfig().public.baseURL + "/events").then((res) => {
     if (!res.data.value) {
         return;
@@ -27,26 +31,23 @@ await useFetch(useRuntimeConfig().public.baseURL + "/events").then((res) => {
     sortEvents(res.data.value);
 });
 
-let objectsCurrent = ref([]);
-let objectsNext = ref([]);
-let objectsOther = ref([]);
-
 function sortEvents(arr) {
-    arr.forEach((value) => {
+    const currentDate = new Date(Date.now());
+    for (const item of arr) {
         if (
-            new Date(value.end_datum).getMonth() > new Date().getMonth() &&
-            new Date(value.start_datum).getMonth() <= new Date().getMonth()
+            new Date(item.end_datum).getMonth() >= currentDate.getMonth() &&
+            new Date(item.start_datum).getMonth() <= currentDate.getMonth()
         ) {
-            objectsCurrent.value.push(value);
+            objectsCurrent.value.push(item);
         } else if (
-            new Date(value.start_datum).getMonth() ===
+            new Date(item.start_datum).getMonth() ===
             new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).getMonth()
         ) {
-            objectsNext.value.push(value);
+            objectsNext.value.push(item);
         } else {
-            objectsOther.value.push(value);
+            objectsOther.value.push(item);
         }
-    });
+    }
 }
 
 const breadcrumbStore = useBreadcrumbStore();
@@ -191,6 +192,14 @@ main {
         @media screen and (max-width: $breakpoint-medium-max) {
             display: none;
         }
+    }
+}
+
+.area {
+    .noEvent  {
+        margin-bottom: 5vh;
+        color: white;
+        font-family: $flow-font-name;
     }
 }
 

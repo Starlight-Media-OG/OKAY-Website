@@ -24,27 +24,29 @@ breadcrumbStore.addBreadcrumb({
     link: "/",
 });
 
-const { data: events } = await useFetch(
-    useRuntimeConfig().public.baseURL + "/events/3",
+const {data: events } = await useFetch(
+    useRuntimeConfig().public.baseURL + "/events/recent/3",
 );
-const { data: news } = await useFetch(
-    useRuntimeConfig().public.baseURL + "/news/3",
-).then((response) => {
-    if (!response.data.value) {
-        return [];
+
+const { data: news } = await useAsyncData(
+    'recent-three-news',
+    async () => {
+       const news = await $fetch(
+           useRuntimeConfig().public.baseURL + "/news/recent/3",
+       );
+
+       return news.map((localNews) => {
+           return {
+               ...localNews,
+               anreisser: localNews.anreisser === '' ? localNews.bericht : localNews.anreisser,
+           };
+       });
     }
-    return response.data.value.map((news) => {
-        return {
-            ...news,
-            anreisser: news.anreiser === "" ? news.bericht : news.anreisser,
-        };
-    });
-});
+);
 
 onMounted(() => {
     //Verweis auf das Element erzeugen, in welchem das 3D-Modell dargestellt wird
     const canvas = document.getElementById("canvas3d");
-    const canvasSuper = document.getElementById("canvasSuper");
 
     //Deklaration der Render Engine
     const engine = new BABYLON.Engine(canvas, true);

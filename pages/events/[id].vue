@@ -3,7 +3,8 @@ import { useBreadcrumbStore } from "~/store/breadcrumb.store";
 
 const router = useRouter();
 const id = useRoute().params.id;
-const { data: event } = await useFetch(
+
+const event = await useFetch(
     useRuntimeConfig().public.baseURL + "/events/" + id,
 ).then((res) => {
     if (!res.data.value) {
@@ -17,12 +18,12 @@ const { data: event } = await useFetch(
             res.data.value.bilder_path != null
                 ? res.data.value.bilder_path + "/plakat.jpg"
                 : useRuntimeConfig().public.defaultImage,
-        date: new Date(event.start_datum).toLocaleDateString("de-DE", {
+        date: new Date(res.data.value.start_datum).toLocaleDateString("de-DE", {
             year: "numeric",
             month: "long",
             day: "numeric",
         }),
-        end_date: new Date(event.end_datum).toLocaleDateString("de-DE", {
+        end_date: new Date(res.data.value.end_datum).toLocaleDateString("de-DE", {
             year: "numeric",
             month: "long",
             day: "numeric",
@@ -34,7 +35,7 @@ const { data: event } = await useFetch(
 
 const { data: koms } = await useFetch(
     useRuntimeConfig().public.baseURL + "/kommentare/getKommentare/" + id,
-);
+) ?? { data: [] };
 
 useHead({
     title: event?.name + " - OKAY Ybbs",
@@ -122,6 +123,8 @@ function timeFormatter(time) {
     let splitted = time.split(":");
     return splitted[0] + ":" + splitted[1];
 }
+
+const showTime = computed(() => !!event.days)
 </script>
 
 <template>
@@ -181,7 +184,7 @@ function timeFormatter(time) {
                     >Zu den Bildern</nuxt-link
                 >
             </div>
-            <section class="commentBox flex flex-center">
+            <section class="commentBox flex flex-center" v-if="koms">
                 <commentBox :koms="koms" :images="images()" :eId="id" />
             </section>
         </section>
