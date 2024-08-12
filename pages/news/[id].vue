@@ -3,7 +3,7 @@ import { useBreadcrumbStore } from "~/store/breadcrumb.store";
 
 const id = useRoute().params.id;
 const router = useRouter();
-const { data: news } = await useFetch(
+const news = await useFetch(
     useRuntimeConfig().public.baseURL + "/news/" + id,
 ).then((res) => {
     if (!res.data.value) {
@@ -13,7 +13,7 @@ const { data: news } = await useFetch(
     return {
         name: res.data.value.titel,
         beschreibung: res.data.value.bericht,
-        datum: new Date(res.data.value.datum).toLocaleDateString("de-AT", {
+        date: new Date(res.data.value.datum).toLocaleDateString("de-AT", {
             year: "numeric",
             month: "long",
             day: "numeric",

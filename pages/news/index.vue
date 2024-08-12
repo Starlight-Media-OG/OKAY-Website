@@ -1,33 +1,19 @@
 <script setup>
 import { useBreadcrumbStore } from "~/store/breadcrumb.store";
 
-const { data: news } = await useFetch(
+const news = await useFetch(
     useRuntimeConfig().public.baseURL + "/news",
 ).then((res) => {
     if (!res.data.value) {
         return [];
     }
 
-    return res.data.value
-        .map(async (news) => {
-            const data = await $fetch(
-                useRuntimeConfig().public.baseURL + "/news/" + news.nId,
-            );
-
-            if (data.anreisser == "") {
-                data.anreisser = data.bericht;
-            }
-
-            return data;
-        })
-        .sort((a, b) => {
-            var keyA = new Date(a.datum),
-                keyB = new Date(b.datum);
-            // Compare the 2 dates
-            if (keyA > keyB) return -1;
-            if (keyA < keyB) return 1;
-            return 0;
-        });
+    return res.data.value.map((news) => {
+        return {
+            ...news,
+            anreisser: news.anreisser === '' ? news.bericht : news.anreisser,
+        }
+    });
 });
 
 useHead({
