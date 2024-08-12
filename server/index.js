@@ -64,10 +64,10 @@ app.post("/images/upload/events/", async (req, res) => {
         } else {
             let data = [];
 
-            let req2 = await $fetch(baseURL + "/kommentare");
+            let req2 = await axios.get(baseURL + "/kommentare");
             let komId = req2.data.komId;
 
-            req2 = await $fetch(baseURL + "/kommentare/getEvent/" + komId);
+            req2 = await axios.get(baseURL + "/kommentare/getEvent/" + komId);
             let eID = req2.data.oaId;
 
             if (req.files != {}) {
@@ -75,17 +75,13 @@ app.post("/images/upload/events/", async (req, res) => {
                     let img = req.files[key];
 
                     let dir =
-                        "/root/Website/server/uploads/events/" + eID + "/comment" + komId;
-
-                    console.log(dir);
+                        "./uploads/events/" + eID + "/comment" + komId;
 
                     if (!fs.existsSync(dir)) {
                         fs.mkdirSync(dir);
                     }
 
                     img.mv(dir + "/" + img.name);
-
-                    console.log(img);
 
                     data.push({
                         name: img.name,
@@ -213,7 +209,7 @@ app.post("/images/upload/mitglied/", async (req, res) => {
                 if (img.name.contains("portrait")) {
                     img.mv("./uploads/mitglied/" + ID + "/" + img.name);
                 } else {
-                    //TODO: Rename image to portrati.fileEnding ...
+                    //TODO: Rename image to portrait.fileEnding ...
                 }
 
                 data.push({

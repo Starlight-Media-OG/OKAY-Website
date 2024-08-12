@@ -1,3 +1,108 @@
+<script setup>
+const props = defineProps({
+    koms: Array,
+    images: Array,
+    eId: Number,
+});
+
+const activeAdd = ref(false);
+const txt = ref('');
+const name = ref('');
+const mail = ref('');
+const newsletter = ref(false);
+const files = ref([]);
+const modalShow = ref(false);
+const dsg = ref(false);
+
+const imagesId = (arr, id) => {
+    return arr.filter((item) => item.id == id);
+};
+
+const registerFiles = (e) => {
+    files.value = e.target.files;
+};
+
+const send = async () => {
+    if (name.value != '' && dsg.value) {
+        if (props.eId != '' || props.eId != undefined) {
+            let req = await $fetch(
+                useRuntimeConfig().public.baseURL + '/kommentare/',
+                {
+                    method: 'POST',
+                    body: {
+                        email: mail.value,
+                        username: name.value,
+                        kommentar_text: txt.value,
+                        datum:
+                            new Date().getFullYear() +
+                            '-' +
+                            ('0' + (new Date().getMonth() + 1)).slice(-2) +
+                            '-' +
+                            ('0' + new Date().getDate()).slice(-2),
+                        oaId: props.eId,
+                    }
+                },
+            );
+
+            let komId = req.id;
+
+            if (komId != undefined) {
+                await $fetch(
+                    useRuntimeConfig().public.baseURL + '/setEvent',
+                    {
+                        method: 'POST',
+                        body: {
+                            komId: komId,
+                            oaId: props.eId,
+                        }
+                    },
+                );
+            }
+
+            if (files.value != undefined || files.value != {}) {
+                let url = useRuntimeConfig().public.baseImage + '/images/upload/events/';
+
+                let formData = new FormData();
+
+                for (const i of Object.keys(files.value)) {
+                    formData.append('files', files.value[i]);
+                }
+
+                await $fetch(url, {
+                    method: 'POST',
+                    body: formData
+                });
+            }
+
+            txt.value = '';
+            modalShow.value = false;
+        }
+    }
+};
+
+const initials = (kom) => {
+    if (kom.username.indexOf(' ') >= 0) {
+        let tmp = kom.username.split(' ');
+        tmp = tmp[0].charAt(0).toUpperCase() + tmp[1].charAt(0).toUpperCase();
+        return tmp;
+    } else {
+        return ' ' + kom.username.charAt(0);
+    }
+};
+
+const toggleModal = () => {
+    modalShow.value = !modalShow.value;
+};
+
+const isImage = (path) => {
+    return contains(path, ['.jpg', '.jpeg', '.bmp', '.png', '.svg', '.ico', '.gif']);
+};
+
+const contains = (string, arr) => {
+    return arr.some(check => string.includes(check));
+};
+</script>
+
 <template>
     <div class="commentBox" style="margin-bottom: 0">
         <div class="heading">
@@ -30,10 +135,7 @@
                             >
                                 <div class="row">
                                     <div
-                                        v-for="image in imagesId(
-                                            images,
-                                            kom.komId,
-                                        )"
+                                        v-for="image in imagesId(images, kom.komId)"
                                         :key="image"
                                         class="col flex flex-center"
                                     >
@@ -78,7 +180,7 @@
                     <p class="text center">+</p>
                     <div
                         class="flowUp"
-                        :class="{ 'flowUp-active': this.activeAdd }"
+                        :class="{ 'flowUp-active': activeAdd }"
                     >
                         <div class="row flex flex-center">
                             <input
@@ -100,7 +202,7 @@
                             tabindex="4"
                             aria-label="Kommentar absenden"
                         >
-                            <SvgArrow direction="right" />
+                            <SvgArrow direction="right"/>
                         </button>
                     </p>
                 </div>
@@ -140,16 +242,10 @@
                             />
                             <label
                                 for="dsg"
-                                @click="
-                                    event.preventDefault();
-                                    document.getElementById('dsg').selected =
-                                        !document.getElementById('dsg')
-                                            .selected;
-                                "
-                                >Hiermit erkläre ich mich mit den
-                                <nuxt-link to="/dsgvo"
-                                    >Nutzungsbedingungen</nuxt-link
-                                >
+                            >Hiermit erkläre ich mich mit den
+                                <nuxt-link to="/dsgvo">
+                                    Nutzungsbedingungen
+                                </nuxt-link>
                                 einverstanden.</label
                             >
                         </div>
@@ -181,146 +277,3 @@
 <style scoped lang="scss">
 @import "commentBox";
 </style>
-
-<script>
-import fragment from "vue-fragment";
-
-export default {
-    name: "CommentBox",
-    props: {
-        koms: Array,
-        images: Array,
-        eId: Number,
-    },
-    components: {
-        fragment,
-    },
-    data() {
-        return {
-            activeAdd: false,
-            txt: "",
-            name: "",
-            mail: "",
-            newsletter: false,
-            files: [],
-            modalShow: false,
-            fileUplaodTarget:
-                useRuntimeConfig().public.baseImage + "/images/upload/events/",
-            dsg: false,
-        };
-    },
-    methods: {
-        imagesId: function (arr, id) {
-            return arr.filter((item) => item.id == id);
-        },
-        registerFiles: function (e) {
-            this.files = e.target.files;
-        },
-        send: async function () {
-            if (this.name != "" && this.dsg) {
-                if (this.eId != "" || this.eId != undefined) {
-                    let req = await axios.post(
-                        useRuntimeConfig().public.baseURL + "/kommentare/",
-                        {
-                            email: this.mail,
-                            username: this.name,
-                            kommentar_text: this.txt,
-                            datum:
-                                new Date().getFullYear() +
-                                "-" +
-                                ("0" + (new Date().getMonth() + 1)).slice(-2) +
-                                "-" +
-                                ("0" + new Date().getDate()).slice(-2),
-                            oaId: this.eId,
-                        },
-                    );
-
-                    let komId = req.data.id;
-
-                    if (komId != undefined) {
-                        await axios.post(
-                            useRuntimeConfig().public.baseURL + "/setEvent",
-                            {
-                                komId: komId,
-                                oaId: this.eId,
-                            },
-                        );
-                    }
-
-                    if (this.files != undefined || this.files != {}) {
-                        let url =
-                            useRuntimeConfig().public.baseImage +
-                            "/images/upload/events/";
-
-                        let formData = new FormData();
-
-                        for (const i of Object.keys(this.files)) {
-                            formData.append("files", this.files[i]);
-                        }
-
-                        let req = axios.post(url, formData);
-                    }
-
-                    this.txt = "";
-                    this.toggleModal();
-
-                    if (process.client) {
-                        window.location.reload(false);
-                    }
-                }
-            }
-        },
-        initials: function (kom) {
-            if (kom.username.indexOf(" ") >= 0) {
-                let tmp = kom.username.split(" ");
-
-                tmp =
-                    tmp[0].charAt(0).toUpperCase() +
-                    tmp[1].charAt(0).toUpperCase();
-
-                return tmp;
-            } else {
-                return " " + kom.username.charAt(0);
-            }
-        },
-        previewFiles() {
-            if (this.$refs.myFiles.files !== undefined)
-                this.files = this.$refs.myFiles.files;
-        },
-        toggleModal: function () {
-            this.modalShow = !this.modalShow;
-        },
-        isImage: function (path) {
-            let isImage = true;
-
-            isImage = this.contains(path, [
-                ".jpg",
-                ".jpeg",
-                ".bmp",
-                ".png",
-                ".svg",
-                ".ico",
-                ".gif",
-            ]);
-
-            return isImage;
-        },
-        contains: function (string, arr) {
-            const tmp = [];
-            for (const check of arr) {
-                if (string.includes(check)) {
-                    tmp.push(true);
-                } else {
-                    tmp.push(false);
-                }
-            }
-
-            if (tmp.includes(true)) {
-                return true;
-            } else {
-                return false;
-            }
-        },
-    },
-};
-</script>

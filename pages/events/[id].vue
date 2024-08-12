@@ -1,5 +1,5 @@
 <script setup>
-import { useBreadcrumbStore } from "~/store/breadcrumb.store";
+import {useBreadcrumbStore} from "~/store/breadcrumb.store";
 
 const router = useRouter();
 const id = useRoute().params.id;
@@ -33,9 +33,9 @@ const event = await useFetch(
     };
 });
 
-const { data: koms } = await useFetch(
+const {data: koms} = await useFetch(
     useRuntimeConfig().public.baseURL + "/kommentare/getKommentare/" + id,
-) ?? { data: [] };
+) ?? {data: []};
 
 useHead({
     title: event?.name + " - OKAY Ybbs",
@@ -61,8 +61,8 @@ useHead({
 
 const breadcrumbStore = useBreadcrumbStore();
 breadcrumbStore.$reset();
-breadcrumbStore.addBreadcrumb({ step: 1, text: "Startseite", link: "/" });
-breadcrumbStore.addBreadcrumb({ step: 2, text: "Events", link: "/events" });
+breadcrumbStore.addBreadcrumb({step: 1, text: "Startseite", link: "/"});
+breadcrumbStore.addBreadcrumb({step: 2, text: "Events", link: "/events"});
 breadcrumbStore.addBreadcrumb({
     step: 3,
     text: id,
@@ -83,7 +83,7 @@ function scrollTo(target) {
 function images() {
     let images = [];
 
-    for (const kom of event.koms) {
+    for (const kom of koms.value) {
         if (kom.bilder_path != null) {
             if (process.client) {
                 let xhr = new XMLHttpRequest();
@@ -97,8 +97,8 @@ function images() {
                         let obj = {
                             id: kom.komId,
                             image:
-                                process.env.baseImage +
-                                image.replace("server/uploads", ""),
+                                useRuntimeConfig().public.baseImage +
+                                image.replace("uploads", ""),
                         };
 
                         images.push(obj);
@@ -144,7 +144,7 @@ const showTime = computed(() => !!event.days)
                 <p></p>
             </div>
             <div class="image col-5">
-                <img :src="event.bild" :alt="event.name" width="100%" />
+                <img :src="event.bild" :alt="event.name" width="100%"/>
             </div>
         </section>
         <section id="content" class="content flex flex-center">
@@ -173,11 +173,12 @@ const showTime = computed(() => !!event.days)
                 "
             >
                 <nuxt-link :to="concat('/images/', id)" class="further-link"
-                    >Zu den Bildern</nuxt-link
+                >Zu den Bildern
+                </nuxt-link
                 >
             </div>
-            <section class="commentBox flex flex-center" v-if="koms">
-                <commentBox :koms="koms" :images="images()" :eId="id" />
+            <section class="commentBox flex flex-center">
+                <commentBox :koms="koms" :images="images()" :eId="id"/>
             </section>
         </section>
     </main>
