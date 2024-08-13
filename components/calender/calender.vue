@@ -106,7 +106,7 @@ const checkEventOnDate = (date, month, year) => {
     }
 
     if (badgeNumber > 0) {
-        tableString += `<div class='badgeNumber' @click='toggle(${date})'><p>${badgeNumber}</p></div>`;
+        tableString += `<div class='badgeNumber' @click='() => toggle(${date})'><p>${badgeNumber}</p></div>`;
         tableString += createPopUp(eIds, date, month, year);
     }
 
@@ -121,7 +121,7 @@ const createPopUp = (array, date, month, year) => {
     let modal = `<div class='modal flex flex-center' id='calPopUp${date}' style='display: none;'>`;
     let content = `<div class='content flex flex-center'>`;
 
-    let close = `<div class='close row' id='close${date}' @click='toggle(${date})'> x </div>`;
+    let close = `<div class='close row' id='close${date}' @click='() => toggle(${date})'> x </div>`;
     let header = `<div class='header row'>${date}.${month + 1}.${year}</div>`;
 
     content += close;
@@ -173,6 +173,14 @@ const next = () => {
 };
 
 updateCalendar(currentMonth.value, currentYear.value);
+
+const templateProps = {
+    events,
+    months,
+    currentMonth,
+    currentYear,
+    toggle,
+}
 </script>
 
 <template>
@@ -202,7 +210,7 @@ updateCalendar(currentMonth.value, currentYear.value);
                 <th class="day">So</th>
             </tr>
             </thead>
-            <VRuntimeTemplate :template="tb" />
+            <VRuntimeTemplate :template="tb"  :template-props="templateProps"/>
         </table>
     </div>
 </template>
