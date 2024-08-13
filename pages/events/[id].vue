@@ -83,6 +83,10 @@ function scrollTo(target) {
 function images() {
     let images = [];
 
+    if(!koms.value) {
+        return images;
+    }
+
     for (const kom of koms.value) {
         if (kom.bilder_path != null) {
             if (process.client) {

@@ -1,7 +1,4 @@
 <script setup>
-import { ref, computed, onMounted } from 'vue';
-import { useRuntimeConfig, useFetch } from '#app';
-
 const props = defineProps({
     imgPath: String,
     id: String,
@@ -23,7 +20,11 @@ const fetchImages = async () => {
     const config = useRuntimeConfig();
     let url = '';
 
-    if (!props.imgPath) throw 'Bilder Path is null';
+    if (!props.imgPath) {
+        imageGallery.value = null;
+        return;
+    }
+
     if (props.id && props.imgPath) {
         switch (props.type) {
             case 'event':
@@ -45,7 +46,6 @@ const fetchImages = async () => {
     } else {
         const tmp = 'uploads';
         const images = data.value.data.map(item => config.public.baseImage + item.replace(tmp, ''));
-        console.log(images);
         imageGallery.value = images;
         selectedImage.value = images[0];
     }

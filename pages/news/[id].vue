@@ -18,6 +18,7 @@ const news = await useFetch(
             month: "long",
             day: "numeric",
         }),
+        bilder_path: res.data.value.bilder_path,
         bild: !!res.data.value.bilder_path
             ? res.data.value.bilder_path + "/plakat.jpg"
             : useRuntimeConfig().public.defaultImage,
@@ -74,9 +75,7 @@ breadcrumbStore.addBreadcrumb({ step: 3, text: id, link: "/news/" + id });
                 <gallery
                     :id="id"
                     :imgPath="
-                        news.bilder_path != null ||
-                        news.bilder_path != '' ||
-                        news.bilder_path != 'NULL'
+                        !!news.bilder_path
                             ? news.bilder_path
                             : null
                     "
