@@ -7,8 +7,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      baseURL: process.env.BASE_URL || "http://localhost:3000",
-      baseImage: process.env.BASE_IMAGE || "http://localhost:4000",
+      baseURL: process.env.BASE_URL || "http://okay-ybbs.at:3000",
+      baseImage: process.env.BASE_IMAGE || "http://okay-ybbs.at:4000",
       defaultImage: "/img/defaultImage.png",
     },
   },

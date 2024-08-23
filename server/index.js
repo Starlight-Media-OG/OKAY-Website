@@ -9,9 +9,8 @@ const axios = require("axios");
 const fs = require("fs");
 const https = require("https");
 
-// TODO: change paths to okay-ybbs
-const baseURL = "http://localhost:3000";
-const baseImage = "http://localhost:4000";
+const baseURL = "http://okay-ybbs.at:3000";
+const baseImage = "http://okay-ybbs.at:4000";
 
 const app = express();
 
@@ -23,23 +22,22 @@ app.use(
 
 app.use(express.static(__dirname + "/uploads"));
 
-// TODO: Switch CORS back to production
-// let whitelist = [
-//     "http://okay-ybbs.at",
-//     "http://www.okay-ybbs.at",
-//     "http://server.okay-ybbs.at",
-// ];
-// app.use(
-//     cors({
-//         origin: function (origin, callback) {
-//             if (!origin || whitelist.indexOf(origin) !== -1) {
-//                 callback(null, true);
-//             } else {
-//                 callback(new Error("Not allowed by CORS"));
-//             }
-//         },
-//     }),
-// );
+let whitelist = [
+    "http://okay-ybbs.at",
+    "http://www.okay-ybbs.at",
+    "http://server.okay-ybbs.at",
+];
+app.use(
+    cors({
+        origin: function (origin, callback) {
+            if (!origin || whitelist.indexOf(origin) !== -1) {
+                callback(null, true);
+            } else {
+                callback(new Error("Not allowed by CORS"));
+            }
+        },
+    }),
+);
 
 app.use(
     cors({
