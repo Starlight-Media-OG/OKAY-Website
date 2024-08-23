@@ -1,3 +1,30 @@
+<script setup>
+import { useBreadcrumbStore } from "~/store/breadcrumb.store";
+
+useHead({
+    title: "Kalender - OKAY Ybbs",
+    meta: [
+        {
+            charset: "utf-8",
+        },
+        {
+            name: "description",
+            content:
+                "Alle Events in einem Kalender sortiert und monatlich dargestellt",
+        },
+    ],
+});
+
+const breadcrumbStore = useBreadcrumbStore();
+breadcrumbStore.$reset();
+breadcrumbStore.addBreadcrumb({ step: 1, text: "Startseite", link: "/" });
+breadcrumbStore.addBreadcrumb({
+    step: 2,
+    text: "Kalender",
+    link: "/calender",
+});
+</script>
+
 <template>
     <main class="root flex flex-center">
         <section class="row header flex flex-center">
@@ -6,49 +33,13 @@
             </div>
         </section>
         <section class="content">
-            <calender/>
+            <calender />
         </section>
     </main>
 </template>
 
-<script>
-import calender from "../../components/calender/calender";
-
-export default {
-    name: "indexCalender",
-    components: {
-        calender
-    },
-    created() {
-        this.$store.commit('breadcrumbs/clear');
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {todo: {step: 1, text: "Startseite", link: "/"}});
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", {
-            todo: {
-                step: 2,
-                text: "Kalender",
-                link: "/calender"
-            }
-        });
-    },
-    head () {
-        return {
-            title: "Kalender - OKAY Ybbs",
-            meta: [
-                {
-                    charset: 'utf-8'
-                },
-                {
-                    name: "description",
-                    content: "Alle Events in einem Kalender sortiert und monatlich dargestellt"
-                }
-            ]
-        }
-    }
-}
-</script>
-
 <style lang="scss" scoped>
-@import '../../assets/style/variable.scss';
+@import "../../assets/style/variable.scss";
 
 main {
     $header-height: 40vh;
@@ -64,7 +55,6 @@ main {
                 margin-bottom: 5vh;
             }
         }
-
     }
 }
 

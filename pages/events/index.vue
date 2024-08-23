@@ -1,8 +1,66 @@
+<script setup>
+import { useBreadcrumbStore } from "~/store/breadcrumb.store";
+
+useHead({
+    title: "Events - OKAY Ybbs",
+    meta: [
+        {
+            charset: "utf-8",
+        },
+        {
+            name: "description",
+            content:
+                "Hier werden alle aktuellen Events angezeigt, welche vom OKAY Verein organisisert werden.",
+        },
+        {
+            name: "keywords",
+            content:
+                "OKAY, Verein, Events, KIZ, Ausstellung, Gallerie, Konzert",
+        },
+    ],
+});
+
+let objectsCurrent = ref([]);
+let objectsNext = ref([]);
+let objectsOther = ref([]);
+
+await useFetch(useRuntimeConfig().public.baseURL + "/events").then((res) => {
+    if (!res.data.value) {
+        return;
+    }
+    sortEvents(res.data.value);
+});
+
+function sortEvents(arr) {
+    const currentDate = new Date(Date.now());
+    for (const item of arr) {
+        if (
+            new Date(item.end_datum).getMonth() >= currentDate.getMonth() &&
+            new Date(item.start_datum).getMonth() <= currentDate.getMonth()
+        ) {
+            objectsCurrent.value.push(item);
+        } else if (
+            new Date(item.start_datum).getMonth() ===
+            new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).getMonth()
+        ) {
+            objectsNext.value.push(item);
+        } else {
+            objectsOther.value.push(item);
+        }
+    }
+}
+
+const breadcrumbStore = useBreadcrumbStore();
+breadcrumbStore.$reset();
+breadcrumbStore.addBreadcrumb({ step: 1, text: "Startseite", link: "/" });
+breadcrumbStore.addBreadcrumb({ step: 2, text: "Events", link: "/events" });
+</script>
+
 <template>
     <main class="root flex flex-center">
         <section class="row flex flex-center header">
             <div class="svgGraphic">
-                <img src="/animations/events.gif" alt="Events Animation">
+                <img src="/animations/events.gif" alt="Events Animation" />
             </div>
             <div class="flex-break"></div>
             <div class="title">
@@ -12,16 +70,31 @@
         </section>
         <section class="main flex flex-center">
             <div class="link center marginTopSmall">
-                <nuxt-link to="/calender" class="further-link"><em class="underline">Alle Events im Kalender anzeigen</em></nuxt-link>
+                <nuxt-link to="/calender" class="further-link"
+                    ><em class="underline"
+                        >Alle Events im Kalender anzeigen</em
+                    ></nuxt-link
+                >
             </div>
             <div class="area">
                 <div class="thisWeek flex flex-center">
                     <h2 class="weekHeader">Aktueller Monat</h2>
                     <div class="row flex flex-center">
-                        <div class="cards" v-for="event in objectsCurrent" :key="event.oaID" v-if="objectsCurrent.length !== 0">
-                            <card :title="event.titel" :teaser="event.beschreibung"
-                                  :image="event.bilder_path + '/plakat.jpg'"
-                                  :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                        <div
+                            class="cards"
+                            v-for="event in objectsCurrent"
+                            :key="event.oaID"
+                            v-if="objectsCurrent.length !== 0"
+                        >
+                            <card
+                                :title="event.titel"
+                                :teaser="event.beschreibung"
+                                :image="event.bilder_path + '/plakat.jpg'"
+                                :date="event.start_datum"
+                                :endDate="event.end_datum"
+                                :id="event.oaId"
+                                events
+                            />
                         </div>
                         <div class="noEvent" v-else>
                             <h5>In diesem Monat finden keine Events statt</h5>
@@ -33,10 +106,21 @@
                 <div class="nextWeek flex flex-center">
                     <h2 class="weekHeader">Nächster Monat</h2>
                     <div class="row flex flex-center">
-                        <div class="cards" v-for="event in objectsNext" :key="event.oaId" v-if="objectsNext.length !== 0">
-                            <card :title="event.titel" :teaser="event.beschreibung"
+                        <div
+                            class="cards"
+                            v-for="event in objectsNext"
+                            :key="event.oaId"
+                            v-if="objectsNext.length !== 0"
+                        >
+                            <card
+                                :title="event.titel"
+                                :teaser="event.beschreibung"
                                 :image="event.bilder_path + '/plakat.jpg'"
-                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                                :date="event.start_datum"
+                                :endDate="event.end_datum"
+                                :id="event.oaId"
+                                events
+                            />
                         </div>
                         <div class="noEvent" v-else>
                             <h5>In diesem Monat finden keine Events statt</h5>
@@ -44,17 +128,30 @@
                     </div>
                 </div>
                 <div class="link center">
-                    <nuxt-link to="/calender" class="further-link"><em class="underline">Zum Kalender</em></nuxt-link>
+                    <nuxt-link to="/calender" class="further-link"
+                        ><em class="underline">Zum Kalender</em></nuxt-link
+                    >
                 </div>
             </div>
             <div class="area">
                 <div class="lastWeek flex flex-center">
                     <h2 class="weekHeader">Alle Events</h2>
                     <div class="row flex flex-center">
-                        <div v-if="objectsOther.length !== 0" class="cards" v-for="event in objectsOther" :key="event.oaId">
-                            <card :title="event.titel" :teaser="event.beschreibung"
+                        <div
+                            v-if="objectsOther.length !== 0"
+                            class="cards"
+                            v-for="event in objectsOther"
+                            :key="event.oaId"
+                        >
+                            <card
+                                :title="event.titel"
+                                :teaser="event.beschreibung"
                                 :image="event.bilder_path + '/plakat.jpg'"
-                                :date="event.start_datum" :endDate="event.end_datum" :id="event.oaId" events/>
+                                :date="event.start_datum"
+                                :endDate="event.end_datum"
+                                :id="event.oaId"
+                                events
+                            />
                         </div>
                         <div class="noEvent" v-else>
                             <h5>Es gibt noch keine anderen Events</h5>
@@ -67,7 +164,7 @@
 </template>
 
 <style lang="scss" scoped>
-@import '../../assets/style/variable.scss';
+@import "../../assets/style/variable.scss";
 
 main {
     overflow: hidden;
@@ -76,7 +173,7 @@ main {
         z-index: -98;
 
         @media screen and (max-width: $breakpoint-medium-max) {
-          margin-bottom: 10vh;
+            margin-bottom: 10vh;
         }
 
         h1 {
@@ -98,6 +195,14 @@ main {
     }
 }
 
+.area {
+    .noEvent  {
+        margin-bottom: 5vh;
+        color: white;
+        font-family: $flow-font-name;
+    }
+}
+
 .weekHeader {
     margin-top: 5vh;
     margin-bottom: 2vh;
@@ -111,82 +216,11 @@ main {
 
 .marginTopSmall {
     @media screen and (max-width: $breakpoint-medium-max) {
-         margin-top: -7vh;
+        margin-top: -7vh;
 
-         .further-link {
-             font-size: .75rem;
-         }
+        .further-link {
+            font-size: 0.75rem;
+        }
     }
 }
 </style>
-
-<script>
-import card from "~/components/card.vue";
-import axios from "axios";
-
-export default {
-    name: "eventsIndex",
-    data() {
-        return {
-            objectsCurrent: [],
-            objectsOther: [],
-            objectsNext: []
-        }
-    },
-    components: {
-        card
-    },
-    methods: {
-        sortEvents: function (arr) {
-            arr.forEach((value) => {
-                if (( new Date(value.end_datum).getMonth() > new Date().getMonth() && new Date(value.start_datum).getMonth() <= new Date().getMonth() )) {
-                    this.objectsCurrent.push(value);
-                } else if (new Date(value.start_datum).getMonth() === new Date(Date.now() + 31 * 24 * 60 * 60 * 1000).getMonth()) {
-                    this.objectsNext.push(value);
-                } else {
-                    this.objectsOther.push(value);
-                }
-            });
-        }
-    },
-    async fetch() {
-        this.events = [];
-
-        let req = await axios.get(process.env.baseURL + "/events");
-        let events = req.data;
-
-        this.events = events;
-
-        this.sortEvents(events);
-    },
-    async mounted() {
-        await this.$fetch();
-        this.$nextTick(() => {
-            this.$nuxt.$loading.finish();
-        })
-    },
-    created() {
-        this.$store.commit('breadcrumbs/clear');
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 1, text:"Startseite", link:"/"} });
-        this.$store.commit("breadcrumbs/addPositionedBreadcrumb", { todo: {step: 2, text: "Events", link:"/events"} });
-    },
-    head() {
-        return {
-            title: "Events - OKAY Ybbs",
-            meta: [
-                {
-                    charset: 'utf-8'
-                },
-                {
-                    name: "description",
-                    content: "Hier werden alle aktuellen Events angezeigt, welche vom OKAY Verein organisisert werden."
-                },
-                {
-                    name: "keywords",
-                    content: "OKAY, Verein, Events, KIZ, Ausstellung, Gallerie, Konzert"
-                },
-            ]
-        }
-    },
-}
-</script>

@@ -1,139 +1,105 @@
-<template>
-<div>
-    <div v-if="imageGallery == null" class="gallery flex flex-center">
-        <div class="slider flex flex-center row error">
-            Es sind noch keine Bilder hinzugefügt worden!
-        </div>
-    </div>
-    <div v-else class="gallery flex flex-center">
-        <div class="slider flex flex-center row">
-            <div class="row">
-                <div v-for="(image, index) in imageGallery" :key="index" class="col flex flex-center">
-                    <img v-if="isImage(image)" :src="image" alt="Bild von der Ausstellung"
-                         @click="selectedImage = image"/>
-                    <video v-if="isVideo(image)" :src="image"
-                           @click="selectedImage = image">
-                    </video>
-                </div>
-            </div>
-        </div>
-        <div class="preview flex flex-center">
-            <img v-if="isImage(selectedImage)" :src="selectedImage" alt="Preview Image of Slider" class="image"/>
-            <video v-if="isVideo(selectedImage)" :src="selectedImage" class="image"
-                   controls></video>
-        </div>
-    </div>
-</div>
-</template>
+<script setup>
+const props = defineProps({
+    imgPath: String,
+    id: String,
+    type: String,
+});
 
-<script>
-import axios from 'axios';
+const selectedImage = ref('');
+const imageGallery = ref([]);
 
-export default {
-    name: "gallery",
-    props: {
-        imgPath: String,
-        id: String,
-        type: String
-    },
-    data() {
-        return {
-	        selectedImage: "",
-	        updateView: false,
-            imageGallery: null
-        }
-    },
-    methods: {
-        isImage: function (path) {
-            let isImage = true;
+const isImage = (path) => {
+    return ['.jpg', '.jpeg', '.bmp', '.png', '.svg', '.ico', '.gif'].some(ext => path.includes(ext));
+};
 
-            isImage = this.contains(path, [
-                ".jpg",
-                ".jpeg",
-                ".bmp",
-                ".png",
-                ".svg",
-                ".ico",
-                ".gif"
-            ]);
+const isVideo = (path) => {
+    return ['.mov', '.avi', '.mp4'].some(ext => path.includes(ext));
+};
 
-            return isImage;
-        },
-        isVideo: function (path) {
-            let isVideo = true;
+const fetchImages = async () => {
+    const config = useRuntimeConfig();
+    let url = '';
 
-            isVideo = this.contains(path, [
-                ".mov",
-                ".avi",
-                ".mp4",
-            ]);
+    if (!props.imgPath) {
+        imageGallery.value = null;
+        return;
+    }
 
-            return isVideo;
-        },
-        refresh() {
-            this.$nuxt.refresh()
-        },
-        contains: function (string, arr) {
-            const tmp = [];
-            for (const check of arr) {
-                if (string.includes(check)) {
-                    tmp.push(true);
-                } else {
-                    tmp.push(false)
-                }
-            }
-
-            if (tmp.includes(true)) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    },
-    async fetch() {
-        let selectOneImage = true;
-        let data;
-
-        try {
-            if (this.imgPath === null || this.imgPath === "") throw 'Bilder Path is null';
-            if (this.id !== undefined && this.imgPath !== null || this.imgPath !== "") {
-                switch (this.type) {
-                    case "event":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/events/" + this.id + "/");
-                        break;
-                    case "news":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/news/" + this.id + "/");
-                        break;
-                    case "products":
-                        data = await axios.get(process.env.baseImage + "/images?path=uploads/products/" + this.id + "/");
-                        break;
-                }
-            }
-
-            if (data.status < 400 && data.data.data !== null && data.data.date !== {}) {
-                this.images = [];
-                let tmp = "server/uploads";
-                data.data.data.forEach(item => {
-                    this.images.push(process.env.baseImage + item.replace(tmp, ''));
-                    if (selectOneImage) {
-                        this.selectedImage = process.env.baseImage + item.replace(tmp, "");
-                        selectOneImage = false;
-                    }
-                });
-            }
-        } catch (err) {
-            this.images = null;
-        }
-        this.imageGallery = this.images;
-    },
-    fetchOnServer: false,
-    watch: {
-        images: function() {
-            this.imageGallery = this.images;
+    if (props.id && props.imgPath) {
+        switch (props.type) {
+            case 'event':
+                url = `${config.public.baseImage}/images?path=uploads/events/${props.id}/`;
+                break;
+            case 'news':
+                url = `${config.public.baseImage}/images?path=uploads/news/${props.id}/`;
+                break;
+            case 'products':
+                url = `${config.public.baseImage}/images?path=uploads/products/${props.id}/`;
+                break;
         }
     }
-}
+
+    const { data, error } = await useFetch(url);
+
+    if (error.value) {
+        imageGallery.value = null;
+    } else {
+        const tmp = 'uploads';
+        const images = data.value.data.map(item => config.public.baseImage + item.replace(tmp, ''));
+        imageGallery.value = images;
+        selectedImage.value = images[0];
+    }
+};
+
+onMounted(fetchImages);
 </script>
+
+<template>
+    <div>
+        <div v-if="imageGallery == null" class="gallery flex flex-center">
+            <div class="slider flex flex-center row error">
+                Es sind noch keine Bilder hinzugefügt worden!
+            </div>
+        </div>
+        <div v-else class="gallery flex flex-center">
+            <div class="slider flex flex-center row">
+                <div class="row">
+                    <div
+                        v-for="(image, index) in imageGallery"
+                        :key="index"
+                        class="col flex flex-center"
+                    >
+                        <img
+                            v-if="isImage(image)"
+                            :src="image"
+                            alt="Bild von der Ausstellung"
+                            @click="selectedImage = image"
+                        />
+                        <video
+                            v-if="isVideo(image)"
+                            :src="image"
+                            @click="selectedImage = image"
+                        ></video>
+                    </div>
+                </div>
+            </div>
+            <div class="preview flex flex-center">
+                <img
+                    v-if="isImage(selectedImage)"
+                    :src="selectedImage"
+                    alt="Preview Image of Slider"
+                    class="image"
+                />
+                <video
+                    v-if="isVideo(selectedImage)"
+                    :src="selectedImage"
+                    class="image"
+                    controls
+                ></video>
+            </div>
+        </div>
+    </div>
+</template>
 
 <style lang="scss" scoped>
 @import "gallery";
