@@ -27,7 +27,7 @@ const event = await useFetch(
             year: "numeric",
             month: "long",
             day: "numeric",
-        }),
+        }) ?? null,
         days: res.data.value.zeiten,
         adresse: res.data.value.adresse,
     };
@@ -133,7 +133,7 @@ const showTime = computed(() => !!event.days)
                 <h1 class="title col-4">
                     {{ event.name }} - {{ event.untertitel }}
                 </h1>
-                <p class="date" v-if="event.end_date !== ''">
+                <p class="date" v-if="!event.end_date">
                     Am {{ event.date }}
                 </p>
                 <p class="date" v-else>
