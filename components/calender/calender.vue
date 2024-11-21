@@ -83,7 +83,7 @@ const checkEventOnDate = (date, month, year) => {
                         tableString += `<div class='eventCal oneDay' @click='reroute(${events.value[value].oaId})'><p class='eventTitle'>${events.value[value].titel}</p></div>`;
                 }
             } else {
-                if (new Date(events.value[value].start_datum).getDate() <= date && (new Date(events.value[value].end_datum).getDate() >= date || new Date(events.value[value].end_datum).getMonth() >= month)) {
+                if (new Date(events.value[value].start_datum).getDate() <= date && (new Date(events.value[value].end_datum).getDate() >= date && new Date(events.value[value].end_datum).getMonth() >= month)) {
                     badgeNumber++;
                     eIds.push(value);
                     if (!tableString.includes("eventCal"))
