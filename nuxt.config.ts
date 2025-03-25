@@ -45,7 +45,6 @@ export default defineNuxtConfig({
     },
   },
   ssr: false,
-  plugins: [{ src: "~/plugins/scroll-to.plugin.ts", mode: "client" }],
   modules: ["@pinia/nuxt"],
   css: ["~/assets/style/style.scss", "~/assets/style/variable.scss"],
   hooks: {
