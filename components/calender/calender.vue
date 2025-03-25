@@ -16,6 +16,20 @@ const config = useRuntimeConfig();
 
 const { data: fetchedEvents } = await useFetch(`${useRuntimeConfig().public.baseURL}/events`);
 events.value = fetchedEvents.value;
+// test data for testing without api access
+// events.value = [
+//     {
+//         oaId: 1,
+//         start_datum: "2025-03-15",
+//         end_datum: "2025-04-15",
+//         titel: 'test 1',
+//     },        {
+//         oaId: 2,
+//         start_datum: "2025-02-15",
+//         end_datum: "2025-04-15",
+//         titel: 'test 2',
+//     }
+// ]
 
 const updateCalendar = (month, year) => {
     tb.value = "<tbody ref='calendarBody' class='body'>";
@@ -72,42 +86,31 @@ const daysInMonth = (month, year) => {
 const checkEventOnDate = (date, month, year) => {
     let tableString = `<p class='date'>${date}</p>`;
     let badgeNumber = 0;
-    let eIds = [];
-    for (let value in events.value) {
-        if (new Date(events.value[value].start_datum).getMonth() === month && new Date(events.value[value].start_datum).getFullYear() === year) {
-            if (events.value[value].end_datum === undefined) {
-                if (new Date(events.value[value].start_datum).getDate() === date) {
-                    badgeNumber++;
-                    eIds.push(value);
-                    if (!tableString.includes("eventCal"))
-                        tableString += `<div class='eventCal oneDay' @click='reroute(${events.value[value].oaId})'><p class='eventTitle'>${events.value[value].titel}</p></div>`;
-                }
-            } else {
-                if (new Date(events.value[value].start_datum).getDate() <= date && (new Date(events.value[value].end_datum).getDate() >= date && new Date(events.value[value].end_datum).getMonth() >= month)) {
-                    badgeNumber++;
-                    eIds.push(value);
-                    if (!tableString.includes("eventCal"))
-                        tableString += `<div class='eventCal oneDay flex flex-center' @click='reroute(${events.value[value].oaId})'><p class='eventTitle'>${events.value[value].titel}</p></div>`;
-                }
-            }
-        } else if (new Date(events.value[value].start_datum).getMonth() < month && new Date(events.value[value].end_datum).getMonth() > month) {
+    const eventIndizes = [];
+    // get 2 timestamps of current day to prevent weird issues with calender
+    const startOfCurrentDayTime = new Date(year, month, date).getTime()
+    const endOfCurrentDayTime = new Date(year, month, date, 23 , 59).getTime();
+
+    for(const index in events.value) {
+        const event = events.value[index];
+        const startTime = new Date(event.start_datum).getTime();
+        const endTime = new Date(event.end_datum).getTime();
+
+        // Comapre timestamps to determine if the event is on the specific date
+        if(startTime <= endOfCurrentDayTime && startOfCurrentDayTime <= endTime) {
             badgeNumber++;
-            eIds.push(value);
-            if (!tableString.includes("eventCal"))
-                tableString += `<div class='eventCal oneDay flex flex-center' @click='reroute(${events.value[value].oaId})'><p class='eventTitle'>${events.value[value].titel}</p></div>`;
-        } else if (new Date(events.value[value].end_datum).getMonth() === month) {
-            if (new Date(events.value[value].end_datum).getDate() >= date) {
-                badgeNumber++;
-                eIds.push(value);
-                if (!tableString.includes("eventCal"))
-                    tableString += `<div class='eventCal oneDay flex flex-center' @click='reroute(${events.value[value].oaId})'><p class='eventTitle'>${events.value[value].titel}</p></div>`;
+            eventIndizes.push(index);
+
+            // Add the name of the event in the day entry - only add the first event as text
+            if(!tableString.includes("eventCal")) {
+                tableString += `<div class='eventCal oneDay' @click='reroute(${event.oaId})'><p class='eventTitle'>${event.titel}</p></div>`;
             }
         }
     }
 
     if (badgeNumber > 0) {
         tableString += `<div class='badgeNumber' @click='() => toggle(${date})'><p>${badgeNumber}</p></div>`;
-        tableString += createPopUp(eIds, date, month, year);
+        tableString += createPopUp(eventIndizes, date, month, year);
     }
 
     return tableString;
